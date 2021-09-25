@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package 
+  xmlns="http://expath.org/ns/pkg" name="http://www.obdurodon.org/Y/pr-app"
+  abbrev="pr-app" version="1.0.0" spec="1.0">
+  <title>a practice application designed with users in mind</title>
+  <dependency processor="http://exist-db.org" semver-min="5.0.0"/>
+</package>
