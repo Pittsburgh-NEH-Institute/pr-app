@@ -45,5 +45,7 @@ Complete the instructions in [installs.md]() before continuing below.
 1. Start eXist-db, open a browser, and go to [http://localhost:8080/](). Log in as `admin` (no password, usually).
 Launch Package Manager and upload the regular *.xar* file from your `build` folder (the dev *.xar* can be ignored for now).
 
+## TODO
 
+1. Pushing commits to GitHub will launch a GitHub CI (continuous integration) build, which will fail because *package.json* doesn’t (yet) exist.
 
