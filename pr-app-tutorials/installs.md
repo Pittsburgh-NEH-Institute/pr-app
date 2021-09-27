@@ -35,7 +35,7 @@ Type `git` at the command line. If it isn’t installed, accept the prompt to in
 1. Install *npm* (node package manager) with `brew install npm`
 2. Install *nvm* (node version manager) with `brew install nvm`. (Why? *nvm* lets you install and choose among different *node* releases, and Yeoman requires node v. 14, which is not the most recent version.)
 2. **Don’t skip this step!** Run `brew info nvm` and follow the “caveats” instructions.
-2. Install *node* v. 14 with `nvm install node@14`.
+2. Install *node* v. 14 with `nvm install 14`.
 3. Activate *node* v. 14 with `nvm use 14`. (This command persists only in a single shell, which is what you want, but it means that you have to run again each time you launch a new shell.)
 
 ### Install *yeoman* for eXist-db
