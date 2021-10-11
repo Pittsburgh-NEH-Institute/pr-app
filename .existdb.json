@@ -13,6 +13,7 @@
     "ignore": [
       ".existdb.json",
       ".git/**",
+      ".github/**",
       "node_modules/**",
       "build/**",
       ".vscode/**",
