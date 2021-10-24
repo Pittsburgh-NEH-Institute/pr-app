@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-TIMES-18380109">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Police Column: Yesterday The Lord Mayor...</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Times</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Times</publisher>
+            <date when="1838-01-09"/>
+            <idno>GH-TIMES-18380109</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"Police." Times, 9 Jan. 1838, p. 4. The Times Digital Archive,
+                  http://tinyurl.galegroup.com/tinyurl/8tRZH4. Accessed 25 Jan. 2019.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p><placeName ref="#mansionhouse">Mansion House</placeName>.— Yesterday the Lord Mayor said
+            that he had received a letter upon a subject, the odd nature of which had induced him to
+            withhold it from the public for some days, in the expectation that some statement might
+            be made through a source of indisputable authority relative to the matter of which it
+            treated.</p>
+         <p>The following is the letter:—</p>
+         <p><q/>To the right Hon. the Lord Mayor.</p>
+         <p><q/>My Lord,— the writer presumes that your Lordship will kindly overlook the liberty he
+            has taken in addressing a few lines on a subject which within the last few weeks has
+            caused much alarming sensation in the neighbouring villages within three or four miles
+            of London.</p>
+         <p><q/>It appears that some individuals (of, as the writer believes, the higher ranks of
+            life) have laid a wager with a mischievous and foolhardy companion <rs ref="springheeledjack">(name as yet
+            unknown)</rs>, that he durst not take upon himself the task of visiting many of <placeName
+               ref="rel amb">the villages near London</placeName> in three different disguises— a
+            ghost, a bear, and a devil; and, moreover, that he will not dare to enter gentlemen’s
+            gardens for the purpose of alarming the inmates of the house. The wager has, however,
+            been accepted, and the unmanly villain has succeeded in depriving seven ladies of their
+            senses. <placeName ref="amb">At one house</placeName> he rung the bell, and on the
+            servant coming to open the door, this worse than brute stood in a no less dreadful
+            figure than a spectre clad most perfectly. The consequence was that, the poor girl
+            immediately swooned, and has never from that moment been in her senses, but, on seeing
+            any man, screams out most violently <q>Take him away!</q> There are two ladies (which
+            your Lordship will regret to hear), who have husbands and children, and who are not
+            expected to recover, but likely to become burdens to their families.</p>
+         <p><q/>For fear that your Lordship might imagine that the writer exaggerates, he will
+            refrain from mentioning other cases, if any thing, more melancholy than those he has
+            already related.</p>
+         <p><q/>This affair has now been going on for some time, and, strange to say, the papers are
+            still silent on the subject. The writer is very unwilling to be unjust towards any man,
+            but he was reason to believe that they have the whole history at their finger ends, but,
+            through interested motives, are induced to remain silent. <rs ref="justice">It is, however, high time that
+            such detestable nuisance should be put a stop to, and the writer feels assured that your
+            Lordship, as the chief magistrate of London, will take great pleasure in exerting your
+            power to bring the villain to justice.</rs></p>
+         <p><q/>Hoping your Lordship will pardon the liberty I have taken in writing, I remain your
+            Lordship’s most humble servant, <q>A Resident of <placeName ref="#peckham"
+                  >Peckham</placeName>.</q></p>
+         <p><rs ref="mis">The Lord Mayor on reading the account observed that, as our friends on the other side of
+            the Atlantic were in the habit of saying, it was <q>extraordinary if true.</q></rs> In his
+            opinion it was not calculated for the meridian of London, but if any trick had been
+            practised by fools, he had no doubt that the vigilance of the police might be depended
+            upon to of the Lord Mayor, but as the terrible vision had not entered the city, he could
+            not take cognizance of its iniquities.</p>
+         <p>A gentleman stated to his Lordship that the servant girls about <placeName
+               ref="#kensington">Kensington</placeName>, and <placeName ref="#hammersmith"
+               >Hammersmith</placeName>, and <placeName ref="#ealing">Ealing</placeName>, told
+            dreadful stories of the ghost or devil, who, on one occasion, was said to have beaten a
+            blacksmith, and torn his flesh with iron claws, and in others to tear the clothes from
+            the backs of females. Not one of the injured people had been known to tell the story;
+            perhaps they didn’t like to tell it.</p>
+         <p>The Lord Mayor believed that one of the ladies who had lost their seven senses was his
+            correspondent. He hoped she would do him the favour of a call, and he would have an
+            opportunity of getting from her such a description of the demon as would enable him to
+            catch him, in spite of the paid press and police.</p>
+      </body>
+   </text>
+</TEI>

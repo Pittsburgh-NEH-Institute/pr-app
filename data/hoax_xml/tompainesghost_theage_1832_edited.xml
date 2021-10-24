@@ -1,0 +1,86 @@
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-19CUK-18320318">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>﻿Tom Paine's Ghost</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Age</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Age</publisher>
+            <date when="1832-03-18"/>
+            <idno type="hoax">GH-19CUK-18320318</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>
+               "Tom Paine's Ghost." The Age, 18 Mar. 1832, p. 93.  19th Century UK Periodicals, http://tinyurl.com/ycw3hetk.  Accessed 31 July 2017.
+            </bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>A few nights since the bellowing wind with a hollow roar marched up <placeName
+               ref="#fetter-lane">Fetter-lane</placeName>, convulsing the casements of each second
+            floor! Not a light was seen, except the gas; the stars were fast asleep and covered over
+            with the clothes of heaven! the dark thick fog had put out the moon, and quite obscured
+            that varied nothing some call sky! <placeName ref="#stpauls">St. Paul’s</placeName> was snoring twelve, the helpless guardians
+            tried locks, bolts, and bars, yawning the hour as they had it from their tall fat
+            friend, and Somnus had just walked his drowsy cap over the evil eyes of <q>a labourer in
+                  <placeName ref="#stdunstans">St. Dunstan’s</placeName>,</q> when lo! a sprite
+            appeared! the ghost of <persName ref="#thomaspaine">Tommy Paine</persName>! <q><rs ref="pol">Spirit of radicalism, arise!</rs></q> said Grimmy.
+               <q>Avaunt!</q> cried Twopenny Trash, seizing a gridiron, <q>quit my sight! thy bones
+               are marrowless, for I had the boiling of ’em and ought to know, but,</q> added he,
+            recollecting his sacrilege in America, <q>What would your gracious
+               figure?</q>—<q>Unhallowed grubber of dead men’s bones,</q> quoth Grimmy, <q>author of
+               all that is rank and nasty! lend me thine cars! Mark me! instantly arise, doff thy
+               red night cap, and fix fast in thine artificial ivories! List! but soft, methinks I
+               scent thy hopeful heir; brief let me be. Thou knowest that in Canada thy corn is
+               never planted, therefore never reaped; thy writings too arc by all emigrants
+               contemned, therefore keep the rebels here; <rs ref="pol">petition the House against this
+               emigration</rs>; draw it up this very night: and as you did the man when Mayor, some good,
+               why put it in the hands of <persName ref="#matthewwood">Matthew Wood</persName>!</q> Up rose the lecturer, on went his
+            breeks, inspired by the spirit lie groped about for his lucifers in order to find
+            himself, which done, he set to work, completed his task, sent it to Wood, who presented
+            it from the <q>wonderful and astonishing</q> writer! It was rejected! and yesterday on
+            the <q>gridiron</q> ’twas cooked, and garnished with peculiar spleen!</p>
+      </body>
+   </text>
+</TEI>

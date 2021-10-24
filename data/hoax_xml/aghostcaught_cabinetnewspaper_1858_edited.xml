@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-GNCCO-18581204">
+
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>A Ghost Caught</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Cabinet Newspaper</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Cabinet Newspaper</publisher>
+            <date when="1858-12-04"/>
+            <idno>GH-GNCCO-18581204</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"A Ghost Caught." Cabinet Newspaper, 4 Dec. 1858, p. 3. Nineteenth Century
+                  Collections Online, tinyurl.galegroup.com/tinyurl/54SGP5. Accessed 25 July
+                  2017.</bibl>
+            </p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>﻿The mystery of the ghost of an old house called <placeName ref="#drumhead"
+               >Drumhead</placeName>, which has kept the village and neighbourhood of <placeName
+               ref="#cardross">Cardross</placeName> in a state of great excitement for several weeks
+            past, has at length been revealed. To such an extent had the rumours prevailed of the
+            inexplicable sounds heard at night by the inhabitants of the house, and numbers having
+            left it to reside in the village out of terror, that, in order to restore peace to the
+            district, the constable stationed there determined to investigate into the cause of the
+            affair. One night, between eleven and twelve o’clock, he proceeded to <placeName
+               ref="#drumhead">Drumhead</placeName>, with three other young men belonging to
+               <placeName ref="#cardross">Cardross</placeName> to assist him in his researches, the
+            result of which was, as might have been expected, that the whole mystery was the work of
+            some of the workmen lodging in the house, who had concocted the trick for the purpose of
+            alarming the other inhabitants. A careful search was made. At last they opened a door in
+            a dark passage leading from the kitchen to the room, and which concealed a recess
+            beneath a staircase conducting to the second storey, and in a few minutes the mystery of
+            the ghost was exploded. They found in the recess an old copper boiler, which had lain
+            there apparently a number of years. A large square board was lying on the ground, like a
+            trap-door to some vault below; but the machinery by which the <rs ref="rapping"
+               >spirit-rapping</rs> had been applied was revealed. It consisted of a strong species
+            of dried grass, capable of much resistance, which was conveyed beneath the floor to some
+            distant apartment of the house. To this was attached two wands and the leg of a pair of
+            tongs, so ingeniously constructed that by pulling the line the leg of the tongs was made
+            to strike or rub against the copper boiler so as produce a variety of sounds. The wands
+            and iron could be removed, and nothing would remain but the end of the line, which no
+            one would readily notice. The discovery of the whole plot has exasperated the ghost
+            party to such a degree that the constable believes there is some danger of a serious
+            breach of the peace.</p>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-GNCCO-18750703">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>A Substantial Ghost Story</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The People’s Advocate, Altrincham Guardian</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The People’s Advocate</publisher>
+            <publisher>Altrincham Guardian</publisher>
+            <date when="1875-07-03"/>
+            <idno>GH-GNCCO-18750703</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"A Substantial Ghost Story." People's Advocate, 3 July 1875. Nineteenth Century
+                  Collections Online, http://tinyurl.galegroup.com/tinyurl/7M6cU4. Accessed 10 Oct.
+                  2018.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>﻿A story reaches us from <placeName ref="#sale">Sale</placeName>, which for some days
+            caused intense excitement; but owing to the confession of a half hearted <q>slavey</q>
+            it is irrevocably consigned to the limbo of exploded deceptions. For some time past
+               <placeName ref="amb">the occupants of a house in a certain road in Sale</placeName>
+            have been alarmed by mysterious ringings of the front door bell at hours seasonable and
+            unseasonable, by handwriting on the front door, by disturbances of the window frames,
+            and the shattering of glass, from some unknown cause. Of all these so called phenomena
+            the front door bell was the greatest offender, and when the inmates went to answer and
+            welcome some thought-of visitor they were met by that lovely view of <placeName
+               ref="#brooklands">Brooklands</placeName> and delightful scent from <placeName
+               ref="#sale_canal">the canal bank</placeName> which the residents in that locality so
+            well know and so little appreciate. At length the police were communicated with, but
+            even the proverbial astuteness of the Cheshire Constabulary was thoroughly baffled. The
+            bells rang, the writing wrote, and the window shuddered and shook as usual, and no one,
+            as far as they could see, did it. A Manchester friend of the family set about to solve
+            the mystery, and clear this haunted house from the stigma attaching to it. Stealthily
+            did he lie in ambush in the front garden and patiently bide the issue. Strange to say,
+            an active and intelligent officer—we will call him A 1 for the sake of distinction was
+            of the same mind as King Cotton, and thought he would solve the mystery too. Precisely
+            at midnight, when innumerable ghosts are supposed to promenade, the active and
+            intelligent, in plain clothes, accompanied by his faithful dog (breed not stated)
+            approached the house with stealthy steps. Cotton was wide awake. A 1 crept in and
+            approached the window. Cotton sprang out the instant, and, seizing A 1 by the throat, a
+            contest commenced which almost baffles description. Cotton was certain in his own mind
+            he had got the culprit; A 1 was as equally certain that this was a mistake, and that he
+            was an officer of which <placeName ref="#sale">Sale</placeName> might justly be proud.
+            But there was no time for explanation. Cotton strengthened his grip —A 1 seized Cotton—
+            the dog, Cotton’s unmentionables. The fray waxed fast and furious; the combatants roared
+            and gripped, making night hideous with their roaring, and rousing the neighbourhood.
+            After a quarter of an hour’s lugging a truce was called, the dog in the meantime having
+            torn the aforesaid unmentionables into shreds; mutual explanations ensued—the police
+            officer returned to duty and Cotton to <placeName ref="#manchester"
+               >Manchester</placeName> with a keen appreciation of his first endeavours at
+            ghost-laying. One would have thought after all this attention the ghost would have
+            removed to more solitary and congenial quarters. But this was not the case. On the other
+            hand, it worked away harder than ever, until it was past all bearing. A gentleman, who
+            is exceedingly clever as an amateur detective, undertook to solve the mystery, and
+            ultimately success was in this respect achieved. The first night’s experience tended to
+            convince him that the <q>phenomena</q> were caused by a party inside the house;
+            suspicion fell on the <q>slavey,</q> who, however, strongly denied any connection there
+            with. The threat of immediate legal proceedings only tended to induce her to make a full
+            confession, which she did, and also explained the way in which she had produced the
+               <q>manifestations.</q> It is unnecessary to say that since her discharge the family
+            have enjoyed perfect peace.—<placeName ref="#altrincham">Altrincham</placeName>
+            Guardian.</p>
+      </body>
+   </text>
+</TEI>

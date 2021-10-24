@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-TIMES-18300708">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>﻿The Bermondsey Ghost</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Times</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Times</publisher>
+            <date when="1830-07-08"/>
+            <idno>GH-TIMES-18300708</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>The Bermondsey Ghost. The Times (London, England), Thursday, Jul 08, 1830; pg.
+                  6; Issue 14273. (780 words)</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p> For some days past the <placeName ref="#grangeroad">Grange-road,
+            Bermondsey</placeName>, has been the scene of much commotion, owing to a report, very
+            generally circulated, that a ghost was in the habit of making its appearance nightly at
+            the window of an uninhabited house in that neighbourhood. The dwelling in which this
+            nocturnal vister was declared, and believed by many, to have been seen, was a few years
+            ago the residence of a clergyman of very eccentric habits. He lived a very retired life,
+            and for many years preceding his death was scarcely ever seen by his neighbours. On
+            these occasions that he <sic>exhibted</sic> himself to the public gaze, he generally
+            placed himself in one of the windows of the first floor, dressed in a very grotesque
+            manner, and always made a point of appearing with a huge night-cap on his head and a
+            pipe in his mouth. In consequence of his eccentricities he was believed by many of his
+            neighbours to be mad, although he never displayed any more symptoms of insanity than
+            those above described. Since his decease, which took place a short time ago, the house
+            has been shut up, and it now appears that only a few days had been suffered to elapse
+            from the time that he was removed from his dwelling to his grave when a report prevailed
+            that his ghost was seen in the very window he was accustomed to take his nation
+            previously to his decease. This report soon gained ground, and several persons who have
+            lately watched the house, declare that they have seen the ghost of the old clergyman in
+            his window, enjoying himself as he was usually in the habit of doing, with his pipe of
+            tobacco. Several strange stories are in circulation about the Bermondsey ghost, which
+            show, however, that it does not play half the pranks that the Cock lane or Hammersmith
+            ghosts played in their time: for instance, there is no rattling or noises heard from
+            within; no huge stones flung at people’s heads as they pass along, or windows smashed,
+            or cries and lamentations heard from within the building. Although none of these
+            vagaries have been played off by <rs ref="bermondseyghost">the Bermondsey ghost</rs>,
+            yet it has been asserted by persons who have entered the house after nightfall, that
+            they have witnessed not only the ghost of the late occupier, but also the ghosts of
+            former landlords, and that upon one occasion they all vanished together in a blaze of
+            fire up the chimney, without, however, putting these who witnessed the circumstance to
+            any other inconvenience than the fright inspired in their minds by such an exit. Owing
+            to the various rumours thus circulated on the subject, the inhabitants of the
+            Grange-road particularly have been kept in a constant state of torment from the crowds
+            of people who congregate there. Every night, during the last and present weeks, the read
+            in front of the house alluded to has been blocked up by men, women, and children, many
+            of whom remain all night on the watch in the expectation of seeing the ghost, and the
+            clamour they make while there renders it impossible for those residing near the spot to
+            get any rest. To such a height has this annoyance arisen, that application was made
+               <placeName ref="unknown">at the Station-house</placeName> on Monday night for the
+            assistance of the police to disperse the crowd, which amounted at one period of that
+            evening to at least 2,000 persons. The whole force of the division was called into
+            action, and it was with considerable trouble they cleared the road; so impressed were
+            many of the spectators with the idea of seeing the ghost, many of them declaring they
+            had come miles for the purpose of seeing it, and complaining of the hardship of being
+            compelled to go away without having a sight of the ghost. After the crowd had dispersed,
+            the inspector entered the house, conceiving that some person was within who did the part
+            of the ghost, but no one was found on the premises. It is supposed the story was got up
+            by some interested party, to prevent the letting of the house. Orders have been given to
+            the police to strictly watch the house, and prevent the crowds in future from collecting
+            opposite to it, and if any unfortunate wight happens to be discovered on the premises,
+            playing the part of the ghost of the late occupier, there is a punishment awaits him
+            which will in all probability have the effect of checking his nocturnal wanderings, and
+            make him sick of such sport; there is a horse pond in the neighbourhood, a sousing in
+            which would speedily bring him to his senses.</p>
+      </body>
+   </text>
+</TEI>

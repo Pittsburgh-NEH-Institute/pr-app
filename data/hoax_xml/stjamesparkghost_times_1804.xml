@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-TIMES-18040117">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Park Ghost</title>
+                <respStmt>
+                    <resp>Originally published by</resp>
+                    <name>The Times</name>
+                </respStmt>
+                <respStmt>
+                    <resp>Transcribed and encoded by</resp>
+                    <name>Gabi Keane</name>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <publisher>The Times</publisher>
+                <date when="1804-01-17"/>
+                <idno>GH-TIMES-18040117</idno>
+            </publicationStmt>
+            <seriesStmt>
+                <title>Ghost hoaxes in 19th-century British news media</title>
+            </seriesStmt>
+            <sourceDesc>
+                <p>All texts in this collection were sourced from British periodical and newspaper
+                    archives, transcribed,and encoded. The citation below was provided by the
+                    archive and appears exactly as given.</p>
+                <p><bibl>"Park Ghost." Times [London, England] 17 Jan. 1804: 3. The Times Digital
+                        Archive. Web. 30 Oct. 2018.</bibl></p>
+            </sourceDesc>
+
+        </fileDesc>
+        <encodingDesc>
+            <projectDesc>
+                <p>This document is part of a larger digital collection of stories of ghost hoaxes
+                    from the 18th and 19th century London newspapers and periodicals. The project
+                    explores the beginnings of mass print media in a metropolitan area at a time
+                    when technology and education made reading increasingly common and
+                    inexpensive.</p>
+                <p>The corpus holds 36 individual documents, which reflect a diverse mix of
+                    reporting on various hauntings in and around London between 1804 and 1889. The
+                    PDF and JPEGs from online databases were transcribed using ABBYFineReader OCR,
+                    then corrected and occasionally manually transcribed if document quality
+                    necessitated it. After normalization in plain text, all documents were
+                    upconverted to TEI XML.</p>
+            </projectDesc>
+            <editorialDecl>
+                <normalization>
+                    <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                        Typographic em dashes are longer than modern em dashes, so all dashes have
+                        been normalized to modern em dash length.</p>
+                </normalization>
+                <quotation>
+                    <p>All extraneous white space used by printers to avoid overlapping with letters
+                        has been removed. All quotes are simply tagged with the q tag.</p>
+                </quotation>
+            </editorialDecl>
+        </encodingDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div>
+                <p>It was not our intention to have said any thing more respecting this
+                        <emph>ghost</emph>, had we not been in some measure urged to renew the
+                    subject in our own vindication. <rs ref="mis">One of our fellow-journalists, on Saturday,
+                    charged us with being <q>conjurors, and that, by our <emph>magic spells</emph>,
+                        we had <emph>conjured</emph> up a <emph>ghost</emph> without a head, and
+                        stationed its haunts in <placeName ref="#stjamespark">St. James’s
+                            Park</placeName>, but that it was only known to ourselves.</q></rs> Now, we
+                    shall satisfactorily prove, that there were grounds for our statement.</p>
+                <p>The story of the appearance of an <emph>uncouth figure</emph>, in <placeName ref="#stjamespark">St. James’s
+                    Park</placeName>, in the dead of the night, had occasioned much conversation amongst the
+                    Guards for some time past; and so generally was the fact believed, that, at a
+                    late hour on Saturday night, a clergyman entered the Bird Cage Walk, and
+                    patroled it for several hours, in the hope that he might meet the figure, when,
+                    he trusted, he should detect some person, who, through wantonness, was
+                    endeavouring to alarm the neighbourhood. The whole night, however, passed away,
+                    without his being able to make any discovery. Indeed, it would appear, that the
+                    result of the trial of <emph>Smith,</emph> arising from the melancholy affair of
+                    the <emph><rs ref="hammersmithghost">Hammersmith ghost,</rs></emph> had reached
+                    the <emph>ears</emph> of the <emph>headless woman</emph> in the Park, and that
+                    she had, in consequence, bade adieu to her nightly visits in that quarter.</p>
+                <p>The last time, it is said, that this <emph>phantom</emph> was seen, was upwards
+                    of a week ago, when it was observed, about one o’clock in the morning, to walk
+                    with solemn gait, <placeName ref="#cockpit">from the Cockpit door to the
+                        Canal</placeName>; but whether it afterwards vanished in the air, or sunk
+                    into the water, the informant cannot say. It was not until the other day, that
+                    the old women about <placeName ref="#stjamespark">the Park</placeName> were able
+                    to account for the <emph>ghost</emph>'s appearance, and they now recollect,
+                    that, about sixteen years ago, a serjeant murdered his wife <placeName
+                        ref="#stjamespark">in the Park</placeName>, by cutting off her head, and they
+                    therefore attributed the phantom's appearance to that circumstance.</p>
+                <p>The officers of the Guards did not think it worth while to investigate this tale
+                    of horror, till they had reason to believe that the story had made some
+                    impression on the minds of some of the soldiers. Accordingly, yesterday at one
+                    o’clock, the Adjutant of the Coldstream Regiment went to the orderly-room, at
+                    the Horse Guards, and sent for George Jones, of the 16th Company, for the
+                    purpose of interrogating him respecting the <emph>ghost</emph>, as it was said
+                    that he was one of the men who had seen it, and had been considerably affected
+                    by the sight. The man accordingly attended, and declared his readiness to make
+                    oath of the truth of what he had already stated.</p>
+                <p>The following is a copy of a declaration which he afterwards made and signed
+                    before an Officer:</p>
+            </div>
+            <div>
+                <q>I do solemnly declare, that, whilst on guard at <placeName ref="unknown">the
+                        Recruit House</placeName>, on or about the 3d instant, about half past one
+                    o’clock in the morning, I perceived the figure of a woman, without a head, rise
+                    from the earth, at the distance of about three feet before me. I was so alarmed
+                    at the circumstance, that I had not power to speak to it, which was my wish to
+                    have done; but I distinctly observed that the figure was dressed in a red
+                    striped gown with red spots between each stripe, and that part of the dress and
+                    figure apeared to me to be enveloped in a cloud.</q>
+                <q>In about the space of two seconds, whilst my eyes were fixed on the object, it
+                    vanished from my signt. I was perfectly sober and collected at the time, and,
+                    being in great trepidation, called to the next sentinel, who met me about half
+                    way, and to whom I communicated the strange sight I had seen.</q>
+                <closer>(Signed) <signed><q><persName ref="#georgejones">George Jones</persName>, of Lieutenant-Colonel Taylor's Company of
+                            Coldstream Guards</q></signed>
+                    <placeName ref="#westminster">Westminster</placeName>, <date>Jan. 15,
+                        1804</date></closer>
+            </div>
+            <div>
+                <p>To the declaration of Jones we have to add another, connected with the subject,
+                    and which is equally genuine:—</p>
+            </div>
+            <div>
+                <q>I do hereby declare, that whilst on guard <placeName ref="rel unknown">behind the
+                        Armoury-house</placeName>, (to the best of my recollection about three weeks
+                    ago) I heard, at twelve o’clock at night, a tremendous noise, which proceeded
+                    from the window of an uninhabited house, near to the spot where I was upon duty.
+                    At the same time, I heard a voice cry out. <q>Bring me a light! bring me a
+                        light!</q> The last sentence was uttered in so feeble and so changeable a
+                    tone of voice, that I concluded some person was ill, and consequently offered
+                    them my assistance to procure a light. I could, however, obtain no answer to my
+                    proposal, although I repeated it several times, and as often heard the voice use
+                    the same terms. I endeavoured to see the person who called out, but in vain. On
+                    a sudden the violent noise was renewed, which appeared to me to resemble sashes
+                    of windows lifted hastily up and down, but then they were moved in such quick
+                    succession, and at different parts of the house nearly at the same time, that it
+                    seemed impossible to me that one person could accomplish the whole business. I
+                    heard several of the regiment say they have heard similar noises and
+                    proceedings, but I have never heard the cause accounted for.</q>
+                <closer>(Signed) <signed><persName ref="richarddonkin">Richard Donkin</persName>, 12th Company of Coldstream Guards</signed>
+                    <placeName ref="#whitehall">Whitehall</placeName>, <date>Jan. 15, 1804</date>
+                </closer>
+            </div>
+            <div>
+                <p>After furnishing the above documents, <rs ref="mis">we shall hardly be again accused of having
+                    framed the account in Friday’s Paper</rs>, from a circumstance which occurred ten
+                    years ago.</p>
+            </div>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-TIMES-18040119">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Another Ghost!</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Times</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Times</publisher>
+            <date when="1804-01-19"/>
+            <idno>GH-TIMES-18040119</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>ANOTHER GHOST!-A Gentleman of great respectability in the service of the East
+                  India. The Times (London, England), Thursday, Jan 19, 1804; pg. 3; Issue 5923.
+                  (591 words)</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>A Gentleman of great repeatability in the service of the East India Company, among other
+            ingenious pursuits, applied himself to the study of anatomy. A human skull, which had
+            been placed for sometime in his closet, was, during his absence on a summer excursion,
+            observed frequently to move. Like the secret in the <rs>Agreeable Surprise,</rs> this
+            alarming tale of mystery became <emph>secret pro bono publico</emph>. The servants told
+            it to the neighbours, and the skull was attended by a croud of visitors. At length one
+            of them, more bold than <q>his fellows,</q> made a desperate snatch at the head, when
+            the visionary mountain brought forth a mouse, which had actually brought forth a litter
+            of young ones in the <emph>caput mortuum !!!</emph></p>
+         <p>Inspite of all the cunning of BONAPARTE, the rapture of his <emph>Sçuvans</emph> in
+            India, proved that the knowing ones were be to taken in!</p>
+         <p>The French, infantry destined for this country, have helmets with steel guards, reaching
+            over their shoulders, to ward off the cuts of cavalry. We fancy, with all their
+            precaution, they will in the end find themselves <emph>over-reached</emph>.</p>
+         <p>The Newspapers are now become quite silent about <emph>Carlo</emph>. According to the
+            vulgar proverb, <q>they have not one word to throw at a dog.</q></p>
+         <p>At this time of the year, all our boarding school masters and mistresses advertise their
+            respective seminaries. Among the number of the latter, we notice MRS. CROSS, and a MRS.
+            CRUCIFIX.</p>
+         <p>It was stated in a Morning Paper last week, that a duel had been fought between Lord B.
+            and Lord R. in Ireland, which proved fatal to the latter. We can only say that Letters
+            have been received in town from these Nobleinen, by which it appears they are both well,
+            and that no duel has taken place.</p>
+         <p>Dr. GISBORNE died yesterday at his house in Clifford-street.</p>
+         <p>It is worth observing, that a Newspaper is about, to be published in Wales, in the
+            course of the present month, which will be the first ever published in that
+            principality. This circumstance, however, is not so surprising, when it is recollected,
+            that the Cambro-Britons have received such constant supplies of the Bristol, Shrewsbury,
+            Chester, and Liverpool Papers, not to speak of those from the Metropolis. As an
+            historical fact, however, and a proof of the desire of increasing the means of
+            circulating general knowledge (even during a time of war) it is deserving of public
+            notice. Whatever may have been the nature or the value of the arguments, used by some
+            persons, against the multiplicity of Newspapers, they have certainly become, in spite of
+            any temporary or local evil, the great medium of communication, for the public, on every
+            matter of public interest. A Newspaper is only a sort of epistolary correspondence,
+            carried on almost as quick as conversation, between all the subjects of the empire, as
+            well remote as near. Its uses too, in its circulation abroad, must be extensive, as it
+            conveys to all nations, not only the important public occurrences of this country, but a
+            picture of the Opinions, wishes, and principles of the greatest nation (in the true
+            sense of that word) that exists on the face of the globe. We cannot help expressing our
+            own satisfaction, in observing, that The Times maintains such a character on the
+            Continent, that all the public matter contained in it, is translated into German, and
+            published in that language.</p>
+      </body>
+   </text>
+</TEI>

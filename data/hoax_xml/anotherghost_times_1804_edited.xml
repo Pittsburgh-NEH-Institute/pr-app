@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-TIMES-18040113">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Another Ghost</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Times of London</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Times</publisher>
+            <date when="1804-01-13"/>
+            <idno>GH-TIMES-18040113</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>The Times (London, England), Friday, Jan 13, 1804; pg. 2; Issue 5918. (629
+               words)</bibl></p>
+         </sourceDesc>
+         
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+
+   <text>
+      <body>
+         <p>Notwithstanding the sad catastrophe occasioned by the <rs ref="hammersmith_ghost"><placeName ref="#hammersmith">Hammersmith</placeName> Ghost</rs>,
+            another apparition has appeared. This nightly wanderer has chosen <placeName ref="#stjamespark">St. James’s Park</placeName> for a
+            place of rendezvous, where it has been regularly seen by the soldiers on guard for
+            upwards of a week past, between the hours of one and two o’clock in the morning. A few
+            nights ago, it was observed at a late hour by one of the Coldstream Regiment, whilst on
+            duty <placeName ref="#cockpit">near the Royal Cockpit</placeName>. The poor fellow is ready to swear he saw pass by him a
+            woman without a head. The more he reflected, the more terrified he became, as he knew
+            all the Park-gates had been fastened for some hours, and therefore could not suppose it
+            to be some one who had got into the Park set the purpose of frightening him. The Soldier
+            is sure it was not a person dressed up in a white sheet, because he could plainly
+            discern the arms; and notwithstanding his great alarm he observed that the shoulders of
+            the <emph>Ghost</emph> were the highest part of it; he therefore concluded, whatever it might be,
+            that it had got no head. This man was considered as one of the most resolute men in the
+            regiment. He was, however, taken ill immediately on his leaving guard, and the next day
+            sent to the hospital, where he still remains. On Tuesday one of his comrades having
+            heard of the affair, and having to take the same watch that night, was resolved to look
+            out for the Ghost, and to speak to it; accordingly, at the usual time, her Ghostship
+            paid him a visit. She appeared again without a head and entered the Park <placeName ref="#stjamespark">from the end of
+            Queen-street near to the Royal Cockpit</placeName>. This veteran, who had often braved a
+            cannon-ball, was now panic-struck at a <emph>shadow</emph>. He described himself to have got a
+            <emph>locked jaw</emph>, and when he wanted to cry, <q>Who comes there,</q> he could not utter a word.
+            Although he was <emph>tongue-tied</emph>, it does not appear, however, he was <emph>leg-tied</emph>, for on
+            the Ghost seeming inclined to be better acquainted with him, he quitted his post, and
+            ran with all possible speed to the guard-room, where he had scarce recited the dismal
+            story to the Serjeant, before he fell into strong fits, and continued so ill afterwards,
+            that he was taken to the hospital on Wednesday, where he is now confined to his bed.
+            Another night this <emph>headless ghost</emph> held its midnight revels in an empty house behind
+            the Armoury Room, and amused itself for some time in opening and shutting the windows;
+            but what is most remarkable of all, the apparition called out as lustily for a light, as
+            if it had got a boatswain’s <emph>head</emph> upon its shoulders. Having finished its pranks in the
+            empty dwelling, the soldier who was a witness to this novel scene, observed this
+            dreadful spectre to pass by him at the distance of 50 yards, and <emph>walked</emph> over the <emph>park
+            paling</emph> as easy as he could step over a <emph>straw</emph>; it then proceeded towards <placeName ref="#stjamesscanal">the Canal</placeName>,
+            and vanished from his sight. There are several other stories current amongst the
+            Coldstream Regiment respecting the nocturnal gambols of this <emph>Ghost</emph>, and it is said,
+            that several soldiers besides those already mentioned, have seen, whilst on duty, what
+            they suppose a supernatural phantom, which has so affected them, that they were taken
+            ill immediately, and sent to the hospital; but, be that as it may, it is an undoubted
+            fact, that two sentinels have been sent there from the effects of fright, whatever may
+            have been the real cause of it.</p>
+      </body>
+   </text>
+</TEI>

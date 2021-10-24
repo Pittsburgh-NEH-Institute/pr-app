@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-GNCCO-18521030">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>A <q>Ghost</q> at Hull</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Leader</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Leader</publisher>
+            <date when="1852-10-30"/>
+            <idno>GH-GNCCO-18521030</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"A 'Ghost' at Hull." Leader, 30 Oct. 1852, p. 1034. Nineteenth Century Collections
+               Online, tinyurl.galegroup.com/tinyurl/55Nxm6. Accessed 31 July 2017.</bibl></p>
+         </sourceDesc>
+         
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   
+   <text>
+      <body>
+         <p>﻿We find in the Hull Packet of Saturday one of those stories which <persName
+               ref="#ccrowe">Mrs. Crowe</persName> would delight in. It is the account of a knocking
+            ghost, who has afflicted a house at Hull with his presence, which must he anything but
+            agreeable to the inmates:—</p>
+         <div>
+            <p>A marvellous sensation has been created in our town within the last few days, by the
+               discovery that a ghost has taken up his quarters, evidently for the winter season, in
+               a secluded dwelling on the <placeName ref="#anlabyrd">Anlaby-road</placeName>, where
+               it is likely to obtain as great a notoriety as the celebrated <rs ref="#CLghost"
+                  >Cock-lane ghost</rs>. Some little distance beyond the end of Walker-street and
+               Great Thornton-street, on the lefthand side of the Anlaby-road, is <placeName
+                  ref="#wellingtonln">a quiet, lonely lane, known by the name of
+                  Wellington-lane</placeName>, at the bottom of which stands the <soCalled>haunted
+                  house</soCalled> a respectable-looking tenement, occupied by an elderly bedridden
+               dame, her son-in-law, and daughter, and a female domestic. It seems that about a
+               month ago the inmates were startled in the stillness of night by a sharp, sudden <rs
+                  ref="rapping">knocking on the walls of the room from some invisible hand</rs>. At
+               first no notice was taken of this, but, to their great dismay, at irregular
+               intervals, the same strange noise was repeated, a distinct knocking upon the wall
+               being heard in the very apartment where they sat, and when no visible hand was raised
+               to strike. For four successive weeks the noise was repeated, until the inmates grew
+               seriously apprehensive that some supernatural agency was at work. Their fears were
+               soon communicated to the neighbours, and speedily reached the public ear. The love of
+               the marvellous is the most powerful and easily raised passion of the mind, and on
+               Wednesday not fewer than 1000 persons visited the spot, lingering in the
+               neighbourhood and straining their ears to catch the sound of the modest ghost, who
+               now and then indulges them with a solitary and muffled rap, tap, tap. For our own
+               part, we are really apprehensive for his ghostship’s knuckles, which must suffer
+               materially from such constant exercise. Yesterday night, although it was dull,
+               drizzly, and cold, crowd upon crowd besieged the spot, standing, in spite of cold and
+               wet, 100 yards from the haunted house, anxiously discussing the nature and object of
+               the ghost’s visit, and patiently waiting to learn from the police, or those who were
+               fortunate enough to get near the house, when it had knocked last. One or two
+               policemen have been stationed in the house, with the view of detecting the cause;
+               and, although it is seriously affirmed that the strange noise is still heard at
+               intervals, it baffles all ingenuity, even on the part of the vigilant detectives, to
+               discover whence it proceeds. A portion of the roof, we understand, has been removed,
+               but without affording any clue. The noise is not confined to any one place, but
+               alternately pervades different parts of the house. Sometimes it is a dull, heavy
+               sound, and sometimes like a sort of scratch. Yesterday, 2000 or 3000 persons visited
+                  <placeName ref="#wellingtonln">the spot</placeName>, many of whom lingered until
+               nearly midnight, a detachment of police being present to preserve order. It is
+               impossible to describe the sensation which has been created by the discovery of this
+               affair, and credulity could hardly be carried further. The police declare that many
+               would actually remain by the door of the house the whole of the night if they would
+               only permit them.” This rivals <rs ref="squirrellghost">Miss Squirrell!</rs></p>
+         </div>
+      </body>
+   </text>
+</TEI>

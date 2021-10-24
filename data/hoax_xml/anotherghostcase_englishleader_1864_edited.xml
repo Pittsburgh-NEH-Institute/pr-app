@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-GNCCO-18640716">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Another Ghost Case: The Prestidigitateur</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The English Leader</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The English Leader</publisher>
+            <date when="1864-07-16"/>
+            <idno>GH-GNCCO-18640716</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"Another Ghost Case." The English Leader, no. 7, 1864. Nineteenth Century
+                  Collections Online, tinyurl.galegroup.com/tinyurl/54Tbb1. Accessed 25 July
+                  2017.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>In the Court of Exchequer last week, an action for breach of agreement was brought by
+            Mr. Hoffman for furnishing a conjuring apparatus to Professor Herman. Mr. Serjeant
+            Simons and Mr. Peter Williams were counsel for the plaintiff. The defendant did not
+            appear either in person or by counsel.</p>
+         <p>The plaintiff, John William Hoffman, was the inventor of conjuring tricks and optical
+            illusions, and the defendant, Professor Gompert Herman, otherwise known as the
+               <q>Prestidigitateur,</q> who, some time ago, gave performances at the Princess’s
+            Theatre. In September last Mr. Hoffman entered into an agreement in writing to furnish
+            the professor with an entirely new trick, which was to produce a ghost, for a sum of 100
+            guineas, and £150 additional for the expense of making the apparatus. The trick was of
+            this nature. Professor Herman was to borrow a watch from one of the audience, and to
+            accidentally smash it to pieces. While apologising for the mishap a hamper was brought
+            in, and an inordinate number of bottles of champagne taken out of it. The audience were
+            treated to some champagne, and while the bottles were being replaced, a young Bacchus,
+            in a drunken state, jumped out of the hamper. The conjuror attempted to put him in
+            again, but it proved far too small; and then came upon the scene the conjuror’s double,
+            in the shape of a ghost, which was afterwards converted into a flame. At this flame he
+            fired off a pistol containing the remains of the smashed watch, and then there suddenly
+            reappeared Bacchus with a perfect watch, which the astonished victim of the trick at
+            once recognised as his own. The plaintiff had been put to considerable expense in
+            preparing the trick, including the engagement of a lad as a contortionist, who could
+            double up his body in a much smaller compass than nature intended; but he had only
+            received about £60. The plaintiff applied for the settlement of his claim when he had
+            fulfilled his part of the agreement, but the defendant’s fortunes at the Princess’s
+            having declined he neglected to pay the money. The present action was brought to recover
+            £136 13s. 9d., for which the jury, under the direction of the learned judge, immediately
+            found a verdict.</p>
+      </body>
+   </text>
+</TEI>

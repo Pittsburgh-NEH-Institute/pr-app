@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-GNCCO-18470904">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>The New Hammersmith Ghost</title>
+                <respStmt>
+                    <resp>Originally published by</resp>
+                    <name>Sunderland Herald, Douglas Jerrold's Weekly Newspaper</name>
+                </respStmt>
+                <respStmt>
+                    <resp>Transcribed and encoded by</resp>
+                    <name>Gabi Keane</name>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <publisher rendition="original">Sunderland Herald</publisher>
+                <publisher rendition="reprint">Douglas Jerrold's Weekly Newspaper</publisher>
+                <date when="1847-09-04"/>
+                <idno>GH-GNCCO-18470904</idno>
+            </publicationStmt>
+            <seriesStmt>
+                <title>Ghost hoaxes in 19th-century British news media</title>
+            </seriesStmt>
+            <sourceDesc>
+                <p>All texts in this collection were sourced from British periodical and newspaper
+                    archives, transcribed,and encoded. The citation below was provided by the
+                    archive and appears exactly as given.</p>
+                <p><bibl>"A Ghost!" Douglas Jerrold's Weekly Newspaper, 4 Sept. 1847, p. 1119.
+                        Nineteenth Century Collections Online, tinyurl.galegroup.com/tinyurl/54Rtk8.
+                        Accessed 25 July 2017.</bibl></p>
+            </sourceDesc>
+
+        </fileDesc>
+        <encodingDesc>
+            <projectDesc>
+                <p>This document is part of a larger digital collection of stories of ghost hoaxes
+                    from the 18th and 19th century London newspapers and periodicals. The project
+                    explores the beginnings of mass print media in a metropolitan area at a time
+                    when technology and education made reading increasingly common and
+                    inexpensive.</p>
+                <p>The corpus holds 36 individual documents, which reflect a diverse mix of
+                    reporting on various hauntings in and around London between 1804 and 1889. The
+                    PDF and JPEGs from online databases were transcribed using ABBYFineReader OCR,
+                    then corrected and occasionally manually transcribed if document quality
+                    necessitated it. After normalization in plain text, all documents were
+                    upconverted to TEI XML.</p>
+            </projectDesc>
+            <editorialDecl>
+                <normalization>
+                    <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                        Typographic em dashes are longer than modern em dashes, so all dashes have
+                        been normalized to modern em dash length.</p>
+                </normalization>
+                <quotation>
+                    <p>All extraneous white space used by printers to avoid overlapping with letters
+                        has been removed. All quotes are simply tagged with the q tag.</p>
+                </quotation>
+            </editorialDecl>
+        </encodingDesc>
+    </teiHeader>
+
+    <text>
+
+        <body>
+            <p>The other evening a young lady had occasion to go homewards down one of the lanes
+                leading from the <placeName ref="">Building-hill</placeName>. The night was moderately dark, and misses head was
+                full of <rs ref="ghost">witches, ghosts, worrikows, bogles, and long-beaked
+                    indescribables</rs>. At a particular point, <rs ref="ghost">she noted a
+                    veritable ghost</rs>, and set up such a scream as awakened all the echoes in the
+                neighbourhood, and very deaf ones they are, and fainted away.—Several parties,
+                deeming murder had been committed, ran to the spot, and found miss prostrate, and
+                the cause of her fright —a white ass, mumbling its scanty supper, drawn from the
+                hedge. She is not yet convinced that she did not see a spirit, and has been very ill
+                since. If young ladies fainted away at the sight of every ass frequenting these
+                lanes, by day as well as by night, burnt feathers would be at a premium.—<title
+                    type="publisher">Sunderland Herald</title>.</p>
+        </body>
+    </text>
+</TEI>

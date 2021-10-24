@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-GNCCO-18571121">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Another Stockwell Ghost Case</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Leader</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Leader</publisher>
+            <date when="1857-11-21"/>
+            <idno>GH-GNCCO-18571121</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"Another Stockwell Ghost Case." Leader, 21 Nov. 1857, p. 1112+. Nineteenth
+                  Century Collections Online, https://bit.ly/2ZRTPCK. Accessed 4 Jan.
+               2020.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>A case similar to that of the celebrated <rs ref="stockwellghost">Stockwell ghost</rs>
+            has led to some proceedings at the Southwark police-court. A working man named Baker,
+            and his wife and daughter, occupied a house in the neighbourhood of <placeName
+               ref="londonstreet">London-street, Dockhead,</placeName> and for some time past the
+            man and woman have been alarmed by singular noises occurring in various parts of the
+            house, and by the breaking of crockery, glass, &amp;c., which were thrown about without
+            any apparent cause. Baker and his wife were greatly scared by these mysteries, and at
+            length spoke to a gentleman connected with the District Visiting Society, who instituted
+            inquiries and soon found out the truth of the matter. The daughter, a girl of twelve,
+            had fallen into bad habits, and, to prevent her wandering about the streets, she was
+            confined to the house. She therefore revenged herself by breaking the crockery-ware; to
+            effect which unperceived, she fastened thin hairs to the dishes, jugs, and glasses, and
+            dexterously jerked them down. She would do this in the presence of her mother, who was
+            so much the victim of superstitious fears, that she never perceived the cause of the
+            effect. Baker himself, when giving evidence before the magistrate, said, that he and his
+            wife had been frightened very much. The girl sullenly admitted what she had done, and
+            said she intended to frighten her parents because they wouldn’t let her go out. She was
+            sent to the House of Correction for fourteen days.</p>
+      </body>
+   </text>
+</TEI>

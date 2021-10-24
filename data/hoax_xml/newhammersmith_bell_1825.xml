@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-19CUK-18250130">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>The New Hammersmith Ghost</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>Bell’s Life in London and Sporting Chronicle</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>Bell’s Life in London and Sporting Chronicle</publisher>
+            <date when="1825-01-30"/>
+            <idno>GH-19CUK-18250130</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"The New Hammersmith Ghost." Bell’s Life in London and Sporting Chronicle, 30
+                  Jan. 1825. 19th Century UK Periodicals, http://tinyurl.com/yahgex6w. Accessed 31
+                  July 2017.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p> This personage, who has been styled the<q>Monster,</q> in consequence of his having
+            torn as well as frightened divers females, resumed his manly visitations during the
+            recent dark nights; but with one exception, he appears to have most carefully avoided
+            his old haunts; for the hint was taken, and many persons, attired like women, were on
+            the watch. A purse of twenty pounds is stated to have been subscribed for any person who
+            shall bring in the ghostly monster dead or alive, of course. On one occasion, the ghost
+            knocked at an old woman’s cottage, <placeName ref="#starchgreen amb">near Starch green,
+               leading to Acton</placeName>. She opened the door, when the white-sheeted gentleman
+            presented himself in all the mock horrors of his amiable amusement. She fainted away, in
+            consequence, and has since been very ill. On another night, he attacked an old woman,
+            passing up <placeName ref="#angellane">Angel-lane</placeName>, where the servant of the
+               <placeName ref="#angelpub">Angel public-house</placeName> was so repeatedly attacked,
+            and which servant is even now constantly the victim of fits. The old lady had a lantern
+            with her. The ghost came behind her, made a groaning noise, tapped at the lantern,
+            &amp;.c.; but she had the presence of mind to avoid expressing any fear, pursuing her
+            course, without looking ot the right or to the left, and only observing— <q>You would
+               not be base enough to hurt an old woman, would you?</q> The ghost continued his
+            tricks, but dame was firm; and when she approached <placeName ref="amb">some houses at
+               the end of the lane</placeName>, the fellow retired. A few nights since the
+            apprentice of Mr. Hammond, smith, &amp; c., residing <placeName ref="unknown amb">near
+               Webb’s-lane</placeName>, Hammersmith, was passing up a lane, <placeName
+               ref="unknown amb">near some newly built houses, leading to the Hammersmith
+               Waterworks</placeName>, close by where <emph>Ghosty</emph> jumped upon an old man’s
+            back, and broke his leg, and there the apprentice met with the ghost. The apprentice is
+            a spirited lad. The ghost appeared to him<q>to rise out of the ground,</q> as he says;
+            but having his thoughts directed to the glory of the transaction, and, perhaps, the
+            reward, he boldly attacked the ghost, threw at him first the basket of tin goods which
+            he had on his arm, and then seized hold of the mantle which the lad says had a silky
+            feel. There was much tugging between them— at last Ghosty gave the lad a violent blow on
+            the back of the neck, and laid him sprawling in the road, thus disengaging himself, and
+            then hastily decamped. The lad was soon afterwards picked up by some neighbouring
+            people, and conveyed home; but he has since shown no disposition to go out at night,
+            lest he should again encounter the ghost’s strong arm. A man residing in <placeName
+               ref="#hammersmith">Hammersmith</placeName> also came in contact with Ghosty one
+            night, and they got struggling for mastery, when Ghosty settled it by giving the man a
+            blow which levelled him with the earth, after which the nocturnal agitator was enabled
+            to escape. It was rumoured that he had been seized one night at <placeName
+               ref="#kensington">Kensington</placeName>— that he was discovered to be a Nobleman’s
+            son, whereupon the matter was<q>hushed up,</q> and that he was playing these pranks for
+            a bet, having wagered that he would<q>walk as a ghost</q> for a certain number of nights
+            without being taken or <q>laid.</q> If this were true, the capture would decide the
+            wager; but unfortunately for its truth, he has since appeared.</p>
+      </body>
+   </text>
+</TEI>

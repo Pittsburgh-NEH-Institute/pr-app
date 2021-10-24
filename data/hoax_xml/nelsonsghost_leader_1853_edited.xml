@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Nelson's Ghost</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Leader</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Leader</publisher>
+            <date when="1853-07-09"/>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"Nelson's Ghost." Leader, 9 July 1853, p. 660. Nineteenth Century Collections
+                  Online, tinyurl.galegroup.com/tinyurl/55AEu4. Accessed 29 July 2017.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>Just now, <rs ref="pol">while we are preparing to meet possible foes by land and water</rs>, if <persName ref="#horationnelson">Nelson’s</persName>
+            Ghost were to appear amongst us, would he not be welcomed? Assuredly he would be
+            preferred for the command of the Channel fleet even to <persName ref="#johnrussell">Lord John Russell</persName>. But what would
+            be the first thing that would strike his eye? It would be an advertisement in the
+            papers, declaring, that to this day, the daughter whom he left as a legacy to his
+            country, is unprovided for; that even now, having reached the maturity of life, and
+            struggled with difficulties, she is still a creditor of the country he served so
+            faithfully!</p>
+         <p>Her claim, indeed, has been recognised by the gift of a paltry place to one of her
+            sons—a bare provision for the young man. It is a recognition enough to stamp the
+            obligation of the state with the royal admission, but not to fulfil it.</p>
+         <p>Would <persName ref="#horationelson">Nelson</persName> on that account refuse to take the command even at the risk of dying over
+            again? Assuredly not. He would repeat his simple and immortal precept, <q>England
+               expects every man to do his duty,</q> even though England has shown so disgracefully
+            how little she can understand her own duty.</p>
+      </body>
+   </text>
+</TEI>

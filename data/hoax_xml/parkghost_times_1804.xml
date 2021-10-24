@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-TIMES-1804-01-17-P">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Park Ghost</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Times</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Times</publisher>
+            <date when="1804-01-17"/>
+            <idno>GH-TIMES-1804-01-17-P</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"Park Ghost." Times [London, England] 17 Jan. 1804: 3. The Times Digital
+                  Archive. Web. 30 Oct. 2018.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>Public Office, <placeName ref="#bowstreet">Bow-street</placeName>.</p>
+         <p>Yesterday <persName ref="#georgejones">George Jones</persName>, of Lieut.-Col. Taylor’s Company of Coldstream Guards, whose
+            declaration respecting the <rs ref="stjparkghost">Park Ghost</rs> we yesterday published, was brought before <persName ref="richardford">Sir
+            Richard Ford</persName>, to be interrogated respecting the sight he was supposed to have seen.
+            Previous to his examination, <persName ref="stafford">Mr. Stafford</persName>, the Chief Clerk, endeavoured to find out
+            whether his imagination had received any impressions from reading any dismal story, or
+            if he had; at the time the phantom appeared to him, suffered the story of the <rs
+               ref="hammersmithghost">Hammersmith Ghost</rs> to dwell on his mind, in order, if
+            possible, <rs ref="mis">to ascertain if he had been misled by his fancies</rs>. To these questions he
+            answered in the negative. On being asked respecting the strange object he had seen, he
+            solemnly declared, that he was ready at any time to make oath to what he had stated, and
+            that he firmly believed he had seen a ghost. He detailed every thing in Court as near as
+            possible to what we yesterday inserted under his own signature.</p>
+      </body>
+   </text>
+</TEI>

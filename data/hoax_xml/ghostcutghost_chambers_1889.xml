@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-BRITP-18890504-F">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Ghost Cut Ghost</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>Chambers's Journal</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>Chambers's Journal</publisher>
+            <date when="1889-05-04"/>
+            <idno>GH-BRITP-18890504-F</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>GHOST CUT GHOST. Chambers's journal of popular literature, science and arts,
+                  Jan. 1854- Nov. 1897; May 4, 1889; 6, 279; British Periodicals pg. 285</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>That cold-blooded demon which we call Science is killing romance from amongst us. Years
+            ago everybody believed in the wonders of the invisible world, and ghosts were among the
+            regular inhabitants of every rural district. Now, we are so seldom suffered to see or
+            hear of a ghost, that a visitation has the effect of novelty. So far as we know, the
+            story of one ghost outwitting another is absolutely unique. The story which we purpose
+            to tell is of this character. We tell it as it was told to us by the most noted
+            detective in the Western States of America.</p>
+         <p>You may imagine (said Nathan Dodge) that during my career as a detective I have had some
+            singular jobs given me to work on. There was one little piece of business which I always
+            look back upon with a good deal of professional pride, although the ending was a very
+            sad one. It was a case of diamond cut diamond—ghost cut ghost, I call it—and it took up
+            my time for the better part of six months.</p>
+         <p>About <placeName ref="amb">ten miles outside the limits of San Francisco</placeName>—I’m
+            speaking of about twenty years ago—stood a large farmhouse. This house had been vacant
+            for three years before I saw it. The original owner had been murdered there, and the
+            house and farm had passed into the hands of his brother, who was a New York gentleman.
+            At that time, gold-mining was the staple industry of California, and San Francisco
+            especially was under the spell of the gold fever. Little attention was paid to
+            developing the agricultural wealth of the soil, which now promises to be so vast as to
+            rival that of the gold-beds. So the New Yorker, being unable to find a tenant for the
+            house and farm which had passed into his hands, left them to take care of themselves.
+            Now, a wooden house left to take care of itself is in a very bad way, and though for a
+            time the house was not altogether without tenants, they were not such as took upon
+            themselves any responsibility for the necessary repairs. Parties of two or three miners
+            occasionally stopped at the house all night: these were its only tenants. But by-and-by
+            it was deserted by even those chance visitants; for it began to get about that the house
+            was haunted. The panic caused by this report was such that for love or money you
+            couldn’t have hired a carpenter to enter it even in the daytime. Of course I’d heard of
+            the haunted house; but as detectives are never called upon to arrest ghosts, I felt no
+            particular curiosity about it.</p>
+         <p>One morning our chief put into my hands a case, against an absconding secretary named
+            Coffin. Coffin was the secretary of the White Mountain Mining Company. All the funds had
+            been under his control, and he had got away with some ten thousand dollars belonging to
+            the shareholders. My business was to find him.</p>
+         <p>It is always a very good plan to begin at the beginning. So the day I received my
+            orders, I went to the Company’s office and overhauled everything. The only thing that I
+            could find was a railroad ticket for New York. I went to the depot, and found that it
+            had been issued to the defaulter the day before he absconded. Apparently, it had been
+            left behind by mistake, and I did think of taking the next train to New York. But it
+            occurred to me that if he had been going to New York he would have gone under another
+            name, and would not have left behind so obvious a clue as to his whereabouts.</p>
+         <p>A visit to his landlady convinced me that New York was the place he hadn’t gone to. He’d
+            gone away without his trunks or clothes. The only things that were missing were a suit
+            of clothes, a stout pair of boots, one or two clean shirts, some collars, a wide-awake
+            hat, and a black valise. He had left the town at night. No one had witnessed his
+            departure. Here was a good chance for a detective to work by the inductive process—from
+            small beginnings to work on and on from clue to clue until he bagged his man.</p>
+         <p>The only thing that I could do was to work all the roads leading out of the town. After
+            about a week at this, I found a farm-hand who had seen a foot-passenger resembling my
+            man the morning after he absconded. I followed this trail, and soon became positive that
+            I was on the right track. Coffin was a shrewd fellow. He had planned the embezzlement
+            and escape carefully, and had made elaborate preparations for playing what we call the
+               <q>chameleon game,</q> that is, for changing his clothing, headgear, and face at
+            every stage. To this end he had possessed himself of a change or two of clothing, a
+            stock of hats, and any quantity of whiskers; and he rung the changes on these pretty
+            frequently.</p>
+         <p>The black bag was the only thing that I had to rely upon as a pointer. Fortunately, a
+            man on tramp with a black bag was not in those days a common sight; and I had less
+            difficulty in following Coffin’s trail than might be supposed. The first time I heard of
+            him he was a smoothfaced gentleman dressed in shabby black, looking for all the world
+            like a broken-down gambler going to retrieve his fortunes in some mining camp. The next
+            he was a middle-aged doctor with a flowing beard and heavy moustache. Later on, he was
+            playing the role of a Company promoter, offering to buy up mining claims on behalf of an
+            English syndicate. He was then attired in a check suit, a light hat, and side whiskers.
+            At this stage I obtained positive proof that I was following the right man.</p>
+         <p>Entering a drinking saloon I saw upon the shelf a photograph of Coffin. The edges were
+            slightly charred. It had evidently been burnt. I told the landlord that the owner of
+            that face was a particular friend of mine, and asked him how the photograph came into
+            his possession. He told me that his hired boy of colour had picked it out of some burnt
+            papers which had been left in the room of one of his guests ; that the boy —not
+            understanding what it was—had brought it to him, and that he was displaying it in ease
+            the owner returned and wished to claim it. Was it like his guest ? Not in the least.</p>
+         <p>I went into one of the outhouses to look for the coloured boy, and found him sitting oil
+            a log singing:</p>
+         <p><emph>Blow dat horn agin ; Bredren, fr’ends, companions dear, Blow dat horn
+            agin.</emph></p>
+         <p>I made a dollar the avenue to that boy’s confidence. and quite unwittingly he gave me
+            the information for which I was seeking. The bright fastening of the bag had aroused his
+            curiosity. One day, in its owner’s absence, whilst he was playing with the lock, the bag
+            llew open, revealing <q>dead men’s whiskers.</q> The sight disconcerted him. He felt, as
+            he expressed it, <q>in a hurry all over;</q> and whilst he stood over the bag, its owner
+            returned, and rewarded him with a vicious kick.</p>
+         <p>After that I thought I should have no difficulty in laying my hand on Coffin. My
+            calculations deceived me. I found that he was <q>doubling,</q> and traced him almost as
+            far as the suburbs of San Francisco. There I lost all trace of him as completely as if
+            the earth had swallowed him up. Months afterwards, feeling vexed and disappointed, I
+            dropped into a saloon at the outskirts of the town to get a <q>liquor.</q> I had had as
+            pretty a dance after Coffin as any man need want; but the interest of the game supported
+            me, and I was determined not to give it up. There were three or four miners in the bar,
+            and one of them was evidently greatly excited. His companions seemed to be ridiculing
+            him, and he was getting what we call <q>ugly.</q> I made my way towards the little knot
+            of talkers, and overheard the following conversation.</p>
+         <p><q>So, you didn</q>t think much of your lodgings in the haunted house, Bill ?’ ‘No, I
+            didn’t—no two ways about it.’ <q>What did you hear ?</q>
+            <q>Twasn</q>t what I heard—’twas what I saw.’ <q>What did you see, then?</q>
+            <q>Why, the doors openin’ and shuttin’ without anybody touchin’ em.</q>
+            <q>Nonsense, man!</q>
+            <q>Nonsense be blowed ! I tell you they did. And when I drawed my six-shooter and fired
+               half a dozen shots clean through the door—makin’ the allfiredest row you ever
+               heard—the door kep’ openin’ and shuttin’ and playin’ tunes. I felt like a gone
+               sucker, you bet. My heart began to bump so under my jacket that it’s a wonder it
+               didn’t knock a button off. I wouldn’t go there agin for all the money in the State.
+               But if anybody here thinks I’m a coward, he’s only got to say so.</q></p>
+         <p>It suddenly occurred to me that I had located Coffin—that he was the ghost in the
+            haunted house. A vague suspicion of this sort had, it is true, flitted through my mind
+            before; but now, without being able to explain why, I felt assured that, however
+            impossible it might seem, Coffin was the ghost in the haunted house. Beyond the facts
+            that the fame of the haunted house was widespread, and that everybody knew of its
+            existence, there was nothing to support my theory except the maxim of the most famous of
+            all detectives—a maxim destined to assure his after-fame: <q>Always suspect that which
+               seems probable; and begin by believing what appears incredible.</q></p>
+         <p>I determined to call in the aid of another detective and visit the place next night. I
+            chose for my companion George Webber, one of the most esteemed members of the force, a
+            man who had proved his worth. Webber was a man of imperturbable calmness, and with great
+            confidence in himself. He would have laid his hand upon the most dangerous criminal as
+            tranquilly as if lie had been accosting a friend.</p>
+         <p>The haunted farmhouse was situated about a hundred yards from the roadway. What once had
+            been a garden was now a veritable jungle, given up to weeds and bushes. Fortunately,
+            although it was ten o’clock, the night was clear. Innumerable stars lit up the flinty
+            sky. There was no light in the house ; no sign of its being inhabited. The windows of
+            the ground-floor were broken, and some of the doors were open. We entered at the rear. A
+            place of more sinister aspect I never saw. The plastering had crumbled from the walls ;
+            the flooring was rotten ; the ceiling looked as though it might fall at any time, the
+            rafters being bent as if they supported a heavy weight.</p>
+         <p>The sitting-room where <q>Bill</q> had taken up his quarters a few nights previously
+            contained a rough table and a few stools, which had been overturned. I could see that
+            the door which led from it to the staircase had been riddled by bullets. There was a
+            doorway iu the passage, but the door was gone. The door which led into the parlour
+            opened noiselessly. Our lanterns revealed the fact that the tables, glass, and chairs
+            had been overturned, thrown in every direction, trodden upon, shivered into fragments.
+            Everything denoted lhat this room had been the scene of a terrible struggle.</p>
+         <p>The keyhole of the door which led into the cellar was sewn up with cobwebs. The cellar
+            itself was full of dust and debris. Each of us had a lantern, and each inspected for
+            himself. Running along the side-wall, I detected a wire, and following this I found that
+            it disappeared in an old barrel. Without disturbing the wire, I removed the head of the
+            barrel, and found that the wire was attached to an old saucepan lid. A thorough
+            examination revealed nothing further ; so we returned to the sitting-room. I did not
+            tell my companion what I had seen, and he had discovered nothing. We did not go
+            up-stairs, because we thought it would be prudent to postpone further explorations until
+            the next day. Meantime, we darkened our lanterns and deposited them in a corner. The
+            room was semi-dark. Our eyes and ears were on the alert; but the house was as still as a
+            tomb; we saw nothing, and heard no sound.</p>
+         <p>I had merely told my companion that I expected to make an important discovery. Of its
+            nature he knew nothing. </p>
+         <p>We waited in the most acute degree of expectation and attention until nearly midnight.
+            All of a sudden I heard faint notes of music, which lasted for a few minutes. By-and-by
+            the music was accompanied by a voice. The sounds were as fine and soft as the voice of a
+            child. I was satisfied that the music was the work of human hands and the voice a human
+            voice ; but I was considerably startled. My companion looked very pale, and strove to
+            rise from the place where he sat. I put my hand on his arm to prevent him. It was
+            scarcely necessary, for he could barely muster strength to whisper, <q>Lets get.</q> The
+            music was trailing away into feebleness, when the staircase door began to open and shut.
+            I felt sure that the wire which I had seen downstairs had something to do with this. I
+            made a great effort to rise. To my astonishment, I could not move a limb. I could only
+            bend forward and gasp. A power which I could not resist made me motionless and
+            speechless. Yet all the time I was burning to <q>go</q> for that door, but I hadn’t
+            physical capacity to do so.</p>
+         <p>My companion recovered first, and seizing both lanterns, dashed from the house and made
+            for the roadway. I jumped to my feet and followed my companion. As I did so, I heard a
+            tunk, tunk, tunk! down in the cellar.</p>
+         <p>I found my mate in the highway, his face as white as a sheet.</p>
+         <p><q>What in thunder ails you, man?</q> I asked, feeling that the most creditable way of
+            drawing my companion’s attention from my condition was to heighten the absurdity of
+            his.</p>
+         <p><q>The ghost!</q> he gasped. <q>I wouldn’t go back to that house to save my
+            life.</q></p>
+         <p>There was nothing for it but to tell Webber what I’d seen and what I suspected. As I
+            have said, my fellow-detective was as brave a man as ever took up a trail; and when I
+            told him what I had seen, he became perfectly self-possessed. We spent the remainder of
+            the night in laying our plans. In the early morning he rode back to San Francisco to get
+            the necessary apparatus for carrying them out. I remained to <q>shadow</q> the
+            house.</p>
+         <p>Just as it was getting dusk, my companion returned, and we re-entered the house from the
+            rear, noiselessly and with great caution. Removing my shoes, I made my way up-stairs,
+            where I fancied I detected a slight noise overhead. There was no sign of this room
+            having been inhabited. The old place was two stories high, with a garret at the top. The
+            garret was evidently reached by a ladder, though none was visible. I surmised that the
+            ghost was in this garret, and that any one showing his head above the scuttle would get
+            it rapped, even if he didn’t get shot. There was a large cupboard facing the entrance to
+            the garret, and in the door of it I bored —on a level with my eyes—a few small holes
+            with a gimlet which I happened to have in my pocket-knife, first drawing it through my
+            hair, to prevent its making the slightest noise. My plan was to play the ghost for the
+            benefit of the occupant of the garret—ghost or no ghost. For this purpose Webber had
+            brought with him an old fiddle. I removed all the strings except one, told my companion
+            to allow me time to secrete myself above, and then to make a noise on that one string,
+            accompanying it with a few groans and other muffled noises.</p>
+         <p>I hadn’t been hid many minutes before I heard the darnedest row from below. It wasn’t
+            like anything earthly. At first it seemed like one shrieking in pain, then it sounded
+            like belligerent cats, and then it died away in a few complaining sighs. It was so
+            -weird that, although I knew very well that my mate was causing it, I couldn’t help
+            feeling a bit queer. Pretty soon I heard a movement overhead: the scuttle-top was being
+            removed. Next a ladder was thrust down the scuttle. To help Webber to keep up the
+            entertainment, I gave a few groans inside the cupboard. That brought a man down the
+            ladder. He’d no sooner reached the foot of it than I collared him. It was Coffin.</p>
+         <p>The moment I touched him lie sank down on the floor like—like an empty sack. He seemed
+            as if he hadn’t got a bone in his body: he was as limp as a jelly-fish. Whilst I got him
+            out into the open air, Webber searched the garret, and found all the missing dollars,
+            bonds, &amp;c.</p>
+         <p>We hurried Coffin back to San Francisco, intending to lock him up. He was still
+            unconscious, and we were obliged to summon a doctor. Poor fellow! he never got over it.
+            When he came out of his swoon, he was mad, and had to spend the rest of his days in an
+            asylum. That’s the effect it has, sir, when a man really believes he has come in contact
+            with the supernatural, as Coffin did.</p>
+      </body>
+   </text>
+</TEI>

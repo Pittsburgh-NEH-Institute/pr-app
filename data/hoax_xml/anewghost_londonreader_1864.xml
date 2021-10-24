@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-BRITP-18640514"> 
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Science: A new <q>Ghost</q></title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The London Reader</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The London Reader</publisher>
+            <date when="1864-05-14"/>
+            <idno>GH-BRITP-18640514</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"Science: A new 'Ghost'." The London reader: of literature, science, art and general information; May 14,
+               1864; 3, 53; British Periodicals pg. 28.</bibl></p>
+         </sourceDesc>
+         
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   
+  <text>
+   <body> 
+   <p><name ref="#kinghn">Mr H. N. King</name>,
+      photographer, of <placeName ref="#bath">Bath</placeName>, according to a correspondent, is the inventor and patentee of a
+      marvellous <rs ref="ghost">ghost</rs>. In this new invention, <name ref="#kinghn">Mr. King</name> claims superiority in every respect over any
+      <soCalled><rs ref="ghost">ghost</rs></soCalled> yet produced. Under his new arrangement he does away with the necessity of ceiling the
+      stage, and can introduce any number of figures, each with perfect freedom of action, and
+      without the least distortion. In addition to this, the <soCalled><rs ref="ghost">ghosts</rs></soCalled> of an entire set of furniture
+      for a room can be shown at once on the stage, every object being clear and distinct. <name ref="#kinghn">Mr. King</name>,
+      adds our authority, dispenses entirely with lenses as now used, and has reduced the whole to a
+      formula so simple, that a child may with ease and safety work the machinery.</p></body>
+  </text>
+</TEI>

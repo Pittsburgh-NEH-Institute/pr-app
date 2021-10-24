@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-GNCCO-18361016">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Not Dead, or No Ghost</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>Weekly Times</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>Weekly Times</publisher>
+            <date when="1836-10-16"/>
+            <idno>GH-GNCCO-18361016</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"Not Dead, or No Ghost." Weekly Times, 16 Oct. 1836. Nineteenth Century
+                  Collections Online, tinyurl.galegroup.com/tinyurl/55AP33. Accessed 29 July
+                  2017.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>﻿ On Saturday the following extraordinary circumstance was communicated at <placeName
+               ref="#hattongarden">Hatton Garden</placeName>:— About six weeks ago a young woman
+            drowned herself in the canal, and the body was owned by a Mrs. Edwards, of
+               <placeName ref="unknown">Nelson’s Passage, Goswell Street</placeName>, as that of her missing
+            sister. After the inquest the deceased was conveyed in a shell to the residence of Mrs.
+            Edwards, when the usual preparations were made for the funeral. The whole of the family
+            went into mourning and followed the body to the grave, deeply deploring the untimely
+            fate of their relative. On Friday, however, as Mrs. Edwards was passing through <placeName ref="unknown">Goswell
+            Street Road</placeName>, she was almost petrified at beholding what she conceived to be the ghost of
+            her deceased sister. She started back, and after staring at the form for a short time,
+            she ran off, when the <soCalled>apparation</soCalled> pursued her, calling out. <q>Mary,
+               stop; Mary, stop;</q> but this had the effect of increasing her alarm so much, that
+            the poor woman fell down in strong hysterics. When she recovered it was soon proved to
+            her that it was no ghost but her real and living sister. The mystery was then
+            unravelled, it appearing that Mr. Edwards’s sister, had, in consequence of a quarrel
+            with her husband, determined on going into the country, and living with him no longer.
+            The clothes of the deceased have been forwarded to the police. It has not yet been
+            ascertained who the deceased was.</p>
+      </body>
+   </text>
+</TEI>

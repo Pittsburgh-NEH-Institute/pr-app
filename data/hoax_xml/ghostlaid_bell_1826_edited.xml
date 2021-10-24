@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-19CUK-18260312">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>The Ghost Laid</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>Bell's Life in London and Sporting Chronicle</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>Bell's Life in London and Sporting Chronicle</publisher>
+            <date when="1826-03-12"/>
+            <idno>GH-19CUK-18260312</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"THE GHOST LAID." Bell's Life in London and Sporting Chronicle, 12 Mar. 1826,
+                  p. 82. 19th Century UK Periodicals, http://tinyurl.galegroup.com/tinyurl/85cwG7.
+                  Accessed 20 Oct. 2018.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>﻿A respectable old gentleman, residing <placeName ref="amb">not many miles from the New
+               Church,in the Strand</placeName>, and certainly not very superstitious, was, in the
+            course of the last week, alarmed by an extraordinary and mysterious noise in his house,
+            for which he was, for some nights, unable to account, and which, at length, almost
+            removed his scepticism on the subject of unearthly visitations to this world. While
+            sitting reading, as was his practice, to a late hour, his attention was attracted by a
+            noise, as he thought, of some person coming down stairs in slippers, conceiving it was
+            his good lady, who had retired to rest, and who was coming to invite him to follow her
+            example, or their servant, he called to know who was there? but received no answer. The
+            noise being continued, and having actually passed his door, he rose, took the light, and
+            renewed his enquiry on the landing place; but with as little success, No reply was made.
+            He then mounted to his bed-chamber, awoke his wife, and in company with her and (the
+            servant, &amp; armed with a brace of pistols, searched every part of the premises for
+            the supposed intruder, but without making any discovery. The same noise was repeated on
+            the following night, but he was still unable to ascertain the cause. At length,
+            determined to be on the watch, he placed himself in his room with the latch of the door
+            in one hand, and a candle in the other. At the usual time the noise was repeated) and
+            with no small trepidation our old friend cautiously peeped forth, and looked up the
+            first flight of stairs, down which the slip shod ghost seemed to be coming. At first he
+            could see nothing—probably from the disorganized state of his vision in such an alarming
+            state of things; but at last he distinctly saw something small, but white, come hopping
+            from step to step. It certainly had no earthly shape, and yet appeared to be gifted with
+            a power of motion, which, as it approached him, encreased his alarm. He wished to speak,
+            but either from the sudden inactivity of his organs of speech, or from not knowing
+            exactly what to say to so questionable a visitor, he could not utter a word—when, wound
+            up to a pitch of extraordinary excitation, his doubts and his fears were at once allayed
+            by observing that the cause of his alarm was nothing more than a cake of Windsor soap,
+            which a most portly and respectable sized rat had purloined from his bed-room, and was
+            thus conveying, with no small labour, to his haunts below. The sudden relief thus given
+            to his mind, induced him to make a motion that alarmed the industrious ghost, which, at
+            one spring, reached a place of safety, leaving his booty behind—thus solving a mystery
+            which had often led to a severe scolding to the servant for having appropriated to her
+            own use divers pieces of soap and candle. On the next night the unfortunate freebooter
+            made another excursion in search of plunder, and was again bearing off his spoil; but,
+            unluckily, a fine tom cat having been called into requisition, he put an end to the life
+            of the extraordinary entruder,and thus left our friend to the peaceable pursuit of his
+            labours, not a little pleased to find that his doubts in the existence of goblins were
+            still unshaken.</p>
+      </body>
+   </text>
+</TEI>

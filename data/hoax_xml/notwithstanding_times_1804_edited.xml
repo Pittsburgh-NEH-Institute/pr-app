@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-TIMES-18040118">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Notwithstanding our repeated publications...</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Times</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Times</publisher>
+            <date when="1804-01-18"/>
+            <idno>GH-TIMES-18040118</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>Notwithstanding our repeated publications of the documents upon which our
+                  details respecting the. The Times (London, England), Wednesday, Jan 18, 1804; pg.
+                  2; Issue 5922. (614 words)</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>﻿Notwithstanding our repeated publications of the documents upon which our details
+            respecting the <rs ref="stjparkghost">St. James’s Park Ghost</rs> were founded, <rs ref="mis">still
+            certain Prints continue to charge us with having fabricated the story</rs>. We do not pretend
+            to <q>take the Ghost’s word</q> against reason and philosophy, <rs ref="public">at the same time we
+            thought it our duty to enquire into the foundation of the rumours, which had for so many
+            days played upon the public credulity</rs>, and to state the result of our enquiries on the
+            subject, which, we flatter ourselves, have proved as satisfactory as the nature of the
+            business would admit.</p>
+         <p>A Morning Print asserts, <q>that some papers</q> (we confess we are at a loss to know
+            which) <q>very candidly confess, that the abilities of their employers are not above the
+               common level; but they still continue to assert their integrity and good
+               intention.</q> Of the <emph>employers</emph> of the Paper in question, we believe, no
+            person will be mad enough to assert, that they have either <emph>good abilities</emph>,
+            or good <emph>intentions</emph>.</p>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-GNCCO-18361009">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>A Ghost</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Weekly Times</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Weekly Times</publisher>
+            <date when="1836-10-09"/>
+            <idno>GH-GNCCO-18361009</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the
+               archive and appears exactly as given.</p>
+            <p><bibl>"A Ghost." Weekly Times, 9 Oct. 1836. Nineteenth Century Collections Online,
+               tinyurl.galegroup.com/tinyurl/54S2x9. Accessed 25 July 2017.</bibl></p>
+         </sourceDesc>
+         
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes
+               from the 18th and 19th century London newspapers and periodicals. The project
+               explores the beginnings of mass print media in a metropolitan area at a time
+               when technology and education made reading increasingly common and
+               inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of
+               reporting on various hauntings in and around London between 1804 and 1889. The
+               PDF and JPEGs from online databases were transcribed using ABBYFineReader OCR,
+               then corrected and occasionally manually transcribed if document quality
+               necessitated it. After normalization in plain text, all documents were
+               upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have
+                  been normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters
+                  has been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>The inhabitants of the lonely portion of <placeName ref="#pentonville">Pentonville</placeName>, beyond Maiden-lane, called the
+               <q><placeName ref="#frenchcolony">French Colony</placeName></q>, have for some weeks past been in a state of considerable
+            excitement and alarm, in consequence of the reports of <rs ref="ghost">a ghost of collossal form</rs>,
+            habited in the regular spectral costume of a white sheet, with a black mask on his face,
+            having been seen stalking about the fields and lanes by several persons, to whom his
+            formidable appearance gave great alarm; indeed, one of the <soCalled>ghost seers,</soCalled> a little girl
+            about thirteen years of age, was so excessively frightened as to have been ever since
+            entirely bereft of speech and reason. The police were apprised of the circumstance, and
+            made several endeavours to apprehend him, but apprised by some means of their
+            solicitude, he kept aloof for some nights. On the Wednesday evening of last week,
+            however, as two men were returning across the fields from <placeName ref="#copenhouse">Copenhagen House</placeName>, they espied
+            a tall figure start up from behind a cow, where it evidently had been couchant, and
+            advance with rapid strides towards them, uttering the most awful groans. The men,
+            however, had heard of his ghostship before, and waited his approach <q><emph>sans peur</emph></q>, till
+            he got within range of their sticks, when they knocked him down, and continued
+            belaboring him most unmercifully, till his screams convinced them it was flesh and blood
+            upon which they were so vigorously exercising the <emph>argumentum baculinum</emph>, and brought
+            the police to the spot. He was immediately carried to the station-house, where it was
+            discovered, from his severe castigation, he had three ribs broken, besides the other
+            parts of his corporeal person being terribly battered and bruised. The next morning he
+            was taken before Mr. Laing, at <placeName ref="#hattonpol">Hatton-garden Police-office</placeName>, and by that magistrate
+            sentenced to three months’ imprisonment in the House of Correction, which it is to be
+            hoped will operate as a warning to him and to others not to play tricks of so injurious
+            a tendency in future.</p>
+      </body>
+   </text>
+</TEI>

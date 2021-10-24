@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-GNCCO-18410227">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>﻿Thoughts On Seeing Ghosts</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Odd Fellow, Yankee Notions</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Odd Fellow</publisher>
+            <publisher>Yankee Notions</publisher>
+            <date when="1841-02-27"/>
+            <idno>GH-GNCCO-18410227</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"Thoughts on Seeing Ghosts." Odd Fellow, 27 Feb. 1841, p. 35. Nineteenth
+                  Century Collections Online, http://tinyurl.galegroup.com/tinyurl/6jHRW2. Accessed
+                  9 July 2018.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>Believing in ghosts, somebody remarks, is like the sea-sickness when it first comes on.
+            Nobody will confess, but everybody has misgivings. I must make myself an exception; for
+            I am willing to confess both ghosts and sea-sickness. Beyond a certain point, however, I
+            am not disposed to place the two phenomena upon an equality, for I am bound to confess
+            that I should prefer seeing twenty ghosts to being sea-sick once. Ghosts, indeed, are
+            favourites with me; and having enjoyed the advantage of seeing a great number, I can
+            speak with some confidence about them. A great many people talk sheer nonsense on the
+            subject; indeed, not one in ten, ever speaks of a ghost in a becoming style. All this
+            has led to many mistaking notions in demonology. The long and the short of it is, that
+            ghosts have been very badly treated by people in general, and if we do not turn over a
+            new leaf, I am under some apprehensions that the whole army of spirits will discontinue
+            their visits, in resentment of these affronts, so that before long, there will not be a
+            ghost to be seen for love, money, or murder. This catastrophe, I grieve to say, seems to
+            be approaching already, for ghosts are not half so common as they were in the days of my
+            grandmother.</p>
+         <p>Strict justice, however, compels me to say, that the ghosts themselves are somewhat to
+            blame in this matter, their behaviour at times being a little antic and anomalous. There
+            are faults on both sides; which, hoping I may remedy, I offer the following suggestions
+            for the considerations of both parties, and let ghosts and ghost-seers lay them to
+            heart.</p>
+         <p>In the first place, a ghost should never wear a night-cap. Some readers may doubt
+            whether the thing has ever been done, but the fact is unquestionable; ghosts in
+            night-caps have been seen by too many credible persons to allow of any doubt upon this
+            point. I protest, however, against any such head-dress for a member of the Tartarean
+            regions; it is unghostly, and ought to be abandoned. If a ghost has any sense of
+            propriety, let him appear with a bare sconce—it is much more respectable. Some
+            indulgence may perhaps be claimed for a bald ghost, especially considering the coldness
+            of the night air. My great-grandfather, who was a ghost-seer of some talent, used to
+            recommend a wig; but this, I think, would never be endured: a ghost in a wig! what an
+            unspiritual costume. No,—wigs will never do. A white handkerchief might serve every
+            purpose, provided it was not tied on, for that would look night-cappish again.</p>
+         <p>Secondly, a ghost should never pull a man by the nose. Here again I may be asked,
+                  <q><emph>Have</emph> ghosts ever been addicted to nose-pulling?</q> I am not
+            certain; but the story goes that they have. I pronounce it wrong <emph>in toto</emph>;
+            it is undignified and improper. If a ghost wishes to give any person so sensible a token
+            of his presence, let him bestow a sound bang upon his noddle: this would be emphatic and
+            decisive; there would be no mistake about it. But as to our noses,—hands off! No ghost
+            that has any regard for his character, will clap his digits to your olfactory
+            projection. This suggests another thought, Ought a ghost to be allowed to take snuff? My
+            aunt Grizzel says, yes, if he can keep from sneezing. On mature consideration, I say no,
+            unless it be the ghost of a tobacconist.</p>
+         <p>Thirdly, a ghost should be nice in his eating: he should not eat too much, nor of the
+            wrong dishes. Some kinds of victuals are unfit for a ghost to eat, and sound very oddly
+            when they are mentioned in connexion with a visitor from the invisible world. An old
+            lady of my acquaintance knew a ghost that came one Saturday night into her kitchen and
+            ate half a dozen pigs’ trotters and a plate of minced fish. Another drank a quart of
+            sour cider, but was observed to make a horrible wry face at it. These ghosts might plead
+            their appetite, having travelled probably a good distance; but I think they ought to
+            have gone further and fared worse. In fact, I object to eating altogether; but if it
+            must be done, let them help themselves to light food, and by all means join the
+            Temperance Society.</p>
+         <p>Fourthly, a ghost, when he appears in metamorphosis, should come in a shape befitting
+            the sublimity of his character. I knew a ghost once that came in the shape of a teapot,
+            and another that took the form of a leg of mutton? These are unghostly shapes; for what
+            have legs of mutton and tea-pots to do in the invisible world? My uncle Tim saw one in
+            the shape of a militia colonel: it is a pity that any ghost should ever have made such a
+            fool of himself. A justice of peace once told me that he saw a ghost in the shape of a
+            great jackass; but it was probably nothing more than his own shadow.</p>
+         <p>Fifthly, there are various points of behaviour in ghosts, to which we may reasonably
+            object. Ghosts may walk or run as fast as they please, but they ought not to cut capers.
+            Some may say it is difficult for them to avoid this, considering how light they are; but
+            that is their affair and not ours. A ghost, I maintain, ought to behave with sobriety,
+            and not play fantastic tricks. My aunt Grizzel for instance, saw a ghost jump over a
+            broomstick, and another grinding coffee: now any body could do these things, therefore a
+            ghost ought not to do them. A ghost was seen once, that jumped over a dining-table,
+            flung three summersets in the air, and made sixteen pirouttes on the tip of his right
+            toe, without putting himself out of breath: I have no doubt this was the ghost of a
+            Frenchman.</p>
+         <p>Sixthly, besides the rules I have laid down on the subject of night-caps, ghosts ought
+            to be particular in their dress. Some ghosts dress so absurdly that they are not worth
+            looking at when the lights burn blue, as enough such figures may be seen by broad
+            daylight. Ghosts have been known to wear snuff-coloured breeches! and I have even known
+            a ghost in cow-hide boots. Is this fit costume for a hobgoblin? Really, such ghosts
+            ought to be taught better. Habiliments like these can never inspire a ghostly dread in
+            any spectator, even in a church-yard by the light of the moon, or when the clock strikes
+            midnight: they are entirely out of keeping. I have heard of a ghost that always came in
+            a new coat, smartly buttoned up, and a spandy clean dickey. This must have been the
+            ghost of a tailor. A tolerably good colour for a ghost is black; pepper-and-salt will
+            hardly do; though I should not have much objection to that sort of homespun called
+            thunder-and-lightning. But, after all that can be said in favour of fancy colours,
+            nothing is equal to a white sheet; for, when gracefully thrown on, there is nothing
+            becomes a ghost so well.</p>
+         <p>Seventhly, ghosts should talk good English, and by all means avoid poetry, for most of
+            the ghost-rhymes current are as bad as any stuff I ever saw in the newspapers. Ghosts
+            ought to maintain a certain tone of loftiness and dignity in their conversation, and not
+            gabble like so many tinkers. What could a ghost be thinking of, who talked in this
+            manner:—Then says the man to the ghost, <q>Who are you?</q>
+            <q>I am the ghost of old Slouch, the red-nosed tallow-chandler,</q> says he. <q>What do
+               you want here?</q> says the man. <q>I'm only haunting this soap-barrel,</q> says the
+            ghost. <q>I smell brimstone,</q> says the man. <q>Merely candle-snuff,</q> says the
+            ghost. <q>Know of any money buried here?</q> says the man. <q>Only five shillings in the
+               toe of a stocking,</q> says the ghost. <q>Well,</q> says the man, <q>in all my life,
+               I never heard a ghost talk as you do,</q> &amp;c. &amp;c. Yet this conversation
+            actually passed as related. My great-grandmother's second cousin knew the man perfectly
+            well, and he was a person of undoubted veracity. This ghost certainly did not maintain
+            the majesty of his character; and it is a mark of improvement in demonology, that ghosts
+            stand more upon their dignity now-a-days.</p>
+         <p>People who are troubled with ghosts may be anxious to know the best means of laying
+            them, and whether they ought to be sent to the infernal regions, or the Red Sea. On the
+            latter point I may remark that I consider the Red Sea the safest, because, if sent to
+            the first-mentioned place, some people might find themselves under a necessity of
+            renewing acquaintance with them another day. Some ghosts are more difficult to lay than
+            others. The hardest of all is the ghost of a deputy sheriff. When once a man is haunted
+            by such an apparition, his case is desperate. No sprite or hobgoblin sticks closer to a
+            man than this. He walks by day as well as by night, and his spectral form glides up and
+            down ’change, as well as the churchyard. The phantom stares you in the face at the
+            turning of every corner, and lucky will you be if you feel not the magic influence of
+            his touch, which is able to communicate a more disagreeable shock than a torpedo or a
+            galvanic battery. This spirit can flit through key-holes and under the crack of a door,
+            and if be once taps you on the shoulder, you are fixed by enchantment to the
+               spot.—<emph>From Yankee Notions.</emph></p>
+      </body>
+   </text>
+</TEI>

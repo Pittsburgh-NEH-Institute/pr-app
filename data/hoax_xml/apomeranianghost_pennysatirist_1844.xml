@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-19CUK-18441005">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>A Pomeranian Ghost</title>
+                <respStmt>
+                    <resp>Originally published by</resp>
+                    <name>The Penny Satirist</name>
+                </respStmt>
+                <respStmt>
+                    <resp>Transcribed and encoded by</resp>
+                    <name>Gabi Keane</name>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <publisher>The Penny Satirist</publisher>
+                <date when="1844-10-05"/>
+                <idno>GH-19CUK-18441005</idno>
+            </publicationStmt>
+            <seriesStmt>
+                <title>Ghost hoaxes in 19th-century British news media</title>
+            </seriesStmt>
+            <sourceDesc>
+                <p>All texts in this collection were sourced from British periodical and newspaper
+                    archives, transcribed,and encoded. The citation below was provided by the
+                    archive and appears exactly as given.</p>
+                <p><bibl>"A POMERANIAN GHOST." The Penny Satirist, 5 Oct. 1844, p. 4. 19th Century
+                        UK Periodicals, http://tinyurl.galegroup.com/tinyurl/6qmuYX. Accessed 8 Aug.
+                        2018.</bibl></p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <projectDesc>
+                <p>This document is part of a larger digital collection of stories of ghost hoaxes
+                    from the 18th and 19th century London newspapers and periodicals. The project
+                    explores the beginnings of mass print media in a metropolitan area at a time
+                    when technology and education made reading increasingly common and
+                    inexpensive.</p>
+                <p>The corpus holds 36 individual documents, which reflect a diverse mix of
+                    reporting on various hauntings in and around London between 1804 and 1889. The
+                    PDF and JPEGs from online databases were transcribed using ABBYFineReader OCR,
+                    then corrected and occasionally manually transcribed if document quality
+                    necessitated it. After normalization in plain text, all documents were
+                    upconverted to TEI XML.</p>
+            </projectDesc>
+            <editorialDecl>
+                <normalization>
+                    <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                        Typographic em dashes are longer than modern em dashes, so all dashes have
+                        been normalized to modern em dash length.</p>
+                </normalization>
+                <quotation>
+                    <p>All extraneous white space used by printers to avoid overlapping with letters
+                        has been removed. All quotes are simply tagged with the q tag.</p>
+                </quotation>
+            </editorialDecl>
+        </encodingDesc>
+    </teiHeader>
+
+    <text>
+        <body>
+            <p>A man had been broken on the wheel at <placeName ref="#gutskow">Gutskow</placeName>,
+                because, <rs ref="rel">being tempted of Satan</rs>, he murdered a travelling
+                workman. The man, however, straightway began to walk after so fearful a fashion,
+                that in the evening and night season he sprang down from the wheel in his gallows
+                dress whenever a cart passed by the gallows, which stands hard by the road to
+                    <placeName ref="#wulgast">Wulgast</placeName>, and jumped up behind the people,
+                who in horror and dismay flogged on their horses, and thereby made a great rattling
+                on the log embankment which leads beside the gallows into a little wood called the
+                Kraulin. <rs ref="mis">And it was a strange thing that on the same night the
+                    travellers were almost always robbed or murdered on Strellin heath</rs>.
+                Hereupon the magistrates had the rain taken down from the wheel end buried under the
+                gallows, in hopes of laying his ghost. But it went on just as before, sitting at
+                night, snow-white on the wheel, so that none durst any longer travel the road to
+                Wolgast, until at last It happened that, at the time of the fair, young Rudiger von
+                Nienkerken, of Mellenthin in <placeName ref="#usedom">Usedom</placeName>, who had
+                been studying at Wittenberg and elsewhere, and was now on his way home, came this
+                road by night with his carriage. Just before, at the inn, I myself had tried to
+                persuade him to stop the night at <placeName ref="#gutskow">Gutskow</placeName>, on
+                account of the <rs ref="ghost">ghost</rs>, and to go on his journey with me next
+                morning, but he would not. Now as soon as this <rs ref="class">young lord</rs> drove
+                along the road, he also espied <rs ref="ghost">the apparition</rs> sitting on the
+                wheel, and scarcely had he passed the gallows when the ghost jumped down and ran
+                after him. The driver was horribly afraid, and lashed on the horses as everybody
+                else, had done before, and they, taking fright, galloped away over the log-road with
+                a marvellous clatter. <rs ref="cert">Meanwhile, however, the <rs ref="class">young
+                        nobleman</rs> saw by the light of the moon how that the apparition flattened
+                    a ball of horse-dung whereupon it trod, and straightway felt sure within himself
+                    that it was no ghost.</rs> Whereupon he called to the driver to stop; and, as
+                the man would not hearken to him, he sprang out of his carriage, drew his rapier,
+                and hastened to attack the ghost. When the ghost saw this he would have turned and
+                fled; but the <rs ref="class">young nobleman</rs> gave him such a blow on the head
+                with his fist that be fell upon the ground with a loud wailing. <emph>Summa:</emph>
+                the <rs ref="class">young lord</rs>, having called back his driver, dragged the
+                ghost into the town again, where he turned out to be a shoemaker called <persName
+                    ref="#schweim">Schweim</persName>. I also, on seeing such a great crowd, ran
+                thither with many others, to look at the fellow. He trembled like an aspen leaf; and
+                when he was roughly told to make a clean breast, whereby he might, peradventure,
+                save his own life, if it appeared that he had murdered no one, he confessed that he
+                had got his wife to make him a gallows' dress, which he had put on, and had sat on
+                the wheel before the dead man, when, from the darkness and the distance, no one
+                could see that the two were sitting there together; and this he did more especially
+                when he knew that a cart was going from the town to <placeName ref="#wolgast"
+                    >Wolgast</placeName>. When the cart came by, and he jumped down and ran after
+                it, all the people were so affrighted that they no longer kept their eyes upon the
+                gallows, but only on him, flogged the horses and galloped with much noise and
+                clatter over the log embankment. This was heard by his fellows in <placeName
+                    ref="#strellin">Strellin</placeName> and <placeName ref="#dam"
+                    >Dammbecke</placeName> (two villages which are about three fourths on the way),
+                who held themselves ready to unyoke the horses and to plunder the travellers when
+                they came up with them. That after the dead man was buried he could play the ghost
+                more easily still, &amp;c. <rs ref="justice">That this was the whole truth, and that
+                    he himself had never robbed, still less murdered, any one; wherefore be begged
+                    to be forgiven: that all the robberies and murders which had happened had been
+                    done by hit fellows alone. Ah, thou cunning knave! But I heard afterwards that
+                    he and his fellows were broken on the wheel together, as was but fair.</rs></p>
+        </body>
+    </text>
+</TEI>

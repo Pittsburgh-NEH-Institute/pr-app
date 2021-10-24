@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-19CUK-18381104">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>A Black Ghost on the London and Birmingham Railway</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>John Bull</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>John Bull</publisher>
+            <date when="1838-11-04"/>
+            <idno>GH-19CUK-18381104</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"A Black Ghost on the London and Birmingham Railway." John Bull, 4 Nov. 1838, p.
+               526. 19th Century UK Periodicals, http://tinyurl.com/yajx2huh. Accessed 1 August
+               2017.</bibl></p>
+         </sourceDesc>
+         
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+<text>
+   <body>
+         <p>
+            For some time past the policemen and navigators employed on the <placeName>London and
+               Birmingham railroad, near the central station, at Wolverton</placeName>, have been
+            dreadfully alarmed by the appearance of <rs ref="ghost">a supernatural figure</rs> gliding up and down the
+            line, at more than railroad velocity, enveloped in cloud of white smoke instead of
+            steam. <rs ref="or">This figure, <rs type="appear">which resembles a man of colour</rs>, is supposed by the
+               superstitious and terrified workmen to be no other than the ghost of a gigantic
+               black, designated <persName ref="#blackshag">Black Shag</persName>,</rs> and who,
+            about two months since, was buried alive by the falling in of a quantity of earth at a
+            place called <placeName>Sandy Hole</placeName>. The body of <persName ref="#blackshag"
+               >Black Shag</persName> was got out, and buried in <placeName ref="#holytrinity"
+               >Wolverton Churchyard</placeName>. Since that period his <rs ref="ghost">ghost</rs>
+            has been extremely troublesome. Sometimes he has appeared to the excavators when engaged
+            at mining any dangerous part of the road, with <rs ref="ghost" type="appear">a huge pair of horns on his head, and as
+            black as soot</rs>; and, after capering about in the most mysterious and awful manner, would
+            exclaim, <q who="#blackshag">Take warning by my fate,</q> and immediately vanish. <rs type="appear">At other times he is
+            seen bearing the resemblance of a tall black, and eliding along the road with amazing
+            velocity</rs>, choosing the <soCalled>witching hour of night</soCalled> for his extraordinary
+            pranks. Several policemen, as well as excavators, have been so terrified by <rs ref="#blackshag">the ghost of
+               <soCalled>Black Shag</soCalled></rs>, that they have thrown up their employment; and one
+            man lies now in an alarming state of illness at the above village, from the shock he
+            received at seeing this mysterious visitor, who is the talk of the whole
+            neighbourhood.</p>
+      
+   </body>
+</text>
+</TEI>

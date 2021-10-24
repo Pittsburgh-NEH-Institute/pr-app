@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title></title>
+            </titleStmt>
+            <publicationStmt>
+                <publisher></publisher>
+            </publicationStmt>
+            <sourceDesc>
+                <bibl></bibl>
+            </sourceDesc>
+            </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <listPerson>
+                <person sex="M" xml:id="stonegw" role="showman" >
+                    <persName>
+                        <surname>Stone</surname>
+                        <forename>George W.</forename>
+                    </persName>
+                    <bibl>https://tinyurl.com/y9udxbh3</bibl>
+                </person>
+                <person sex="F" xml:id="haydenmb" role="medium">
+                    <persName>
+                        <surname>Hayden</surname>
+                        <forename>Maria B.</forename>
+                    </persName>
+                    <bibl>https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/hayden-maria-b-ca-1852</bibl>
+                </person>
+                <person sex="M" xml:id="wordsworth"  role="poet">
+                    <persName>
+                        <surname>Wordsworth</surname>
+                        <forename>William</forename>
+                    </persName>
+                    <bibl>https://en.wikipedia.org/wiki/William_Wordsworth#External_links</bibl>
+                </person>
+                <person sex="F" xml:id="parsonse" role="medium child">
+                    <persName>
+                        <surname>Parsons</surname>
+                        <forename>Elizabeth</forename>
+                    </persName>
+                    <bibl>Elizabeth Parsons was the child involved in the Cock Lane Ghost story. Parsons rappings drew the attention of the neighborhood, though eventually it was discovered she was fabricating the story, possibly at the behest of her father.</bibl>
+                </person>
+                <person sex="F" xml:id="lynesf" role="ghost">
+                    <persName>
+                        <surname>Lynes</surname>
+                        <forename>Fanny</forename>
+                    </persName>
+                    <bibl>Fanny Lynes was the woman supposed to be haunting the Parsons' home. It has been suggested that Lynes was poisoned with arsenic, though this cannot be confirmed.</bibl>
+                </person>
+                <person sex="U" xml:id="robinsonj" role="spiritualist author">
+                    <persName>
+                        <surname>Robinson</surname>
+                        <forename>J.</forename>
+                    </persName>
+                </person>
+                <personGrp xml:id="fox" role="family">
+                    <persName>
+                        <surname>Fox</surname>
+                    </persName>
+                </personGrp>
+                <person xml:id="culvern" role="family"></person>
+            
+            <person sex="M" xml:id="brown"  role="reporter">
+                <persName>
+                    <surname>Brown</surname>
+                </persName>
+            </person>
+            <person sex="M" xml:id="thompson" role="reporter">
+                <persName>
+                    <surname>Thompson</surname>
+                </persName>
+            </person>
+            <person sex="M" xml:id="kinghn" role="photographer">
+                <persName>
+                    <surname>King</surname>
+                    <forename>Horatio</forename>
+                    <forename>Nelson</forename>
+                </persName>
+                <bibl>https://tinyurl.com/yda4hfuq</bibl>
+            </person>
+            <person sex="M" xml:id="blackshag" role="ghost">
+                <persName>Black Shag</persName>
+            </person>
+            <person sex="M" xml:id="schweim" role="ghost">
+                <persName>Schweim</persName>
+            </person>
+            <person sex="F" xml:id="ccrowe" role="author">
+                <persName>
+                    <surname>Crowe</surname>
+                    <forename>Catherine</forename>
+                </persName>
+                <bibl>https://www.kent.ac.uk/library/specialcollections/other/catherine-crowe/index.html#</bibl>
+            </person>
+            <person sex="M" xml:id="springrice" role="politician">
+                <persName>
+                    <surname>Spring Rice</surname>
+                    <forename>Thomas</forename>
+                </persName>
+                <bibl>http://www.historyofparliamentonline.org/volume/1820-1832/member/rice-thomas-1790-1866</bibl>
+            </person>
+           <person sex="M" xml:id="johnrussell" role="politician">
+               <occupation>Prime Minister</occupation>
+                    <persName>
+                        <addName role="honorary">Lord</addName>
+                        <surname>Russell</surname>
+                        <forename>John</forename> 
+                    </persName>
+                    <bibl>https://www.gov.uk/government/history/past-prime-ministers/lord-john-russell-1st-earl-russell</bibl>
+                </person>
+                <person sex="M" xml:id="henrybrougham" role="politician">
+                    <occupation>Lord Chancellor</occupation>
+                    <persName>
+                        <addName>Lord</addName>
+                        <surname>Brougham</surname>
+                        <forename>Henry Peter</forename> 
+                        <addName>1st Baron Brougham and Vaux</addName>
+                    </persName>
+                    <bibl>https://www.britannica.com/biography/Henry-Peter-Brougham-1st-Baron-Brougham-and-Vaux</bibl>
+                </person>    
+                <person sex="M" xml:id="horationelson" role="admiral">
+                    <occupation>Vice Admiral of the Royal Navy</occupation>
+                    <persName>
+                        <surname>Horatio</surname>
+                        <forename>Nelson</forename>
+                        <roleName>1st Viscount Nelson</roleName>
+                    </persName>
+                    <bibl>https://en.wikipedia.org/wiki/Horatio_Nelson,_1st_Viscount_Nelson</bibl>
+                </person>
+                <person sex="M" xml:id="thomaspaine" role="writer">
+                    <persName>
+                        <surname>Paine</surname>
+                        <forename>Thomas</forename>
+                    </persName>
+                    <bibl>https://www.britannica.com/biography/Thomas-Paine</bibl>
+                </person>
+                <person sex="M" xml:id="matthewwood" role="mayor">
+                    <persName>
+                        <surname>Wood</surname>
+                        <forename>Matthew</forename>
+                    </persName>
+                    <bibl>https://www.historyofparliamentonline.org/volume/1820-1832/member/wood-matthew-1768-1843</bibl>
+                </person>
+                <person sex="M" xml:id="georgejones" role="guard">
+                    <persName>
+                        <surname>Jones</surname>
+                        <forename>George</forename>
+                    </persName>
+                    <bibl>https://www.gutenberg.org/files/58852/58852-h/58852-h.htm</bibl>
+                </person>
+                <person sex="M" xml:id="richarddonkin" role="guard">
+                    <persName>
+                        <surname>Donkin</surname>
+                        <forename>Richard</forename>
+                    </persName>
+                    <bibl>https://www.gutenberg.org/files/58852/58852-h/58852-h.htm</bibl>
+                </person>
+                <person sex="M" xml:id="richardford" role="magistrate">
+                    <persName>
+                        <surname>Ford</surname>
+                        <forename>Richard</forename>
+                    </persName>
+                    <bibl>https://en.wikipedia.org/wiki/Richard_Ford_(East_Grinstead_MP)</bibl>
+                </person>
+                <person sex="M" xml:id="stafford" role="clerk">
+                    <persName>
+                        <surname>Stafford</surname>
+                        <forename></forename>
+                    </persName>
+                </person>
+                <person sex="M" xml:id="josephady" role="fraudster">
+                    <persName>
+                        <surname>Ady</surname>
+                        <forename>Joseph</forename> 
+                    </persName>
+                    <bibl>https://victorianweb.org/previctorian/dequincey/secretsocieties.html</bibl>
+                </person>
+            </listPerson>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-GNCCO-18331215">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Resuscitation of The Hammersmith Ghost</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>Weekly True Sun</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>Weekly True Sun</publisher>
+            <date when="1833-12-15"/>
+            <idno>GH-GNCCO-18331215</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"Resuscitation of the Hammersmith Ghost." Weekly True Sun, 15 Dec. 1833, p.
+                  123. Nineteenth Century Collections Online,
+                  http://tinyurl.galegroup.com/tinyurl/8wMqL7. Accessed 30 Jan. 2019.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>It is in the recollection of most of our readers that about eight years since much
+            excitement was created by a report that a ghost had appeared to a number of persons in
+            the neighbourhood of <placeName ref="#hammersmith">Hammersmith</placeName>, <placeName
+               ref="#fulham">Fulham</placeName>, <placeName ref="amb">&amp;c.</placeName>, several
+            of whom, more particularly females, against whom he appeared to have a great animosity,
+            had been much frightened and ill-treated by him. After continuing his freaks for some
+            time, he became so troublesome that the parochial authorities adopted measures for his
+            apprehension, and after watching for him for some nights he was taken in one of the
+            lanes attired in full ghostly costume, and <rs ref="justice">was sent by the magistrates to the House of
+            Correction to undergo a little wholesome discipline for his pranks</rs>. Since that time
+            nothing has been heard of his ghostship until about six weeks ago, when he re-appeared
+            in <placeName ref="#north-end">a lane at North-end</placeName>, and it is reported that
+            he has been seen subsequently in <placeName ref="#webbslane">Webb’s-lane,
+               Hammersmith</placeName>, and <placeName ref="#acton">Acton</placeName>; but the
+            principal scene of his adventures is stated to be the mad hats in <placeName
+               ref="#chiswick-lane">Chiswick-lane</placeName>, and that the servant of a Mr. Scott
+            was attacked by him there, his assaults, as before, being directed against females. On a
+            Saturday night last it was currently reported that he had been taken by the police at
+               <placeName ref="#acton">Acton</placeName>, attired in a large white dress, with long
+            nails or claws, by which he was enabled to scale walls and hedges for the purpose of
+            making himself scarce, when requisite, and that when brought to the station-house he
+            proved to be a celebrated Captain of sporting notoreity. Several of the inhabitants
+            attended the <placeName ref="#hammersmith">Hammersmith</placeName>, &amp;c., Petty Sessions, on Monday, in the hope of obtaining
+            an audience of the spiritual <emph>incognito</emph>, when it was found that the
+            statement of his apprehension was premature. Another report states him to be dressed in
+            armour, and that he has laid a wager that he will strip the clothes off a certain number
+            of females in a given time, and that he has now only one more to strip to win the bet.
+            <rs ref="justice">It is to be hoped that the police will put a stop to the pranks of his ghostship
+            previous to his completing his task, that he may receive a proper reward for his
+            exertions.</rs></p>
+      </body>
+   </text>
+</TEI>

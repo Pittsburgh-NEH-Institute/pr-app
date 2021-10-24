@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-19CUK-18320115">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>A Ghost</title>
+                <respStmt>
+                    <resp>Originally published by</resp>
+                    <name>The Age</name>
+                </respStmt>
+                <respStmt>
+                    <resp>Transcribed and encoded by</resp>
+                    <name>Gabi Keane</name>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <publisher>The Age</publisher>
+                <date when="1832-01-15"/>
+                <idno>GH-19CUK-18320115</idno>
+            </publicationStmt>
+            <seriesStmt>
+                <title>Ghost hoaxes in 19th-century British news media</title>
+            </seriesStmt>
+            <sourceDesc>
+                <p>All texts in this collection were sourced from British periodical and newspaper
+                    archives, transcribed,and encoded. The citation below was provided by the
+                    archive and appears exactly as given.</p>
+                <p><bibl>"A Ghost." The Age, 15 Jan. 1832, p. 23. 19th Century UK Periodicals,
+                    http://tinyurl.com/yaxzvbaf. Accessed 31 July 2017.</bibl></p>
+            </sourceDesc>
+
+        </fileDesc>
+        <encodingDesc>
+            <projectDesc>
+                <p>This document is part of a larger digital collection of stories of ghost hoaxes
+                    from the 18th and 19th century London newspapers and periodicals. The project
+                    explores the beginnings of mass print media in a metropolitan area at a time
+                    when technology and education made reading increasingly common and
+                    inexpensive.</p>
+                <p>The corpus holds 36 individual documents, which reflect a diverse mix of
+                    reporting on various hauntings in and around London between 1804 and 1889. The
+                    PDF and JPEGs from online databases were transcribed using ABBYFineReader OCR,
+                    then corrected and occasionally manually transcribed if document quality
+                    necessitated it. After normalization in plain text, all documents were
+                    upconverted to TEI XML.</p>
+            </projectDesc>
+            <editorialDecl>
+                <normalization>
+                    <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                        Typographic em dashes are longer than modern em dashes, so all dashes have
+                        been normalized to modern em dash length.</p>
+                </normalization>
+                <quotation>
+                    <p>All extraneous white space used by printers to avoid overlapping with letters
+                        has been removed. All quotes are simply tagged with the q tag.</p>
+                </quotation>
+            </editorialDecl>
+        </encodingDesc>
+    </teiHeader>
+    
+    <text>
+        <body>
+            <p>There is one of the most remarkable personifications— if such a term may be allowed—
+                of a <rs ref="#ghost">Ghost</rs>, in the singular story of <q>The Robber,</q> which
+                has just appeared from the pen of <name type="publication">Blackwood's</name>
+                well-known contributor. The schemes of the Robber are most ingeniously and naturally
+                contrived to depend, for their fulfillment, almost upon a miracle; and it is <rs
+                    type="hoax">the phantom-stratagem</rs> which he practices, that most marvelously
+                works out his security, and eventually his doom.</p>
+        </body>
+    </text>
+</TEI>

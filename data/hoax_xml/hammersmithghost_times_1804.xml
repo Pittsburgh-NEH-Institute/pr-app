@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-TIMES-18040106">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Hammersmith Ghost</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Times</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Times</publisher>
+            <date when="1804-01-06"/>
+            <idno>GH-TIMES-18040106</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"Hammersmith-Ghost." Times [London, England] 6 Jan. 1804: 3. The Times Digital
+                  Archive. Web. 21 Oct. 2018.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>﻿The Christmas tricks of <rs ref="ghost">this goblin</rs> have terminated in two
+            melancholy accidents.</p>
+         <p>Yesterday morning at 11 o’clock, a Coroner’s Inquest was held at the <placeName
+               ref="#blacklionpub">Black Lion public-house, Hammersmith</placeName>, on the body of
+            a young man, named Milward, who had been shot on the preceding night, in <placeName
+               ref="#beaverlanecross">Cross-lane</placeName>, <placeName ref="amb">within a few
+               doors of the place</placeName>, by a young man, named Smith, an Officer of Excise;
+            and after a very full investigation of the circumstances, the Jury returned a verdict of
+                  <q><emph>Wilful Murder,</emph></q> against the said Smith.</p>
+         <p>The circumstances which led to that unhappy catastrophe, and which we have been at some
+            pains to investigate on the spot, are as follow:--</p>
+         <p>For several nights past, some very silly and thoughtless person had been in the habit of
+            walking about <placeName ref="amb">the more lonely vicinities of <placeName
+                  ref="#hammersmith">Hammersmith</placeName></placeName>, attired in a white sheet,
+            to frighten women and children; and so far succeeded in acquiring the character of a
+               <emph>dreadful ghost</emph>, as to frighten several poor women almost out of their
+            senses. One woman, the wife of a locksmith, has lost her life through the fright, and
+            now lies dead at <placeName ref="irr">Brook Green</placeName>, and two others lie
+            dangerously ill from the same cause. Much alarm and irritation had of course been
+            excited by these circumstances; and Mr. Smith having spent part of his evening at the
+               <placeName ref="#whitehartpub">White Hart public-house</placeName>, left it,
+            perfectly sober, with a purpose of passing the remainder at a private party, to which he
+            had been invited; but by some means or other his purpose was changed, and he returned to
+               <placeName ref="#whitehartpub">the White Hart</placeName>, where, amongst other
+            topics, a conversation about the Ghost took place, with the consequences already stated
+            that had befallen several women, and the great terror and alarm it had excited in the
+            neighbourhood; when Smith went for his fowling-piece, which he brought back to the
+               <placeName ref="#whitehartpub">White Hart public-house</placeName>, loaded it there
+            with powder and shot, said he would act this night, go and try to meet the Ghost, and
+            certainly shoot it. It was past eleven o’clock; he preconcerted with a watchman at the
+            place to go up one lane, while he, Mr. Smith, should go round by another, the reputed
+            haunt of the ghost; and as he came through <placeName ref="#beaverlanecross">Cross-lane,
+               at the end of <placeName ref="#blacklionlane"
+            >Black-Lion-lane</placeName></placeName>, he saw a man dressed in white, whom he
+            challenged, and asked who he was. This person made no answer. The night was very dark.
+            After a minute or two, he challenged him again, and told the person in white, if he did
+            not answer and tell who he was, he would certainly shoot him. The man made no answer,
+            and Mr. Smith fired at him, when he immediately fell, and instantly died. Smith
+            observing him fall, ran up to him alarmed; but seeing him with scarcely any signs of
+            life, he immediately ran back to the public house, expressed his alarm and apprehension
+            that he had killed a man, and his determination of immediately surrendering himself to
+            some Magistrate to answer for his misfortune.</p>
+         <p>Both parties lived in, and were well known to, the neighbourhood. The deceased was a
+            journeyman bricklayer, who was returning from <placeName ref="amb">the house of his
+               father</placeName> to <placeName ref="amb">that of his father-in-law, where he lived,
+               at a few yards distance</placeName>. He was in his working-dress, which was a white
+            smock and trowsers. His sister, who had opened the door to let him out in his way home,
+            had heard the challenge of Smith to him, and the shot which immediately followed; and
+            shortly afterwards saw him lie dead. The discharge must have been very close to the
+            deceased, as his face and shoulder appeared to be much scorched and blackened by the
+            explosion. The contents of the piece entered in a close body his jaw-bone, which it
+            shattered very much, and lodged in the opposite side at the back of his neck. What
+            renders the circumstance still more melancholy is, that the deceased does not appear to
+            have been the person who had assumed the appearance of a ghost.</p>
+         <p>Mr. Smith readily surrendered himself to justice, and at six o’clock yesterday evening
+            was brought in custody of the Bow-street officers, from <placeName ref="whitehartpub"
+               >the White Hart public-house</placeName>, where he had been since morning, to
+               <placeName ref="amb">town</placeName>, and committed to prison.</p>
+      </body>
+   </text>
+</TEI>

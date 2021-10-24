@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-BRITP-18521120">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>The Ghost of the Cock Lane Ghost</title>
+        <respStmt>
+          <resp>Originally published by</resp>
+          <name>Household Words</name>
+          
+        </respStmt>
+        <respStmt>
+          <resp>Transcribed and encoded by</resp>
+          <name>Gabi Keane</name>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Household Words</publisher>
+        <date when="1852-11-20"/>
+        <idno>GH-BRITP-18521120</idno>
+      </publicationStmt>
+      <seriesStmt>
+        <title>Ghost hoaxes in 19th-century British news media</title>
+      </seriesStmt>
+      <sourceDesc>
+        <p>All texts in this collection were sourced from British periodical and newspaper archives,
+          transcribed,and encoded. The citation below was provided by the archive and appears
+          exactly as given.</p>
+        <p><bibl>THE GHOST OF THE COCK LANE GHOST. Household words / conducted by Charles Dickens;
+            Saturday, Nov 20, 1852; 6, 139; British Periodicals pg. 217.</bibl></p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>This document is part of a larger digital collection of stories of ghost hoaxes from the
+          18th and 19th century London newspapers and periodicals. The project explores the
+          beginnings of mass print media in a metropolitan area at a time when technology and
+          education made reading increasingly common and inexpensive.</p>
+        <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+          various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+          online databases were transcribed using ABBYFineReader OCR, then corrected and
+          occasionally manually transcribed if document quality necessitated it. After normalization
+          in plain text, all documents were upconverted to TEI XML.</p>
+      </projectDesc>
+      <editorialDecl>
+        <normalization>
+          <p>Earlier texts have had some spelling normalization due to errors in OCR. Typographic em
+            dashes are longer than modern em dashes, so all dashes have been normalized to modern em
+            dash length.</p>
+        </normalization>
+        <quotation>
+          <p>All extraneous white space used by printers to avoid overlapping with letters has been
+            removed. All quotes are simply tagged with the q tag.</p>
+        </quotation>
+      </editorialDecl>
+    </encodingDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <p>We were recently invited into the company of the <rs ref="ghost">Ghost</rs> of the <rs
+          ref="CLghost">Cock Lane <rs ref="ghost">Ghost</rs></rs>, by an advertisement in the Times
+        Newspaper, in which a demonstrator or showman, <name ref="#stone">Mr. Stone</name>, begged
+          <q who="#stonegw">leave to inform the nobility and gentry that he has just returned from
+            <placeName ref="#usa">the United States</placeName>, accompanied by <name
+            ref="#haydenmb">Mrs. M. B. Hayden</name> for the purpose of Demonstrating the wonderful
+          Phenomena known in that country as Spiritual Manifestations, and which have created the
+          most intense excitement in all classes of society—<placeName ref="#r26seymour">Residence,
+            Twenty-six, Upper Seymour Street, Portman Square</placeName>. Hours at home, from Eleven
+          to Two and from Four to Six.</q> So the announcement ran. We had read something of the
+        Rochester Rappers and of the mystery, if it be a mystery, called <soCalled><rs ref="spirit"
+            >spirit</rs> knocking</soCalled> in the sentimental language of <placeName ref="#usa"
+          >America</placeName>. We resolved to visit Mrs. Hayden, and knock up an acquaintance with
+        the <rs ref="ghost">ghosts</rs> who meet in her apartments, <placeName ref="#r26seymour">No.
+          Twenty-six, Upper Seymour Street, Portman Square.</placeName> We ourselves happened to be
+        out of <rs ref="spirit">spirits</rs>, therefore perhaps we made a wise resolve.</p>
+      <p>Yet had we gone for mirth into such company, we should have fared as ill as he who for a
+        midnight jest entered his father’s sepulchre to sup alone among the dead. If it be true, as
+        the believers in the <soCalled><rs ref="spirit">spirit</rs> knockings</soCalled> tell us,
+        that the <rs ref="spirit">spirits</rs> of beloved friends whom we have lost speak to us by a
+        noise of rapping, then our most solemn feelings and our tenderest emotions are awakened by
+        the act of positive communion with the dead.</p>
+      <p>If it be otherwise—if that which is the <rs ref="religious">holiest ground within the human
+          heart be through such exhibitions dug into for gold by coarse impostors—if the simple
+          questioner who with trembling nerves believes that she is brought into the presence of an
+          angel mother with whom it is a foretaste of Heaven to converse—if she be played upon by
+          cheats who laugh under their sleeves at her credulity and turn her money in their
+          pockets,—then such cheating is no matter for amusement.</rs> That is an impiety and
+        wickedness far exceeding the measure of an ordinary fraud, which</p>
+      <ab>
+        <lb/>trades upon our solemn love towards the dead— <cit>
+          <lb/>
+          <quote>In slight of that forbearance and reserve <lb/>Which common human-heartedness
+            inspires, <lb/>And mortal ignorance and frailty claim, <lb/>Upon this sacred ground, if
+            nowhere else.</quote>
+          <bibl
+            source="https://en.wikisource.org/wiki/Page:The_Excursion,_Wordsworth,_1814.djvu/302"
+              ><name ref="#wordsworth">William Wordsworth</name>, The Excursion, 1814.</bibl>
+        </cit>
+      </ab>
+      <p>There have often been people impelled, out of the ignorance and coarseness of their
+        natures, to the forging of clumsy tales, in which they themselves, together with the <name
+          ref="rel">Supreme Being</name>, are the chief actors. Not many weeks ago two cowherd’s
+        children in <placeName ref="#france">France</placeName>—in consequence of information
+        received direct from the <rs ref="rel">Virgin Mary</rs>—became accredited by Infallibility
+        itself as new apostles. <ref
+          source="https://babel.hathitrust.org/cgi/pt?id=njp.32101076875358;view=1up;seq=78">Not
+          many months ago a girl in Suffolk dealt divine information through the neighbourhood,
+          attesting her inspiration by total abstinence from food.</ref> We may read in pamphlets
+        printed centuries ago, how in some parts of Switzerland and France a divine epidemic seized
+        upon the children, how they preached powerfully in their sleep, and were attended at their
+        bedsides by large congregations; or we may read of <q>the German Lazarus</q> who delivered a
+        long list of messages from Heaven, and attested his mission by professing that he never
+        slept. This Lazarus was constantly caught napping; hut he explained the fact to his own
+        honour, by stating that his parents were so much distressed by his incessant wakefulness,
+        that he found it necessary to feign sleep occasionally, for the comfort of their minds.</p>
+      <p>Knocking or Rapping <rs ref="ghost">ghosts</rs> are no new imposition. In a relation of
+        facts concerning <soCalled><rs ref="spirit">spirit</rs>-knockings</soCalled> written in an
+        American pamphlet that is now before us, <q>by <name ref="#robinsonj">J.
+          Robinson</name>,</q> we are told much, not only of the knockings of the unseen beings, but
+        also of the imitations of evil <rs ref="spirit">spirits</rs>, which, <q who="#robinsonj"
+          >resembled scratching produced with the fingernails.</q> Now, will any keeper of a
+        knocking <rs ref="ghost">ghost</rs>, or any lady or gentleman who has taken up the trade of
+        communicating between knocking <rs ref="spirit">spirits</rs> and the gullible portion of the
+        public (which lady or gentleman is called in the trade a <rs ref="medium">Medium</rs>), turn
+        to the <ref
+          source="https://babel.hathitrust.org/cgi/pt?id=njp.32101076875358;view=1up;seq=78">Annual
+          Register for the year 1762</ref>, and read what is there entitled <q>A summary account of
+          the proceedings in regard to some strange noises<pb/> heard the beginning of the year at a
+          house in <placeName ref="#cocklane">Cock Lane, West Smithfield</placeName>.</q> Having
+        read the said account, let the said <rs ref="ghost">ghost</rs>-keeper or <rs ref="medium"
+          >Medium</rs> answer to our catechism on the History of Knockers in a simple way. Q. Who
+        was the first <rs ref="medium">Medium</rs>? A. <name ref="#parsonse">Little Miss
+          Parsons</name>. Q. Who was she? A. The daughter of the clerk of <placeName
+          ref="#stsepulchre">St. Sepulchre’s</placeName>. Q. How did the <rs ref="spirit"
+          >spirit</rs>-knocking in her case begin? A. Her father, the clerk, had taken as lodgers a
+        gentleman and lady, and in the absence of the gentleman, little <name ref="#parsone">Miss
+          Parsons</name> slept with the lady, who was called <name ref="#lynesf">Miss Fanny</name>.
+          <name ref="lynesf">Miss Fanny</name> complained one morning that she and her bedfellow had
+        been disturbed all night by noises. The noises continued, and at length excited much
+        attention, but the lady and gentleman removed into the neighbourhood of <placeName
+          ref="#clerkenwell">Clerkenwell</placeName> (where <name ref="#lynesf">Miss Fanny</name>
+        presently died), and then the noise in Parsons’ house was discontinued. Q. You have said
+        that the first <rs ref="medium">medium</rs> was little <name ref="#parsonse">Miss
+          Parsons</name>; in what way do you connect the story of the <rs ref="CLghost">Cock Lane
+            <rs ref="ghost">Ghost</rs></rs> with her, and discover the resemblance that exists
+        between that child and yourself? A. Eighteen months after <name ref="#lynesf">Miss
+          Fanny</name> left the <name ref="#parsonsr #parsonse">Parsonses</name>, and in the
+        beginning of the year <date>1762</date>, the noises recommenced, and it is recorded of
+        little <name ref="#parsonse">Miss Parsons</name>, that the child, upon certain knockings and
+        scratchings, which seemed to proceed from beneath her bedstead, was sometimes thrown into
+        violent fits and agitations; and a woman attendant, or the father, <name ref="#parsonsr">Mr.
+          Parsons</name>, put questions to the <rs ref="spirit">spirit</rs> or <rs ref="ghost"
+          >ghost</rs>, as it was supposed by the credulous to be, and they had also dictated how
+        many knocks should serve for an answer, either in the affirmative or negative. Now this
+        plan, invented by little <name ref="parsonse">Miss Parsons</name>, differs in no material
+        respect from my own. Q. What was the object of <name ref="#parsonse">Miss Parsons</name> and
+        her friends? A. The <rs ref="ghost">ghost</rs> declared itself to be the <rs ref="ghost"
+          >ghost</rs> of the deceased <name ref="#lynesf">Miss Fanny</name>, and its business was to
+        accuse the gentleman of having <interp>poisoned her by giving to her arsenic in a glass of
+          purl</interp> when she was ill of small-pox. Q. Was not that very wicked? A. It was very
+        capitally done. Little <name ref="#parsonse">Miss Parsons</name> was removed from house to
+        house, but the noises followed her, the <rs ref="ghost">ghost</rs> protesting that she would
+        follow her wherever she went, and the exhibition was exceedingly attractive; for,as it is
+        said in the Annual Register,<q>numbers of persons of fortune and character, and several
+          clergymen, assisted at the vagaries of the invisible knocker and scratcher.</q> Q. Were
+        the pretensions of this girl seriously tested? A. Yes, they were, she was tied up in a
+        hammock with her feet and hands bound apart from one another, but the <rs ref="ghost"
+          >ghost</rs> refused then to make its knockings audible. The <rs ref="spirit">spirit</rs>
+        had also promised by an affirmative knock, that it would attend three gentlemen into the
+        vault under St. John’s church, and knock in their presence upon the coffin (<name
+          ref="#lynesf">Miss Fanny’s</name>) wherein lay her body. Q. I think I remember some lines
+        by Churchill on the subject of this expedition to the vault. Can you repeat some of them? A.
+        I can, for I have found them in <rs ref="paper?">the Register</rs>. They begin <q>Dark was
+          the night,</q> and after exactly a hundred lines of exordium by which the expectation of
+        the reader is prepared, they proceed in ten lines more to disclaim all straining after false
+        effect, and then relate in a single couplet the adventure of the descent to the vault:</p>
+      <p><q>Silent all three went in; about All three turn’d silent, and came out.</q></p>
+      <p>Q. What was the end of the story of the <ref
+          source="https://babel.hathitrust.org/cgi/pt?id=njp.32101076875358;view=1up;seq=498">Cock
+          Lane <rs ref="ghost">Ghost</rs></ref>? A. The condemnation of poor Mr. Parsons to the
+        pillory. Q. May you not conclude from this, that <rs ref="rap"><rs ref="spirit"
+          >spirit</rs>-knocking</rs> is unsuited to the genius of this country? A. I do not know.
+        The people pitied <name ref="#parsonsr">Mr. Parsons</name>, and no egg was lifted up against
+        him.</p>
+      <p>The <name ref="#fox">Fox</name> family, by whom this <rs ref="rap">ghostly rapping</rs> was
+        revived in America not many years ago, were so successful in their venture —retiring very
+        soon upon a little independence —that the <rs ref="spirit">spirit</rs> trade, as carried on
+        by them, became at once an established business. A <rs ref="ghost">ghost</rs> in <placeName
+          ref="#rhodeisland">Rhode Island</placeName>, improving upon the practice of his ancestor
+        in <placeName ref="#cocklane">Cock Lane</placeName>, induced a young woman to give a dose of
+        arsenic to her stepbrother. In Oneida County there sprang up an association of persons who
+        had become, as they said, impressed by the intimacy which was springing up between the world
+        of flesh and the world of <rs ref="spirit">spirits</rs>. These people, taking the coarse
+        view of things that superstition favours, believed that we were on the point of realising
+        that state of affairs of which we read in <ref
+          source="http://www.gutenberg.org/cache/epub/8187/pg8187-images.html">Moore’s Loves of the
+          Angels</ref>, or in <ref
+          source="https://www.gutenberg.org/files/23475/23475-h/23475-h.htm#HEAVEN_AND_EARTH_TITLE"
+          >Byron’s Heaven and Earth</ref>. <q><rs ref="spirit">Spirits</rs>,</q> they said, <q>are
+          beginning to have power to form friendships and connexions with mortals,</q> and since, as
+        they declared, it would be wicked to form contracts that might interfere with the rights,
+        and defeat the unknown possible desires, of <rs ref="spirit">spirits</rs>, two hundred men
+        and sixty women—having a few <rs ref="medium">mediums</rs>, no doubt, among their
+        number—abolished marriages. Emboldened by the credulity of thousands who believed in the
+        establishment of a direct communication with the <rs ref="spirit">spirit</rs> world, some
+        blasphemous persons at <placeName ref="#auburn">Auburn</placeName>, in the State of
+          <placeName ref="newyork">New York</placeName>—determined that no dark recess of profanity,
+        out of which gold could be taken, should be left unvisited— published a newspaper, conducted
+        by <rs type="rel">the Apostles and the Prophets, under the direction of the Lord
+          Supreme!</rs> We quote from the prospectus, simply stating that the publication of the
+        newspaper therein announced did really take place, and was, in fact, a very dreary sample of
+        the lucubrations of the Rappers. <q>This publication,</q> the prospectus said, <q>is
+          dictated by <rs ref="spirit">spirits</rs> out of the flesh, and by them edited,
+          superintended, and controlled. Its object is, the disclosure of truth from Heaven, guiding
+          mankind into<pb/> open visions of Paradise; open communication with <rs ref="spirit"
+            >spirits</rs> redeemed; and proper and progressive understanding of the Holy Scriptures,
+          and of the merits of Jesus Christ, from whom they originated in inspiration absolute, and
+          of whom they teach, as the only Saviour of a dissevered and bewildered race. The circle of
+          Apostles and Prophets are its conductors from the interior; holding control over its
+          columns, and permitting no article to find place therein unless originated, dictated, or
+          admitted by them; they acting under the direction of the Lord Supreme. <name>James
+            Congdon</name>, <name>Charles Coventry</name>, <name>Andrew L. Wilson</name>, and
+            <name>Lonson Bush</name> are its publishers and proprietor; they having become, in full
+          confidence of mind, disciples of the Lord, and being present external agents of the circle
+          apostolic and prophetic; acting under the direction, while faithful, as instruments for
+          the distribution of truth.</q></p>
+      <p>The <name ref="#fox">Fox</name> family, of Rochester, U.S., as we have already said, first
+        revived in America the modern variations on the story of the <rs ref="CLghost">Cock Lane <rs
+            ref="ghost">Ghost</rs></rs>. When tested fairly by a perfect stranger, their <rs
+          ref="ghost">ghosts</rs> rapped out nothing but blunders: however, we are not left even to
+        infer the dishonesty of their pretensions; we have clearer evidence, not only of their
+        fraud, but of the way in which they practised it. <name ref="#culvern">Mrs. Norman
+          Culver</name>, a relation of these <name ref="#fox">Foxes</name>, assisted in the
+        depredations upon geese, and shared their secret; but was not so much a wonder of a woman as
+        to keep it. She therefore made a formal deposition, certified by two respectable witnesses,
+        at the town of <placeName ref="#arcadia">Arcadia</placeName>, in the province of <placeName
+          ref="#newyork">New York</placeName>, in which, among other things she said, <q
+          who="#haydenmb">I am, by marriage, a relation of the <name ref="#fox">Fox</name> girls;
+            <rs ref="#fox">their brother</rs> married my husband’s sister. The girls have been a
+          great deal at my house, and for about two years I was a very sincere believer in the <rs
+            ref="rapping">rappings</rs>; but <rs ref="doubt">some things which I saw when I was
+            visiting the girls at Rochester made me suspect that they were deceiving</rs>. I
+          resolved to satisfy myself in some way; and some time afterwards I made a proposition to
+            <name ref="#fox">Catherine</name> to assist her in producing the manifestations. I had a
+          cousin visiting me from Michigan, who was going to consult the <rs ref="spirit"
+            >spirits</rs>, and I told Catherine that if he intended to go to Detroit, it would be a
+          great thing for them to convince him. I also told her that if I could do anything to help
+          her, I would do it cheerfully. I should probably be able to answer all the questions he
+          would ask, and I would do it if she would show me how to <rs ref="rap">make the raps</rs>.
+          She said that as <name ref="#fox">Margaretta</name> was absent, she wanted somebody to
+          help her, and that if I would become a <rs ref="medium">Medium</rs>, she would explain it
+          all to me.</q> Mrs. Culver thus became an accomplice, and after she had assisted a few
+        times in conveying hints that would suffice for the conquest of her sceptical cousin from
+        Detroit, after a brief probation, she was admitted to a full participation in the
+        mysteries.</p>
+      <p>We call particular attention to her story. <q who="culvern"><rs ref="rapping">The
+          raps</rs>,</q> deposed <name ref="#culvern">Mrs. Culver</name>, <q who="culvern">are
+          produced with the toes. All the toes are used. After nearly a week’s practice, with
+          Catherine showing me how, I could produce them perfectly myself. At first it was very hard
+          work to do it. <rs ref="rap">Catherine told me to warm my feet, or put them in warm water,
+            and it would then be easier work to rap; she said that she had sometimes to warm her
+            feet three or four times in the course of an evening. I found that heating my feet did
+            enable me to rap a great deal easier. I have sometimes produced a hundred and fifty raps
+            in succession. I can rap with all the toes on both feet; it is most difficult to rap
+            with the great toe.</rs> Catherine told me how to manage to answer the questions. She
+          said it was generally easy enough to answer right, if the one who asked the questions
+          called the alphabet.</q> And so forth, the rest of the details of trickery being all
+        clumsy and common-place enough.</p>
+      <p>This being the substance of our <rs ref="rapping">readings in the matter of knocking and
+          rapping <rs ref="spirit">spirits</rs></rs>, we paid our visit to the London <rs
+          ref="ghost">ghosts</rs> established in genteel apartments in <placeName ref="r26seymour"
+          >Upper Seymour Street, Portman Square</placeName>, very soon after we accidentally saw the
+        advertisement we have set forth.</p>
+      <p>We were two—<name ref="#brown">Brown</name> and <name ref="#thompson">Thompson</name>. We
+        rapped at the door of the house in which the knocker lived, on a cloudy and warm evening in
+        the beginning of this present November, which month began, as all the country knows, with
+        days unusually dull and close. We do not idly talk about the weather, for it has a definite
+        connection with our story. Having inquired whether Mr. Stone was at home, well knowing that
+        he was—for he had advertised himself to be at home at that hour in the evening to all
+        parties who desired an introduction to the world of <rs ref="spirit">spirits</rs> —and
+        having replied to the question about our names by stating that our calling was <q
+          who="#brown #thompson">in consequence of an advertisement,</q> we were conducted to a
+        drawing-room, in which we found that the maid who preceded us had just lighted the fire.
+          <name ref="#stonegw">Mr. Stone</name> presently appearing, solemn as became a man who knew
+        his lodgings to be <rs ref="haunt">haunted</rs>, pointed courteously to the sticks that had
+        begun to crackle in the grate over the lighted paper, and murmured <q who="#stonegw">We have
+          had no fire here: we did not like to light it, for it is so very warm.</q> Truly no fire
+        was needed, and we have a reason of our own for citing Mr. Stone’s corroboration of the
+        fact.</p>
+      <p>To <name ref="stonegw">Mr. Stone</name>, who <q who="#stonegw">had just returned from the
+          United States</q> with <name ref="haydenm">Mrs. Hayden</name>, for the purpose of
+        demonstrating those wonderful phenomena, which <q who="#stonegw">have created the most
+          intense excitement in all classes or society,</q> we introduced ourselves by saying that
+        we had called in consequence of an<pb/> advertisement; and we sat down before the man who
+        was to bring us to the world of <rs ref="ghost">ghosts</rs>.</p>
+      <p><q who="#stonegw">You are aware,</q> he said, <q who="#stonegw">that I have given a good
+          deal of my attention to electro-biology?</q> We {were} aware. <q who="#stonegw"><rs
+            ref="rapping">I have recently visited <placeName ref="#usa">America</placeName>, where
+            great sensation has been made by manifestations from the world of <rs ref="spirit"
+              >spirits</rs>, made by means of a noise, like rapping. You have perhaps heard of the
+            Rappers?</rs></q> Something; we came there to be informed. <q who="#stonegw">It is very
+          curious,</q> said <name ref="#stonegw">Mr.Stone</name>. <q who="#stonegw">I have examined
+          these manifestations with great industry, and I have arrived at the conviction that they
+          are true, that they cannot be explained by human minds, that they really do emanate from
+          the <rs ref="spirit">spirit</rs> world. The lady whom I have brought with me is decidedly
+          the best <rs ref="medium">Medium</rs> I met with, and I, therefore, thought it well that
+          the phenomena should be investigated in this country.</q> Mr. Stone here pausing and
+        looking into the fire, we inquired what might be the theory of <rs ref="medium"
+        >Mediums</rs>? <q who="#stonegw">It is very singular,</q> said <name ref="#stonegw">Mr.
+          Stone</name>. <q who="#stonegw">There are some persons in whose sphere the <rs
+            ref="spirit">spirits</rs> have more power. The grossness of matter commonly repels them,
+          but there are some people whose nervous systems appear to act—you know how delicate the
+          nervous system is—whose nervous systems appear to act as—we can only suppose, of course,
+          we do not profess to account for these things—as conductors, as magnets, so to speak,
+          whose bodies are surrounded by an atmosphere in which the <rs ref="spirit">spirits</rs>
+          freely move. In the neighbourhood of such a person, <rs ref="spirit">spirits</rs> manifest
+          themselves. Such a person is a <rs ref="medium">Medium</rs>.</q>
+        <q who="#brown #thompson">Your <rs ref="medium">Medium</rs> sits at the table, and the <rs
+            ref="ghost">ghosts</rs> rap on it?</q> we asked. <q who="#stonegw">She must sit near the
+          table,</q> answered <name ref="#stonegw">Mr. Stone</name>, <q who="#stonegw">because—we
+          cannot control or account for it—the <rs ref="spirit">spirits</rs> will not knock beyond
+          her influence. That is the nature and the necessity of the <rs ref="medium">Medium</rs>,
+          but sometimes the <rs ref="spirit">spirits</rs> will perform their promise to follow some
+          person to a distant place and knock.</q> (The <rs ref="ghost">Ghost</rs> of Cock Lane, and
+        the descent into the vault, to witness!) <q who="#stonegw">We were demonstrating the other
+          evening at the house of a distinguished gentleman in the country, when a <rs ref="spirit"
+            >spirit</rs> promised to be present to him in his library at a fixed hour. The gentleman
+          listened, and, being very deaf, heard nothing; but, on holding his ear more attentively,
+          he said that he distinctly thought he caught a rapping. It is very curious that the <rs
+            ref="spirit">spirits</rs> accommodate themselves to deaf people. During the whole of the
+          evening at this gentleman’s, the <rs ref="spirit">spirits</rs> knocked more loudly than
+          usual.</q></p>
+      <p>When Mr. Stone had further talked about distinguished patronage, and about the wonders that
+        had been performed, one of us suggested to him, delicately, as unwilling to hurt his
+        feelings by implying too roughly that a man who trembled on the confines of the other world
+        could think of money, that <q who="#brown #thompson">Of<pb/> course we knew that his time
+          was not wholly given to the public—that there was some honorarium,</q> the reply was
+        prompt. <q who="#stonegw">One guinea each person, or five guineas for a party of ten.</q>
+        This being understood, we felt our way to the inquiry, which we shaped as well as we could,
+          <q who="#brown #thompson">When will the performance begin?</q> The reply being in effect
+          <q who="#stonegw">We take in each party separately,</q> we signified our desire to be
+        taken in as soon as possible.</p>
+      <p>The door into the back drawing-room being then opened, we were introduced to Mr. and Mrs.
+        Hayden, the <rs ref="medium">Medium’s</rs> husband, and the <rs ref="medium">Medium</rs>.
+        Introduction having been promptly made, we were left—we, Messrs. Brown and Thompson—in the
+        lady’s hands. She sat opposite to us on one side of the round table, firm as a rock.</p>
+      <p>The <rs ref="medium">Medium</rs> sat not only opposite to us; but opposite to the fire. It
+        had first occurred to us when we went into that back drawing-room, that the kitchen had come
+        upstairs; there was such an enormous fire in the grate. Though it was so warm out of doors
+        as Mr. Stone remarked, <q who="#stonegw">We did not like to light the fire</q> in the front
+        drawing-room; in the back room the glowing coals were heaped into a red-hot mountain; and
+        the whole atmosphere was feverish. What did <name ref="#fox">Catherine Fox</name> tell <name
+          ref="#culvern">Mrs. Culver</name>? <q who="#culvern"><name ref="#fox">Catherine</name>
+          told me to warm my feet, or put them in warm water, and it would then be easier work <rs
+            ref="rapping">to rap</rs>: she said that she had sometimes to warm her feet three or
+          four times in the course of an evening.</q></p>
+      <p>As we sat in the hot room, with the table between us, opposite to the <rs ref="medium"
+          >Medium</rs> who sat opposite to the fire, we had begun to ponder upon by-gone people, and
+        to think how we could seize <q who="unclear">the vapoury phantoms of futurity</q> by
+        questioning the <rs ref="ghost">ghosts</rs>. <q who="#brown #thompson">Can we call any <rs
+            ref="spirit">spirit</rs>?</q>
+        <q who="#haydenmb">You can speak only with <rs ref="spirit">spirits</rs> in the room; the
+          room is full of <rs ref="spirit">spirits</rs>, and some one <rs ref="spirit">spirit</rs>
+          that is present will often go out, if you wish it, to fetch you another with whom you
+          desire to communicate. If you question one who is here, he will knock, or if you wait,
+          some <rs ref="spirit">spirit</rs> that desires to communicate with one of us wall knock,
+          and call attention to itself.</q>—<q who="#brown #thompson">How did you become a <rs
+            ref="medium">Medium</rs>?</q>
+        <q who="#haydenmb">I did not know what it meant when I used to hear the <rs ref="spirit"
+            >spirits</rs> rapping about me in my bedroom, and following me wherever I went. They
+          knocked so distinctly that my husband—who heard them also, when I was present—once got up
+          and opened the parlour door, thinking that there was somebody who wanted to come in. Then
+          I found out that they were <rs ref="spirit">spirits</rs> who desired to speak, and had no
+          other way at present of communicating with us. If you ask them any question, and they
+          answer yes, they rap; and if they answer no, they are silent. If we use letters of the
+          alphabet, and point to them in succession, they will spell out sentences, and in that way
+          tell what they wish.</q> This was the substance of the account given by the<pb/>
+        <rs ref="medium">Medium</rs>, who added some examples of the care taken of herself by the
+          <rs ref="spirit">spirits</rs>, and of a communication of importance made to her that
+        morning by a deceased child; a story told to us already in the next room by Mr. Stone, whose
+        version had, however, in one point, differed materially from the <rs ref="medium"
+          >Medium’s</rs>.</p>
+      <p>A large card lay before us on the table, upon which were printed in capitals, row after
+        row, the letters of the alphabet, and in a last row the numerals 1, 2, 3, 4, 5, 6, 7, 8, 9,
+        0. There were also pencils with which we might point, and there was paper upon which we
+        might write down the letters as the <rs ref="spirit">spirits</rs> I indicated them, and
+        spell out the messages delivered from the other world.</p>
+      <p>We were quite still. <name ref="#brown">Brown</name> was solemn; <name ref="#thompson"
+          >Thompson</name> looked into vacancy; the <rs ref="medium">Medium</rs> looked down into
+        the table: we were waiting for a communication from any kind <rs ref="ghost">ghost</rs> who
+        would</p>
+      <p><q who="#haydenmb">Be as a presence or a motion—one Among the many there.</q>—<rs ref="rap"
+          >(Rap-tap.)</rs></p>
+      <p><q who="#haydenmb"><rs ref="rapping">There is a rapping!</rs></q> said <name
+          ref="#haydenmb">Mrs. Hayden</name> with an indistinct certainty about the expression of
+        her voice, as though she really fancied that she heard <rs ref="rapping">a rapping</rs>, but
+        might be in error. <q who="#haydenmb #brown #thompson"><rs ref="rap">Who knocks?</rs></q> we
+        desired to know. <q who="#haydenmb">The <rs ref="spirit">spirit</rs></q> said <name
+          ref="#haydenmb">Mrs. Hayden</name>, <q who="#haydenmb">desires to communicate with one of
+          us.</q> Then, talking with her mouth near to the table, as though she were about to sip
+        knowledge from <rs ref="spirit">spirits</rs> in the wood, she asked <q who="#haydenmb">Who
+          do you speak to? Is it to me?</q>
+        <rs ref="rap">(No rapping.)</rs>
+        <q who="#haydenmb">Is it to this gentleman?</q>
+        <rs ref="rap">(No rapping.)</rs>
+        <q who="#haydenmb">Is it to that gentleman.</q>
+        <rs ref="rap">(Rap-tap.)</rs> That gentleman was <name ref="#thompson">Mr. Thompson</name>,
+        who was requested to converse with the <rs ref="spirit">spirit</rs>: it was probably that of
+        a near relative.</p>
+      <p>Says <name ref="#thompson">Thompson</name>, <q who="#thompson">Are you related to
+        me?</q></p>
+      <p><rs ref="rap">Rap-tap.</rs></p>
+      <p><q who="#thompson">What is the relationship between us?</q></p>
+      <p><name ref="#thompson">Thompson</name> is directed to take up the alphabet, begin at A, and
+        point to all the letters in succession. When <name ref="#thompson">Thompson</name> points at
+        M there is a <rs ref="rap">rap-tap</rs>. M is put down by his friend <name ref="#brown"
+          >Brown</name> upon a piece of paper as the first letter of the word, and <name
+          ref="#thompson">Thompson</name> travels through the alphabet again till he is stopped at
+        O, which <name ref="#brown">Brown</name> puts down, while <name ref="#thompson"
+          >Thompson</name> begins again and gets to T, where, being stopped, to save trouble, he
+        says, <q who="#thompson">Is it Mother?</q>
+        <rs ref="rap">Rap-tap</rs>. Mother; very good.</p>
+      <p>But <name ref="#thompson">Thompson</name> does not laugh, for very dear to his heart is the
+        thought of a mother who has been known to him from early childhood only as <rs ref="rel">an
+          angel</rs>. Surely she would speak to her soul, if she had power, though she has been
+        parted from him for so many years. What starlight musings of the boy who thought that
+        guardian angels lived in stars, and looked up at the sky for hours, to dream which was the
+        bright particular star in which his angel dwelt; what yearnings of the youth for a mother’s
+        sympathy and guidance when all passions and affections were astir; what sacred mysteries
+        belonging to the inmost thoughts of a whole life, so far as it has gone, were touched by the
+        assertions that the <rs ref="spirit">spirit</rs> of the lost mother was first to speak.
+        Truly then, if there were truth in Rapping, and if that <rs ref="spirit">spirit</rs> had
+        addressed her son, she would have spoken not in vain.</p>
+      <p><q>Have you anything to say to me?</q> asked <name ref="#thompson">Thompson</name>. <rs
+          ref="rap">Rap-tap</rs>. <q who="#thompson">Will you say it?</q> Then, by the most tedious
+        process of getting each letter in succession knocked out of the card, and with a few
+        mistakes in spelling, which were corrected as they were made, but which consumed time, <rs
+          ref="rap">the <rs ref="spirit">spirit</rs> rapped out this sentence</rs>: <q who="spirit"
+          >Dear son, I am well pleased to see you. I watch over you and God blesses you.</q>
+        Satisfactory, no doubt. A kind of sentence that might be regarded by any reasonable person
+        as a sure proof of the <rs ref="ghost">ghost’s</rs> authenticity. But would she in the next
+        place authenticate her claim to be the mother of <name ref="#thompson">Thompson</name>?
+        Would she convince her son by telling him her Christian name? <name ref="#thompson"
+          >Thompson</name> began the alphabet with an inscrutable face: but the light from the fire
+        and window, although good enough for a <rs ref="ghost">ghost</rs>, or for a common purpose,
+        was not good for a <rs ref="medium">Medium</rs>. The <rs ref="spirit">spirit</rs> rapped at
+        T (wrong), at I (wrong), at M (wrong); finally made out Timok—truly an odd Christian name
+        for an English lady; and having, in this instance, the curious peculiarity that it did not
+        contain a single letter of the name that should have been communicated. But Timok might be
+        something mystic. The <rs ref="medium">Medium</rs> said it was not mystic but mistake, and
+        complained of the bad light. <rs ref="spirit">Spirits</rs>, perhaps, are forbidden,
+        spectacles. No more must be done until a lamp was lighted.</p>
+      <p>Then it was again distinctly intimated to the professed <rs ref="spirit">spirit</rs> of <rs
+          ref="#thompsonmother"><name ref="#thompson">Thompson’s</name> mother</rs>, who had sought
+        this conversation, that nothing mystical was wanted, only the Christian name she had before
+        she died—<q who="#haydenmb">Went into the <rs ref="spirit">spirit</rs> world,</q> said the
+          <rs ref="medium">Medium</rs>, <q who="#haydenmb">the <rs ref="spirit">spirits</rs> never
+          talk of death.</q>—<q who="#thompson">Before you went into the <rs ref="spirit"
+            >spirit</rs> world. Do you remember what that name was?</q>
+        <rs ref="rap">Rap-tap.</rs>
+        <q who="#thompson">Will you tell it me?</q> Rap-tap. <q who="#thompson">Do so then, now, if
+          you please.</q> So again came the answer knocked up from the alphabet, this time,
+        E-U-N-I-C-E—of course, ridiculously wrong—but, as Eunice means <q>a happy victory,</q> and
+        it might be again said that the <rs ref="spirit">spirit</rs> was mystical, <name
+          ref="#thompson">Thompson</name> said, <q who="#thompson">We will presume that there may be
+          some hidden meaning.</q>
+        <q who="#haydenmb">Hidden meaning, you think?</q> said <name ref="#haydenmb">Mrs.
+          Hayden</name>, listlessly, as though the <rs ref="spirit">spirits</rs> and their sayings
+        were rather affairs of ours, than others. <q who="#haydenmb">Shall we try again for the real
+          name?</q>
+        <q who="#thompson">No,</q> said Thompson, <q who="#thompson">it is not worth while; I will
+          be satisfied with the first letter of it.</q> It was then most elaborately defined to the
+          <rs ref="ghost">ghost</rs>, with almost legal periphrasis, what was required, and the <rs
+          ref="ghost">ghost</rs> by rap-taps declared itself perfectly clear in its mind, and ready
+        to oblige. <q who="#haydenmb">So <pb/>now for the initial of your Christian name in this
+          world?</q>—T. <q who="#haydenmb">Is that right?</q> asked the <rs ref="medium"
+        >Medium</rs>. <name ref="#thompson">Thompson</name> said no. <q who="#haydenmb">Then we had
+          better try again, there may be some mistake.</q> The <rs ref="medium">Medium</rs>
+        explained the matter in her own way to the table, and trying again, was again quite wrong,
+        and the <rs ref="medium">Medium</rs> proposed to try again. Thompson had no doubt, that in
+        not more than twenty-six trials, and, perhaps, in one or two less, the right letter could be
+        hit upon: so declared himself content. He would now be glad if the supposed <rs ref="ghost"
+          >ghost</rs> of his mother would condescend to name the year in which she passed into the
+          <rs ref="spirit">spirit</rs> world. Did she remember it? <rs ref="rap">Rap-tap;</rs> Would
+        she tell it? <rs ref="rap">Rap-tap.</rs> And what year was it? Figures being now touched on
+        the card instead of letters, <rs ref="rap">there was a tap at one, a tap at eight, a tap at
+          four (wrong, it should have been at two), and a last tap at nine, which the <rs
+            ref="spirit">spirit</rs> recanted by refusing to ratify the whole number when asked at
+          the end whether it was what she meant</rs>. The <rs ref="medium">Medium</rs> probably
+        caught a smile on <name ref="#thompson">Thompson’s</name> face, and reserved to herself the
+        advantage of another guess; she then settled upon the year 1846, which was by more than
+        twenty years a blunder. <name ref="#thompson">Thompson</name> then ceased from his
+        inquiries, and we all proposed to wait and try the powers of another <rs ref="spirit"
+          >spirit</rs>.</p>
+      <p>After the usual solemnities, there was <rs ref="rap">a rapid rat-tat-tat-tat</rs>. <q
+          who="#brown">What does that mean?</q> asked Brown. The <rs ref="medium">Medium</rs>
+        explained that <rs ref="rap">no two <rs ref="spirit">spirits</rs> have the same rap</rs>,
+        and that by familiarity you know the rap of any <rs ref="spirit">spirit</rs> as distinctly
+        as you know a voice. That <rs ref="spirit">spirits</rs> rapped according to their
+        temperaments; those of nervous people tapping quickly, of quiet people almost inaudibly, and
+        so on. <q who="#brown">Well, who is this?</q> asked Brown, and it turned out to be a
+        repetition upon Brown of the dull guesses we had just gone through in the case of Thompson.
+        It was the <rs ref="spirit">spirit</rs> of his mother. (Brown’s mother, he is happy to
+        observe here, is alive and well.) Had this <rs ref="spirit">spirit</rs> of the
+        dead-and-alive anything to say? Yes. A dead-and-alive <rs ref="ghost">ghost</rs> was the
+        properest for the occasion. The most interminable game at beggar-my-neighbour is not half So
+        dull and stupid as the knocking out of long and foolish sentences from the A. B. C. D. card
+        of a Rapper. Brown must have been regarded as a suspicious character by the <rs ref="medium"
+          >Medium</rs>. The <rs ref="ghost">ghost</rs> of the dead-and-alive, <rs ref="rap"
+          >blundering over letters, tapping back; and, leaving, after all, her sentences in a broken
+          down condition</rs>, said to <name ref="#brown">Brown</name>, <q who="#haydenmb">Be
+          candid; investigate; be careful; for this is God’s Work, my son.</q></p>
+      <p>God’s work!</p>
+      <p>The <rs ref="spirit">spirit</rs> then informed <name ref="#brown">Brown</name> by <rs
+          ref="rap">the usual slow process</rs> that his mother’s name was Mary; falling into a trap
+        which <name ref="#brown">Brown</name> had laid, possibly by dwelling with the pencil over M
+        and A and R and Y; also that she had been dead six years — all wrong.</p>
+      <p><q who="#brown">I wish,</q> said <name ref="#brown">Brown</name>, <q who="#brown">to ask
+          some questions concerning the future; can the <rs ref="spirit">spirits</rs> answer them
+          without your knowing what they are?</q>
+        <q who="#haydenmb">If they cannot, they will be speculated again unluckily upon M. That
+          silent,</q> said the <rs ref="medium">Medium</rs>, <q who="#haydenmb">sometimes they do
+          so. Try.</q> — <q who="#brown">As they are questions which I should not like to ask in
+          public. Will they see them written on paper?</q></p>
+      <p><q who="#haydenmb">O yes.</q>—Brown wrote down very clearly: ‘Shall I soon be married?’ <q
+          who="#brown #haydenmb">Will the <rs ref="spirit">spirits</rs> answer this question?</q>
+        <rs ref="rap">Rat-tat-tat.</rs>
+        <q who="#haydenmb">Is Yes the answer?</q>
+        <rs ref="rap">Rat-tat-tat</rs>. ‘How many children shall I have?’ was written next, <name
+          ref="#brown">Brown</name> saying <q who="#brown">This is a question that must be answered
+          in numbers. Does the <rs ref="spirit">spirit</rs> see it?</q>
+        <rs ref="rap">Rat-tat-tat.</rs>
+        <q who="#brown">Can it answer me?</q>
+        <rs ref="rap">Rat-tat-tat.</rs> And so the <rs ref="spirit">spirit</rs> answered by the
+        usual process, <q who="spirit">One Hundred and Thirty-Six.</q> When the 1 was obtained, and
+        then 1 then 3 to go next to it, and then the 6 to go after that, the rapid growth of <rs
+          ref="#brown">Brown’s family</rs> amused <name ref="#thompson">Thompson</name>, and the
+        imminent carrying on of the sum into thousands was prevented by his ill-timed mirth. The
+        production of children by <name ref="#brown">Brown</name> stopped therefore prematurely at
+        the number of one hundred and thirty-six.</p>
+      <p>The <rs ref="medium">Medium</rs>, who always asked whether the answers fitted, and who did
+        not clearly know whether she might not be succeeding vastly, although she evidently felt a
+        little puzzled by the sense that she was not doing so well as might be expected, was now
+        re-assured by the reverent tone in which the too explosive Thompson asked whether the <rs
+          ref="spirit">spirit</rs> of his sister were in the room. His only sister being in vigorous
+        health, he did not expect her <rs ref="ghost">ghost</rs>; but it was there, and very prompt
+        to answer him. How long had she been dead? Two years.</p>
+      <p>So the dreary labour was continued; but we cannot fatigue our readers with the whole
+        monotony of a sitting that was not enlivened by one happy guess. After two hours in the
+        presence of the <rs ref="medium">Medium</rs> and the great fire, we passed into the front
+        drawing-room again, and paid our money. <name ref="#stonegw">Mr. Stone</name> trusted that
+        we had found the <rs ref="spirit">spirits</rs> answering satisfactorily. It appeared to us
+        rather probable that they did answer very satisfactorily at a guinea a head. Nevertheless we
+        grumbled not, and listened to the further wonders that he had to tell of <rs ref="rap"><rs
+            ref="spirit">spirits</rs> that sometimes not only rapped, but moved heavy furniture
+          about</rs>. He had seen a large loo table, he said, turned topsy turvy by the <rs
+          ref="spirit">spirits</rs>. He told us more, and offered us gratuitously a fresh sitting,
+        if we had not been satisfied with the first. We had seen enough. We asked for printed
+        information, and brought home with us <rs ref="rap">a pamphlet upon <rs ref="spirit"
+            >Spirit</rs> Knocking</rs>, which he recommended to our notice. It had the motto on the
+        cover, <q>Behold, I stand at the door, and knock.</q><rs ref="mis"> Within the pamphlet<pb/>
+          we have since read of a spit that flew up a chimney, of a stirrup-iron that followed a man
+          through a wood, and other miserable nonsense.</rs></p>
+      <p><rs ref="rel">Of the use of Holy Scripture in the writings of these people we abstain from
+          saying much.</rs> We will give, however, from the pamphlet placed in our hands one
+        example. The writer dwells, among other things, upon <rs ref="rel">the account of Peter’s
+          coming after his delivery from prison and knocking at the door of Mary’s house, when his
+          friends within, who would not at first believe the servant’s tidings that Peter stood at
+          the gate, said afterwards ‘It is his angel.’</rs>
+        <q>It is evident from this,</q> argues <rs ref="rap">the Rapper’s pamphlet</rs>, <q>that
+          those who were gathered together praying, thought it possible for an angel to
+        knock,</q>—we will quote no more of the stuff. <rs ref="mis">This miserable delusion</rs>,
+        the <rs ref="ghost">ghost</rs> of a dead <rs ref="ghost">ghost</rs>, <rs ref="mis">this
+          clumsiest of all the cheats</rs> that ever offered folly to be bolted by the greedy
+        appetite of superstition without even the courtesy of cooking it a little, did for a short
+        time turn the heads of thousands in America. <rs ref="pol">But, even in America—the Land of
+          Promise to the Mormons, and to many other sects of fanatics</rs>—<rs ref="rap">the Rappers
+          came at last to he generally understood after Mrs. Culver’s deposition had been
+          published;</rs> the <q>intense excitement in all classes of society</q> died out; and now
+        this <rs ref="ghost">ghost</rs> of the <rs ref="CLghost">Cock Lane <rs ref="ghost"
+            >Ghost</rs></rs>, having been laid a second time, makes a third appearance, more faded
+        than ever, and by advertisement invites <q>the nobility and gentry</q> during the present
+        London season, to be present at its manifestations—<q>God’s work, my son;</q>—nothing of the
+        Treadmill quality in it.</p>
+    </body>
+  </text>
+</TEI>
