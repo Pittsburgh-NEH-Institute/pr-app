@@ -65,7 +65,7 @@ return
 (:these functions do HTML wrapping:)
 declare function hoax:wrapsection($content){
     <section class="container">
-        return $content
+        {$content}
     </section>
 };
 
