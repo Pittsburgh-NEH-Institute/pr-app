@@ -61,5 +61,13 @@ declare function hoax:maplist($docs){
 return
       <li><a href="{$filename}">{$title}</a></li>
 };
+
+(:these functions do HTML wrapping:)
+declare function hoax:wrapsection($content){
+    <section class="container">
+        return $content
+    </section>
+};
+
 let $end := "end of file"
 return $end
