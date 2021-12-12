@@ -7,17 +7,10 @@ declare variable $docs :=collection('/db/apps/pr-app/data/hoax_xml');
 
 <section class="container">
     <ol>
-    {
-        let $listdate := hoax:titlelistdate($docs)
-        return $listdate
-    }
+    {hoax:titlelistdate($docs)}
     </ol>
-
- <ol>
-    {
-        let $listalpha := hoax:titlelistalpha($docs)
-        return $listalpha
-    }
+    <ol>
+    {hoax:titlelistalpha($docs)}
     </ol>
 
 

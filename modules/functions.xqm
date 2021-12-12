@@ -1,32 +1,31 @@
 xquery version "3.1";
+(:module namespace:)
+module namespace hoax="http://obdurodon.org/hoax";
+
+
 (: tei and project namespaces :)
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace hoax="http://obdurodon.org/hoax";
 
 
-(: title formatting :)
-declare function hoax:title($story){
-    let $storytitle := $story//tei:titleStmt/tei:title/text()
-    let $pub := $story//tei:respStmt[1]/tei:name/text()
-    let $date := $story//tei:publicationStmt/tei:date/@when/string(.)
+(: title header :)
+declare function hoax:title($story as document-node()) as element()+ {
+    let $storytitle := $story//tei:titleStmt/tei:title
+    let $pub := $story//tei:respStmt[1]/tei:name
+    let $date as element(tei:date) := $story//tei:publicationStmt/tei:date
   return
-      <div>
-      <h2>{$storytitle}</h2>
-      <h3>{$pub}</h3>
-      <h3>{$date}</h3>
-      </div>
+      $storytitle, $pub, $date
     
 };
 (: create list page for article titles :)
-declare function hoax:titlelistdate($docs){
+declare function hoax:titlelistdate($docs as document-node()+){
     
     for $doc in $docs
-    let $date := $doc//tei:date/@when
-    let $printdate := substring-before($date, '-')
-    let $title := $doc//tei:titleStmt//tei:title
-    let $pubname := $doc//tei:publisher[1] (:this is inelegant cheating on my part, returning to it later:)
-    let $filename := concat(substring-before(tokenize(fn:base-uri($doc), '/')[last()], '.'), ".xml")
-    let $listitem := concat($printdate, ", ", $title, ", ", $pubname)
+    let $date as attribute(when) := $doc//tei:date/@when
+    let $year as xs:string := substring-before($date, '-')
+    let $title as element(tei:title) := $doc//tei:titleStmt//tei:title
+    let $pubnames as xs:string := $doc//tei:publisher => string-join(", ")
+    let $filename as xs:string := concat(substring-before(tokenize(base-uri($doc), '/')[last()], '.'), ".xml")
+    let $listitem as xs:string := string-join(($year,$title,$pubnames), "; ")
     order by $date
     return
           <li><a href="{$filename}">{$listitem}</a></li>
@@ -34,12 +33,12 @@ declare function hoax:titlelistdate($docs){
 declare function hoax:titlelistalpha($docs){
     
     for $doc in $docs
-    let $date := $doc//tei:date/@when
-    let $printdate := substring-before($date, '-')
-    let $title := $doc//tei:titleStmt//tei:title
-    let $pubname := $doc//tei:publisher[1] (:this is inelegant cheating on my part, returning to it later:)
-    let $filename := concat(substring-before(tokenize(fn:base-uri($doc), '/')[last()], '.'), ".xml")
-    let $listitem := concat($title, ", ", $printdate, ", ", $pubname)
+    let $date as attribute(when) := $doc//tei:date/@when
+    let $year as xs:string := substring-before($date, '-')
+    let $title as element(tei:title) := $doc//tei:titleStmt//tei:title
+    let $pubnames as xs:string := $doc//tei:publisher => string-join(", ")
+    let $filename as xs:string := concat(substring-before(tokenize(base-uri($doc), '/')[last()], '.'), ".xml")
+    let $listitem as xs:string := string-join(($title,$pubnames,$year), "; ")
     order by $title
     return
           <li><a href="{$filename}">{$listitem}</a></li>
@@ -68,6 +67,3 @@ declare function hoax:wrapsection($content){
         {$content}
     </section>
 };
-
-let $end := "end of file"
-return $end
