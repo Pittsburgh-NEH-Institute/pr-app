@@ -28,7 +28,10 @@ Type `git` at the command line. If it isn’t installed, accept the prompt to in
 ### Install *vscode* + *existdb-vscode* module
 
 1. Run `brew install --cask vscode` or install from [https://code.visualstudio.com]()
-1. Open Virtual Studio Code + search for existdb-vscode module
+1. For existdb-vscode do *one* of the following:
+    * Open Virtual Studio Code, search for existdb-vscode module, and follow installation instructions
+    * Install from <https://marketplace.visualstudio.com/items?itemName=eXist-db.existdb-vscode&utm_source=VSCode.pro&utm_campaign=AhmadAwais>
+    * Install from <https://github.com/wolfgangmm/existdb-langserver>
 
 ### Install *npm* and *nvm*
 
