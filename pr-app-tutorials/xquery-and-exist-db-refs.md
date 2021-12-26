@@ -9,10 +9,10 @@
 
 ## XQuery, XPath, and eXist-db books
 
-* Anderson, Clifford B. and Joseph C. Wicentowski. *XQuery for Humanists*. Texas A&M University Press, 2020. <https://www.tamupress.com/book/9781623498290/xquery-for-humanists/>. Companion web site: <https://xquery.forhumanists.org/>.
-* Kay, Michael. *XSLT 2.0 and XPath 2.0 programmer’s reference.* 4th edition, Indianapolis: Wiley/Wrox, 2008, ISBN-10: 0470192747. ISBN-13: 978-0470192740. Print edition available through Amazon at <https://www.amazon.com/gp/product/0470192747>. (We cannot recommend the Kindle edition because of poor navigation support.) Very clear, detailed explanations wtih examples, although only through XPath 2.0.
+* Anderson, Clifford B. and Joseph C. Wicentowski. *XQuery for humanists*. Texas A&M University Press, 2020. <https://www.tamupress.com/book/9781623498290/xquery-for-humanists/>. Companion web site: <https://xquery.forhumanists.org/>.
+* Kay, Michael. *XSLT 2.0 and XPath 2.0 programmer’s reference.* 4th edition, Indianapolis: Wiley/Wrox, 2008, ISBN-10: 0470192747. ISBN-13: 978-0470192740. Print edition available through Amazon at <https://www.amazon.com/gp/product/0470192747>. (We cannot recommend the Kindle edition because of poor navigation support.) Very clear, detailed explanations with examples, although only through XPath 2.0.
 * Siegel, Erik and Adam Retter. *eXist: A NoSQL document database and application platform.* O'Reilly, 2014. <https://www.oreilly.com/library/view/exist/9781449337094/>. Companion web site: <https://github.com/eXist-book/book-code>
-* Walmsley, Priscilla. *XQuery: Search Across a Variety of XML Data*, Second Edition, O'Reilly, 2015. <https://www.oreilly.com/library/view/xquery-2nd-edition/9781491915080/>
+* Walmsley, Priscilla. *XQuery: search across a variety of XML data*, Second Edition, O'Reilly, 2015. <https://www.oreilly.com/library/view/xquery-2nd-edition/9781491915080/>
 
 ## Articles, tutorials, and software documentation
 
@@ -20,7 +20,7 @@
 
 * eXist-db general <http://exist-db.org/exist/apps/doc/documentation.xml> and function library <http://exist-db.org/exist/apps/fundocs/index.html> documentation 
 * “Production use - proxying eXist-db behind a web server.” Part of eXist-db documentation. <https://www.exist-db.org/exist/apps/doc/production_web_proxying>
-* Retter, Adam. “Using REST with eXist-db.” Presentation given for XQuery / eXist-db Bootcamp for Humanists. CIHAM and HiSOMA, University of Lyon - 22 March 2021. <https://slides.com/adamretter/using-rest-with-existdb/>
+* Retter, Adam. “Using REST with eXist-db.” Presentation given for XQuery / eXist-db Bootcamp for humanists. CIHAM and HiSOMA, University of Lyon - 22 March 2021. <https://slides.com/adamretter/using-rest-with-existdb/>
 * Retter, Adam. “XQuery and XML Databases.” 2019-09-19. Part of XML Summer School. <http://static.adamretter.org.uk/xmlss-19.pdf>
 * *XQuery wikibook*, <https://en.wikibooks.org/wiki/XQuery>
 
