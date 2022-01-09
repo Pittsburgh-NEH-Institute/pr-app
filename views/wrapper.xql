@@ -3,7 +3,7 @@ xquery version "3.1";
 import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
 declare namespace tei="http://www.tei-c.org/ns/1.0"; 
 
-declare variable $textplaceholder := 'this is where the content goes';
+declare variable $text := request:get-data();
      
      <html>
             <head>
@@ -47,8 +47,7 @@ declare variable $textplaceholder := 'this is where the content goes';
        </section> 
 
        {
-           let $content := hoax:wrapsection($textplaceholder)
-           return $content
+           $text
        }
        
     <section class="container">
