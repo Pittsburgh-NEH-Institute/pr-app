@@ -2,8 +2,9 @@ xquery version "3.1";
 
 import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
 declare namespace tei="http://www.tei-c.org/ns/1.0"; 
+declare default element namespace "http://www.w3.org/1999/xhtml";
 
-declare variable $text := request:get-data();
+declare variable $text := request:get-data(); (:this variable allows the pipeline to work:)
      
      <html>
             <head>
