@@ -11,21 +11,26 @@ declare variable $uri as xs:anyURI := request:get-uri();
 declare variable $context as xs:string := request:get-context-path();
 declare variable $ftcontroller as xs:string := concat($context, $exist:prefix, $exist:controller, '/');
 
-if (not(contains($exist:resource, '.')))
-then
+if ($exist:resource eq '') then
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{concat($exist:controller, '/modules', $exist:path, '.xql')}">
-            <add-parameter name="exist:controller" value="{$exist:controller}"/>
-            <add-parameter name="exist:prefix" value="{$exist:prefix}"/>
-        </forward>
-        <view>
-            (:transformation to html is different for different modules:)
-            <forward url="{concat($exist:controller, '/views/', $exist:path, '-to-html.xql')}"/>
-            <forward url="{concat($exist:controller, '/views/wrapper.xql')}"/>
-        </view>
-        <cache-control cache="no"/>
+        <redirect url="index"/>
     </dispatch>
 else
-    <ignore xmlns="http://exist.sourceforge.net/NS/exist">
-        <cache-control cache="yes"/>
-    </ignore>
+    if (not(contains($exist:resource, '.')))
+    then
+        <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+            <forward url="{concat($exist:controller, '/modules', $exist:path, '.xql')}">
+                <add-parameter name="exist:controller" value="{$exist:controller}"/>
+                <add-parameter name="exist:prefix" value="{$exist:prefix}"/>
+            </forward>
+            <view>
+                (:transformation to html is different for different modules:)
+                <forward url="{concat($exist:controller, '/views/', $exist:path, '-to-html.xql')}"/>
+                <forward url="{concat($exist:controller, '/views/wrapper.xql')}"/>
+            </view>
+            <cache-control cache="no"/>
+        </dispatch>
+    else
+        <ignore xmlns="http://exist.sourceforge.net/NS/exist">
+            <cache-control cache="yes"/>
+        </ignore>
