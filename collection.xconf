@@ -1,11 +1,15 @@
 <collection xmlns="http://exist-db.org/collection-config/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0">
     <index xmlns:xs="http://www.w3.org/2001/XMLSchema">
-        <fulltext default="none" attributes="false"/>
+        <!-- Configure lucene full text index -->
         <lucene>
-        <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
+            <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
             <analyzer id="ws" class="org.apache.lucene.analysis.core.WhitespaceAnalyzer"/>
-          <text qname="tei:body"/>
-          <text qname="tei:placeName"/>
+            <text qname="tei:body"/>
+            <text qname="tei:placeName"/>
+            <text qname="tei:TEI">
+                <field name="publisher" expression="(descendant::tei:publicationStmt/tei:publisher[has-children(.)], '[unknown]')[1]"/>
+                <facet dimension="publisher" expression="descendant::tei:publicationStmt/tei:publisher"/>
+            </text>
         </lucene>
     </index>
 </collection>
