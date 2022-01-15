@@ -3,6 +3,7 @@ declare namespace html="http://www.w3.org/1999/xhtml";
 declare namespace hoax ="http://obdurodon.org/hoax";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare variable $data as document-node() := request:get-data();
+(:request:get-data() is the function which receives whatever the controller forwards, without it you won't be able to forward onto views:)
 (: temporarily ignore $data[1], which is <teiHeader>:)
 declare variable $body as element(tei:body) := $data/descendant::tei:body;
 declare function local:dispatch($node as node()) as item()* {
