@@ -8,6 +8,10 @@ declare namespace html="http://www.w3.org/1999/xhtml";
 
 declare variable $places :=collection('/db/apps/pr-app/data/aux_xml/places.xml');
 
+(:create tei table (tables contain rows that contain cells
+ you can have separate wrappers around head and body
+:)
+
 (: declare function local:dispatch($node as node()) as item()* {
     typeswitch($node)
         case text() return $node

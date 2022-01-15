@@ -7,13 +7,12 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 declare variable $docs :=collection('/db/apps/pr-app/data/hoax_xml');
 
-<section class="container">
-    <ol>
+
+<tei:div>
+    <tei:list>
     {hoax:titlelistdate($docs)}
-    </ol>
-    <ol>
+    </tei:list>
+    <tei:list>
     {hoax:titlelistalpha($docs)}
-    </ol>
-
-
-</section> 
+    </tei:list>
+</tei:div>

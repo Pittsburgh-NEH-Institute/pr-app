@@ -28,7 +28,7 @@ declare function hoax:titlelistdate($docs as document-node()+){
     let $listitem as xs:string := string-join(($year,$title,$pubnames), "; ")
     order by $date
     return
-          <li><a href="{$filename}">{$listitem}</a></li>
+          <tei:item><tei:anchor href="{$filename}">{$listitem}</tei:anchor></tei:item>
 };
 declare function hoax:titlelistalpha($docs){
     
@@ -41,7 +41,7 @@ declare function hoax:titlelistalpha($docs){
     let $listitem as xs:string := string-join(($title,$pubnames,$year), "; ")
     order by $title
     return
-          <li><a href="{$filename}">{$listitem}</a></li>
+          <tei:item><tei:anchor href="{$filename}">{$listitem}</tei:anchor></tei:item>
 };
 
 (: compile map titles and create links. So far, I've been doing this by creating individual xql files for each map. this isn't scalable
@@ -58,7 +58,7 @@ declare function hoax:maplist($docs){
     let $filename := concat(substring-before(tokenize(fn:base-uri($placedoc), '/')[last()], '.'), "-map.xql")
     order by $date
 return
-      <li><a href="{$filename}">{$title}</a></li>
+      <item><anchor xml:id="{$filename}">{$title}</anchor></item>
 };
 
 (:these functions do HTML wrapping:)
