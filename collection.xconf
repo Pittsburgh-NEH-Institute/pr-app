@@ -7,8 +7,11 @@
             <text qname="tei:body"/>
             <text qname="tei:placeName"/>
             <text qname="tei:TEI">
+                <!-- publisher -->
                 <field name="publisher" expression="(descendant::tei:publicationStmt/tei:publisher[has-children(.)], '[unknown]')[1]"/>
                 <facet dimension="publisher" expression="descendant::tei:publicationStmt/tei:publisher"/>
+                <!-- theme -->
+                <field name="theme" expression="descendant::tei:rs/@ref"/>
             </text>
         </lucene>
     </index>
