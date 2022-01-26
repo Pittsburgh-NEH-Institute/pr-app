@@ -1,0 +1,40 @@
+# 2022-01-26 Planning Meeting
+
+## Goals
+- distribute call for applications
+- establish timeline for app development
+- establish timeline for engaging other instructors (April 1)
+- break down documentation tasks into smaller chunks
+
+## What is MVP (minimum viable product)?
+1. Application controller routes URLs for read/ map/ raw_xml/ annotated_guides/ persons/ places/
+1. read/ views include informative/feature-focused markup (look at Mitford)
+1. search interface
+1. landing page
+
+## What are the fast follows (month of March)?
+1. about page
+1. build map/ raw_xml/ annotated_guides/ persons/ places/ features substantially
+1. visualizations
+1. analysis
+1. deploy to hoax.obdurodon.org + documentation
+
+## What is minimum documentation required by April 1?
+1. controller documentation
+1. facets and fields documentation
+1. wireframe.md and photos/mockups
+1. research statement
+1. model/view/controller
+1. project management documentation (meta-metadata)
+
+## Documentation small tasks
+1. Gabi to review previous controller documentation + make a list of goals/anti-goals for the tutorial
+1. David to document facets + fields index initial steps + identify next steps
+1. Gabi to revisit wireframe inspiration sites + discussion notes, summarizing for wireframe.md
+1. Gabi to revisit previous research statement + update for 2022 / theory of edition
+
+begin recording tasks we'd like instructional group to complete during April, May, and June
+
+ 
+
+
