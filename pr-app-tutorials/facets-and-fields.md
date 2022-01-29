@@ -177,7 +177,7 @@ it returns a list of all publishers with the numbers of times their publications
 </facet_test>
 ```
 
-<p style="font-size: smaller; padding: 1em; border: 1px black solid;"><b>Note:</b> In Real Life we would move definite and indefinite articles in publisher names to the end for both sorting and retrieval, so that, for example, “The Weekly Times” would become “Weekly Times, The” and would sort with titles that begin with “w“. We omit that step here so that we can simplify the code and keep our focus specifically on facets.</p>
+**Note:** In Real Life we would move definite and indefinite articles in publisher names to the end for both sorting and retrieval, so that, for example, “The Weekly Times” would become “Weekly Times, The” and would sort with titles that begin with “w“. We omit that step here so that we can simplify the code and keep our focus specifically on facets.
 
 We could have written the following regular FLWOR expression to return essentially the same results:
 
@@ -201,21 +201,21 @@ return
 
 One reason to prefer facets to the regular XQuery FLWOR strategy is that with facets the counts are computed at index time, while with FLWOR they are computed at query time. With a small amount of data the difference will not be noticeable, but computing counts at index time has the same performance advantage as indexing in general: a precomputed value is computed only once and in a context where performance is not critical, and the result can then be retrieved quickly because it does not have to be recomputed each time it is needed.
 
-<p style="font-size: smaller; padding: 1em; border: 1px black solid;"><b>Note:</b> XQuery FLWOR expressions since version 3.0 support a <code>count</code> clause that can be used for counting members of a group, but that feature is not supported by eXist-db.</p>
+**Note:** XQuery FLWOR expressions since version 3.0 support a <code>count</code> clause that can be used for counting members of a group, but that feature is not supported by eXist-db.
 
 Here’s how the facet strategy works:
 
 We can ask about facets in our XQuery only if we first perform a full-text query using `ft:query()`. In this case we ask for all documents that contain the word ‘ghost’ anywhere at all (metadata or main content). Since our index (above) constructs a full-text index on the root `<TEI>` element, we can select a collection of all `<TEI>` elements in the corpus and filter it, using `ft:query()` in a predicate, to keep only those that contain the string ‘ghost’. We bind the result of this query to a variable we call `$hits`.
 
-<div style="font-size: smaller; padding: 0 1em; border: 1px black solid;"><p><b>Note:</b> Because of the way that eXist-db indexed retrieval works, we must specify the documents and the predicate in the same statement. For example, the XPath in the following snippet is informationally identical to that of the version above, and also easier to read because it uses <dfn>convenience variables</dfn>. Unfortunately, it will not quickly or reliably produce correct results in eXist-db because it selects the documents on one line and applies the predicate on a different line:</p>
+**Note:** Because of the way that eXist-db indexed retrieval works, we must specify the documents and the predicate in the same statement. For example, the XPath in the following snippet is informationally identical to that of the version above, and also easier to read because it uses <dfn>convenience variables</dfn>. Unfortunately, it will not quickly or reliably produce correct results in eXist-db because it selects the documents on one line and applies the predicate on a different line:
 
-<pre><code>(: bad code :)
+```xquery
+(: bad code :)
 let $articles as element(tei:TEI)+ := 
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
 let $hits as element(tei:TEI)+ := 
     $articles[ft:query(., 'ghost')]
-</code></pre>
-</div>
+```
 
 Once we have bound the variable `$hits` to the `<TEI>` elements that contain ‘ghost’ we then use the `ft:facets()` function to return the publisher names with their article counts. Note that *we do no explicit counting in our FLWOR*; the counts are created at index time and are available without having to count at query time. The first argument to the function `ft:facets()` is the result of `ft:query()` (in this case the `$hits` variable), the second argument is the name of the `@dimension` we declared for the `publisher` facet in the index (in this case the string `"publisher"`), and the third argument (which is optional) is the maximum number of results to return (in this case, we ask for the first 100 publishers, or all results if there are fewer than 100).
 
