@@ -38,7 +38,7 @@ The following eXist-db *collection.xconf* index file constructs a facet for the 
             </text>
         </lucene>
     </index>
-</collection>%
+</collection>
 ```
 
 The `<text>` elements in our index file instruct eXist-db to construct full-text indexes for `<body>`, `<placeName>`, and the root `<TEI>` element, and the `<facet>` child of the configuration for the `<TEI>` element says that `<TEI>` elements should be retrievable with a facet called `publisher` (the value of the `@dimension` attribute) that refers to the `<publisher>` child of the `<publicationStmt>` element. We illustrate below how configuring a facet for the publisher supports query and retrieval operations.
@@ -236,7 +236,7 @@ This efficiency of using facets to pre-compute counts is enhanced in situations 
         descendant::tei:publicationStmt/tei:date/@when 
         ! substring(., 1, 3) 
         || '0'
-    "/>
+"/>
 ```
 
 This query could be rewritten without facets, but without the funcationality supported by facets it is difficult to perform efficient indexed retrieval based on the first three digits of an attribute value because the string operation would have to be performed at query time before the retrieval could be undertaken. Declaring a facet moves any string (or other) operations into the indexing stage, where they have to be performed only once, and in a context where time is typically less critical than query and retrieval. The results are then available at query time as simple indexed retrieval operations.
