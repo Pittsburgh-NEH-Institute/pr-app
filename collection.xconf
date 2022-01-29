@@ -12,6 +12,9 @@
                 <facet dimension="publisher" expression="descendant::tei:publicationStmt/tei:publisher"/>
                 <!-- theme -->
                 <field name="theme" expression="descendant::tei:rs/@ref"/>
+                <!-- decade: constructed value, relies on date/@when beginning with a year -->
+                <facet dimension="decade" 
+                expression="descendant::tei:publicationStmt/tei:date/@when ! substring(., 1, 3) || '0'"/>
             </text>
         </lucene>
     </index>
