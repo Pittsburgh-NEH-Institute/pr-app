@@ -8,13 +8,19 @@
             <text qname="tei:placeName"/>
             <text qname="tei:TEI">
                 <!-- publisher -->
-                <field name="publisher" expression="(descendant::tei:publicationStmt/tei:publisher[has-children(.)], '[unknown]')[1]"/>
+                <field name="publisher" 
+                    expression="(descendant::tei:publicationStmt/tei:publisher[has-children(.)], '[unknown]')[1]"/>
                 <facet dimension="publisher" expression="descendant::tei:publicationStmt/tei:publisher"/>
                 <!-- theme -->
                 <field name="theme" expression="descendant::tei:rs/@ref"/>
                 <!-- decade: constructed value, relies on date/@when beginning with a year -->
                 <facet dimension="decade" 
-                expression="descendant::tei:publicationStmt/tei:date/@when ! substring(., 1, 3) || '0'"/>
+                    expression="descendant::tei:publicationStmt/tei:date/@when ! substring(., 1, 3) || '0'"/>
+                <!-- year: hierarchical, only year and month-->
+                <facet dimension="publication-date" 
+                    expression="descendant::tei:publicationStmt/tei:date/@when
+                        ! tokenize(., '-')[position() lt 3]" 
+                    hierarchical="yes"/>
             </text>
         </lucene>
     </index>

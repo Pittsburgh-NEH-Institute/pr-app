@@ -13,7 +13,17 @@ Assumptions:
 
 ## Facets
 
-Facets serve two basic purposes in eXist-db: they provide quick and efficient access to counts and the support a relatively simple syntax for compound queries. Any query that uses facets can be rewritten without facets, but where appropriate facets are likely to have two types of advantages:
+The [eXist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?field=all&id=D3.15.73#facets-and-fields) writes that:
+
+>A facet defines a concept or information item by which the indexed items can be grouped. Typical facets would be categories taken from some pre-defined taxonomy, languages, dates, places or names occurring in a text corpus. The goal is to enable users to “drill down” into a potentially large result set by selecting from a list of facets displayed to them. For example, if you shop for a laptop, you are often presented with a list of facets with which you may restrict your result by CPU type, memory or screen size etc. As you select facets, the result set will become smaller and smaller.
+>
+>Facets are always pre-defined at indexing time, so the drill down is very fast. They are meant for refining other queries, the assumption always is that the user selects one or more facets from a list of facet values associated with the current query results.
+
+Facets can be configured as hierarchical, about which the eXist-db documentation writes:
+
+>Hierarchical facets may also hold multiple values, for example if we would like to associate our documents with a subject classification on various levels of granularity (say: science with math and physics as subcategories or humanities with art, sociology and history). This way we enable the user to drill down into broad humanities or science subject first and choose particular topics afterwards.
+
+Facets serve two basic purposes in eXist-db: they provide quick and efficient access to counts and they support a relatively simple syntax for compound queries. Any query that uses facets can be rewritten without facets, but where appropriate facets are likely to have two types of advantages:
 
 1. The syntax of queries that use facets may be simpler than an alternative query without facets.
 2. Queries that use facets may be more performative than an alternative query without facets.
@@ -482,7 +492,7 @@ return
                 }
             })]
         order by $decade
-        return <li>{$decade} ({$publisher-decades($decade)})
+        return <li>{$decade || 's'} ({$publisher-decades($decade)})
             <ul>{
                 for $article as element(tei:TEI) in $publisher-articles-by-decade
                 let $title as element(tei:title) := $article//tei:titleStmt/tei:title
@@ -496,7 +506,7 @@ return
 
 The formatted HTML output looks like:
 
-<img src="facet-output.png" width="50%" style="padding: 1em; border: 1px solid black;"/>
+<img src="facet-output-1.png" width="50%" style="padding: 1em; border: 1px solid black;"/>
 
 Some of the titles are duplicates because multiple articles were published under the same titles, but each entry corresponds to a different document in the corpus.
 
@@ -539,13 +549,135 @@ It is possible to construct a query that returns the same results without facets
 1. Once we become accustomed to the syntax of the third argument to the `ft:query()` function, it can be simpler (easier to read, less error-prone) than constructing predicates because the facet functionality understands where to use `and` and where to use `or`.
 2. Complex predicates in eXist-db require care because not all types of combinations are able to use indexing to optimize retrieval.
 
+### Hierarchical facets
+
+As mentioned above, facets can provide a natural way to support hierarchical exploration, such as by category and then subcategory. If we want to provide an interface into our corpus that lets users locate documents first by year and then by month within the year, we can construct a hierarchical facet to do that. Here is our index configuration file (*collection.xconf*), modified to declare a hierarchical facet for the publication date:
+
+```xml
+<collection xmlns="http://exist-db.org/collection-config/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0">
+    <index xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <lucene>
+            <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
+            <analyzer id="ws" class="org.apache.lucene.analysis.core.WhitespaceAnalyzer"/>
+            <text qname="tei:body"/>
+            <text qname="tei:placeName"/>
+            <text qname="tei:TEI">
+                <!-- publisher -->
+                <facet dimension="publisher"
+                    expression="descendant::tei:publicationStmt/tei:publisher"/>
+                <!-- decade: constructed value, relies on date/@when beginning with a year -->
+                <facet dimension="decade" expression="
+                    descendant::tei:publicationStmt/tei:date/@when 
+                    ! substring(., 1, 3)
+                    || '0'"/>
+                <!-- year: hierarchical, only year and month-->
+                <facet dimension="publication-date" 
+                    expression="descendant::tei:publicationStmt/tei:date/@when
+                        ! tokenize(., '-')[position() lt 3]" 
+                    hierarchical="yes"/>
+            </text>
+        </lucene>
+    </index>
+</collection>
+```
+
+The XPath expression:
+
+```xquery
+descendant::tei:publicationStmt/tei:date/@when
+! tokenize(., '-')[position() lt 3]
+```
+
+finds the ISO date for each article, divides it at hyphens, and retains just the first and second parts (year and month) as a sequence. eXist-db will use this input to construct a facet where the year is the first level of the hierarchy and the year entries are then sub-categorized by month.
+                        
+We can use the new hierarchical facet to deliver an interface like the one above, except that instead of drilling down from publisher to decade, we go from year to month. The eXist-db documentation explains that:
+
+> For hierarchical facets only the top-most facet value in the hierarchy will be returned by default. For example, if you indexed a date facet with separate year, month and day component, a call to `ft:facets($node, "date", ())` will return facet counts for years only. To also get counts for months, you have to call `ft:facets` with a fourth parameter, passing in the year for which sub-facet counts should be retrieved. To get days, you also need to specify month and so on. `ft:facets($node, "date", (), ("2018", "06"))` will thus return facet counts for all days in June 2018.
+
+The following XQuery returns HTML that might be used to display all article titles arranged by date and displayed hierarchically by year and then month:
+
+```xquery
+xquery version "3.1";
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+(: all articles with ‘ghost’ :)
+<ul>{
+let $hits  as element(tei:TEI)+ := 
+    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., 'ghost')]
+(: all years :)
+let $year-facets as map(*) := ft:facets($hits, "publication-date", ())
+let $year-facets-data as element(facet)+ :=
+    map:for-each(
+        $year-facets,
+        function ($year, $count) {
+            <facet>
+                <year>{$year}</year>
+                <count>{$count}</count>
+            ]</facet>
+        })
+for $facet in $year-facets-data
+(: months for a specific year :)
+let $year-month-facets as map(*) := ft:facets($hits, "publication-date", (), ($facet/year))
+order by $facet/year
+return <li>{ (: one <li> per year, with inner <ul> for months :)
+    concat($facet/year, ' (', $facet/count, ')')}
+    <ul>{
+        let $month-facets-data as element(facet)+ := 
+            map:for-each(
+                $year-month-facets,
+                function ($month, $count) {
+                    <facet>
+                        <month>{$month}</month>
+                        <count>{$count}</count>
+                    </facet>  
+                })
+        for $month in $month-facets-data
+        order by $month/month
+        return <li>{ (: one <li> per month, with inner <ul> for titles :)
+            string-join(($facet/year, $month/month, '01'), '-')
+            ! xs:date(.)
+            ! format-date(., '[MNn] [Y]')
+            || ' ('
+            || $month/count
+            || ')'
+        }
+            <ul>{ (: one <li> per title :)
+                for $article in collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[
+                    ft:query(
+                        ., 
+                        'ghost',
+                        map {
+                            "facets" : map {
+                                "publication-date": ($facet/year, $month/month)
+                            }
+                        }
+                    )
+                ]
+                let $title := $article//tei:titleStmt/tei:title
+                order by $title
+                return <li>{$title ! string(.)}</li>
+            }</ul>
+        </li>
+    }</ul>
+</li>
+}</ul>
+```
+
+The formatted HTML output looks like (excerpt only):
+
+<img src="facet-output-2.png" width="65%" style="padding: 1em; border: 1px solid black;"/>
+
 ### Facets conclusion
 
 The primary benefits of using facets are:
 
 1. *Facets provide counts* of the number of matches for each key value and those counts are computed at index time. This is a unique feature; obtaining these counts without facets requires counting at query time, which is less efficient.
 2. *Facets provide intuitive support for compound queries.* This functionality, including indexed retrieval, can be implemented without facets by using range indexes and queries that are attentive to what eXist-db can and cannot optimize. Once we familiarized ourselves with using maps, though, we found the facet approach easier to understand and less prone to error.
+3. *Facets provide intuitive support for hierarchical structures.* This functionality can also be implemented without facets, but the facet approach performs the string surgery (separating out the year and month from the ISO date) during indexing, instead of at query time. This means that it is performed only once, and in a context that is typically less time-critical than interactive search and retrieval.
    
 ## Fields
 
-Do stuff
+The [eXist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?field=all&id=D3.15.73#facets-and-fields) writes that:
+
+>A field contains additional, searchable content attached to an indexed parent node. In many cases fields will contain constructed content which is not directly found in the indexed XML or requires costly computation. For example, determining publication dates or author names for a set of articles may require some pre-processing which may be too expensive at query time. A field allows you to pre-compute those information items at indexing time.
+>
+>Fields can be queried in the same expression as the parent node, resulting in fast response times. Their content can optionally be stored to speed up display or sorting. Fields may also use a different analyzer than the parent node, which allows e.g. multiple languages to be handled separately.
