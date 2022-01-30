@@ -6,7 +6,11 @@
 
 The official eXist-db documentation for full-text indexing is clear, but when we first looked there to begin to learn about facets and fields we found that portion of the documentation too brief to serve as a clear introduction to those features. The purpose of this document is to provide simple examples of why and how to use facets and fields in an eXist-db app. 
 
-Assumptions:
+The difference between facets and fields (which he calls *filters*) is described clearly in Alex Kennedy’s [The definitive guide to the difference between filters and facets](https://www.search.io/blog/the-difference-between-filters-and-facets) (text in square brackets is our own):
+
+>Both exist to serve the same purpose: narrowing down search results by eliminating results or pages that don’t match selected criteria […] For clarity’s sake, we’re going to define them as follows: *filters* [that is, *fields*] exclude results based on **initial criteria and do not change with each search**, while *facets* exclude using the **properties from returned results and do change with each search**.
+
+This tutorial makes the following assumptions:
 
 1. Readers who are not familiar with eXist-db full-text indexing should first read the documentation at <http://exist-db.org/exist/apps/doc/lucene>. 
 2. Because facets and fields use maps, a data structure added to XPath only in version 3.1 (2017), users who are not familiar with maps should first read the Saxonica [Maps in XPath](https://www.saxonica.com/html/documentation11/expressions/xpath30maps.html) introduction to maps. More complete official map documentation is available in the [3.11.1.1 Map Constructors](https://www.w3.org/TR/xpath-31/#id-maps) section of the XPath 3.1 specification.
