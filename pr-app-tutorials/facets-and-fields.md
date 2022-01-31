@@ -622,8 +622,8 @@ for $facet in $year-facets-data
 (: months for a specific year :)
 let $year-month-facets as map(*) := ft:facets($hits, "publication-date", (), ($facet/year))
 order by $facet/year
-return <li>{ (: one <li> per year, with inner <ul> for months :)
-    concat($facet/year, ' (', $facet/count, ')')}
+return (<h2>{ (: one <li> per year, with <ul> for months :)
+    concat($facet/year, ' (', $facet/count, ')')}</h2>,
     <ul>{
         let $month-facets-data as element(facet)+ := 
             map:for-each(
@@ -661,9 +661,7 @@ return <li>{ (: one <li> per year, with inner <ul> for months :)
                 return <li>{$title ! string(.)}</li>
             }</ul>
         </li>
-    }</ul>
-</li>
-}</ul>
+    }</ul>)}</ul>
 ```
 
 The formatted HTML output looks like (excerpt only):
