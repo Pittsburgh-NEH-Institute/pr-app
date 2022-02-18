@@ -686,9 +686,9 @@ The [eXist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?field
 > 
 > Fields can be queried in the same expression as the parent node, resulting in fast response times. Their content can optionally be stored to speed up display or sorting. Fields may also use a different analyzer than the parent node, which allows e.g. multiple languages to be handled separately.
 
-Fields differ from facets with respect to their functionality and their use. The eXist-db documentation describes several contexts in which fields may be useful, but the one we focus on here is that fields, like facets, can hold precomputed values. The benefit of storing precomputed values in fields is that the computation is performed only once, and at indexing time, while otherwise it would have to performed at query time, and therefore separately for each query. Since indexing is typically less time-sensitive than query and retrieval, using fields has the potential of improving query response time. Fields, unlike facets, do not automatically provide precomputed counts and do not inherently support a hierarchical taxonomy. 
+Fields differ from facets with respect to their functionality and their use. The eXist-db documentation describes several contexts in which fields may be useful, but the one we focus on here is that fields, like facets, can hold precomputed values. The benefit of storing precomputed values in fields is that the computation is performed only once, and at indexing time, while otherwise it would have to performed at query time, and therefore separately for each query. Furthermore, indexing is typically less time-sensitive than query and retrieval, which means that using fields has the potential of improving query response time.
 
-(Fields differ from facets also in positive ways, that is, not only with respect to features of facets that they do not support, like counts and hierarchy. Fields allow users to specify datatypes other than the default `xs:string`, they allow conditions with an `@if` attribute, and they make it possible to index the same content with different analyzers. These features are described in the official eXist-db documentation.)
+Fields, unlike facets, do not automatically provide precomputed counts and do not inherently support a hierarchical taxonomy. Fields also differ from facets in positive ways: fields allow users to specify datatypes other than the default `xs:string`, they allow conditions with an `@if` attribute, and they make it possible to index the same content with different analyzers. These features are described in the official eXist-db documentation.
 
 ### Configuring fields
 
@@ -701,29 +701,27 @@ The simplest way to configure a field is to add a `<field>` element to the index
     <lucene>
       <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
       <analyzer id="ws" class="org.apache.lucene.analysis.core.WhitespaceAnalyzer"/>
-        <text qname="tei:body"/>
-        <text qname="tei:placeName"/>
-        <text qname="tei:TEI">
-          <field name="publisher-disartictulated" 
-            expression="descendant::tei:publicationStmt/tei:publisher
-                ! analyze-string(., '^(The|An|A) (.+)')/*
-                  ! (if (. instance of element(fn:match)) then 
-                      concat(fn:group[@nr eq '2'], ', ', fn:group[@nr eq '1'])
-                  else .
-                      )"/>
-            </text>
-        </lucene>
-    </index>
+      <text qname="tei:body"/>
+      <text qname="tei:placeName"/>
+      <text qname="tei:TEI">
+        <field name="publisher-disartictulated" 
+          expression="descendant::tei:publicationStmt/tei:publisher
+            ! analyze-string(., '^(The|An|A) (.+)')/*
+            ! (if (. instance of element(fn:match)) then 
+                concat(fn:group[@nr eq '2'], ', ', fn:group[@nr eq '1'])
+              else .
+                )"/>
+      </text>
+    </lucene>
+  </index>
 </collection>
 ```
 
-The preceding field specification creates a field called `publisher-disarticulated` that removes a leading article from the beginning of a publisher name and moves it to the end after a comma and a space. For example, if the publisher is “The Time” the value of the corresponding`publisher-disarticulated` field is “Times, The”. We could perform this string surgery at query time, but implementing it instead at indexing time means that it has to be performed only once and that the value is available on demand, without having to be generated afresh. We can use a computed field value for either query or rendering, that is, either our query can ask for records with a `publisher-disarticulated` value of “Times, The” or we can select records in another way and render the publisher name as “Times, The” instead of the original “The Times”. (For information about the XPath `analyze-string()` function used above see the [ 5.6.6 fn:analyze-string]([XPath and XQuery Functions and Operators 3.1](https://www.w3.org/TR/xpath-functions-31/#func-analyze-string)) in the W3C []XPath and XQuery Functions and Operators 3.1]([XPath and XQuery Functions and Operators 3.1](https://www.w3.org/TR/xpath-functions-31/)) documentation.)
+The preceding field specification creates a field called `publisher-disarticulated` that removes a leading article from the beginning of a publisher name and moves it to the end after a comma and a space. For example, if the publisher is “The TimesÍ” the value of the corresponding`publisher-disarticulated` field is “Times, The”. We could perform this string surgery at query time, but implementing it instead at indexing time means that it has to be performed only once and that the value is available on demand, without having to be generated afresh. We can use a computed field value for either query or rendering, that is, either our query can ask for records with a `publisher-disarticulated` value of “Times, The” or we can select records in another way and render the publisher name as “Times, The” instead of the original “The Times”. (For information about the XPath `analyze-string()` function used above see the [5.6.6 fn:analyze-string](https://www.w3.org/TR/xpath-functions-31/#func-analyze-string) section of the W3C [XPath and XQuery Functions and Operators 3.1](https://www.w3.org/TR/xpath-functions-31/) documentation.)
 
-## ## User-defined functions in facets and fields
+## User-defined functions in facets and fields
 
-
-
-Both facets and fields can index on computed values, that is, on values that are not represented literally in the source documents. The ability to perform this computation at indexing time, rather than query time, is one of the principal ways in which facets and fields contribute to better response time in eXist-db. The indexed values can be computed by applying only functions available in the standard XPath and XQuery libraries, as is the case with our construction of a facet for decades, above. But it is also possible to invoke user-defined functions when computing facet and field values.
+Both facets and fields can index on computed values, that is, on values that are not represented literally in the source documents. The ability to perform this computation at indexing time, rather than query time, is one of the principal ways in which facets and fields contribute to better response time in eXist-db. The indexed values can be computed by applying only functions available in the standard XPath and XQuery libraries, as is the case with our construction of a facet for decades and a field for disarticulated publisher names, above. But it is also possible to invoke user-defined functions when computing facet and field values.
 
 The eXist-db index configuration file (conventionally called *collection.xconf*) is an XML file that does not directly support the declaration of user-defined functions. It is, however, possible to import functions into the index file by including an element like the following as a child of the `<lucene>` element in the index file:
 
