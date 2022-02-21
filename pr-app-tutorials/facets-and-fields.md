@@ -8,24 +8,26 @@ The official eXist-db documentation for full-text indexing is clear, but when we
 
 The difference between facets and fields is described clearly in Alex Kennedy’s [The definitive guide to the difference between filters and facets](https://www.search.io/blog/the-difference-between-filters-and-facets) (text in square brackets is our own):
 
->Both exist to serve the same purpose: narrowing down search results by eliminating results or pages that don’t match selected criteria […] For clarity’s sake, we’re going to define them as follows: *filters* [that is, *fields*] exclude results based on **initial criteria and do not change with each search**, while *facets* exclude using the **properties from returned results and do change with each search**.
+> Both exist to serve the same purpose: narrowing down search results by eliminating results or pages that don’t match selected criteria […] For clarity’s sake, we’re going to define them as follows: *filters* [that is, *fields*] exclude results based on **initial criteria and do not change with each search**, while *facets* exclude using the **properties from returned results and do change with each search**.
 
 This tutorial makes the following assumptions:
 
 1. Readers who are not familiar with eXist-db full-text indexing should first read the documentation at <http://exist-db.org/exist/apps/doc/lucene>. 
 2. Because facets and fields use maps, a data structure added to XPath only in version 3.1 (2017), users who are not familiar with maps should first read the Saxonica [Maps in XPath](https://www.saxonica.com/html/documentation11/expressions/xpath30maps.html) introduction to maps. More complete official map documentation is available in the [3.11.1.1 Map Constructors](https://www.w3.org/TR/xpath-31/#id-maps) section of the XPath 3.1 specification.
 
+Both facets and fields can index on computed values, which, for reasons described below, can improve response time during query and retrieval. The computation can use the standard XPath and XQuery function libraries, as well as user-defined functions. Below we describe first facets, then fields, and then how to import user-defined functions into an index file so that they can be used when configuring facets and fields.
+
 ## Facets
 
 The [eXist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?field=all&id=D3.15.73#facets-and-fields) writes that:
 
->A facet defines a concept or information item by which the indexed items can be grouped. Typical facets would be categories taken from some pre-defined taxonomy, languages, dates, places or names occurring in a text corpus. The goal is to enable users to “drill down” into a potentially large result set by selecting from a list of facets displayed to them. For example, if you shop for a laptop, you are often presented with a list of facets with which you may restrict your result by CPU type, memory or screen size etc. As you select facets, the result set will become smaller and smaller.
->
->Facets are always pre-defined at indexing time, so the drill down is very fast. They are meant for refining other queries, the assumption always is that the user selects one or more facets from a list of facet values associated with the current query results.
+> A facet defines a concept or information item by which the indexed items can be grouped. Typical facets would be categories taken from some pre-defined taxonomy, languages, dates, places or names occurring in a text corpus. The goal is to enable users to “drill down” into a potentially large result set by selecting from a list of facets displayed to them. For example, if you shop for a laptop, you are often presented with a list of facets with which you may restrict your result by CPU type, memory or screen size etc. As you select facets, the result set will become smaller and smaller.
+> 
+> Facets are always pre-defined at indexing time, so the drill down is very fast. They are meant for refining other queries, the assumption always is that the user selects one or more facets from a list of facet values associated with the current query results.
 
 Facets can be configured as hierarchical, about which the eXist-db documentation writes:
 
->Hierarchical facets may also hold multiple values, for example if we would like to associate our documents with a subject classification on various levels of granularity (say: science with math and physics as subcategories or humanities with art, sociology and history). This way we enable the user to drill down into broad humanities or science subject first and choose particular topics afterwards.
+> Hierarchical facets may also hold multiple values, for example if we would like to associate our documents with a subject classification on various levels of granularity (say: science with math and physics as subcategories or humanities with art, sociology and history). This way we enable the user to drill down into broad humanities or science subject first and choose particular topics afterwards.
 
 Facets serve two basic purposes in eXist-db: they provide quick and efficient access to counts and they support a relatively simple syntax for compound queries. Any query that uses facets can be rewritten without facets, but where appropriate facets are likely to have two types of advantages:
 
@@ -233,7 +235,7 @@ let $hits as element(tei:TEI)+ :=
 
 Once we have bound the variable `$hits` to the `<TEI>` elements that contain ‘ghost’ we then use the `ft:facets()` function to return the publisher names with their article counts. Note that *we do no explicit counting in our FLWOR*; the counts are created at index time and are available without having to count at query time. The first argument to the function `ft:facets()` is the result of `ft:query()` (in this case the `$hits` variable), the second argument is the name of the `@dimension` we declared for the `publisher` facet in the index (in this case the string `"publisher"`), and the third argument (which is optional) is the maximum number of results to return (in this case, we ask for the first 100 publishers, or all results if there are fewer than 100).
 
-The `ft:facets()` function returns a *map*, which is a structure that contains *key:value* pairs. In this case is the *keys* are the string values of each unique `<publisher>` element in the corpus and the associated *values* in the map are the numbers of documents that have each specific publisher. Maps cannot easily be serialized (rendered, printed) directly, and we want to convert the map structure into XML anyway. Furthermore, the entries in the map returned by `ft:facets()` are automatically sorted from highest to lowest counts, which is part of what we want, but the keys with the same count come back in an unpredictable order, and we want to alphabetize them in our output, which means that we need to sort them ourselves. We address these requirements by converting the map to a sequence of XML elements and then sorting the elements, as follows:
+The `ft:facets()` function returns a *map*, which is a structure that contains *key:value* pairs. In this case the *keys* are the string values of each unique `<publisher>` element in the corpus and the associated *values* in the map are the numbers of documents that have each specific publisher. Maps cannot easily be serialized (rendered, printed) directly, and we want to convert the map structure into XML anyway. Furthermore, the entries in the map returned by `ft:facets()` are automatically sorted from highest to lowest counts, which is part of what we want, but the keys with the same count come back in an unpredictable order, and we want to alphabetize them in our output, which means that we need to sort them ourselves. We address these requirements by converting the map to a sequence of XML elements and then sorting the elements, as follows:
 
 1. Use the `map:for-each()` function to loop over the *key: value* pairs.
 2. For each *key: value* pair, bind the key (the name of the publisher) to the variable name `$label` and the value (the number of times that publisher appears in the collection of documents represented by `$hits`) to the variable name `$count`. 
@@ -373,7 +375,7 @@ The following *collection.xconf* file creates facets for `publisher` and `decade
         </lucene>
     </index>
 </collection>
-``` 
+```
 
 The following XQuery returns documents containing the word ‘ghost’ that were published in any of the three best-represented publications, allowing the `publisher` facet (which knows the counts) to tell us what those three are:
 
@@ -593,7 +595,7 @@ descendant::tei:publicationStmt/tei:date/@when
 ```
 
 finds the ISO date for each article, divides it at hyphens, and retains just the first and second parts (year and month) as a sequence. eXist-db will use this input to construct a facet where the year is the first level of the hierarchy and the year entries are then sub-categorized by month.
-                        
+
 We can use the new hierarchical facet to deliver an interface like the one above, except that instead of drilling down from publisher to decade, we go from year to month. The eXist-db documentation explains that:
 
 > For hierarchical facets only the top-most facet value in the hierarchy will be returned by default. For example, if you indexed a date facet with separate year, month and day component, a call to `ft:facets($node, "date", ())` will return facet counts for years only. To also get counts for months, you have to call `ft:facets` with a fourth parameter, passing in the year for which sub-facet counts should be retrieved. To get days, you also need to specify month and so on. `ft:facets($node, "date", (), ("2018", "06"))` will thus return facet counts for all days in June 2018.
@@ -675,11 +677,58 @@ The primary benefits of using facets are:
 1. *Facets provide counts* of the number of matches for each key value and those counts are computed at index time. This is a unique feature; obtaining these counts without facets requires counting at query time, which is less efficient.
 2. *Facets provide intuitive support for compound queries.* This functionality, including indexed retrieval, can be implemented without facets by using range indexes and queries that are attentive to what eXist-db can and cannot optimize. Once we familiarized ourselves with using maps, though, we found the facet approach easier to understand and less prone to error.
 3. *Facets provide intuitive support for hierarchical structures.* This functionality can also be implemented without facets, but the facet approach performs the string surgery (separating out the year and month from the ISO date) during indexing, instead of at query time. This means that it is performed only once, and in a context that is typically less time-critical than interactive search and retrieval.
-   
+
 ## Fields
 
 The [eXist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?field=all&id=D3.15.73#facets-and-fields) writes that:
 
->A field contains additional, searchable content attached to an indexed parent node. In many cases fields will contain constructed content which is not directly found in the indexed XML or requires costly computation. For example, determining publication dates or author names for a set of articles may require some pre-processing which may be too expensive at query time. A field allows you to pre-compute those information items at indexing time.
->
->Fields can be queried in the same expression as the parent node, resulting in fast response times. Their content can optionally be stored to speed up display or sorting. Fields may also use a different analyzer than the parent node, which allows e.g. multiple languages to be handled separately.
+> A field contains additional, searchable content attached to an indexed parent node. In many cases fields will contain constructed content which is not directly found in the indexed XML or requires costly computation. For example, determining publication dates or author names for a set of articles may require some pre-processing which may be too expensive at query time. A field allows you to pre-compute those information items at indexing time.
+> 
+> Fields can be queried in the same expression as the parent node, resulting in fast response times. Their content can optionally be stored to speed up display or sorting. Fields may also use a different analyzer than the parent node, which allows e.g. multiple languages to be handled separately.
+
+Fields differ from facets with respect to their functionality and their use. The eXist-db documentation describes several contexts in which fields may be useful, but the one we focus on here is that fields, like facets, can hold precomputed values. The benefit of storing precomputed values in fields is that the computation is performed only once, and at indexing time, while otherwise it would have to performed at query time, and therefore separately for each query. Furthermore, indexing is typically less time-sensitive than query and retrieval, which means that using fields has the potential of improving query response time.
+
+Fields, unlike facets, do not automatically provide precomputed counts and do not inherently support a hierarchical taxonomy. Fields also differ from facets in positive ways: fields allow users to specify datatypes other than the default `xs:string`, they allow conditions with an `@if` attribute, and they make it possible to index the same content with different analyzers. These features are described in the official eXist-db documentation.
+
+### Configuring fields
+
+The simplest way to configure a field is to add a `<field>` element to the index file, as in:
+
+```xml
+<collection xmlns="http://exist-db.org/collection-config/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0">
+  <index xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- Configure lucene full text index -->
+    <lucene>
+      <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
+      <analyzer id="ws" class="org.apache.lucene.analysis.core.WhitespaceAnalyzer"/>
+      <text qname="tei:body"/>
+      <text qname="tei:placeName"/>
+      <text qname="tei:TEI">
+        <field name="publisher-disartictulated" 
+          expression="descendant::tei:publicationStmt/tei:publisher
+            ! analyze-string(., '^(The|An|A) (.+)')/*
+            ! (if (. instance of element(fn:match)) then 
+                concat(fn:group[@nr eq '2'], ', ', fn:group[@nr eq '1'])
+              else .
+                )"/>
+      </text>
+    </lucene>
+  </index>
+</collection>
+```
+
+The preceding field specification creates a field called `publisher-disarticulated` that removes a leading article from the beginning of a publisher name and moves it to the end after a comma and a space. For example, if the publisher is “The TimesÍ” the value of the corresponding`publisher-disarticulated` field is “Times, The”. We could perform this string surgery at query time, but implementing it instead at indexing time means that it has to be performed only once and that the value is available on demand, without having to be generated afresh. We can use a computed field value for either query or rendering, that is, either our query can ask for records with a `publisher-disarticulated` value of “Times, The” or we can select records in another way and render the publisher name as “Times, The” instead of the original “The Times”. (For information about the XPath `analyze-string()` function used above see the [5.6.6 fn:analyze-string](https://www.w3.org/TR/xpath-functions-31/#func-analyze-string) section of the W3C [XPath and XQuery Functions and Operators 3.1](https://www.w3.org/TR/xpath-functions-31/) documentation.)
+
+## User-defined functions in facets and fields
+
+Both facets and fields can index on computed values, that is, on values that are not represented literally in the source documents. The ability to perform this computation at indexing time, rather than query time, is one of the principal ways in which facets and fields contribute to better response time in eXist-db. The indexed values can be computed by applying only functions available in the standard XPath and XQuery libraries, as is the case with our construction of a facet for decades and a field for disarticulated publisher names, above. But it is also possible to invoke user-defined functions when computing facet and field values.
+
+The eXist-db index configuration file (conventionally called *collection.xconf*) is an XML file that does not directly support the declaration of user-defined functions. It is, however, possible to import functions into the index file by including an element like the following as a child of the `<lucene>` element in the index file:
+
+```xml
+<module uri="http://www.obdurodon.org" at="index-functions.xql" prefix="idx"/>
+```
+
+This element uses the `@uri` attribute to bind a namespace to the functions, the `@prefix` attribute to bind a namespace prefix, and the `@at` attribute to specify the file where the functions are declared.
+
+**GIVE AN EXAMPLE**
