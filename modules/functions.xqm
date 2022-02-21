@@ -1,21 +1,34 @@
 xquery version "3.1";
 (:module namespace:)
 module namespace hoax="http://obdurodon.org/hoax";
+import module namespace test="http://exist-db.org/xquery/xqsuite" at "resource:org/exist/xquery/lib/xqsuite/xqsuite.xql";
 
 
 (: tei and project namespaces :)
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 
-(: title header :)
-declare function hoax:title($story as document-node()) as element()+ {
+(: title header 
+
+%test:arg("story", "<story xmlns='http://www.tei-c.org/ns/1.0'>
+<titleStmt>
+<title>silly title</title>
+<respStmt><name>Gabi</name></respStmt>
+<publicationStmt><date>2022-02-21</date></publicationStmt>
+</titleStmt></story>") %test:assertEquals('silly title', 'Gabi', '2022-02-21'):)
+declare 
+%test:args('/db/apps/pr-app/data/hoax_xml/anotherstockwellghostcase_leader_1857_edited.xml')
+%test:assertEquals('xyz','abc','efg')
+
+function hoax:title($story as document-node()) as element()+ {
     let $storytitle := $story//tei:titleStmt/tei:title
     let $pub := $story//tei:respStmt[1]/tei:name
     let $date as element(tei:date) := $story//tei:publicationStmt/tei:date
   return
-      $storytitle, $pub, $date
+      ($storytitle, $pub, $date)
     
 };
+
 (: create list page for article titles :)
 declare function hoax:titlelistdate($docs as document-node()+){
     
