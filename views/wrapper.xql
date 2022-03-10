@@ -28,17 +28,20 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
            <nav class="navbar navbar-expand-lg navbar-light">
            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                            <a class="nav-link" href="link">title</a>
+                            <a class="nav-link" href="index">Home</a>
                         </li> 
                 <li class="nav-item">
-                            <a class="nav-link" href="link">title</a>
+                            <a class="nav-link" href="titles">Articles guide</a>
                         </li>
                 <li class="nav-item">
-                            <a class="nav-link" href="link">title</a>
+                            <a class="nav-link" href="maps">Maps</a>
                         </li> 
                 <li class="nav-item">
-                            <a class="nav-link" href="link">title</a>
-                        </li> 
+                            <a class="nav-link" href="places">Places</a>
+                        </li>
+                <li class="nav-item">
+                            <a class="nav-link" href="people">People</a>
+                        </li>          
             </ul>  
             <form action="xquery/search.xql" method="get" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="search term" aria-label="Search"/>

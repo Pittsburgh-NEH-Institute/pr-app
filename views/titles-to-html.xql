@@ -22,7 +22,7 @@ declare function local:li($node as element(tei:item)) as element(html:li) {
     <html:li>{local:passthru($node)}</html:li>
 };
 declare function local:a($node as element(tei:anchor)) as element(html:a) {
-    <html:a>{local:passthru($node)}</html:a>
+    <html:a>{local:copy-attributes($node), local:passthru($node)}</html:a>
 };
 declare function local:copy-attributes($node as node()) as attribute()* {
     for $att in $node/@*
