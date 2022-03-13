@@ -5,15 +5,15 @@
 - follow up with accepted participants (not yet completed)
 
 ## David - to do (urgently)
-- process applications
-- follow up with accepted participants
+- process applications x
+- follow up with accepted participants x
 
 ## agenda for planning meeting
 - define and chunk development tasks (done)
 - talk about how to manage releases and versions as a pedagogical tool (ongoing)
 
 ## admin to-do
-- review applications + refer to Ronald
+- review applications + refer to Ronald x
 - write to Hugh about API structure + releases, talk to Ronald too
 - define and chunk documentation tasks (cont.)
 - Talk about XQuery lessons w Emma (and Cliff)
