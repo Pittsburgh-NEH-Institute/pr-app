@@ -81,7 +81,7 @@ These two data points are children of location, as they're hyper close to
                     <place xml:id="mansionhouse" type="building">
                         <placeName>The Lord Mayor's Mansion House</placeName>
                         <location>
-                            <geo> 51.513027 -0.089498 </geo>
+                            <geo>51.513027 -0.089498 </geo>
                         </location>
                     </place>
                     <place xml:id="ealing" type="neighborhood">
