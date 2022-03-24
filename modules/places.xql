@@ -22,27 +22,33 @@ declare variable $gazeteer :=doc('/db/apps/pr-app/data/aux_xml/places.xml');
        (:) default return local:passthru($node)
 }; :)
 
-let $places :=$gazeteer//tei:place
-for $entry in $places
-let $placename := $entry/tei:placeName
-let $geo :=$entry/tei:location/tei:geo
-let $parent := $entry/parent::tei:place/tei:placeName[1]
+let $places as element()+ := $gazeteer//tei:place
+return
+<places xmlns:m="http://www.obdurodon.org/model">
+{
+  for $entry in $places
+    let $placename as element(tei:placeName)+ := $entry/tei:placeName
+    let $geo :=$entry/tei:location/tei:geo
+    let $lat as xs:string := substring-before($geo, " ")
+    let $long as xs:string := substring-after($geo, " ")
+    let $parent as element(tei:placeName)? := $entry/parent::tei:place/tei:placeName[1]
 
-return string-join($placename, ', ') || ' (' || replace($geo, ' ', ', ') || ')'
-|| (if ($parent) then (' is located in ' || $parent) else ())
+    return
+    <placeEntry>
+    {$placename}
+        <geo>
+        <lat>{$lat}</lat>
+        <long>{$long}</long>
+        </geo>
+    <parentPlace>{$parent}</parentPlace>
+    </placeEntry>
+    }
+    </places>
 
-<placeEntry>
-<placeName>Obdurodonia, Homeland of Digital Humanists<placeName>
-<geo>
-<lat>-169.866667</lat>
-<long>-19.05</long>
-</geo>
-<parentPlace>Australia</parentPlace>
-
-</placeEntry>
+(:need to fix the TEI namespace, I think maybe we should just make a namespace for the model?:)
 
 (:flattening TEI XML is a good idea:)
-
+(:(if {$parent} then <parentPlace>{$parent}</parentPlace> else ()):)
 
 
 (:let $placename := $places/tei:placeName/text()
