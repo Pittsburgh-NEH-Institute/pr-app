@@ -21,7 +21,9 @@
                         <surname>Stone</surname>
                         <forename>George W.</forename>
                     </persName>
-                    <bibl>https://tinyurl.com/y9udxbh3</bibl>
+                    <bibl>One can read Stone's work on Electrobiology and spiritualism online.
+                    
+                    https://play.google.com/books/reader?id=k55hAAAAcAAJ&amp;pg=GBS.PA2&amp;hl=en</bibl>
                 </person>
                 <person sex="F" xml:id="haydenmb" role="medium">
                     <persName>
@@ -62,7 +64,12 @@
                         <surname>Fox</surname>
                     </persName>
                 </personGrp>
-                <person xml:id="culvern" role="family"></person>
+                <personGrp xml:id="culvern" role="family">
+                <persName>
+                <surname>Culvern</surname>
+                </persName>
+
+                </personGrp>
             
             <person sex="M" xml:id="brown"  role="reporter">
                 <persName>
@@ -80,13 +87,15 @@
                     <forename>Horatio</forename>
                     <forename>Nelson</forename>
                 </persName>
-                <bibl>https://tinyurl.com/yda4hfuq</bibl>
+                <bibl>Encyclopedia of Nineteenth-Century Photography. United Kingdom, Taylor &amp; Francis, 2013.</bibl>
             </person>
             <person sex="M" xml:id="blackshag" role="ghost">
-                <persName>Black Shag</persName>
+                <persName><surname>Black Shag</surname></persName>
             </person>
             <person sex="M" xml:id="schweim" role="ghost">
-                <persName>Schweim</persName>
+                <persName>
+                <surname>Schweim</surname>
+                </persName>
             </person>
             <person sex="F" xml:id="ccrowe" role="author">
                 <persName>
