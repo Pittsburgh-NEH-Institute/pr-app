@@ -11,41 +11,38 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
                 <title>Hoax</title>
                 
                 <meta charset="UTF-8"/>
-                <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
-                 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
-   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin="">/**/</script>
-                <link rel="stylesheet" type="text/css" href="CSS/hoax.css"/> -->
+                <!-- <link rel="stylesheet" type="text/css" href="CSS/hoax.css"/> -->
                 <link rel="icon" href="typewriter.jpg"/>
             </head>
             <body>
             <section class="container">    
                 <header id="head">
                     <h1>
-                        <a href="link">GHOST HOAXES in 19th-C. BRITISH NEWS MEDIA - A PRACTICE APPLICATION IN DEVELOPMENT</a>
+                        <a href="index">GHOST HOAXES in 19th-C. BRITISH NEWS MEDIA - A PRACTICE APPLICATION IN DEVELOPMENT</a>
                     </h1>
             
         </header>
-           <nav class="navbar navbar-expand-lg navbar-light">
-           <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                            <a class="nav-link" href="index">Home</a>
+           <nav>
+           <ul>
+                <li>
+                            <a href="index">Home</a>
                         </li> 
-                <li class="nav-item">
-                            <a class="nav-link" href="titles">Articles guide</a>
+                <li>
+                            <a href="titles">Articles guide</a>
                         </li>
-                <li class="nav-item">
-                            <a class="nav-link" href="maps">Maps</a>
+                <li>
+                            <a href="maps">Maps</a>
                         </li> 
-                <li class="nav-item">
-                            <a class="nav-link" href="places">Places</a>
+                <li>
+                            <a href="places">Places</a>
                         </li>
-                <li class="nav-item">
-                            <a class="nav-link" href="people">People</a>
+                <li>
+                            <a href="persons">People</a>
                         </li>          
             </ul>  
-            <form action="xquery/search.xql" method="get" class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="search term" aria-label="Search"/>
-      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+            <form action="xquery/search.xql" method="get">
+      <input type="search" placeholder="search term" aria-label="Search"/>
+      <button type="submit">Search</button>
     </form>
         </nav>
        </section> 
