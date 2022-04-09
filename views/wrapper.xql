@@ -2,23 +2,30 @@ xquery version "3.1";
 
 import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
 declare namespace tei="http://www.tei-c.org/ns/1.0"; 
+declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare default element namespace "http://www.w3.org/1999/xhtml";
+
+
+declare option output:method "xhtml";
+declare option output:media-type "application/xhtml+xml";
+declare option output:omit-xml-declaration "no";
+declare option output:html-version "5.0";
+declare option output:indent "no";
+declare option output:include-content-type "no";
 
 declare variable $text := request:get-data(); (:this variable allows the pipeline to work:)
      
      <html>
             <head>
                 <title>Hoax</title>
-                
-                <meta charset="UTF-8"/>
-                <!-- <link rel="stylesheet" type="text/css" href="CSS/hoax.css"/> -->
+                <link rel="stylesheet" type="text/css" href="resources/css/hoax.css"/>
                 <link rel="icon" href="typewriter.jpg"/>
             </head>
             <body>
-            <section class="container">    
-                <header id="head">
+            <section class="nav-menu">    
+                <header >
                     <h1>
-                        <a href="index">GHOST HOAXES in 19th-C. BRITISH NEWS MEDIA - A PRACTICE APPLICATION IN DEVELOPMENT</a>
+                        <a href="index">Hoax: ghosts in 19th-c. British press</a>
                     </h1>
             
         </header>
@@ -51,7 +58,7 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
            $text
        }
        
-    <section class="container">
+    <section class="footer">
     <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
                         <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" height="50px" width="150px"/>
                     </a>
