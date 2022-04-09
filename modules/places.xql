@@ -22,13 +22,14 @@ declare variable $gazeteer :=doc('/db/apps/pr-app/data/aux_xml/places.xml');
        (:) default return local:passthru($node)
 }; :)
 
-let $places as element()+ := $gazeteer//tei:place
+let $places as element(tei:place)+ := $gazeteer//tei:place
 return
 <places xmlns:m="http://www.obdurodon.org/model">
 {
   for $entry in $places
     let $placename as element(tei:placeName)+ := $entry/tei:placeName
     let $geo :=$entry/tei:location/tei:geo
+    (:we could use a field to make shortening these numbers faster:)
     let $lat as xs:string := substring-before($geo, " ")
     let $long as xs:string := substring-after($geo, " ")
     let $parent as element(tei:placeName)? := $entry/parent::tei:place/tei:placeName[1]

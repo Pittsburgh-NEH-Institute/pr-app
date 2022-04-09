@@ -69,9 +69,10 @@ declare function hoax:maplist($docs){
     let $printdate := substring-before($date, '-')
     let $title := concat($placedoc//tei:titleStmt//tei:title, ', ', $printdate)
     let $filename := concat(substring-before(tokenize(fn:base-uri($placedoc), '/')[last()], '.'), "-map.xql")
+    let $linkpath := concat("read?", $filename)
     order by $date
 return
-      <item><anchor xml:id="{$filename}">{$title}</anchor></item>
+      <item><anchor xml:id="{$linkpath}">{$title}</anchor></item>
 };
 
 (:these functions do HTML wrapping:)

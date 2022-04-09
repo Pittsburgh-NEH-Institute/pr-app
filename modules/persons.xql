@@ -15,13 +15,15 @@ let $surname := $person/tei:persName/tei:surname
 let $forename := $person/tei:persName/tei:forename[1]
 let $abt := $person//tei:bibl
 let $job := $person//tei:occupation
-let $gm := $person/@sex/text()
+let $role := $person/@role ! string()
+let $gm := $person/@sex ! string()
 return
 
     <entry>
         <name>{$surname || ', ' || $forename}</name>
         <about>{$abt}</about>
-        <job>{$job} </job>
+        <job>{$job}</job>
+        <role>{$role}</role>
         <gm>{$gm}</gm>
     </entry>
 
