@@ -17,6 +17,7 @@
 - talk about how to manage releases and versions as a pedagogical tool
 - review applications + refer to Ronald
 - write to Hugh
+- XQuery lessons w Emma
 
 ## Goals for Sprint Roku 2022-03-12 @ 2:00 PM
 - titles/ and read/ and index connect to each other as clickable in the application interface

@@ -1,0 +1,22 @@
+# Wins
+- tei.xql works
+- there is some CSS
+- we wrote successful tests
+
+# Gabi to-do
+- model namespace consistency
+- revise titles.xql (buttons for reading view + tei view) and functions.xqm (adding documentation in the xqdoc style)
+- read.xql and typeswitch enhancements
+- continue CSS development
+- revamp our project board in preparation for rest of team joining in
+
+# David to-do
+- figure out how xqdoc works (write to Loren)
+- TF/IDF: do we keep it at all?
+
+# Planning meeting
+- commit to schedule to be shared with Ronald
+
+# 2022-04-23 Sprint Botanist
+- address blockers
+- to do: visualizations and mapping-- these are both good tools for teaching how it all comes together
