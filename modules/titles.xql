@@ -4,6 +4,7 @@ import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functio
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 (:this should be a tei list or set of tei lists and should live in modules/:)
+(:return both, hide one, toggle with CSS/JS? maybe for institute purposes we should use params:)
 
 declare variable $docs :=collection('/db/apps/pr-app/data/hoax_xml');
 
