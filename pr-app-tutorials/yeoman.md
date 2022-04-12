@@ -40,7 +40,6 @@ Complete the instructions in [installs.md]() before continuing below.
 	- *What is the eXist instance's URI?* http://localhost:8080/exist
 	- *What is user-name of the admin user*? admin
 	- *What is the admin user's password?* [hidden]
-1. Edit the generated *build.xml*, e.g., with `atom build.xml`, to remove the 4 `<copy>` lines that use bootstrap; then save and close. Duncan has logged the inclusion of bootstrap references in an empty shell as a bug, and will fix it in the next release.
 1. Build a *.xar* file by typing `ant` at the command line.
 1. Start eXist-db, open a browser, and go to [http://localhost:8080/](). Log in as `admin` (no password, usually).
 Launch Package Manager and upload the regular *.xar* file from your `build` folder (the dev *.xar* can be ignored for now).
