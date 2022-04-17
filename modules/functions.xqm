@@ -5,7 +5,7 @@ module namespace hoax="http://obdurodon.org/hoax";
 (: tei and project namespaces :)
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
-function hoax:title($story as document-node()) as element()+ {
+declare function hoax:title($story as document-node()) as element()+ {
     let $storytitle := $story//tei:titleStmt/tei:title
     let $pub := $story//tei:respStmt[1]/tei:name
     let $date as element(tei:date) := $story//tei:publicationStmt/tei:date
