@@ -2,18 +2,42 @@ xquery version "3.1";
 
 import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace m="http://www.obdurodon.org/model";
 
 (:this should be a tei list or set of tei lists and should live in modules/:)
+(:revisiting april 22 to approach with significantly better MVC implementation:)
 (:return both, hide one, toggle with CSS/JS? maybe for institute purposes we should use params:)
 
 declare variable $docs :=collection('/db/apps/pr-app/data/hoax_xml');
 
+<m:items> {
+for $doc in $docs
+    let $date as attribute(when) := $doc//tei:date/@when
+    let $year as xs:string := substring-before($date, '-')
+    let $title as xs:string := $doc//tei:titleStmt//tei:title/string()
+    let $pubnames as xs:string := $doc//tei:publisher => string-join(", ")
+    let $filename as xs:string := concat(substring-before(tokenize(base-uri($doc), '/')[last()], '.'), ".xml")
+    let $listitem as xs:string := string-join(($year,$title,$pubnames), "; ")
+    order by $date
+    return
+          <m:item>
+            <m:teilink>tei?{$filename}</m:teilink>
+            <m:readlink>read?{$filename}</m:readlink>
+            <m:title>{$title}</m:title>
+            <m:pubnames>{$pubnames}</m:pubnames>
+            <m:date>{$date}</m:date>
+            <m:year>{$year}</m:year> 
+          </m:item>}
 
-<tei:div>
-    <tei:list>
+</m:items>        
+
+(:
+<m:div>
+    <m:list>
     {hoax:titlelistdate($docs)}
-    </tei:list>
-    <tei:list>
+    </m:list>
+    <m:list>
     {hoax:titlelistalpha($docs)}
-    </tei:list>
-</tei:div>
+    </m:list>
+</m:div>
+:)
