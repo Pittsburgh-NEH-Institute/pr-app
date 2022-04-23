@@ -6,6 +6,7 @@
 
 # Gabi to-do
 - write to Elli about joining our next sprint meeting
+- fix stupid iCloud file issues...stop procrastinating this
 - visualizations notes: frequency + hierarchy position of place mentions compared on publication type and name
 - maps (think and perhaps write exploratory code)
 - review svg view-box on course site (http://dh.obdurodon.org/coordinate-tutorial.xhtml and possibly Sara's from this list http://dh.obdurodon.org/#svg)
@@ -14,6 +15,10 @@
 
 # David to-do
 - write to Taylor regarding approved travel messaging on Monday morning + send asap
+    - use Joan's PDF on Fly America
+    - recommend working with a travel agent
+    - travel insurance / refundable tickets
+    - funding ceiling + reach out w/ budget concerns
 - asking eXist-db slack about Lucene wildcard issue
 - search.xql and search-to-html.xql expansion
 - carryover: 
