@@ -45,7 +45,10 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
                         </li>
                 <li>
                             <a href="persons">People</a>
-                        </li>          
+                        </li>  
+                        <li>
+                            <a href="search">Advanced search</a>
+                        </li>        
             </ul>  
             <form action="xquery/search.xql" method="get">
       <input type="search" placeholder="search term" aria-label="Search"/>
