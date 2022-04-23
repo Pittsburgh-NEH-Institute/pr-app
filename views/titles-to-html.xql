@@ -1,8 +1,35 @@
 declare namespace html="http://www.w3.org/1999/xhtml";
 declare namespace hoax ="http://obdurodon.org/hoax";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace m="http://www.obdurodon.org/model";
 declare variable $data as document-node() := request:get-data();
-declare variable $lists as element(tei:div) := $data/descendant::tei:div;
+
+<html:section>
+    <html:ul>
+        {for $entry as element(m:item)+ in $data/descendant::m:item
+            let $teilink := $entry/m:teilink
+            let $title := $entry/m:title
+            return
+                <html:li>
+                    <html:a href="{$teilink}">{$title}</html:a>
+                </html:li>}
+    </html:ul>
+</html:section>        
+
+
+
+
+
+
+
+
+
+
+
+
+
+(:code where model did too much heavy lifting:)
+(:declare variable $lists as element(tei:div) := $data/descendant::tei:div;
 declare function local:dispatch($node as node()) as item()* {
     typeswitch($node)
         case text() return $node
@@ -31,4 +58,4 @@ declare function local:copy-attributes($node as node()) as attribute()* {
 declare function local:passthru($node as node()) as item()* {
     for $child in $node/node() return local:dispatch($child)
 };
-local:dispatch($lists)
+local:dispatch($lists):)
