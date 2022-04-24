@@ -14,17 +14,18 @@
 - finally get all of the bootstrap attributes out! they do not belong here
 
 # David to-do
-- write to Taylor regarding approved travel messaging on Monday morning + send asap
+### New
+- [] write to Taylor regarding approved travel messaging on Monday morning + send asap
     - use Joan's PDF on Fly America
     - recommend working with a travel agent
     - travel insurance / refundable tickets
     - funding ceiling + reach out w/ budget concerns
-- asking eXist-db slack about Lucene wildcard issue
-- search.xql and search-to-html.xql expansion
-- carryover: 
-    - fields part of facets and fields tutorial
-    - generate HTML test results within eXist-db app
-- buy Sipsmith gin
+- [] asking eXist-db slack about Lucene wildcard issue
+- [] search.xql and search-to-html.xql expansion
+- []  buy Sipsmith gin
+### Carryover:
+- [] fields part of facets and fields tutorial
+- [] generate HTML test results within eXist-db app
 
 # Emma to-do
 - write Windows installs.md portion
