@@ -21,6 +21,7 @@ declare option output:media-type "application/xml";
 let $result as element(testsuites) := test:suite(
   inspect:module-functions(xs:anyURI("test-suite.xql"))
 )
-let $store-result as xs:boolean? :=
-  file:serialize($result, '/Users/djb/repos/exist-sandbox/test/xqs/test-results.xml', ())
-return $result
+let $formatted-result as element() :=
+  transform:transform($result, doc('junit-noframes-saxon.xsl'), ())
+
+return $formatted-result
