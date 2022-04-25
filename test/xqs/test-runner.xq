@@ -14,6 +14,13 @@ declare option output:method "xml";
 declare option output:media-type "application/xml";
 
 
-test:suite(
+(: test:suite(
+  inspect:module-functions(xs:anyURI("test-suite.xql"))
+) :)
+
+let $result as element(testsuites) := test:suite(
   inspect:module-functions(xs:anyURI("test-suite.xql"))
 )
+let $store-result as xs:boolean? :=
+  file:serialize($result, '/Users/djb/repos/exist-sandbox/test/xqs/test-results.xml', ())
+return $result
