@@ -1,20 +1,71 @@
+(: =====
+Import functions
+===== :)
 import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
 
+(: =====
+Declare namespaces
+===== :)
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace m="http://www.obdurodon.org/model";
 
-<m:facets>{
-    let $query as element() := <query><wildcard>*</wildcard></query>
-    let $hits as element(tei:TEI)+ := 
-        collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., $query)]
-    let $decade-facets as map(*) := ft:facets($hits, "decade", 100)
-    let $facet-elements := 
-        map:for-each($decade-facets, function($label, $count) {
-            <m:facet>
-                <m:label>{$label}</m:label>
-                <m:count>{$count}</m:count>
-        </m:facet>})
-    for $facet-element in $facet-elements
-    order by $facet-element/m:label
-    return $facet-element
-}</m:facets>
+(: =====
+Retrieve parameters
+===== :)
+declare variable $query-string as xs:string? := 
+    request:get-parameter('text', ());
+declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');
+
+(: =====
+Find all values
+===== :)
+declare variable $hits as element(tei:TEI)+ := 
+    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
+        [ft:query(., $query-string)];
+(: =====
+Retrieve information for faceted searching
+
+All publisher facets (<m:publishers>)
+All decade and year facets (<:decades>, which contain <m:years>)
+All matching titles (TBA)
+===== :)
+
+<m:data>
+    <m:publishers>{
+        let $publisher-facets as map(*) := ft:facets($hits, "publisher", 100)
+        let $publisher-elements := 
+            map:for-each($publisher-facets, function($label, $count) {
+                <m:publisher>
+                    <m:label>{$label}</m:label>
+                    <m:count>{$count}</m:count>
+            </m:publisher>})
+        for $publisher-element in $publisher-elements
+        order by $publisher-element/m:label
+        return $publisher-element
+    }</m:publishers>
+    <m:decades>{
+        let $decade-facets as map(*) := ft:facets($hits, "publication-date", 100)
+        let $decade-elements := 
+            map:for-each($decade-facets, function($label, $count) {
+                <m:decade>
+                    <m:label>{$label}</m:label>
+                    <m:count>{$count}</m:count>
+                    <m:years>{
+                        let $year-facets as map(*) := ft:facets($hits, "publication-date", 100, $label)
+                        let $year-elements :=
+                            map:for-each($year-facets, function($m-label, $m-count) {
+                                <m:year>
+                                    <m:label>{$m-label}</m:label>
+                                    <m:count>{$m-count}</m:count>
+                                </m:year>
+                            })
+                        for $year-element in $year-elements
+                        order by $year-element/m:label
+                        return $year-element
+                    }</m:years>                    
+            </m:decade>})
+        for $decade-element in $decade-elements
+        order by $decade-element/m:label
+        return $decade-element
+    }</m:decades>
+</m:data>
