@@ -545,7 +545,8 @@
     <xsl:param name="value"/>
     <!-- 2022-02-24 djb fix type error -->
     <!-- <xsl:value-of select="format-number($value,'0.000')"/> -->
-    <xsl:value-of select="seconds-from-duration(xs:duration($value))"/>
+    <!-- 2022-02-24 djb modified because cannot convert duration to double -->
+     <xsl:value-of select="$value ! xs:duration(.) ! seconds-from-duration(.)"/>
 </xsl:template>
 
 <xsl:template name="display-percent">

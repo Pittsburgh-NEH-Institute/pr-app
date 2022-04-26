@@ -47,6 +47,16 @@ declare
         hoax:round-geo($input)
     };
 
-
-
-
+(: Test function to move definite and indefinite article to end of string:)
+declare
+    %test:arg('input', 'The Big Sleep')
+    %test:assertEquals('Big Sleep, The')
+    %test:arg('input', 'An Unusual Life')
+    %test:assertEquals('Unusual Life, An')
+    %test:arg('input', 'A Boring Life')
+    %test:assertEquals('Boring Life, A')
+    %test:arg('input', 'Andrea and Andrew')
+    %test:assertEquals('Andrea and Andrew')
+    function tests:test-format-title($input as xs:string) as xs:string {
+        hoax:format-title($input)
+    };

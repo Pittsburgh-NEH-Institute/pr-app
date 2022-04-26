@@ -45,3 +45,10 @@ declare function hoax:round-geo($input as xs:string) as xs:double {
     $input ! number(.) ! format-number(. , '#.00') ! number(.)
 
 };
+
+(: Move definite and indefinite article to end of title for rendering :)
+declare function hoax:format-title($title as xs:string) as xs:string {
+    if (matches($title, '^(The|An|A) '))
+        then replace($title, '^(The|An|A)( )(.+)', '$3, $1')
+        else $title
+};
