@@ -21,7 +21,7 @@ declare function local:publishers($node as element(m:publishers)) as element()+ 
     <html:ul>{local:passthru($node)}</html:ul>
 };
 declare function local:publisher($node as element(m:publisher)) as element(html:li) {
-    <html:li>Placeholder</html:li>
+    <html:li>{local:passthru($node)}</html:li>
 };
 declare function local:decades($node as element(m:decades)) as element()+ {
     <html:h2>Date</html:h2>

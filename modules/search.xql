@@ -1,7 +1,7 @@
 (: =====
 Import functions
 ===== :)
-import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
+import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/index-functions.xqm";
 
 (: =====
 Declare namespaces
@@ -21,7 +21,7 @@ Find all values
 ===== :)
 declare variable $hits as element(tei:TEI)+ := 
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
-        [ft:query(., $query-string, map {"fields": "formatted-date" })];
+        [ft:query(., $query-string)];
 (: =====
 Retrieve information for faceted searching
 
@@ -37,10 +37,11 @@ All matching titles (TBA)
             map:for-each($publisher-facets, function($label, $count) {
                 <m:publisher>
                     <m:label>{$label}</m:label>
+                    <m:formatted-title>{hoax:format-title($label)}</m:formatted-title>
                     <m:count>{$count}</m:count>
             </m:publisher>})
         for $publisher-element in $publisher-elements
-        order by $publisher-element/m:label
+        order by $publisher-element/m:formatted-title
         return $publisher-element
     }</m:publishers>
     <m:decades>{
