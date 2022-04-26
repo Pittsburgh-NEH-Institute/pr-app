@@ -21,7 +21,7 @@ Find all values
 ===== :)
 declare variable $hits as element(tei:TEI)+ := 
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
-        [ft:query(., $query-string)];
+        [ft:query(., $query-string, map {"fields": "formatted-date" })];
 (: =====
 Retrieve information for faceted searching
 

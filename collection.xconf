@@ -8,18 +8,33 @@
             <text qname="tei:body"/>
             <text qname="tei:placeName"/>
             <text qname="tei:TEI">
-                <!-- publisher -->
+                <!-- ==================================================== -->
+                <!-- Publisher                                            -->
+                <!-- ==================================================== -->
                 <facet dimension="publisher"
                     expression="descendant::tei:publicationStmt/tei:publisher"/>
-                <!-- theme -->
+                <!-- ==================================================== -->
+                <!-- Theme                                                -->
+                <!-- ==================================================== -->
                 <field name="theme" expression="descendant::tei:rs/@ref"/>
+                <!-- ==================================================== -->
+                <!-- Publication date                                     -->
+                <!--                                                      -->
+                <!-- Facet "publication-date" is hierarchical:            -->
+                <!--     decade and then ISO YYYY-MM                      -->
+                <!-- Field "formatted-date" is human-readable full date   -->
+                <!-- ==================================================== -->
                 <!-- hierarchical, decade and then year-month -->
                 <facet dimension="publication-date"
                     expression="descendant::tei:publicationStmt/tei:date/@when
                         ! (
                             (substring(., 1, 3) || '0'), 
-                            string(.)
+                            substring(., 1, 7)
                         )" hierarchical="yes"/>
+                <field name="formatted-date" 
+                    expression="descendant::tei:publicationStmt/tei:date/@when
+                    ! xs:date(substring(., 1, 7) || '-01') 
+                    ! format-date(., '[MNn] [D], [Y]')"/>
             </text>
         </lucene>
     </index>
