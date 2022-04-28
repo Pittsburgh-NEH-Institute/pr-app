@@ -23,7 +23,9 @@ declare function local:dispatch($node as node()) as item()* {
 };
 (: General functtions:)
 declare function local:data($node as element(m:data)) as element(html:section) {
-    <html:section>{local:passthru($node)}</html:section>
+    <html:section id="search">{local:passthru($node)}
+    <html:script type="text/javascript" src="resources/js/search.js"></html:script>
+    </html:section>
 };
 declare function local:count($node as element(m:count)) as xs:string {
     concat(' (', $node, ')')

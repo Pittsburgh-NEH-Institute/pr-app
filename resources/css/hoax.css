@@ -50,3 +50,10 @@ pre.tei {
 pre.tei > code {
     white-space: pre;
 }
+#search ul {
+    list-style-type: none;
+    padding-left: 1em;
+}
+#search ul ul {
+    padding-left: 2em;
+}
