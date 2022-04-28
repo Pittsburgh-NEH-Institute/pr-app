@@ -37,11 +37,10 @@ All matching titles (TBA)
             map:for-each($publisher-facets, function($label, $count) {
                 <m:publisher>
                     <m:label>{$label}</m:label>
-                    <m:formatted-title>{hoax:format-title($label)}</m:formatted-title>
                     <m:count>{$count}</m:count>
             </m:publisher>})
         for $publisher-element in $publisher-elements
-        order by $publisher-element/m:formatted-title
+        order by $publisher-element/m:label
         return $publisher-element
     }</m:publishers>
     <m:decades>{

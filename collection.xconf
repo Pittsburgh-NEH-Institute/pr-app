@@ -5,14 +5,19 @@
         <lucene>
             <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
             <analyzer id="ws" class="org.apache.lucene.analysis.core.WhitespaceAnalyzer"/>
+            <module uri="http://obdurodon.org/hoax" prefix="hoax" at="modules/index-functions.xqm"/>
             <text qname="tei:body"/>
             <text qname="tei:placeName"/>
             <text qname="tei:TEI">
                 <!-- ==================================================== -->
                 <!-- Publisher                                            -->
+                <!--                                                      -->
+                <!-- format-title() function moves article to end after   -->
+                <!--     comma                                            -->
                 <!-- ==================================================== -->
                 <facet dimension="publisher"
-                    expression="descendant::tei:publicationStmt/tei:publisher"/>
+                    expression="descendant::tei:publicationStmt/tei:publisher 
+                    ! hoax:format-title(.)"/>
                 <!-- ==================================================== -->
                 <!-- Theme                                                -->
                 <!-- ==================================================== -->
