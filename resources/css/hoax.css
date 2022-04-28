@@ -1,11 +1,11 @@
 /*wrapper-level CSS*/
 body{
     display: flex;
-    flex:inherit;
     flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: stretch;
+    min-height: 99vh;
+}
+main {
+    flex: 1;
 }
 .nav-menu {
     display: flex;
@@ -34,14 +34,17 @@ nav > ul > li {
 }
 nav > form {
     display: flex;
-    justify-content:center; 
-    
 }
-/*footer*/
-.footer {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+/* Styles for footer 
+https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+*/
+footer {
+    display: block;
+}
+footer > hr {
+    border: 0;
+    height: 2px;
+    background-color: lightgray;
 }
 /*pre element containing code child introduces unwanted white space, this corrects it visually */
 pre.tei {
@@ -50,6 +53,7 @@ pre.tei {
 pre.tei > code {
     white-space: pre;
 }
+/* Styles for advanced search page */
 #search ul {
     list-style-type: none;
     padding-left: 1em;
