@@ -2,6 +2,11 @@ declare namespace html="http://www.w3.org/1999/xhtml";
 declare namespace hoax ="http://obdurodon.org/hoax";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace m="http://www.obdurodon.org/model";
+
+declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
+declare option output:method "xml";
+declare option output:indent "no";
+
 declare variable $data as document-node() := request:get-data();
 
 declare function local:dispatch($node as node()) as item()* {
@@ -18,13 +23,22 @@ declare function local:dispatch($node as node()) as item()* {
         case element(m:decade) return local:decade($node)
         case element(m:years) return local:years($node)
         case element(m:year) return local:year($node)
+        (: Articles:)
+        case element(m:articles) return local:articles($node)
+        case element(m:article) return local:article($node)
         (: Default :)
         default return local:passthru($node)
 };
 (: General functtions:)
 declare function local:data($node as element(m:data)) as element(html:section) {
-    <html:section id="search">{local:passthru($node)}
-    <html:script type="text/javascript" src="resources/js/search.js"></html:script>
+    <html:section id="advanced-search">
+        <html:section id="search-widgets">{
+            for $search-area in $node/*[position() lt 3]
+            return local:dispatch($search-area)
+            }
+            <html:script type="text/javascript" src="resources/js/search.js"></html:script>
+        </html:section>
+        <html:section id="search-results">{local:dispatch($node/m:articles)}</html:section>
     </html:section>
 };
 declare function local:count($node as element(m:count)) as xs:string {
@@ -63,6 +77,19 @@ declare function local:years($node as element(m:years)) as element(html:ul) {
 };
 declare function local:year($node as element(m:year)) as element(html:li) {
     <html:li><html:input type="checkbox"/> {local:passthru($node)}</html:li>
+};
+(: =====
+Article list functions
+===== :)
+declare function local:articles($node as element(m:articles)) as element(html:ul) {
+    <html:ul>{local:passthru($node)}</html:ul>
+};
+declare function local:article($node as element(m:article)) as element(html:li) {
+    <html:li>
+        <html:a href="read?title={$node/m:id}"><html:q>{$node/m:title ! string()}</html:q></html:a>
+        (<html:cite> {$node/m:publisher ! string()}</html:cite>,
+        {format-date($node/m:date, '[MNn] [D], [Y]')})      
+    </html:li>
 };
 (:=====
 Main

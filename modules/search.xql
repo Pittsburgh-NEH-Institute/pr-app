@@ -9,6 +9,10 @@ Declare namespaces
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace m="http://www.obdurodon.org/model";
 
+declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
+declare option output:method "xml";
+declare option output:indent "no";
+
 (: =====
 Retrieve parameters
 ===== :)
@@ -17,11 +21,12 @@ declare variable $query-string as xs:string? :=
 declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');
 
 (: =====
-Find all values
+Find all values, retrieve formatted-title field
 ===== :)
+declare variable $fields as map(*) := map { "fields": ("formatted-title")};
 declare variable $hits as element(tei:TEI)+ := 
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
-        [ft:query(., $query-string)];
+        [ft:query(., $query-string, $fields)];
 (: =====
 Retrieve information for faceted searching
 
@@ -68,4 +73,20 @@ All matching titles (TBA)
         order by $publication-date-element/m:label
         return $publication-date-element
     }</m:decades>
-</m:data>
+    <m:articles>
+        { (: article data for list of links :)
+        for $hit in $hits
+        let $id := $hit/@xml:id ! string()
+        let $title := ft:field($hit, "formatted-title")
+        let $publisher := $hit//tei:publicationStmt/tei:publisher ! string()
+        let $date := $hit//tei:publicationStmt/tei:date/@when ! string()
+        order by $title
+        return
+        <m:article>
+            <m:id>{$id}</m:id>
+            <m:title>{$title}</m:title>
+            <m:publisher>{$publisher}</m:publisher>
+            <m:date>{$date}</m:date>
+        </m:article>
+        }</m:articles>
+</m:data> 

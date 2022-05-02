@@ -53,11 +53,16 @@ pre.tei {
 pre.tei > code {
     white-space: pre;
 }
-/* Styles for advanced search page */
-#search ul {
+/* ***
+* Styles for advanced search page 
+*** */
+#search-widgets ul {
     list-style-type: none;
     padding-left: 1em;
 }
 #search ul ul {
     padding-left: 2em;
 }
+#advanced-search {
+    display: flex;
+} 
