@@ -29,7 +29,7 @@ declare function local:dispatch($node as node()) as item()* {
         (: Default :)
         default return local:passthru($node)
 };
-(: General functtions:)
+(: General functions:)
 declare function local:data($node as element(m:data)) as element(html:section) {
     <html:section id="advanced-search">
         <html:section id="search-widgets">{
@@ -38,7 +38,13 @@ declare function local:data($node as element(m:data)) as element(html:section) {
             }
             <html:script type="text/javascript" src="resources/js/search.js"></html:script>
         </html:section>
-        <html:section id="search-results">{local:dispatch($node/m:articles)}</html:section>
+        <html:section id="search-results">
+            <html:h2>Stories</html:h2>
+            {if ($node/m:articles/m:article )
+            then local:dispatch($node/m:articles)
+            else <html:p>No matching articles found</html:p>
+            }
+        </html:section>
     </html:section>
 };
 declare function local:count($node as element(m:count)) as xs:string {
@@ -76,7 +82,7 @@ declare function local:years($node as element(m:years)) as element(html:ul) {
     <html:ul>{local:passthru($node)}</html:ul>
 };
 declare function local:year($node as element(m:year)) as element(html:li) {
-    <html:li><html:input type="checkbox"/> {local:passthru($node)}</html:li>
+    <html:li><html:input type="checkbox"/> {format-date($node/m:label || '-01', '[MNn] [Y]')}</html:li>
 };
 (: =====
 Article list functions

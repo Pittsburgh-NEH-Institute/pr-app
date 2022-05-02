@@ -24,7 +24,7 @@ declare variable $exist:controller := request:get-parameter('exist:controller', 
 Find all values, retrieve formatted-title field
 ===== :)
 declare variable $fields as map(*) := map { "fields": ("formatted-title")};
-declare variable $hits as element(tei:TEI)+ := 
+declare variable $hits as element(tei:TEI)* := 
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
         [ft:query(., $query-string, $fields)];
 (: =====
