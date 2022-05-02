@@ -14,7 +14,8 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher/>
+            <!-- 2022-05-02 djb publisher added from Gale online image, cf. <bibl> below -->
+            <publisher>The Weekly True Sun</publisher>
             <date when="1836-10-08"/>
             <idno>GH-GNCCO-18361008</idno>
          </publicationStmt>
