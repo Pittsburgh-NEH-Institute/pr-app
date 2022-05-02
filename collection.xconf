@@ -17,7 +17,16 @@
                 <!-- ==================================================== -->
                 <facet dimension="publisher"
                     expression="descendant::tei:publicationStmt/tei:publisher 
-                    ! hoax:format-title(.)"/>
+                        ! hoax:format-title(.)"/>
+                <!-- ==================================================== -->
+                <!-- Article title                                        -->
+                <!--                                                      -->
+                <!-- format-title() function, as for publisher, above     -->
+                <!-- ==================================================== -->
+                <field 
+                    name="formatted-title" 
+                    expression="descendant::tei:titleStmt/tei:title 
+                        ! hoax:format-title(.)"/>
                 <!-- ==================================================== -->
                 <!-- Theme                                                -->
                 <!-- ==================================================== -->
