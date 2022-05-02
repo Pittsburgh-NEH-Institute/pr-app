@@ -57,6 +57,8 @@ declare
     %test:assertEquals('Boring Life, A')
     %test:arg('input', 'Andrea and Andrew')
     %test:assertEquals('Andrea and Andrew')
+    %test:arg('input', 'A ghost, a bear, or a devil')
+    %test:assertEquals('Ghost, a bear, or a devil, A')
     function tests:test-format-title($input as xs:string) as xs:string {
         hoax:format-title($input)
     };

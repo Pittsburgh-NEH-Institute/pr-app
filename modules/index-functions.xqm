@@ -50,5 +50,6 @@ declare function hoax:round-geo($input as xs:string) as xs:double {
 declare function hoax:format-title($title as xs:string) as xs:string {
     if (matches($title, '^(The|An|A) '))
         then replace($title, '^(The|An|A)( )(.+)', '$3, $1')
+            ! concat(upper-case(substring(., 1, 1)), substring(., 2))
         else $title
 };
