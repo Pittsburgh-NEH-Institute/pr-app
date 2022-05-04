@@ -88,7 +88,7 @@ Type `git` at the command line. If it isn't installed, type `choco install git`.
 
 ## Install *vscode* + *existdb-vscode* module 
 
-1. Check if vscode is already on your machine by typing 'code --version' at the command line. 
+1. Check if vscode is already on your machine by typing `code --version` at the command line. 
 2. If not, make sure PowerShell has been launched as administrator. 
    - Type `choco install vscode`
 3. For *existdb-vscode*, install from https://marketplace.visualstudio.com/items?itemName=eXist-db.existdb-vscode&utm_source=VSCode.pro&utm_campaign=AhmadAwais
@@ -100,6 +100,8 @@ Type `git` at the command line. If it isn't installed, type `choco install git`.
 3. **Important**: restart PowerShell. 
 4. Install *node* v.14 with `nvm install 14`. The installation will show you the full number of the version (for example, v14.19.1 instead of v14). **Write down the full version number and save it for future use**. 
 5. Activate *node* v.14 with `nvm use 14.19.1` (or the full version number you saved from the previous step).(This command persists only in a single shell, which is what you want, but it means that you have to run again each time you launch a new shell.)
+
+If at any point you have issues using *npm* or *nvm*, check your Program Files for a nodejs directory, then delete the directory. Instructions for this are [here](https://github.com/coreybutler/nvm-windows/issues/191#issuecomment-233779673) in the solution given by the user "pleverett".  
 
 ## Install *yeoman* for eXist-db
 
