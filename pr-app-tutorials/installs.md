@@ -49,3 +49,30 @@ Type `git` at the command line. If it isn’t installed, accept the prompt to in
 ### Create a new app
 
 1. Follow the instructions at [yeoman.md]()
+
+# Required software installs (Windows)
+
+## Synopsis
+
+How to prepare your Windows PC to create an eXist-db app. 
+
+## Installations
+
+1. Install these in the following order. 
+2. Unless otherwise noted, always install packages through running PowerShell as Administrator.
+3. When prompted to upgrade any of these packages except node (but including npm and nvm), accept the prompt.
+
+## Install *Chocolatey*
+
+Read [about Chocolatey](https://chocolatey.org/how-chocolatey-works) and follow the [installation instructions](https://chocolatey.org/install#individual) for individual use.
+
+## Install *eXist-db*
+
+Install current stable version from [http://exist-db.org/exist/apps/homepage/index.html]()
+1. Follow the [installation instructions](https://exist-db.org/exist/apps/doc/basic-installation) on the eXist-db website. (**Important:** Pay attention to the instructions on Java versions). 
+2. You will know that the installation has been successful if, after following all prompts, the eXist-db launcher opens after entering http://localhost:8080/ in your browser. 
+3. If you are having trouble getting eXist-db to run:
+   - Uninstall eXist-db.
+   - Make sure that you have [OpenJDK](http://jdk.java.net/18/) installed.
+   - Reinstall eXist-db and check that it launches successfully. 
+4. If eXist-db still will not run, follow their [troubleshooting instructions](https://exist-db.org/exist/apps/doc/troubleshooting) or [advanced installation guide](https://exist-db.org/exist/apps/doc/advanced-installation).
