@@ -1,26 +1,26 @@
 "use strict";
-/* ***
+/*
  * Manage faceted search interface for pr-app
- * ***/
+ */
 
- /* ***
+ /*
  * Attach event listeners
- * ***/
+ */
 document.addEventListener('DOMContentLoaded', (e) => {
     /* Decade checkboxes listen for change of state */
-    var decades = document.querySelectorAll('#search summary > input');
+    var decades = document.querySelectorAll('#search-widgets summary > input');
     for (var i = 0, length = decades.length; i < length; i++) {
         decades[i].addEventListener('change', toggle_details, false);
     }
-    var years = document.querySelectorAll('#search details > ul > li > input');
+    var years = document.querySelectorAll('#search-widgets details > ul > li > input');
     for (var i = 0, length = years.length; i < length; i++) {
         years[i].addEventListener('change', select_decade_from_year, false);
     }
 },
 false);
-/* ***
+/*
  * Manage accordion
- * ***/
+ */
 function toggle_details() {
     /* Toggle accordion when summary is checked or unchecked */
     if (this.checked) {
@@ -32,9 +32,9 @@ function toggle_details() {
         clear_checked_children(this);
     }
 }
-/* ***
+/*
  * Check parent decade when any child year is checked
- * ***/
+ */
 function select_decade_from_year() {
     if (this.checked) {
         /* Check decade when checking year (harmlessly redundant if already checked)
@@ -46,11 +46,11 @@ function select_decade_from_year() {
     }
 }
 
-/* ***
+/*
  * Clear all checked children
  * Fire click event to clear instead of just unchecking:
  *  https://stackoverflow.com/questions/8206565/check-uncheck-checkbox-with-javascript
- * ***/
+ */
 function clear_checked_children(target) {
     var children = target.parentElement.parentElement.querySelectorAll('input');
     for (var i = 0, length = children.length; i < length; i++) {
