@@ -59,12 +59,17 @@ How to prepare your Windows PC to create an eXist-db app.
 ## Installations
 
 1. Install these in the following order. 
-2. Unless otherwise noted, always install packages through running PowerShell as Administrator.
+2. Unless otherwise noted, always install packages through running Windows PowerShell as Administrator (this is Windows' elevated command prompt).
 3. When prompted to upgrade any of these packages except node (but including npm and nvm), accept the prompt.
 
 ## Install *Chocolatey*
 
 Read [about Chocolatey](https://chocolatey.org/how-chocolatey-works) and follow the [installation instructions](https://chocolatey.org/install#individual) for individual use.
+
+**Before installing *Chocolatey***
+1. Check that you have Windows PowerShell installed by searching for it on the Windows Start menu. If not, [install PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2). Information on PowerShell is available [here](https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.2).
+2. Then, search for PowerShell through the Windows Start menu. Right click on it, then select "Run as administrator." Click "Yes" when asked whether you want to allow PowerShell to make changes to your device. 
+3. Proceed with the *Chocolatey* installation instructions.
 
 ## Install *eXist-db*
 
@@ -76,3 +81,36 @@ Install current stable version from [http://exist-db.org/exist/apps/homepage/ind
    - Make sure that you have [OpenJDK](http://jdk.java.net/18/) installed.
    - Reinstall eXist-db and check that it launches successfully. 
 4. If eXist-db still will not run, follow their [troubleshooting instructions](https://exist-db.org/exist/apps/doc/troubleshooting) or [advanced installation guide](https://exist-db.org/exist/apps/doc/advanced-installation).
+
+## Install *git*
+
+Type `git` at the command line. If it isn't installed, type `choco install git`. This will also install Git Bash. 
+
+## Install *vscode* + *existdb-vscode* module 
+
+1. Check if vscode is already on your machine by typing 'code --version' at the command line. 
+2. If not, make sure PowerShell has been launched as administrator. 
+   - Type `choco install vscode`
+3. For *existdb-vscode*, install from https://marketplace.visualstudio.com/items?itemName=eXist-db.existdb-vscode&utm_source=VSCode.pro&utm_campaign=AhmadAwais
+
+## Install *npm* and *nvm*
+
+1. Install *npm* (node package manager) with `choco install npm`.
+2. Install *nvm* (node version manager) with `choco install nvm`. (Why? nvm lets you install and choose among different node releases, and Yeoman requires node v. 14, which is not the most recent version.)
+3. **Important**: restart PowerShell. 
+4. Install *node* v.14 with `nvm install 14`. The installation will show you the full number of the version (for example, v14.19.1 instead of v14). **Write down the full version number and save it for future use**. 
+5. Activate *node* v.14 with `nvm use 14.19.1` (or the full version number you saved from the previous step).(This command persists only in a single shell, which is what you want, but it means that you have to run again each time you launch a new shell.)
+
+## Install *yeoman* for eXist-db
+
+1. `npm i -g yo`
+2. `npm i -g @existdb/generator-exist`
+
+## Create a new app 
+
+1. Follow the instructions at [yeoman.md](). 
+
+
+
+
+
