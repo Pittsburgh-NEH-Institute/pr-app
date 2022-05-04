@@ -4,7 +4,7 @@
 
 How to prepare your Mac to create an eXist-db app.
 
-**TODO:** Add Windows instructions
+Windows installation instructions appear further down. To go there directly, click [here](https://github.com/Pittsburgh-NEH-Institute/pr-app/blob/main/pr-app-tutorials/installs.md#required-software-installs-windows)
 
 ## Installations
 
