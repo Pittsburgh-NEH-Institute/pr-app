@@ -79,13 +79,21 @@ pre.tei > code {
 Advanced search 
 ========== 
 */
+#advanced-search {
+    display: flex;
+} 
+#advanced-search h2 {
+    text-align: center;
+}
+#search-widgets {
+    width: 25em;
+    border-right: 1px lightgray solid;
+}
 #search-widgets ul {
     list-style-type: none;
-    padding-left: 1em;
+    padding-left: 1.5em;
+    text-indent: -1.5em;
 }
 #search-widgets ul ul {
     padding-left: 2em;
 }
-#advanced-search {
-    display: flex;
-} 

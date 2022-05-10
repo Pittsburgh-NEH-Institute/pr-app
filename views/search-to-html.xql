@@ -47,8 +47,8 @@ declare function local:data($node as element(m:data)) as element(html:section) {
         </html:section>
     </html:section>
 };
-declare function local:count($node as element(m:count)) as xs:string {
-    concat(' (', $node, ')')
+declare function local:count($node as element(m:count)) as item()+ {
+    ' (', <html:span class="current-count">{string($node)}</html:span>, concat('/', $node, ')')
 };
 declare function local:passthru($node as node()) as item()* {
     for $child in $node/node() return local:dispatch($child)
@@ -82,7 +82,10 @@ declare function local:years($node as element(m:years)) as element(html:ul) {
     <html:ul>{local:passthru($node)}</html:ul>
 };
 declare function local:year($node as element(m:year)) as element(html:li) {
-    <html:li><html:input type="checkbox"/> {format-date($node/m:label || '-01', '[MNn] [Y]')}</html:li>
+    <html:li><html:input type="checkbox"/> {
+        format-date($node/m:label || '-01', '[MNn] [Y] '), 
+        local:count($node/m:count)
+    }</html:li>
 };
 (: =====
 Article list functions
