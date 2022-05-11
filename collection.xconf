@@ -37,7 +37,6 @@
                 <!-- Facet "publication-date" is hierarchical:            -->
                 <!--     decade and then ISO YYYY-MM                      -->
                 <!-- Field "formatted-date" is human-readable full date   -->
-                <!-- TODO: Is the field useful?                           -->
                 <!-- ==================================================== -->
                 <!-- hierarchical, decade and then year-month -->
                 <facet dimension="publication-date"
