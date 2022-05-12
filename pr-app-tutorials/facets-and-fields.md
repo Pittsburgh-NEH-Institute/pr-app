@@ -10,12 +10,16 @@ The difference between facets and fields is described clearly in Alex Kennedy’
 
 > Both exist to serve the same purpose: narrowing down search results by eliminating results or pages that don’t match selected criteria […] For clarity’s sake, we’re going to define them as follows: *filters* [that is, *fields*] exclude results based on **initial criteria and do not change with each search**, while *facets* exclude using the **properties from returned results and do change with each search**.
 
+Louise Vollaire’s [Filters vs. facets for site search](https://www.algolia.com/blog/ux/filters-vs-facets-in-site-search/) further explains that:
+
+>Facets, also known as facet filters, allow users to refine their searches by multiple dimensions at the same time […] Unlike filters, facets change based on the search results returned for a given query. [… A] search for women’s shoes shows facets like color, size, and occasion. But when you search for women’s sunglasses, you see facets like shape and material. “Shape” is not an applicable facet for women’s shoes, and “occasion” is not a relevant facet for sunglasses. Instead, the facets are intelligently applied based on the characteristics of the items returned in the search. 
+
 This tutorial makes the following assumptions:
 
-1. Readers who are not familiar with eXist-db full-text indexing should first read the documentation at <http://exist-db.org/exist/apps/doc/lucene>. 
-2. Because facets and fields use maps, a data structure added to XPath only in version 3.1 (2017), users who are not familiar with maps should first read the Saxonica [Maps in XPath](https://www.saxonica.com/html/documentation11/expressions/xpath30maps.html) introduction to maps. More complete official map documentation is available in the [3.11.1.1 Map Constructors](https://www.w3.org/TR/xpath-31/#id-maps) section of the XPath 3.1 specification.
+1. Readers who are not familiar with eXist-db full-text indexing must first read the documentation at <http://exist-db.org/exist/apps/doc/lucene>. 
+2. Because facets and fields use maps, a data structure added to XPath only in version 3.1 (2017), users who are not familiar with maps must first read the Saxonica [Maps in XPath](https://www.saxonica.com/html/documentation11/expressions/xpath30maps.html) introduction to maps. More complete official map documentation is available in the [3.11.1.1 Map Constructors](https://www.w3.org/TR/xpath-31/#id-maps) section of the XPath 3.1 specification.
 
-Both facets and fields can index on computed values, which, for reasons described below, can improve response time during query and retrieval. The computation can use the standard XPath and XQuery function libraries, as well as user-defined functions. Below we describe first facets, then fields, why and how to import user-defined functions into an index file so that they can be used during configuration.
+Both facets and fields can index on computed values, which, for reasons described below, can improve response time during query and retrieval. The computation can use the standard XPath and XQuery function libraries, as well as user-defined functions. Below we describe first facets and then fields, including also information about how to import user-defined functions into an index file so that they can be used during configuration.
 
 ## Facets
 
@@ -297,7 +301,7 @@ Although we need to render our month + year combinations in human-readable form,
 
 ----
 
-**Note:** A string like `1806-02` does not match a valid ISO date because it is missing the required day portion(), which means that it is not acceptable input to the XPath `format-date()` function. At the same time, we want to group our documents for facet purposes by just year and month, so we don’t want to include the day in the facet value. We meet those requirements by using just the `1806-02` portion of the date as the second-level facet value (so that all articles from the same month of the same year are grouped and counted together) and then appending `-01` to each value before passing it into `format-date()` with a picture string of `"[MNn] [Y]"` for rendering. Adding a fake day maps the facet value onto a valid ISO date that is correct for our purposes, and our picture string then ignores the day component and outputs only the month and year.
+**Note:** A string like `1806-02` does not match a valid ISO date because it is missing the required day portion, which means that it is not acceptable input to the XPath `format-date()` function. At the same time, we want to group our documents for facet purposes by just year and month, so we don’t want to include the day in the facet value. We meet those requirements by using just the `1806-02` portion of the date as the second-level facet value (so that all articles from the same month of the same year are grouped and counted together) and then appending `-01` to each value before passing it into `format-date()` with a picture string of `"[MNn] [Y]"` for rendering. Adding a fake day maps the facet value onto a valid ISO date that is correct for our purposes, and our picture string then ignores the day component and outputs only the month and year.
 
 ----
 
