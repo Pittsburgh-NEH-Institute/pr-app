@@ -33,7 +33,8 @@ function toggle_details() {
     }
 }
 /*
- * Check parent decade when any child year is checked
+ * Check parent decade when all child years are checked
+ * Set to intermediate when some are checked
  */
 function select_decade_from_year() {
     if (this.checked) {

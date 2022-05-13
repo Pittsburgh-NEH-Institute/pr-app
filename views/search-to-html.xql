@@ -14,6 +14,8 @@ declare function local:dispatch($node as node()) as item()* {
         (: General :)
         case text() return $node
         case element(m:count) return local:count($node)
+        (: Search term :)
+        case element(m:search-term) return local:search-term($node)
         (: Publishers :)
         case element(m:publishers) return local:publishers($node)
         case element(m:publisher) return local:publisher($node)
@@ -32,16 +34,17 @@ declare function local:dispatch($node as node()) as item()* {
 (: General functions:)
 declare function local:data($node as element(m:data)) as element(html:section) {
     <html:section id="advanced-search">
-        <html:section id="search-widgets">{
-            for $search-area in $node/*[position() lt 3]
-            return local:dispatch($search-area)
-            }
+        <html:section id="search-widgets">
+            <html:form action="search" method="get">{
+                for $search-area in $node/m:all-content/*[position() lt 4]
+                return local:dispatch($search-area)
+            }</html:form>
             <html:script type="text/javascript" src="resources/js/search.js"></html:script>
         </html:section>
         <html:section id="search-results">
             <html:h2>Stories</html:h2>
-            {if ($node/m:articles/m:article )
-            then local:dispatch($node/m:articles)
+            {if ($node/m:all-content/m:articles/m:article )
+            then local:dispatch($node/m:all-content/m:articles)
             else <html:p>No matching articles found</html:p>
             }
         </html:section>
@@ -52,6 +55,14 @@ declare function local:count($node as element(m:count)) as item()+ {
 };
 declare function local:passthru($node as node()) as item()* {
     for $child in $node/node() return local:dispatch($child)
+};
+(: -----
+Search term functions
+----- :)
+declare function local:search-term($node as element(m:search-term)) as item()+ {
+        <html:input id="search-term" name="search-term" type="search" placeholder="[Search term]" value="{string($node)}">{string($node)}</html:input>,
+        '&#xa0;',
+        <html:button type="submit">Search</html:button>
 };
 (: =====
 Publisher functions
