@@ -14,18 +14,17 @@
 - finally get all of the bootstrap attributes out! they do not belong here
 
 # David to-do
-### New
-- [ ] write to Taylor regarding approved travel messaging on Monday morning + send asap
+- write to Taylor regarding approved travel messaging on Monday morning + send asap
     - use Joan's PDF on Fly America
     - recommend working with a travel agent
     - travel insurance / refundable tickets
     - funding ceiling + reach out w/ budget concerns
-- [ ] asking eXist-db slack about Lucene wildcard issue
-- [ ] search.xql and search-to-html.xql expansion
-- [ ]  buy Sipsmith gin
-### Carryover:
-- [ ] fields part of facets and fields tutorial
-- [ ] generate HTML test results within eXist-db app
+- asking eXist-db slack about Lucene wildcard issue
+- search.xql and search-to-html.xql expansion
+- carryover: 
+    - fields part of facets and fields tutorial
+    - generate HTML test results within eXist-db app
+- buy Sipsmith gin
 
 # Emma to-do
 - write Windows installs.md portion
@@ -37,7 +36,7 @@
 - write to Elli + Ronald with tasks (and bring them in on the GitHub project)
 - revisit travel direction
 
-# Sprint Sipsmith agenda 2022-05-04 @ 3:30pm
+# Sprint Sipsmith agenda
 ## Attendees David, Gabi, Emma, Elli?
 - invite Elli!
 - review blockers / progress
