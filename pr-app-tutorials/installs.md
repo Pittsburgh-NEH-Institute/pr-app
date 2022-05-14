@@ -59,7 +59,7 @@ How to prepare your Windows PC to create an eXist-db app.
 ## Installations
 
 1. Install these in the following order. 
-2. Unless otherwise noted, always install packages through running Windows PowerShell as Administrator (this is Windows' elevated command prompt).
+2. Unless otherwise noted, always install packages through running Windows PowerShell, or Git Bash, as Administrator (this is an elevated command prompt).
 3. When prompted to upgrade any of these packages except node (but including npm and nvm), accept the prompt.
 
 ## Install *Chocolatey*
@@ -84,12 +84,12 @@ Install current stable version from [http://exist-db.org/exist/apps/homepage/ind
 
 ## Install *git*
 
-Type `git` at the command line. If it isn't installed, type `choco install git`. This will also install Git Bash. 
+Type `git` at the command line. If it isn't installed, type `choco install git`. This will also install Git Bash. From now on, instead of using PowerShell, you will use Git Bash as your command line interface. (**Important:** Remember to run Git Bash as Administrator when installing anything). 
 
 ## Install *vscode* + *existdb-vscode* module 
 
 1. Check if vscode is already on your machine by typing `code --version` at the command line. 
-2. If not, make sure PowerShell has been launched as administrator. 
+2. If not, make sure Git Bash has been launched as administrator. 
    - Type `choco install vscode`
 3. For *existdb-vscode*, install from https://marketplace.visualstudio.com/items?itemName=eXist-db.existdb-vscode&utm_source=VSCode.pro&utm_campaign=AhmadAwais
 
@@ -97,7 +97,7 @@ Type `git` at the command line. If it isn't installed, type `choco install git`.
 
 1. Install *npm* (node package manager) with `choco install npm`.
 2. Install *nvm* (node version manager) with `choco install nvm`. (Why? nvm lets you install and choose among different node releases, and Yeoman requires node v. 14, which is not the most recent version.)
-3. **Important**: restart PowerShell. 
+3. **Important**: restart Git Bash. 
 4. Install *node* v.14 with `nvm install 14`. The installation will show you the full number of the version (for example, v14.19.1 instead of v14). **Write down the full version number and save it for future use**. 
 5. Activate *node* v.14 with `nvm use 14.19.1` (or the full version number you saved from the previous step). (This command persists only in a single shell, which is what you want, but it means that you have to run again each time you launch a new shell).
 
