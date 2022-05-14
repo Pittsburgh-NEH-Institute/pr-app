@@ -16,12 +16,11 @@ declare option output:indent "no";
 (: =====
 Retrieve parameters
 ===== :)
-declare variable $search-term as xs:string? := 
-    request:get-parameter('search-term', ());
-declare variable $selected-publishers as xs:string* := 
-    request:get-parameter('publishers[]', ());
-declare variable $exist:controller := 
-    request:get-parameter('exist:controller', 'hi');
+declare variable $search-term as xs:string? := request:get-parameter('search-term', ());
+declare variable $selected-publishers as xs:string* := request:get-parameter('publishers[]', ());
+declare variable $selected-decades as xs:string* := request:get-parameter('decades[]', ());
+declare variable $selected-years as xs:string* := request:get-parameter('years[]', ());
+declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');
 
 (: =====
 Find all values, retrieve formatted-title field
@@ -99,8 +98,13 @@ All matching titles (TBA)
     <m:filtered-content></m:filtered-content>
     <m:metadata>
         <m:selected-publishers>{
-            for $selected-publisher in $selected-publishers
-            return <m:selected-publisher>{$selected-publisher}</m:selected-publisher>
+            $selected-publishers ! <m:selected-publisher>{.}</m:selected-publisher>
         }</m:selected-publishers>
+        <m:selected-decades>{
+            $selected-decades ! <m:selected-decade>{.}</m:selected-decade>
+        }</m:selected-decades>
+        <m:selected-years>{
+            $selected-years ! <m:selected-year>{}</m:selected-year>
+        }</m:selected-years>
     </m:metadata>
 </m:data>

@@ -51,7 +51,7 @@ declare function local:data($node as element(m:data)) as element(html:section) {
     </html:section>
 };
 declare function local:count($node as element(m:count)) as item()+ {
-    ' (', <html:span class="current-count">{string($node)}</html:span>, concat('/', $node, ')')
+    concat(' (', $node, '/', $node, ')')
 };
 declare function local:passthru($node as node()) as item()* {
     for $child in $node/node() return local:dispatch($child)
@@ -73,6 +73,7 @@ declare function local:publishers($node as element(m:publishers)) as element()+ 
 };
 declare function local:publisher($node as element(m:publisher)) as element(html:li) {
     <html:li><html:input type="checkbox" name="publishers[]" value="{string($node/m:label)}">{
+        (: Maintain checked state :)
         if ($node/m:label = root($node)/descendant::m:selected-publisher) then attribute checked {"checked"} else ()
     }</html:input>{local:passthru($node)}</html:li>
 };
@@ -86,7 +87,10 @@ declare function local:decades($node as element(m:decades)) as element()+ {
 declare function local:decade($node as element(m:decade)) as element(html:li) {
     <html:li>
         <html:details>
-            <html:summary><html:input type="checkbox"/> {for $child in $node/(m:label | m:count) return local:dispatch($child)}</html:summary>
+            <html:summary><html:input type="checkbox" name="decades[]" value="{string($node/m:label)}">{
+                (: Maintain checked state :)
+                if ($node/m:label = root($node)/descendant::m:selected-decade) then attribute checked {"checked"} else ()
+            }</html:input> {for $child in $node/(m:label | m:count) return local:dispatch($child)}</html:summary>
             {local:dispatch($node/m:years)}
         </html:details>
     </html:li>
