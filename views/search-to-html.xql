@@ -72,7 +72,9 @@ declare function local:publishers($node as element(m:publishers)) as element()+ 
     <html:ul>{local:passthru($node)}</html:ul>
 };
 declare function local:publisher($node as element(m:publisher)) as element(html:li) {
-    <html:li><html:input type="checkbox"/> {local:passthru($node)}</html:li>
+    <html:li><html:input type="checkbox" name="publishers[]" value="{string($node/m:label)}">{
+        if ($node/m:label = root($node)/descendant::m:selected-publisher) then attribute checked {"checked"} else ()
+    }</html:input>{local:passthru($node)}</html:li>
 };
 (:=====
 Date functions

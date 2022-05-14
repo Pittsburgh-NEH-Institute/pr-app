@@ -18,8 +18,10 @@ Retrieve parameters
 ===== :)
 declare variable $search-term as xs:string? := 
     request:get-parameter('search-term', ());
-declare variable $query-facets := request:get-parameter('query-facets', ());
-declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');
+declare variable $selected-publishers as xs:string* := 
+    request:get-parameter('publishers[]', ());
+declare variable $exist:controller := 
+    request:get-parameter('exist:controller', 'hi');
 
 (: =====
 Find all values, retrieve formatted-title field
@@ -28,13 +30,13 @@ declare variable $query-term as xs:string? := if ($search-term) then $search-ter
 declare variable $fields as map(*) := map { "fields": ("formatted-title")};
 declare variable $all-hits as element(tei:TEI)* := 
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
-        [ft:query(., $query-term, $fields)];
+    [ft:query(., $query-term, $fields)];
 (: =====
 Retrieve information for faceted searching
 
 All publisher facets (<m:publishers>)
 All decade and year facets (<:decades>, which contain <m:years>)
-All matching titles (TBA)
+All matching titles (TBA) 
 ===== :)
 
 <m:data>
@@ -95,4 +97,10 @@ All matching titles (TBA)
             }</m:articles>
     </m:all-content>
     <m:filtered-content></m:filtered-content>
+    <m:metadata>
+        <m:selected-publishers>{
+            for $selected-publisher in $selected-publishers
+            return <m:selected-publisher>{$selected-publisher}</m:selected-publisher>
+        }</m:selected-publishers>
+    </m:metadata>
 </m:data>
