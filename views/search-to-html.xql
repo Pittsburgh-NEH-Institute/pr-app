@@ -1,3 +1,21 @@
+(: =====
+search-to-html.xql
+
+Synopsis: Process faceted full-text query
+
+Input: Model (in model namespace) supplied by search.xql
+
+Output: HTML <section> element with search results, to be wrapped by wrapper.xql
+
+Notes:
+
+1. Model has three children:
+
+a)  <m:all-content> : Filtered only by search term, but  not by any facets. Returns full counts.
+b)  <m:filtered-content> : As above, but filtered by facets. Omits some items from the above, and has different counts.
+c)  <m:metadata> : Three children: <m:selected-publishers>, <m:selected-decades>, <m:selected-years>. Used in this
+    script to maintain checkbox state.
+===== :)
 declare namespace html="http://www.w3.org/1999/xhtml";
 declare namespace hoax ="http://obdurodon.org/hoax";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
@@ -87,7 +105,7 @@ declare function local:decades($node as element(m:decades)) as element()+ {
 declare function local:decade($node as element(m:decade)) as element(html:li) {
     <html:li>
         <html:details>
-            <html:summary><html:input type="checkbox" name="decades[]" value="{string($node/m:label)}">{
+            <html:summary><html:input type="checkbox" class="decade-checkbox" name="decades[]" value="{string($node/m:label)}">{
                 (: Maintain checked state :)
                 if ($node/m:label = root($node)/descendant::m:selected-decade) then attribute checked {"checked"} else ()
             }</html:input> {for $child in $node/(m:label | m:count) return local:dispatch($child)}</html:summary>

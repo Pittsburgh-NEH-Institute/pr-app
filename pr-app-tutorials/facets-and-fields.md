@@ -774,3 +774,30 @@ The formatted HTML output looks like:
 <img src="facet-output-1.png" width="50%" style="padding: 1em; border: 1px solid black;"/>
 
 Some of the titles are duplicates because multiple articles were published under the same titles, but each entry corresponds to a different document in the corpus.
+
+----
+## Faceted search organization
+
+Three components: *text*, *publisher*, *date*. All three function equivalently, as facets, to drill down into full corpus. That is, any can be modified at any time to refine a previous search step. (This is not a traditional use of full-text searching.)
+### Text
+
+Single word form, retrieved with Lucene full-text index defined for entire document (TODO: or just `<text>` portion?). Only a single word is supported.
+
+### Publisher
+
+Name of publisher, with definite and indefinite article moved to end (e.g., “Times, The” instead of “The Times”.)
+
+### Date
+
+Hierarchical, with *decade* at top level and *month-year* in human-readable form (e.g., “January 1804”) as second level. Second level is returned as `YYYY-MM` to support sorting and then formatted as part of the view.
+
+1. Checking the decade implicitly selects all of its subcategories, which are automatically checked.
+2. Unchecking the decade unchecks all of its subcategories.
+3. Checking the last month-year causes the decade to be checked.
+4. Unchecking a month-year when all were previously selected causes the decade to be unchecked, and rendered as a dash in the checkbox.
+### Implementation
+
+1. Categories (*publisher*, *date*) are multi-select; multiple selections within a category form an `or` operation.
+2. Facet categories combinations (`text`, `publisher`, `date`) form an `and` operation.
+3. Update only when **Search** button is pressed (do not update automatically on each check).
+4. Each query maintains state by sending the current selections to the server, which returns both a full, unfaceted retrieval (except for keyword, which is always applied) and a faceted result. Those are both included in the model and reconciled in the view. Specifically, the model includes a) all content, b) filtered content, and c) metadata, which contains selected publishers, decades and month-years.
