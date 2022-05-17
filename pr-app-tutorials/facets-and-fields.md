@@ -794,7 +794,8 @@ Hierarchical, with *decade* at top level and *month-year* in human-readable form
 1. Checking the decade implicitly selects all of its subcategories, which are automatically checked.
 2. Unchecking the decade unchecks all of its subcategories.
 3. Checking the last month-year causes the decade to be checked.
-4. Unchecking a month-year when all were previously selected causes the decade to be unchecked, and rendered as a dash in the checkbox.
+4. Unchecking a month-year when some were previously selected causes the decade to be unchecked, and rendered as a dash in the checkbox, as long as one month-year is still checked.
+5. Unchecking the last month-year child causes the decade to be unchecked, with no dash rendered.
 ### Implementation
 
 1. Categories (*publisher*, *date*) are multi-select; multiple selections within a category form an `or` operation.

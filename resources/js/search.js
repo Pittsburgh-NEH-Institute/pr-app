@@ -7,14 +7,23 @@
 
 document.addEventListener('DOMContentLoaded', (e) => {
     /* Attach event listeners to decades and month-years (not publishers) */
-    var decades = document.querySelectorAll('#search-widgets summary > input');
+    /* Set indeterminate state for decade if only some month-years are checked */
+    var decades = document.getElementsByClassName('decade-checkbox');
     for (var i = 0, length = decades.length; i < length; i++) {
         decades[i].addEventListener('change', process_decade_check, false);
+        var all_children = decades[i].parentElement.nextElementSibling.querySelectorAll('input');
+        var checked_children = decades[i].parentElement.nextElementSibling.querySelectorAll('input:checked');
+        if (0 < checked_children.length && checked_children.length < all_children.length) { // set intermediate if some but not all children are checked
+            decades[i].indeterminate = true;
+        } 
+        if (0 < checked_children.length) { // open if any children are checked
+            decades[i].parentElement.parentElement.setAttribute('open', '');
+        }
     }
     var years = document.querySelectorAll('#search-widgets details > ul > li > input');
     for (var i = 0, length = years.length; i < length; i++) {
         years[i].addEventListener('change', process_month_year_check, false);
-    }
+    }    
 },
 false);
 /*
@@ -30,7 +39,6 @@ function process_decade_check() {
         this.parentElement.parentElement.setAttribute('open', '');
         var month_years = this.parentNode.nextElementSibling.getElementsByTagName('li');
         for (var i = 0, length = month_years.length; i < length; i++) {
-            console.log(month_years[i].firstElementChild);
             month_years[i].firstElementChild.checked = true;
         }
     } else { // We just unchecked it

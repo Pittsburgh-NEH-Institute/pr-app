@@ -19,7 +19,7 @@ Retrieve parameters
 declare variable $search-term as xs:string? := request:get-parameter('search-term', ());
 declare variable $selected-publishers as xs:string* := request:get-parameter('publishers[]', ());
 declare variable $selected-decades as xs:string* := request:get-parameter('decades[]', ());
-declare variable $selected-years as xs:string* := request:get-parameter('years[]', ());
+declare variable $selected-month-years as xs:string* := request:get-parameter('month-years[]', ());
 declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');
 
 (: =====
@@ -39,6 +39,7 @@ All matching titles (TBA)
 ===== :)
 
 <m:data>
+    <!-- Contains <m:all-content>, <m:filtered-content>, <m:metadata> -->
     <m:all-content>
         <m:search-term>{$search-term}</m:search-term>
         <m:publishers>{
@@ -60,19 +61,19 @@ All matching titles (TBA)
                     <m:decade>
                         <m:label>{$decade}</m:label>
                         <m:count>{$count}</m:count>
-                        <m:years>{
-                            let $year-facets as map(*) := ft:facets($all-hits, "publication-date", (), $decade)
-                            let $year-elements :=
-                                map:for-each($year-facets, function($m-label, $m-count) {
-                                    <m:year>
+                        <m:month-years>{
+                            let $month-year-facets as map(*) := ft:facets($all-hits, "publication-date", (), $decade)
+                            let $month-year-elements :=
+                                map:for-each($month-year-facets, function($m-label, $m-count) {
+                                    <m:month-year>
                                         <m:label>{$m-label}</m:label>
                                         <m:count>{$m-count}</m:count>
-                                    </m:year>
+                                    </m:month-year>
                                 })
-                            for $year-element in $year-elements
-                            order by $year-element
-                            return $year-element
-                        }</m:years>                    
+                            for $month-year-element in $month-year-elements
+                            order by $month-year-element
+                            return $month-year-element
+                        }</m:month-years>                    
                 </m:decade>})
             for $publication-date-element in $publication-date-elements
             order by $publication-date-element/m:label
@@ -103,8 +104,8 @@ All matching titles (TBA)
         <m:selected-decades>{
             $selected-decades ! <m:selected-decade>{.}</m:selected-decade>
         }</m:selected-decades>
-        <m:selected-years>{
-            $selected-years ! <m:selected-year>{}</m:selected-year>
-        }</m:selected-years>
+        <m:selected-month-years>{
+            $selected-month-years ! <m:selected-month-year>{.}</m:selected-month-year>
+        }</m:selected-month-years>
     </m:metadata>
 </m:data>

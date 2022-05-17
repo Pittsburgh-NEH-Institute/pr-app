@@ -41,8 +41,8 @@ declare function local:dispatch($node as node()) as item()* {
         case element(m:data) return local:data($node)
         case element(m:decades) return local:decades($node)
         case element(m:decade) return local:decade($node)
-        case element(m:years) return local:years($node)
-        case element(m:year) return local:year($node)
+        case element(m:month-years) return local:month-years($node)
+        case element(m:month-year) return local:month-year($node)
         (: Articles:)
         case element(m:articles) return local:articles($node)
         case element(m:article) return local:article($node)
@@ -109,15 +109,17 @@ declare function local:decade($node as element(m:decade)) as element(html:li) {
                 (: Maintain checked state :)
                 if ($node/m:label = root($node)/descendant::m:selected-decade) then attribute checked {"checked"} else ()
             }</html:input> {for $child in $node/(m:label | m:count) return local:dispatch($child)}</html:summary>
-            {local:dispatch($node/m:years)}
+            {local:dispatch($node/m:month-years)}
         </html:details>
     </html:li>
 };
-declare function local:years($node as element(m:years)) as element(html:ul) {
+declare function local:month-years($node as element(m:month-years)) as element(html:ul) {
     <html:ul>{local:passthru($node)}</html:ul>
 };
-declare function local:year($node as element(m:year)) as element(html:li) {
-    <html:li><html:input type="checkbox"/> {
+declare function local:month-year($node as element(m:month-year)) as element(html:li) {
+    <html:li><html:input type="checkbox" class="month-year-checkbox" name="month-years[]" value="{string($node/m:label)}"/> {
+            (: Maintain checked state :)
+            if ($node/m:label = root($node)/descendant::m:selected-month-year) then attribute checked {"checked"} else (),
         format-date($node/m:label || '-01', '[MNn] [Y] '), 
         local:count($node/m:count)
     }</html:li>
