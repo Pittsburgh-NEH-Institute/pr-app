@@ -13,7 +13,7 @@ Notes:
 
 a)  <m:all-content> : Filtered only by search term, but  not by any facets. Returns full counts.
 b)  <m:filtered-content> : As above, but filtered by facets. Omits some items from the above, and has different counts.
-c)  <m:metadata> : Three children: <m:selected-publishers>, <m:selected-decades>, <m:selected-years>. Used in this
+c)  <m:selected-facets> : Three children: <m:selected-publishers>, <m:selected-decades>, <m:selected-years>. Used in this
     script to maintain checkbox state.
 ===== :)
 declare namespace html="http://www.w3.org/1999/xhtml";
@@ -61,8 +61,8 @@ declare function local:data($node as element(m:data)) as element(html:section) {
         </html:section>
         <html:section id="search-results">
             <html:h2>Stories</html:h2>
-            {if ($node/m:all-content/m:articles/m:article )
-            then local:dispatch($node/m:all-content/m:articles)
+            {if ($node/m:filtered-content/m:articles/m:article )
+            then local:dispatch($node/m:filtered-content/m:articles)
             else <html:p>No matching articles found</html:p>
             }
         </html:section>

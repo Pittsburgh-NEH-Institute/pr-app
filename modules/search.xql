@@ -26,20 +26,31 @@ declare variable $exist:controller := request:get-parameter('exist:controller', 
 Find all values, retrieve formatted-title field
 ===== :)
 declare variable $query-term as xs:string? := if ($search-term) then $search-term else ();
-declare variable $fields as map(*) := map { "fields": ("formatted-title")};
+declare variable $fields as xs:string := "formatted-title";
+declare variable $facets as map(*) := map {
+    "publisher" : $selected-publishers
+};
+declare variable $options as map(*) := map {
+    "facets" : $facets,
+    "fields" : $fields
+};
 declare variable $all-hits as element(tei:TEI)* := 
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
-    [ft:query(., $query-term, $fields)];
+    [ft:query(., (), map { "fields" : $fields})];
+declare variable $filtered-hits as element(tei:TEI)* :=
+    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
+    [ft:query(., $query-term, $options)];
 (: =====
 Retrieve information for faceted searching
 
 All publisher facets (<m:publishers>)
-All decade and year facets (<:decades>, which contain <m:years>)
+All decade and year facets (<:decades>, which contain <m:month-years>)
+Selected facet state (<m:selected-facets> and descendants)
 All matching titles (TBA) 
 ===== :)
 
 <m:data>
-    <!-- Contains <m:all-content>, <m:filtered-content>, <m:metadata> -->
+    <!-- Contains <m:all-content>, <m:filtered-content>, <m:selected-facets> -->
     <m:all-content>
         <m:search-term>{$search-term}</m:search-term>
         <m:publishers>{
@@ -96,8 +107,25 @@ All matching titles (TBA)
             </m:article>
             }</m:articles>
     </m:all-content>
-    <m:filtered-content></m:filtered-content>
-    <m:metadata>
+    <m:filtered-content>{
+        <m:articles>{ (: article data for list of links :)
+            for $hit in $filtered-hits
+            let $id := $hit/@xml:id ! string()
+            let $title := ft:field($hit, "formatted-title")
+            let $publisher := $hit//tei:publicationStmt/tei:publisher ! string()
+            let $date := $hit//tei:publicationStmt/tei:date/@when ! string()
+            order by $title
+            return
+            <m:article>
+                <m:id>{$id}</m:id>
+                <m:title>{$title}</m:title>
+                <m:publisher>{$publisher}</m:publisher>
+                <m:date>{$date}</m:date>
+            </m:article>
+        }</m:articles>
+    }</m:filtered-content>
+    <m:selected-facets>
+        <!-- Not rendered directly, but used to restore checkbox state -->
         <m:selected-publishers>{
             $selected-publishers ! <m:selected-publisher>{.}</m:selected-publisher>
         }</m:selected-publishers>
@@ -107,5 +135,5 @@ All matching titles (TBA)
         <m:selected-month-years>{
             $selected-month-years ! <m:selected-month-year>{.}</m:selected-month-year>
         }</m:selected-month-years>
-    </m:metadata>
+    </m:selected-facets>
 </m:data>
