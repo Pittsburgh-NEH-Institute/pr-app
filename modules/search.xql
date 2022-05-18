@@ -107,7 +107,44 @@ All matching titles (TBA)
             </m:article>
             }</m:articles>
     </m:all-content>
-    <m:filtered-content>{
+    <m:filtered-content>
+        <m:publishers>{
+            let $publisher-facets as map(*) := ft:facets($filtered-hits, "publisher", ())
+            let $publisher-elements := 
+                map:for-each($publisher-facets, function($label, $count) {
+                    <m:publisher>
+                        <m:label>{$label}</m:label>
+                        <m:count>{$count}</m:count>
+                </m:publisher>})
+            for $publisher-element in $publisher-elements
+            order by $publisher-element/m:label
+            return $publisher-element
+        }</m:publishers>
+        <m:decades>{
+            let $publication-date-facets as map(*) := ft:facets($filtered-hits, "publication-date", ())
+            let $publication-date-elements := 
+                map:for-each($publication-date-facets, function($decade, $count) {
+                    <m:decade>
+                        <m:label>{$decade}</m:label>
+                        <m:count>{$count}</m:count>
+                        <m:month-years>{
+                            let $month-year-facets as map(*) := ft:facets($filtered-hits, "publication-date", (), $decade)
+                            let $month-year-elements :=
+                                map:for-each($month-year-facets, function($m-label, $m-count) {
+                                    <m:month-year>
+                                        <m:label>{$m-label}</m:label>
+                                        <m:count>{$m-count}</m:count>
+                                    </m:month-year>
+                                })
+                            for $month-year-element in $month-year-elements
+                            order by $month-year-element
+                            return $month-year-element
+                        }</m:month-years>                    
+                </m:decade>})
+            for $publication-date-element in $publication-date-elements
+            order by $publication-date-element/m:label
+            return $publication-date-element
+        }</m:decades>
         <m:articles>{ (: article data for list of links :)
             for $hit in $filtered-hits
             let $id := $hit/@xml:id ! string()
@@ -123,7 +160,7 @@ All matching titles (TBA)
                 <m:date>{$date}</m:date>
             </m:article>
         }</m:articles>
-    }</m:filtered-content>
+    </m:filtered-content>
     <m:selected-facets>
         <!-- Not rendered directly, but used to restore checkbox state -->
         <m:selected-publishers>{
