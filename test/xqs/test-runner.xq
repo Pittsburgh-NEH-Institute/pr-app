@@ -24,4 +24,4 @@ let $result as element(testsuites) := test:suite(
 let $formatted-result as element() :=
   transform:transform($result, doc('junit-noframes-saxon.xsl'), ())
 
-return $formatted-result
+return $result

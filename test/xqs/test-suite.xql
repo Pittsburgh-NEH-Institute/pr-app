@@ -62,3 +62,12 @@ declare
     function tests:test-format-title($input as xs:string) as xs:string {
         hoax:format-title($input)
     };
+
+(: Test function to compute data facets needed for next query :)
+declare
+    function tests:construct-date-facets(
+        $decades as xs:string*, 
+        $month-years as xs:string*
+    ) as xs:integer {
+
+    };
