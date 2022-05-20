@@ -14,6 +14,15 @@ declare option output:method "xml";
 declare option output:indent "no";
 
 (: =====
+Local functions
+=====:)
+declare function hoax:construct-date-facets($decades as xs:string*, $month-years as xs:string*) as array(*) {
+    let $decade-starts as xs:string* := $decades ! substring(1, 3)
+    let $filtered-month-years as xs:string* := $month-years[not(matches(., $decade-starts))]
+    return array { $decades, $filtered-month-years }
+};
+
+(: =====
 Retrieve parameters
 ===== :)
 declare variable $search-term as xs:string? := request:get-parameter('search-term', ());
