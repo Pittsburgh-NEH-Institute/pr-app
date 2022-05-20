@@ -57,25 +57,22 @@ declare function hoax:format-title($title as xs:string) as xs:string {
  : hoax:construct-date-facets() maps input date-related facets onto query 
  : format
  :
- : @param $decades : xs:string* (e.g., 1800)
- : @param $month-years : xs:string* (e.g., 1800-01)
+ : @param $decades : xs:string* (e.g., '1800')
+ : @param $month-years : xs:string* (e.g., '1800-01')
  :
- : @return sequence of two arrays:
- :      one with decades that do not require month-years
- :      the other with month-years that do not require decades
+ : @return filtered month-years
+ :
  : Logic:
- :      If decade is present, all month-years are implicit, and need not be specified
- :      If month-year is present and decade is not, month-year must be specified
- :  Note:
- :      One or both of the inputs could be empty, in which case the other is not filtered
+ :  If decade is present, all month-years are also checked, and should 
+ :      be removed before querying because they are implicit
+  :  Note:
+ :      One or both of the inputs could be empty
  :)
-declare function hoax:construct-date-facets($decades as xs:string*, $month-years as xs:string*) as array(*)+ {
+declare function hoax:construct-date-facets($decades as xs:string*, $month-years as xs:string*) as xs:string* {
     let $decade-starts as xs:string? := $decades ! substring(., 1, 3) => string-join('|')
-    let $month-year-starts as xs:string? := $month-years ! substring(., 1, 3) => string-join('|')
-    let $filtered-decades as xs:string* := 
-        if (count($month-years)) then $decades[not(matches(., $month-year-starts))] else $decades
-    let $filtered-month-years as xs:string* := 
-        if (count($decades)) then $month-years[not(matches(., $decade-starts))] else $month-years
-    return (array { $filtered-decades } , array { $filtered-month-years })
+    return 
+        if (empty($decades)) then $month-years
+        else if (empty($month-years)) then () else  
+        $month-years[not(matches(., $decade-starts))]
 };
 
