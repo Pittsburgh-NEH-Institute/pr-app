@@ -65,9 +65,22 @@ declare
 
 (: Test function to compute data facets needed for next query :)
 declare
+    %test:arg('decades', '1800', '1810', '1830', '1840')
+    %test:arg('month-years', '1800-01', '1800-02', '1810-01', '1820-01')
+    %test:assertXPath("deep-equal($result[1], ['1830', '1840'])")
+    %test:assertXPath("deep-equal($result[2], ['1820-01'])")
+    %test:arg('decades', 'x')
+    %test:arg('month-years', '1800-01', '1800-02', '1810-01', '1820-01')
+    %test:assertXPath("deep-equal($result[1], [])")
+    %test:assertXPath("deep-equal($result[2], ['1800-01', '1800-02', '1810-01', '1820-01'])")
+    %test:arg('decades', '1800', '1810', '1830', '1840')
+    %test:arg('month-years', 'x')
     function tests:construct-date-facets(
         $decades as xs:string*, 
         $month-years as xs:string*
-    ) as xs:integer {
-
+    ) as item()* {
+        let $d := if ($decades = 'x') then () else $decades
+        let $m := if ($month-years = 'x') then () else $month-years
+        return 
+        hoax:construct-date-facets($d, $m)
     };

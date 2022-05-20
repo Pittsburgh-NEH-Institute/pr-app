@@ -21,7 +21,7 @@ declare option output:media-type "application/xml";
 let $result as element(testsuites) := test:suite(
   inspect:module-functions(xs:anyURI("test-suite.xql"))
 )
-let $formatted-result as element() :=
-  transform:transform($result, doc('junit-noframes-saxon.xsl'), ())
+(: let $formatted-result as element() :=
+  transform:transform($result, doc('junit-noframes-saxon.xsl'), ()) :)
 
 return $result
