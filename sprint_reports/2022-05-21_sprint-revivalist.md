@@ -6,6 +6,7 @@
 - install.md updated (but we should remove nvm)
 
 # Gabi to do
+- Fill in the rest of the schedule
 - Figure out how we should integrate external APIs (local Apache using MAMP) for mapping
     - divide this to sub tasks
 - creating the "model" table view for visualizations
@@ -14,6 +15,7 @@
 - start working with Chelcie on project management 
 
 # David to do
+- David to figure out dinner for 05-28
 - write to Sam with catering decisions
 - send roommate list to Marchae and Taylor
 - ask facilities to prepare a room in advance for Ronald and Leif-Jöran
@@ -27,3 +29,6 @@
 # Emma to do
 - remove bootstrap classes from to-html.xql and wrapper files
 - work with Elli on file management
+
+# Sprint Bluecoat 05-28-22 @ 3:30 PM
+- Combining sprint and scheduling meetings
