@@ -14,15 +14,6 @@ declare option output:method "xml";
 declare option output:indent "no";
 
 (: =====
-Local functions
-=====:)
-declare function hoax:construct-date-facets($decades as xs:string*, $month-years as xs:string*) as array(*) {
-    let $decade-starts as xs:string* := $decades ! substring(1, 3)
-    let $filtered-month-years as xs:string* := $month-years[not(matches(., $decade-starts))]
-    return array { $decades, $filtered-month-years }
-};
-
-(: =====
 Retrieve parameters
 ===== :)
 declare variable $search-term as xs:string? := request:get-parameter('search-term', ());
@@ -35,6 +26,9 @@ declare variable $exist:controller := request:get-parameter('exist:controller', 
 Find all values, retrieve formatted-title field
 ===== :)
 declare variable $query-term as xs:string? := if ($search-term) then $search-term else ();
+declare variable $date-facets-for-search as xs:string* := hoax:construct-date-facets($selected-decades, $selected-month-years);
+declare variable $decade-facets-for-search as xs:string* := $date-facets-for-search[1] ! string(.);
+declare variable $month-year-facets-for-search as xs:string* := $date-facets-for-search[2] ! string(.);
 declare variable $fields as xs:string := "formatted-title";
 declare variable $facets as map(*) := map {
     "publisher" : $selected-publishers
