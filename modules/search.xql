@@ -30,19 +30,32 @@ declare variable $date-facets-for-search as xs:string* := hoax:construct-date-fa
 declare variable $decade-facets-for-search as xs:string* := $date-facets-for-search[1] ! string(.);
 declare variable $month-year-facets-for-search as xs:string* := $date-facets-for-search[2] ! string(.);
 declare variable $fields as xs:string := "formatted-title";
-declare variable $facets as map(*) := map {
-    "publisher" : $selected-publishers
+declare variable $all-facets as map(*) := map {
+    "publisher" : $selected-publishers,
+    "publication-date" : $month-year-facets-for-search
 };
-declare variable $options as map(*) := map {
-    "facets" : $facets,
+(: declare variable $all-options as map(*) := map {
+    "facets" : $all-facets,
+    "fields" : $fields
+}; :)
+declare variable $publisher-options as map(*) := map {
+    "facets" : map { "publisher" : $selected-publishers},
+    "fields" : $fields
+};
+declare variable $date-options as map(*) := map {
+    "facets" : map { "publication-date": $month-year-facets-for-search},
     "fields" : $fields
 };
 declare variable $all-hits as element(tei:TEI)* := 
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
     [ft:query(., (), map { "fields" : $fields})];
-declare variable $filtered-hits as element(tei:TEI)* :=
+declare variable $publisher-hits as element(tei:TEI)* :=
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
-    [ft:query(., $query-term, $options)];
+    [ft:query(., $query-term, $publisher-options)];
+declare variable $date-hits as element(tei:TEI)* :=
+    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
+    [ft:query(., $query-term, $date-options)]
+;
 (: =====
 Retrieve information for faceted searching
 
@@ -110,9 +123,9 @@ All matching titles (TBA)
             </m:article>
             }</m:articles>
     </m:all-content>
-    <m:filtered-content>
+    <m:publisher-content>
         <m:publishers>{
-            let $publisher-facets as map(*) := ft:facets($filtered-hits, "publisher", ())
+            let $publisher-facets as map(*) := ft:facets($publisher-hits, "publisher", ())
             let $publisher-elements := 
                 map:for-each($publisher-facets, function($label, $count) {
                     <m:publisher>
@@ -123,6 +136,7 @@ All matching titles (TBA)
             order by $publisher-element/m:label
             return $publisher-element
         }</m:publishers>
+        <!--
         <m:decades>{
             let $publication-date-facets as map(*) := ft:facets($filtered-hits, "publication-date", ())
             let $publication-date-elements := 
@@ -147,9 +161,10 @@ All matching titles (TBA)
             for $publication-date-element in $publication-date-elements
             order by $publication-date-element/m:label
             return $publication-date-element
-        }</m:decades>
+        }</m:decades> 
+        -->
         <m:articles>{ (: article data for list of links :)
-            for $hit in $filtered-hits
+            for $hit in $publisher-hits
             let $id := $hit/@xml:id ! string()
             let $title := ft:field($hit, "formatted-title")
             let $publisher := $hit//tei:publicationStmt/tei:publisher ! string()
@@ -163,7 +178,7 @@ All matching titles (TBA)
                 <m:date>{$date}</m:date>
             </m:article>
         }</m:articles>
-    </m:filtered-content>
+    </m:publisher-content>
     <m:selected-facets>
         <!-- Not rendered directly, but used to restore checkbox state -->
         <m:selected-publishers>{
