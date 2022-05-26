@@ -7,7 +7,7 @@ let $decades-input as xs:string* := ('1820', '1840')
 let $month-years-input as xs:string* := ('1832-01', '1838-01', '1840-01')
 let $month-years-filtered as xs:string* := hoax:construct-date-facets($decades-input, $month-years-input)
 let $date-facets as array(*):= array:join((
-        $decades-input ! [.],
+        $decades-input,
         $month-years-filtered ! [(substring(., 1, 3) || '0', substring(., 1, 7))]
     ))
 let $options as map(*) := map {
