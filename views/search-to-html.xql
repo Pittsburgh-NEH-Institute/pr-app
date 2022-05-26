@@ -9,12 +9,15 @@ Output: HTML <section> element with search results, to be wrapped by wrapper.xql
 
 Notes:
 
-1. Model has three children:
+1. Model (<m:date> element) has four children:
 
-a)  <m:all-content> : Filtered only by search term, but  not by any facets. Returns full counts.
-b)  <m:filtered-content> : As above, but filtered by facets. Omits some items from the above, and has different counts.
-c)  <m:selected-facets> : Three children: <m:selected-publishers>, <m:selected-decades>, <m:selected-years>. Used in this
-    script to maintain checkbox state.
+a)  <m:articles> : Articles only (no facets), filtered by facets
+b)  <m:publisher-facets> : Only publisher facets, filtered by dates
+c)  <m:date-facets> : Only date facets, filtered by publisher
+3)  <m:selected-facets> : Three children, to maintain checkbox state:
+        <m:selected-publishers>
+        <m:selected-decades>
+        <m:selected-years>
 ===== :)
 declare namespace html="http://www.w3.org/1999/xhtml";
 declare namespace hoax ="http://obdurodon.org/hoax";
@@ -32,7 +35,7 @@ declare function local:dispatch($node as node()) as item()* {
         (: General :)
         case text() return $node
         case element(m:count) return local:count($node)
-        (: Search term :)
+        (: Search term: not used in production :)
         case element(m:search-term) return local:search-term($node)
         (: Publishers :)
         case element(m:publishers) return local:publishers($node)
@@ -54,15 +57,15 @@ declare function local:data($node as element(m:data)) as element(html:section) {
     <html:section id="advanced-search">
         <html:section id="search-widgets">
             <html:form action="search" method="get">{
-                for $search-area in $node/m:all-content/*[position() lt 4]
+                for $search-area in $node/*[position() lt 4]
                 return local:dispatch($search-area)
             }</html:form>
             <html:script type="text/javascript" src="resources/js/search.js"></html:script>
         </html:section>
         <html:section id="search-results">
             <html:h2>Stories</html:h2>
-            {if ($node/m:filtered-content/m:articles/m:article )
-            then local:dispatch($node/m:filtered-content/m:articles)
+            {if ($node/m:articles/m:article )
+            then local:dispatch($node/m:articles)
             else <html:p style="margin-left: 1em;">No matching articles found</html:p>
             }
         </html:section>
@@ -81,7 +84,7 @@ declare function local:passthru($node as node()) as item()* {
 Search term functions
 ----- :)
 declare function local:search-term($node as element(m:search-term)) as item()+ {
-        <html:input id="search-term" name="search-term" type="search" placeholder="[Search term]" value="{string($node)}">{string($node)}</html:input>,
+        <html:input id="term" name="term" type="search" placeholder="[Search term]" value="{string($node)}">{string($node)}</html:input>,
         '&#xa0;',
         <html:button type="submit">Search</html:button>
 };

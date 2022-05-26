@@ -16,12 +16,12 @@ declare option output:indent "no";
 (: =====
 Retrieve parameters
 ===== :)
-declare variable $search-term as xs:string? := request:get-parameter('search-term', ());
+declare variable $term as xs:string? := request:get-parameter('term', ());
 declare variable $selected-publishers as xs:string* := request:get-parameter('publishers[]', ());
 declare variable $selected-decades as xs:string* := request:get-parameter('decades[]', ());
 declare variable $selected-month-years as xs:string* := request:get-parameter('month-years[]', ());
 declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');
-declare variable $query-term as xs:string? := if ($search-term) then $search-term else ();
+declare variable $query-term as xs:string? := if ($term) then $term else ();
 
 (: TODO: Remove unneeded uses of formatted-title field :)
 (: =====
@@ -45,7 +45,7 @@ declare variable $all-options as map(*) := map {
 };
 declare variable $all-hits as element(tei:TEI)* := 
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
-    [ft:query(., (), $all-options)];
+    [ft:query(., $query-term, $all-options)];
 (: =====
 Publisher options returns hits filtered by publishers
 Use only date facets 
@@ -74,27 +74,17 @@ Return results
 ===== :)
 <m:data>
     <!-- Contains 
-        <m:articles> : article titles with links
         <m:publisher-facets> : render only these publisher facets (filtered by date)
         <m:date-facets> : render only these date facets (filtered by publisher)
         <m:selected-facets> : for highlighting 
+        <m:articles> : article titles with links
+    Order is meaningful (order is used to create view): 
+        a) Search term
+        b) Types of facets
+        c) Checkbox state
+        d) Articles
     -->
-    <m:articles>
-        { (: from $all-hits: article data for list of articles with links :)
-        for $hit in $all-hits
-        let $id := $hit/@xml:id ! string()
-        let $title := ft:field($hit, "formatted-title")
-        let $publisher := $hit//tei:publicationStmt/tei:publisher ! string()
-        let $date := $hit//tei:publicationStmt/tei:date/@when ! string()
-        order by $title
-        return
-        <m:article>
-            <m:id>{$id}</m:id>
-            <m:title>{$title}</m:title>
-            <m:publisher>{$publisher}</m:publisher>
-            <m:date>{$date}</m:date>
-        </m:article>
-        }</m:articles>
+    <m:search-term>{$term}</m:search-term>
     <m:publisher-facets>
         <m:publishers>{
             let $publisher-facets as map(*) := ft:facets($date-hits, "publisher", ())
@@ -138,6 +128,22 @@ Return results
             }</m:decades> 
         }</m:dates>
     </m:date-facets>
+    <m:articles>
+        { (: from $all-hits: article data for list of articles with links :)
+        for $hit in $all-hits
+        let $id := $hit/@xml:id ! string()
+        let $title := ft:field($hit, "formatted-title")
+        let $publisher := $hit//tei:publicationStmt/tei:publisher ! string()
+        let $date := $hit//tei:publicationStmt/tei:date/@when ! string()
+        order by $title
+        return
+        <m:article>
+            <m:id>{$id}</m:id>
+            <m:title>{$title}</m:title>
+            <m:publisher>{$publisher}</m:publisher>
+            <m:date>{$date}</m:date>
+        </m:article>
+    }</m:articles>
     <m:selected-facets>
         <!-- Not rendered directly, but used to restore checkbox state -->
         <m:selected-publishers>{

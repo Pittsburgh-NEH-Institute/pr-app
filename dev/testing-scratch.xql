@@ -18,7 +18,7 @@ let $options as map(*) := map {
 } 
 let $hits as element(tei:TEI)* := 
     collection('/db/apps/pr-app/data/hoax_xml/')/tei:TEI[ft:query(., (), $options)]
-return ($options, ($hits//tei:publicationStmt/tei:date/@when ! string()) => sort())
+return ($options, $date-facets, ($hits//tei:publicationStmt/tei:date/@when ! string()) => sort())
 
 (: <results>
 <test>('1800', '1810'), ('1810-01', '1820-01')</test>
