@@ -54,25 +54,22 @@ declare function local:data($node as element(m:data)) as element(html:section) {
     <html:section id="advanced-search">
         <html:section id="search-widgets">
             <html:form action="search" method="get">{
-                for $search-area in $node/m:all-content/*[position() lt 4]
+                for $search-area in $node/*[position() lt 4]
                 return local:dispatch($search-area)
             }</html:form>
             <html:script type="text/javascript" src="resources/js/search.js"></html:script>
         </html:section>
         <html:section id="search-results">
             <html:h2>Stories</html:h2>
-            {if ($node/m:filtered-content/m:articles/m:article )
-            then local:dispatch($node/m:filtered-content/m:articles)
+            {if ($node/m:articles/m:article )
+            then local:dispatch($node/m:articles)
             else <html:p style="margin-left: 1em;">No matching articles found</html:p>
             }
         </html:section>
     </html:section>
 };
 declare function local:count($node as element(m:count)) as xs:string {
-    (: Full count from <m:all-content>; retrieve filtered-results count from <m:filtered-content>:)
-    let $filtered-count as xs:string? := 
-        root($node)/descendant::m:filtered-content/descendant::m:label[. eq $node/preceding-sibling::m:label]/following-sibling::m:count ! string()
-    return concat(' (', ($filtered-count, 0)[1], '/', $node, ')')
+    concat(' (', $node, ')')
 };
 declare function local:passthru($node as node()) as item()* {
     for $child in $node/node() return local:dispatch($child)
@@ -81,7 +78,7 @@ declare function local:passthru($node as node()) as item()* {
 Search term functions
 ----- :)
 declare function local:search-term($node as element(m:search-term)) as item()+ {
-        <html:input id="search-term" name="search-term" type="search" placeholder="[Search term]" value="{string($node)}">{string($node)}</html:input>,
+        <html:input id="term" name="term" type="search" placeholder="[Search term]" value="{string($node)}">{string($node)}</html:input>,
         '&#xa0;',
         <html:button type="submit">Search</html:button>
 };
@@ -95,7 +92,9 @@ declare function local:publishers($node as element(m:publishers)) as element()+ 
 declare function local:publisher($node as element(m:publisher)) as element(html:li) {
     <html:li><html:input type="checkbox" name="publishers[]" value="{string($node/m:label)}">{
         (: Maintain checked state :)
-        if ($node/m:label = root($node)/descendant::m:selected-publisher) then attribute checked {"checked"} else ()
+        if ($node/m:label = root($node)/descendant::m:selected-publisher) 
+            then attribute checked {"checked"} 
+            else ()
     }</html:input>{local:passthru($node)}</html:li>
 };
 (:=====

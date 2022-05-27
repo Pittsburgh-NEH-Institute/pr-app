@@ -16,8 +16,8 @@ declare option output:indent "no";
 (: =====
 Retrieve parameters
 ===== :)
-declare variable $term as xs:string? := request:get-parameter('term', 'constable');
-declare variable $selected-publishers as xs:string* := request:get-parameter('publishers[]', 'Cabinet Newspaper, The');
+declare variable $term as xs:string? := request:get-parameter('term', ());
+declare variable $selected-publishers as xs:string* := request:get-parameter('publishers[]', ());
 declare variable $selected-decades as xs:string* := request:get-parameter('decades[]', ());
 declare variable $selected-month-years as xs:string* := request:get-parameter('month-years[]', ());
 declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');
@@ -28,12 +28,16 @@ declare variable $query-term as xs:string? := if ($term) then $term else ();
 Find all values, retrieve formatted-title field
 hoax:construct-date-facets() removes redundant (because of decades) month-years 
 ===== :)
-declare variable $date-facets-for-search as xs:string* := 
+declare variable $month-year-facets-for-search as xs:string* := 
     hoax:construct-date-facets($selected-decades, $selected-month-years);
+declare variable $date-facets-array as array(*)? := array:join((
+        $selected-decades ! [.],
+        $month-year-facets-for-search ! [(substring(., 1, 3) || '0', substring(., 1, 7))]
+    ));
 declare variable $fields as xs:string := "formatted-title";
 declare variable $all-facets as map(*) := map {
     "publisher" : $selected-publishers,
-    "publication-date" : $date-facets-for-search
+    "publication-date" : $date-facets-array
 };
 (: =====
 All options returns hits that match all facets
@@ -62,7 +66,7 @@ Date option returns hits filter by date
 Use only publisher facets 
 ===== :)
 declare variable $date-options as map(*) := map {
-    "facets" : map { "publication-date": $date-facets-for-search},
+    "facets" : map { "publication-date": $date-facets-array},
     "fields" : $fields
 };
 declare variable $date-hits as element(tei:TEI)* :=
@@ -146,6 +150,12 @@ Return results
     }</m:articles>
     <m:selected-facets>
         <!-- Not rendered directly, but used to restore checkbox state -->
+        <m:decades>{$selected-decades}</m:decades>
+        <m:date-facets-for-search>{serialize(
+                $date-facets-array, 
+                map { "method" : "json"}
+            )}</m:date-facets-for-search>
+        <m:all-facets>{serialize($all-facets, map { "method" : "json" })}</m:all-facets>
         <m:selected-publishers>{
             $selected-publishers ! <m:selected-publisher>{.}</m:selected-publisher>
         }</m:selected-publishers>

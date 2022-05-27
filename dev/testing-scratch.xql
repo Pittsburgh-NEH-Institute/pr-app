@@ -3,8 +3,8 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace array="http://www.w3.org/2005/xpath-functions/array";
  
 let $publisher-facets as xs:string* := ('Times, The', 'Penny Satirist, The')
-let $decades-input as xs:string* := ('1820', '1840')
-let $month-years-input as xs:string* := ('1832-01', '1838-01', '1840-01')
+let $decades-input as xs:string* := ('1830')
+let $month-years-input as xs:string* := ()
 let $month-years-filtered as xs:string* := hoax:construct-date-facets($decades-input, $month-years-input)
 let $date-facets as array(*):= array:join((
         $decades-input ! [.],
