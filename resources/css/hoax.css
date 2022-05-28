@@ -88,6 +88,7 @@ Advanced search
 #search-widgets {
     width: 25em;
     border-right: 1px lightgray solid;
+    padding-right: 1em;
 }
 #search-widgets ul {
     list-style-type: none;
@@ -97,3 +98,4 @@ Advanced search
 #search-widgets ul ul {
     padding-left: 2em;
 }
+fieldset {margin: 1em 0;}

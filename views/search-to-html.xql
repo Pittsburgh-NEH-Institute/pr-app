@@ -85,9 +85,11 @@ declare function local:search-term($node as element(m:search-term)) as item()+ {
 (: =====
 Publisher functions
 ===== :)
-declare function local:publishers($node as element(m:publishers)) as element()+ {
-    <html:h2>Publishers</html:h2>,
-    <html:ul>{local:passthru($node)}</html:ul>
+declare function local:publishers($node as element(m:publishers)) as element(html:fieldset) {
+    <html:fieldset>
+        <html:legend>Publishers</html:legend>
+        <html:ul>{local:passthru($node)}</html:ul>
+    </html:fieldset>
 };
 declare function local:publisher($node as element(m:publisher)) as element(html:li) {
     <html:li><html:input type="checkbox" name="publishers[]" value="{string($node/m:label)}">{
@@ -100,9 +102,11 @@ declare function local:publisher($node as element(m:publisher)) as element(html:
 (:=====
 Date functions
 =====:)
-declare function local:decades($node as element(m:decades)) as element()+ {
-    <html:h2>Date</html:h2>,
-    <html:ul>{local:passthru($node)}</html:ul>
+declare function local:decades($node as element(m:decades)) as element(html:fieldset) {
+    <html:fieldset>
+        <html:legend>Date</html:legend>
+        <html:ul>{local:passthru($node)}</html:ul>
+    </html:fieldset>
 };
 declare function local:decade($node as element(m:decade)) as element(html:li) {
     <html:li>
