@@ -18,6 +18,9 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare variable $tests:XML := document {
     <TEI xmlns="http://www.tei-c.org/ns/1.0">
         <tei:geo>51.513979 -0.098372</tei:geo>
+        <tei:body>
+            This sentence has five words.
+        </tei:body>
 
     </TEI>
 };
@@ -84,4 +87,11 @@ declare
         let $d as xs:string* := if ($decades[0] eq '') then () else $decades
         let $m as xs:string* := if ($month-years[0] eq '') then () else $month-years
         return hoax:construct-date-facets($d, $m)
+    };
+
+ (:Test function that counts words :)  
+ declare 
+    %test:assertEquals (5)
+    function tests:word-count() as xs:integer {
+        hoax:word-count(doc("/db/apps/pr-app/test.xml")//tei:body)
     };
