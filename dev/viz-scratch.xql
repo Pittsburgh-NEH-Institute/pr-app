@@ -12,7 +12,7 @@ declare variable $collection as element(tei:TEI)+ :=
 
 <m:by-article> {
     let $articles as element(tei:TEI)+ :=
-        collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., (), map{'fields':('wordcount')})]
+        collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., (), map{'fields':'wordcount'})]
     for $article in $articles
     return 
     <m:article>
