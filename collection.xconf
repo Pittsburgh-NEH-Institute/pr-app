@@ -9,6 +9,11 @@
             <text qname="tei:body"/>
             <text qname="tei:placeName"/>
             <text qname="tei:TEI">
+                <!-- ==================================================== -->
+                <!-- Word count                                           -->
+                <!--                                                      -->
+                <!-- word-count() function counts words (here, in body)   -->
+                <!-- ==================================================== -->
                 <field 
                     name="word-count" 
                     expression="descendant::tei:body => hoax:word-count()"/>
