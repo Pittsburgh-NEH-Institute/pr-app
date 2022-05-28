@@ -9,6 +9,9 @@
             <text qname="tei:body"/>
             <text qname="tei:placeName"/>
             <text qname="tei:TEI">
+                <field 
+                    name="wordcount" 
+                    expression="descendant::tei:body => hoax:wordcount()"/>
                 <!-- ==================================================== -->
                 <!-- Publisher                                            -->
                 <!--                                                      -->

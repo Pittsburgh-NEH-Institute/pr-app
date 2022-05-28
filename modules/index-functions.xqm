@@ -76,3 +76,6 @@ declare function hoax:construct-date-facets($decades as xs:string*, $month-years
         $month-years[not(matches(., $decade-starts))]
 };
 
+declare function hoax:word-count($body as element(tei:body)) as xs:integer {
+   count(tokenize($body))
+};
