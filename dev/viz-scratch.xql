@@ -12,16 +12,22 @@ declare variable $collection as element(tei:TEI)+ :=
 
 <m:by-article> {
     let $articles as element(tei:TEI)+ :=
-        collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., (), map{'fields':'wordcount'})]
+        collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., (), map{'fields':'word-count'})]
+        (:ft:query arguments: . is context (which we found with the preceding xpath), empty sequence is the text
+        string you're looking for (empty means get all), third argument is options. Options have to be maps. In this case
+        we're just looking for one field, word-count. Field information for your hits won't be available unless you
+        specify the fields you want (there are other fields defined that we aren't looking for). The map 'keys' in the 
+        key value pair can use either 'fields' or 'facets'. The 'value' in the key-value pair is a sequence of field names we care about.
+        In our case, it's just one field, so we don't use parens :)
     for $article in $articles
     return 
     <m:article>
         <m:id>{$article/@xml:id}</m:id>
-        <m:count>{ft:field($article, 'wordcount')}</m:count>
+        <m:count>{ft:field($article, 'word-count')}</m:count>
     </m:article>
+    (:ft:field() takes two arguments: the haystack and the needle. Haystack is a node we filtered using ft:query
+    and the needle is the name of the field we specified using ft:query. It returns the field value for the haystack.:)
 }
-
-
 
 </m:by-article>
 <m:by-decade>
@@ -39,8 +45,8 @@ let $avg as xs:string :=
 order by $decade
 return 
  <m:decade year="{$decade}">
-    <m:article_count>{$article-count}</m:article_count>
-    <m:ref_count>{$ref-count}</m:ref_count>
+    <m:article-count>{$article-count}</m:article-count>
+    <m:ref-count>{$ref-count}</m:ref-count>
     <m:avg>{$avg}</m:avg>
  </m:decade>
 

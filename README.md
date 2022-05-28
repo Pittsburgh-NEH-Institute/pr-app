@@ -84,7 +84,11 @@ Alternatively, use npx:
 ```bash
 npx cypress open
 ```
-
+## Conventions
+All names (variables, functions, elements, attributes) must use kebab-case. The following are regarded as single words:
+- datatype
+- filename
+- wordcount
 
 ## Contributing
 
