@@ -15,16 +15,16 @@ for $doc in $docs
     let $date as attribute(when) := $doc//tei:date/@when
     let $year as xs:string := substring-before($date, '-')
     let $title as xs:string := $doc//tei:titleStmt//tei:title/string()
-    let $pubnames as xs:string := $doc//tei:publisher => string-join(", ")
+    let $pub-names as xs:string := $doc//tei:publisher => string-join(", ")
     let $filename as xs:string := concat(substring-before(tokenize(base-uri($doc), '/')[last()], '.'), ".xml")
-    let $listitem as xs:string := string-join(($year,$title,$pubnames), "; ")
+    let $list-item as xs:string := string-join(($year,$title,$pub-names), "; ")
     order by $date
     return
           <m:item>
-            <m:teilink>tei?{$filename}</m:teilink>
-            <m:readlink>read?{$filename}</m:readlink>
+            <m:tei-link>tei?{$filename}</m:tei-link>
+            <m:read-link>read?{$filename}</m:read-link>
             <m:title>{$title}</m:title>
-            <m:pubnames>{$pubnames}</m:pubnames>
+            <m:pub-names>{$pub-names}</m:pub-names>
             <m:date>{$date}</m:date>
             <m:year>{$year}</m:year> 
           </m:item>}

@@ -7,11 +7,11 @@ declare variable $data as document-node() := request:get-data();
 <html:section>
     <html:ul>
         {for $entry as element(m:item)+ in $data/descendant::m:item
-            let $teilink := $entry/m:teilink
+            let $tei-link := $entry/m:tei-link
             let $title := $entry/m:title
             return
                 <html:li>
-                    <html:a href="{$teilink}">{$title}</html:a>
+                    <html:a href="{$tei-link}">{$title}</html:a>
                 </html:li>}
     </html:ul>
 </html:section>        
