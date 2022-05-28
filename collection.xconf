@@ -11,7 +11,7 @@
             <text qname="tei:TEI">
                 <field 
                     name="wordcount" 
-                    expression="descendant::tei:body => hoax:wordcount()"/>
+                    expression="descendant::tei:body => hoax:word-count()"/>
                 <!-- ==================================================== -->
                 <!-- Publisher                                            -->
                 <!--                                                      -->
