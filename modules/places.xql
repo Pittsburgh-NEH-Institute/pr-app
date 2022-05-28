@@ -27,7 +27,7 @@ return
 <places xmlns:m="http://www.obdurodon.org/model">
 {
   for $entry in $places
-    let $placename as element(tei:placeName)+ := $entry/tei:placeName
+    let $place-name as element(tei:placeName)+ := $entry/tei:placeName
     let $geo :=$entry/tei:location/tei:geo
     (:we could use a field to make shortening these numbers faster:)
     let $lat as xs:string := substring-before($geo, " ")
@@ -36,7 +36,7 @@ return
 
     return
     <placeEntry>
-    {$placename}
+    {$place-name}
         <geo>
         <lat>{$lat}</lat>
         <long>{$long}</long>
