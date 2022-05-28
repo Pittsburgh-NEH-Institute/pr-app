@@ -88,7 +88,7 @@ npx cypress open
 All names (variables, functions, elements, attributes) must use kebab-case. The following are regarded as single words:
 - datatype
 - filename
-- wordcount
+
 
 ## Contributing
 
