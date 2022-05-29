@@ -15,79 +15,84 @@ declare option output:indent "no";
 
 (: =====
 Retrieve parameters
+User can specify:
+    term : single word or phrase (no quotation marks around phrase)
+    publishers
+    decades
+    month-years
+Null term value is return as an empty string, and not as missing, so set
+    explicitly to an empty sequence if no meaningful value is supplied
 ===== :)
-declare variable $term as xs:string? := request:get-parameter('term', ());
-declare variable $selected-publishers as xs:string* := request:get-parameter('publishers[]', ());
-declare variable $selected-decades as xs:string* := request:get-parameter('decades[]', ());
-declare variable $selected-month-years as xs:string* := request:get-parameter('month-years[]', ());
-declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');
-declare variable $query-term as xs:string? := if ($term) then $term else ();
-
+declare variable $retrieved-term as xs:string? := (request:get-parameter('term', ()));
+declare variable $publishers as xs:string* := request:get-parameter('publishers[]', ());
+declare variable $decades as xs:string* := request:get-parameter('decades[]', ());
+declare variable $month-years as xs:string* := request:get-parameter('month-years[]', ());
+declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');(: declare variable $query-term as xs:string? := if ($term) then $term else (); :)
+declare variable $term as xs:string? := if ($retrieved-term) then $retrieved-term else ();
 (: TODO: Remove unneeded uses of formatted-title field :)
 (: =====
-Find all values, retrieve formatted-title field
 hoax:construct-date-facets() removes redundant (because of decades) month-years 
 ===== :)
 declare variable $month-year-facets-for-search as xs:string* := 
-    hoax:construct-date-facets($selected-decades, $selected-month-years);
+    hoax:construct-date-facets($decades, $month-years);
+(: =====
+$date-facets-array formats all date-related facet values (decades and month-years)
+    for use in searching (requires an array because of nesting)
+No such formatting is required for publishers because they are not hierarchical
+===== :)
 declare variable $date-facets-array as array(*)? := array:join((
-        $selected-decades ! [.],
+        $decades ! [.],
         $month-year-facets-for-search ! [(substring(., 1, 3) || '0', substring(., 1, 7))]
     ));
+(: =====
+The only field we care about is the formatted title, e.g., "Times, The"
+===== :)
 declare variable $fields as xs:string := "formatted-title";
+(: =====
+$all-hits is used for articles list, but not for facets to refine search
+===== :)
 declare variable $all-facets as map(*) := map {
-    "publisher" : $selected-publishers,
+    "publisher" : $publishers,
     "publication-date" : $date-facets-array
 };
-(: =====
-All options returns hits that match all facets
-Use articles list but ignore facets 
-===== :)
 declare variable $all-options as map(*) := map {
     "facets" : $all-facets,
     "fields" : $fields
 };
 declare variable $all-hits as element(tei:TEI)* := 
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
-    [ft:query(., $query-term, $all-options)];
+    [ft:query(., $term, $all-options)];
 (: =====
-Publisher options returns hits filtered by publishers
-Use only date facets 
+Publisher options returns hits filtered by publishers and term
+Used only to supply date facets to refine search
 ===== :)
 declare variable $publisher-options as map(*) := map {
-    "facets" : map { "publisher" : $selected-publishers},
+    "facets" : map { "publisher" : $publishers},
     "fields" : $fields
 };
 declare variable $publisher-hits as element(tei:TEI)* :=
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
-    [ft:query(., $query-term, $publisher-options)];
+    [ft:query(., $term, $publisher-options)];
 (: =====
-Date option returns hits filter by date
-Use only publisher facets 
+Date option returns hits filter by date and term
+Used only to supply publisher facets to refine search
 ===== :)
 declare variable $date-options as map(*) := map {
-    "facets" : map { "publication-date": $date-facets-array},
-    "fields" : $fields
+    "facets" : map { "publication-date": $date-facets-array}
 };
 declare variable $date-hits as element(tei:TEI)* :=
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
-    [ft:query(., $query-term, $date-options)]
+    [ft:query(., $term, $date-options)]
 ;
 (: =====
-Return results
+Return results, order is meaningful (order is used to create view): 
+    1) Search term
+    2) Publisher facets to refine search
+    3) Date facets to refine search
+    4) Articles
+    5) Selected facets (checkbox state)
 ===== :)
 <m:data>
-    <!-- Contains 
-        <m:publisher-facets> : render only these publisher facets (filtered by date)
-        <m:date-facets> : render only these date facets (filtered by publisher)
-        <m:selected-facets> : for highlighting 
-        <m:articles> : article titles with links
-    Order is meaningful (order is used to create view): 
-        a) Search term
-        b) Types of facets
-        c) Checkbox state
-        d) Articles
-    -->
     <m:search-term>{$term}</m:search-term>
     <m:publisher-facets>
         <m:publishers>{
@@ -137,8 +142,8 @@ Return results
         for $hit in $all-hits
         let $id := $hit/@xml:id ! string()
         let $title := ft:field($hit, "formatted-title")
-        let $publisher := $hit//tei:publicationStmt/tei:publisher ! string()
-        let $date := $hit//tei:publicationStmt/tei:date/@when ! string()
+        let $publisher := $hit/descendant::tei:publicationStmt/tei:publisher ! string()
+        let $date := $hit/descendant::tei:publicationStmt/tei:date/@when ! string()
         order by $title
         return
         <m:article>
@@ -150,20 +155,20 @@ Return results
     }</m:articles>
     <m:selected-facets>
         <!-- Not rendered directly, but used to restore checkbox state -->
-        <m:decades>{$selected-decades}</m:decades>
+        <m:decades>{$decades}</m:decades>
         <m:date-facets-for-search>{serialize(
                 $date-facets-array, 
                 map { "method" : "json"}
             )}</m:date-facets-for-search>
         <m:all-facets>{serialize($all-facets, map { "method" : "json" })}</m:all-facets>
-        <m:selected-publishers>{
-            $selected-publishers ! <m:selected-publisher>{.}</m:selected-publisher>
-        }</m:selected-publishers>
-        <m:selected-decades>{
-            $selected-decades ! <m:selected-decade>{.}</m:selected-decade>
-        }</m:selected-decades>
-        <m:selected-month-years>{
-            $selected-month-years ! <m:selected-month-year>{.}</m:selected-month-year>
-        }</m:selected-month-years>
+        <m:publishers>{
+            $publishers ! <m:publisher>{.}</m:publisher>
+        }</m:publishers>
+        <m:decades>{
+            $decades ! <m:decade>{.}</m:decade>
+        }</m:decades>
+        <m:month-years>{
+            $month-years ! <m:month-year>{.}</m:month-year>
+        }</m:month-years>
     </m:selected-facets>
 </m:data>

@@ -94,7 +94,7 @@ declare function local:publishers($node as element(m:publishers)) as element(htm
 declare function local:publisher($node as element(m:publisher)) as element(html:li) {
     <html:li><html:input type="checkbox" name="publishers[]" value="{string($node/m:label)}">{
         (: Maintain checked state :)
-        if ($node/m:label = root($node)/descendant::m:selected-publisher) 
+        if ($node/m:label = root($node)/descendant::m:selected-facets/descendant::m:publisher) 
             then attribute checked {"checked"} 
             else ()
     }</html:input>{local:passthru($node)}</html:li>
@@ -113,7 +113,7 @@ declare function local:decade($node as element(m:decade)) as element(html:li) {
         <html:details>
             <html:summary><html:input type="checkbox" class="decade-checkbox" name="decades[]" value="{string($node/m:label)}">{
                 (: Maintain checked state :)
-                if ($node/m:label = root($node)/descendant::m:selected-decade) then attribute checked {"checked"} else ()
+                if ($node/m:label = root($node)/descendant::selected-facets/descendant::m:decade) then attribute checked {"checked"} else ()
             }</html:input> {for $child in $node/(m:label | m:count) return local:dispatch($child)}</html:summary>
             {local:dispatch($node/m:month-years)}
         </html:details>
@@ -125,7 +125,7 @@ declare function local:month-years($node as element(m:month-years)) as element(h
 declare function local:month-year($node as element(m:month-year)) as element(html:li) {
     <html:li><html:input type="checkbox" class="month-year-checkbox" name="month-years[]" value="{string($node/m:label)}"/> {
             (: Maintain checked state :)
-            if ($node/m:label = root($node)/descendant::m:selected-month-year) then attribute checked {"checked"} else (),
+            if ($node/m:label = root($node)/descendant::m:selected-facets/descendant::m:month-year) then attribute checked {"checked"} else (),
         format-date($node/m:label || '-01', '[MNn] [Y] '), 
         local:count($node/m:count)
     }</html:li>
