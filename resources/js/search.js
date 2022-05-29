@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
         decades[i].addEventListener('change', process_decade_check, false);
         var all_children = decades[i].parentElement.nextElementSibling.querySelectorAll('input');
         var checked_children = decades[i].parentElement.nextElementSibling.querySelectorAll('input:checked');
-        console.log('all_children = ' + all_children.length + '; checked children = ' + checked_children.length);
         if (0 < checked_children.length && checked_children.length < all_children.length) { // set intermediate if some but not all children are checked
             decades[i].indeterminate = true;
         }
