@@ -24,6 +24,7 @@ declare namespace m="http://www.obdurodon.org/model";
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";
 declare option output:indent "no";
+declare option output:exclude-result-prefixes "#all";
 
 declare variable $data as document-node() := request:get-data();
 
@@ -154,7 +155,7 @@ declare function local:article($node as element(m:article)) as element(html:li) 
     <html:li>
         <html:a href="read?title={$node/m:id}"><html:q>{$node/m:title ! string()}</html:q></html:a>
         (<html:cite> {string-join($node/m:publisher, '; ')}</html:cite>,
-        {$node/m:date})      
+        {$node/m:date ! string()})      
     </html:li>
 };
 (:=====
