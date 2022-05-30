@@ -1,3 +1,11 @@
+<style>
+.note {
+    font-size: smaller;
+    border: 1px black solid; 
+    padding: .5em;
+    margin: .5em 0;
+}
+</style>
 # Facets and fields in eXist-db
 
 ----
@@ -269,7 +277,7 @@ Here’s how the facet strategy works:
 
 We can ask about facets in our XQuery only if we first perform a full-text query using `ft:query()`. In the XPath expression above we retrieve all documents in our corpus and then use the `ft:query()` function to filter them to keep only those that contain the word ‘ghost’ anywhere inside the `<TEI>` root element. We bind the result of this query to a variable we call `$hits`.
 
-<div style="font-size: smaller; border: 1px black solid; margin: .5em 0; padding: .5em;">
+<div class="note">
 <b>Note:</b> If we want to retrieve all documents without filtering on string content we can use an empty sequence as the second argument to the `ft:query()` function instead of an explicit string:
 
 ```xquery
@@ -277,7 +285,7 @@ collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., ())]
 ```
 </div>
 
-<div style="font-size: smaller; border: 1px black solid; margin: .5em 0; padding: .5em;">
+<div class="note">
 <b>Note:</b> Because of the way that eXist-db indexed retrieval works, we must specify the documents and the predicate in the same statement. For example, the XPath in the snippet below is informationally identical to that of the first version, above, and also easier to read because it uses <dfn>convenience variables</dfn>. Unfortunately, it will not quickly or reliably produce correct results in eXist-db because it selects the documents on one line and applies the predicate on a different line:
 
 ```xquery
