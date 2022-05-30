@@ -140,16 +140,24 @@ Return results, order is meaningful (order is used to create view):
     <m:articles>
         { (: from $all-hits: article data for list of articles with links :)
         for $hit in $all-hits
-        let $id := $hit/@xml:id ! string()
-        let $title := ft:field($hit, "formatted-title")
-        let $publisher := $hit/descendant::tei:publicationStmt/tei:publisher ! string()
-        let $date := $hit/descendant::tei:publicationStmt/tei:date/@when ! string()
+        let $id as xs:string := 
+            $hit/@xml:id ! string()
+        let $title as xs:string := 
+            ft:field($hit, "formatted-title")
+        let $publisher as xs:string+ := 
+            $hit/descendant::tei:publicationStmt/tei:publisher ! string()
+        let $date as xs:string
+            := $hit/descendant::tei:publicationStmt/tei:date/@when ! string()
         order by $title
         return
         <m:article>
             <m:id>{$id}</m:id>
             <m:title>{$title}</m:title>
-            <m:publisher>{$publisher}</m:publisher>
+            {
+                for $p in $publisher
+                return
+                <m:publisher>{$p}</m:publisher>
+            }
             <m:date>{$date}</m:date>
         </m:article>
     }</m:articles>
