@@ -47,7 +47,7 @@ declare variable $date-facets-array as array(*)? := array:join((
 (: =====
 The only field we care about is the formatted title, e.g., "Times, The"
 ===== :)
-declare variable $fields as xs:string := "formatted-title";
+declare variable $fields as xs:string+ := ("formatted-title", "formatted-date");
 (: =====
 $all-hits is used for articles list, but not for facets to refine search
 ===== :)
@@ -146,8 +146,8 @@ Return results, order is meaningful (order is used to create view):
             ft:field($hit, "formatted-title")
         let $publisher as xs:string+ := 
             $hit/descendant::tei:publicationStmt/tei:publisher ! string()
-        let $date as xs:string
-            := $hit/descendant::tei:publicationStmt/tei:date/@when ! string()
+        let $date as xs:string := 
+            ft:field($hit, "formatted-date")
         order by $title
         return
         <m:article>

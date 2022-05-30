@@ -154,7 +154,7 @@ declare function local:article($node as element(m:article)) as element(html:li) 
     <html:li>
         <html:a href="read?title={$node/m:id}"><html:q>{$node/m:title ! string()}</html:q></html:a>
         (<html:cite> {string-join($node/m:publisher, '; ')}</html:cite>,
-        {format-date($node/m:date, '[MNn] [D], [Y]')})      
+        {$node/m:date})      
     </html:li>
 };
 (:=====
