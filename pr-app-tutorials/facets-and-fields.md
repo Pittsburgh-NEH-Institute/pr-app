@@ -1,5 +1,18 @@
 # Facets and fields in eXist-db
-## About this document
+
+----
+
+## Contents
+
+1. About facets and fields
+2. Facets
+   * Overview of faceted searching in Ghost Hoax App
+   * Using facets to control a search
+   * Configuring facets
+   * Using facets to count
+
+--
+## 1. About facets and fields
 
 *Facets* and *fields* are part of the *full-text indexing* feature of eXist-db. As the name implies, full-text indexing provides a mechanism for retrieving documents according to any of the words they contain, e.g., “Find all documents that contain the word ‘ghost’” (anywhere in the document) or “Find all documents that contain the word ‘ghost’ in the title”, etc.
 
@@ -22,34 +35,29 @@ Both facets and fields can index on computed values, which, for reasons describe
 
 The code that supports faceted searching in the Ghost Hoax app is available in our [GitHub repo](https://github.com/Pittsburgh-NEH-Institute/pr-app). Facets and fields are configured as part of the [*collection.xconf*](https://github.com/Pittsburgh-NEH-Institute/pr-app/blob/main/collection.xconf) index file. We use a model-view-controller implementation (managed by [*controller.xql*](https://github.com/Pittsburgh-NEH-Institute/pr-app/blob/main/controller.xql)), where the model is created by [*modules/search.xql*](https://github.com/Pittsburgh-NEH-Institute/pr-app/blob/main/modules/search.xql) and then piped through [*views/search-to-html.xql*](https://github.com/Pittsburgh-NEH-Institute/pr-app/blob/main/views/search-to-html.xql) and [*views/wrapper.xql*](https://github.com/Pittsburgh-NEH-Institute/pr-app/blob/main/views/wrapper.xql) to create the HTML that is returned to the user.
 
-## Overview: faceted search organization in Ghost Hoax app
+## 2. Facets
+
+### 2.1. Overview of faceted searching in the Ghost Hoax app
 
 The Advanced search interface exposes three search components: *text*, *publisher*, *date*. All three function equivalently to constrain (filter) the titles returned, and any of the three can be modified at any time to refine a previous search step.
-### Text
+1. **Text:** Text searching is case-insensitive. The simplest text search is a single word; more complex text specifications (e.g., phrases, wildcards, proximity) are supported; see the [Lucene documentation](https://lucene.apache.org/core/4_10_4/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description) for details. The app does not prioritize (and therefore does not explicitly document) all of the Lucene functionality because we prioritized simple design and easy use, and therefore limited our goals to supporting searches for single words. 
+1. **Publisher:** Name of publisher, with definite and indefinite article moved to end (e.g., “Times, The” instead of “The Times”.) Users interact with publisher values by means of a checklist.
+1. **Date:** Hierarchical, with *decade* (e.g., "1800" for the 1800–09 decade) at the top level and *month-year* in human-readable form (e.g., “January 1804”) as second level. The second level is returned as `YYYY-MM` to support sorting and then formatted as part of the view. Users interact with dates by means of a checklist, which means that they do not need to know about how eXist-db deals with hierarchical selection internally. 
 
-Text searching is case-insensitive. The simplest text search is a single word; more complex text specifications (e.g., phrases, wildcards, proximity) are supported; see the [Lucene documentation](https://lucene.apache.org/core/4_10_4/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description) for details. The app does not prioritize (and therefore does not explicitly document) all of the Lucene functionality because we prioritized simple design and easy use, and therefore limited our goals to supporting searches for single words. 
-
-### Publisher
-
-Name of publisher, with definite and indefinite article moved to end (e.g., “Times, The” instead of “The Times”.) Users interact with publisher values by means of a checklist.
-
-### Date
-
-Hierarchical, with *decade* (e.g., "1800" for the 1800–09 decade) at the top level and *month-year* in human-readable form (e.g., “January 1804”) as second level. The second level is returned as `YYYY-MM` to support sorting and then formatted as part of the view. Users interact with dates by means of a checklist, which means that they do not need to know about how eXist-db deals with hierarchical selection internally. 
-
-The checkbox interface supports the following operations:
+The checkbox interface in the Ghost Hoax app supports the following operations:
 
 1. Selecting a decade automatically selects (checks) all of its subcategories (month-year combinations).
 2. Unchecking a decade autmoatically unselects (unchecks) all of its subcategories.
 3. Checking the last month-year causes the decade to be checked.
 4. Unchecking a month-year when some were previously selected causes the decade to be unchecked, and rendered instead as a dash in the checkbox, as long as at least one month-year is still checked.
 5. Unchecking the last month-year child causes the decade to be unchecked, with no dash rendered.
-### Implementation
+
+The facets in the Ghost Host app have the following characteristics:
 
 1. Categories (*publisher*, *date*) are multi-select, that is, multiple selections within a category form an `or` operation.
-2. Combinations of facet categories (`text`, `publisher`, `date`) form an `and` operation.
-3. The interface updates only when the **Search** button is pressed. Unlike some faceted search interfaces it does not update automatically on each check.
-4. Each query retrieves the article titles selected by the checked facet values plus only those facets (with counts) that can be used to constrain or expand the results. 
+1. Combinations of facet categories (`text`, `publisher`, `date`) form an `and` operation.
+1. The interface updates only when the **Search** button is pressed. Unlike some faceted search interfaces it does not update automatically on each check.
+1. Each query retrieves the article titles selected by the checked facet values plus only those facets (with counts) that can be used to constrain or expand the results. 
 
 The default behavior of eXist-db facets is only to “drill down”, that is, to narrow the results of a previous query. In the case of the Ghost Hoax app this is inconvenient because we also want to be able to expand a result. For example, if we select one publisher and one date and we then want to keep the date but add another publisher, under the default eXist-db behavior we would have to unselect the publisher we already chose in order to see a list of publishers that published articles on our selected dates. The behavior we want is to be able to broaden our selection of one or another facet without having to undo any prior selection, which means that we want to see all publishers who published on our selected dates, both those we have checked and those we haven’t checked. 
 
@@ -61,7 +69,7 @@ In order to support both narrowing and expanding we perform three queries behind
 4. **To create new date facets:** Similarly, new date facets are returned according to a combination of text plus selected publisher facets.
 
 
-## Facets
+### 2.2. Using facets to control a search
 
 The [eXist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?field=all&id=D3.15.73#facets-and-fields) writes that:
 
@@ -79,7 +87,8 @@ Facets in eXist-db they provide quick and efficient access to counts and they su
 2. The syntax of queries that use facets may be simpler than the syntax of an alternative query without facets.
 
 We say more about those two advantages below
-### Configuring facets
+
+### 2.3. Configuring facets
 
 The following eXist-db *collection.xconf* index file creates a facet for the publisher of our corpus documents:
 
@@ -102,7 +111,7 @@ The following eXist-db *collection.xconf* index file creates a facet for the pub
 
 The `<text>` elements in our index file instruct eXist-db to construct full-text indexes for `<body>`, `<placeName>`, and the root `<TEI>` element, and the `<facet>` child of the configuration for the `<TEI>` element says that `<TEI>` elements should be retrievable with a facet called `publisher` (the value of the `@dimension` attribute) that refers to the `<publisher>` child of the `<publicationStmt>` element (the value of the `@expression` attribute). We illustrate below how configuring a facet for the publisher supports query and retrieval operations.
 
-### Why use facets to count
+### 2.4. Using facets to count
 
 When we run the following query against our corpus using the facet configuration above:
 
@@ -226,11 +235,9 @@ it returns a list of all publishers with the numbers of times they occur in the 
 </facet_test>
 ```
 
-----
-
-**Note:** The preceding is a simplified introductory result. In our app we move definite and indefinite articles in publisher names to the end for both sorting and retrieval, so that, for example, “The Weekly Times” becomes “Weekly Times, The” and sorts with titles that begin with “w“. We illustrate below how we enhance our facet configuration to perform this modification at index time, which avoids the repeated performance cost that would come with doing it at query time.
-
-----
+<div style="font-size: smaller; border: 1px black solid; margin: .5em 0; padding: .5em;">
+<b>Note:</b> The preceding is a simplified introductory result. In our app we move definite and indefinite articles in publisher names to the end for both sorting and retrieval, so that, for example, “The Weekly Times” becomes “Weekly Times, The” and sorts with titles that begin with “w“. We illustrate below how we enhance our facet configuration to perform this modification at index time, which avoids the repeated performance cost that would come with doing it at query time.
+</div>
 
 We could have written the following regular FLWOR expression to return essentially the same results:
 
@@ -254,25 +261,24 @@ return
 
 One reason to prefer facets to the regular XQuery FLWOR strategy is that with facets the counts are computed at index time, while with FLWOR they are computed at query time. With a small amount of data the difference will not be noticeable, but computing counts at index time has the same performance advantage as indexing in general: a precomputed value is computed only once and in a context where performance is not critical, and the result can then be retrieved quickly because it does not have to be recomputed each time it is needed.
 
-----
-
-**Note:** XQuery FLWOR expressions since version 3.0 support a <code>count</code> clause that can be used for counting members of a group, but that feature is not supported by eXist-db (as of version 6.0.1, the latest stable release as we write this tutorial in May 2022).
-
-----
+<div style="font-size: smaller; border: 1px black solid; margin: .5em 0; padding: .5em;">
+<b>Note:</b> XQuery FLWOR expressions since version 3.0 support a <code>count</code> clause that can be used for counting members of a group, but that feature is not supported by eXist-db (as of version 6.0.1, the latest stable release as we write this tutorial in May 2022).
+</div>
 
 Here’s how the facet strategy works:
 
 We can ask about facets in our XQuery only if we first perform a full-text query using `ft:query()`. In the XPath expression above we retrieve all documents in our corpus and then use the `ft:query()` function to filter them to keep only those that contain the word ‘ghost’ anywhere inside the `<TEI>` root element. We bind the result of this query to a variable we call `$hits`.
 
-----
-
-**Note:** If we want to retrieve all documents without filtering on string content we can use an empty sequence as the second argument to the `ft:query()` function instead of an explicit string:
+<div style="font-size: smaller; border: 1px black solid; margin: .5em 0; padding: .5em;">
+<b>Note:</b> If we want to retrieve all documents without filtering on string content we can use an empty sequence as the second argument to the `ft:query()` function instead of an explicit string:
 
 ```xquery
 collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., ())]
 ```
+</div>
 
-**Note:** Because of the way that eXist-db indexed retrieval works, we must specify the documents and the predicate in the same statement. For example, the XPath in the snippet below is informationally identical to that of the first version, above, and also easier to read because it uses <dfn>convenience variables</dfn>. Unfortunately, it will not quickly or reliably produce correct results in eXist-db because it selects the documents on one line and applies the predicate on a different line:
+<div style="font-size: smaller; border: 1px black solid; margin: .5em 0; padding: .5em;">
+<b>Note:</b> Because of the way that eXist-db indexed retrieval works, we must specify the documents and the predicate in the same statement. For example, the XPath in the snippet below is informationally identical to that of the first version, above, and also easier to read because it uses <dfn>convenience variables</dfn>. Unfortunately, it will not quickly or reliably produce correct results in eXist-db because it selects the documents on one line and applies the predicate on a different line:
 
 ```xquery
 (: bad code :)
@@ -281,8 +287,7 @@ let $articles as element(tei:TEI)+ :=
 let $hits as element(tei:TEI)+ := 
     $articles[ft:query(., 'ghost')]
 ```
-
-----
+</div>
 
 Once we have bound the variable `$hits` to the `<TEI>` elements in our corpus that contain the string ‘ghost’ we then use the `ft:facets()` function to return the publisher names for those documents with a count of the number of matching articles by each publisher. Note that *we do no explicit counting in our FLWOR*; the counts are created at index time and are available without having to count at query time. The first argument to the function `ft:facets()` is the result of `ft:query()` (in this case the `$hits` variable), the second argument is the name of the `@dimension` we declared for the `publisher` facet in the index (in this case the string `"publisher"`), and the third argument (which is optional) is the maximum number of results to return (we omit this argument to return all hits).
 
