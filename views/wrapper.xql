@@ -18,7 +18,7 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
 <html>
     <head>
         <title>Hoax</title>
-        <link rel="stylesheet" type="text/css" href="resources/css/hoax.css"/>
+        <link rel="stylesheet" media="screen" type="text/css" href="resources/css/hoax.css"/>
         <link rel="icon" href="typewriter.jpg"/>
     </head>
     <body>
