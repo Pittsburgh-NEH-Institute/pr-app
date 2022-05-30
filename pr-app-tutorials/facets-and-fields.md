@@ -17,6 +17,9 @@
    * 2.9. Querying on hierarchical facets
    * 2.10. Facets conclusion
   3. Fields
+   * 3.1. Configuring fields
+   * 3.2. Returning field values in a query
+   * 3.3. Fields conclusion
 
 ----
 ## 1. About facets and fields
@@ -665,9 +668,7 @@ The newspaper titles can be retrieved verbatim from the XML sources, but the art
 2. The date information is present only in ISO format. For example, a date of September 24, 1836 is represented in the XML as `1836-09-24`, and we need to apply the XPath `format-date()` function to create user-friendly output.
 
 We choose fields, rather than facets, for this task because we don’t need to group and count by article titles or dates, we don’t need a hierarchy, and we don’t use these values to refine a query. All we need is to preconstruct string values and retrieve them (instead of computing them) at query time.
-
-# RESUME HERE
-### Configuring fields
+### 3.1. Configuring fields
 
 The simplest way to configure a field is to add a `<field>` element to the index file, as in:
 
@@ -678,22 +679,116 @@ The simplest way to configure a field is to add a `<field>` element to the index
     <lucene>
       <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
       <analyzer id="ws" class="org.apache.lucene.analysis.core.WhitespaceAnalyzer"/>
+      <module uri="http://obdurodon.org/hoax" prefix="hoax" at="modules/index-functions.xqm"/>
       <text qname="tei:body"/>
       <text qname="tei:placeName"/>
       <text qname="tei:TEI">
-        <field name="publisher-disartictulated" 
-          expression="descendant::tei:publicationStmt/tei:publisher
-            ! analyze-string(., '^(The|An|A) (.+)')/*
-            ! (if (. instance of element(fn:match)) then 
-                concat(fn:group[@nr eq '2'], ', ', fn:group[@nr eq '1'])
-              else .
-                )"/>
-      </text>
+        <field name="formatted-title" 
+            expression="descendant::tei:titleStmt/tei:title 
+            ! hoax:format-title(.)"/>
+        <field name="formatted-date" 
+            expression="descendant::tei:publicationStmt/tei:date/@when
+            ! xs:date(.)
+            ! format-date(., '[MNn] [D], [Y]')"/>
+        </text>
     </lucene>
   </index>
 </collection>
 ```
 
-The preceding field specification creates a field called `publisher-disarticulated` that removes a leading article from the beginning of a publisher name and moves it to the end after a comma and a space. For example, if the publisher is “The TimesÍ” the value of the corresponding`publisher-disarticulated` field is “Times, The”. We could perform this string surgery at query time, but implementing it instead at indexing time means that it has to be performed only once and that the value is available on demand, without having to be generated afresh. We can use a computed field value for either query or rendering, that is, either our query can ask for records with a `publisher-disarticulated` value of “Times, The” or we can select records in another way and render the publisher name as “Times, The” instead of the original “The Times”. (For information about the XPath `analyze-string()` function used above see the [5.6.6 fn:analyze-string](https://www.w3.org/TR/xpath-functions-31/#func-analyze-string) section of the W3C [XPath and XQuery Functions and Operators 3.1](https://www.w3.org/TR/xpath-functions-31/) documentation.)
+1. The configuration of the `formatted-title` field above uses the `hoax:format-title()` function (which we employed to format publication titles in our facets) to create a field called `formatted-title` that removes a leading definite or indefinite article from the beginning of an article title and moves it to the end after a comma and a space. For example, if the article title is “A ghost, a bear, or a devil” the associated `formatted-title` field value would be “Ghost, a bear, or a devil, A”.
+1. The configuration of the `formatted-date` field above uses the standard library functions `xs:date()` and `format-date()` to create a human-readable full date. For example, if the publication date is “1838-11-04” the associated `formatted-date` field value would be “November 4, 1838”.
 
+We could perform these string operations at query time, but implementing them instead at indexing time means that they have to be performed only once and that the values are available on demand, without having to be generated afresh. 
 
+### 3.2. Returning field values in a query
+
+The following XQuery returns metadata about all articles in the collection, including the constructed formatted article title and human-readable formatted date:
+
+```xquery
+xquery version "3.1";
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace m="http://www.obdurodon.org/model";
+declare variable $all-hits as element(tei:TEI)+ :=
+    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
+    [ft:query(., (), map { "fields" : ("formatted-title", "formatted-date") })];
+<m:articles>{
+    for $hit in $all-hits
+    let $id as xs:string := $hit/@xml:id ! string()
+    let $title as xs:string := ft:field($hit, "formatted-title")
+    let $publisher as xs:string+ := $hit/descendant::tei:publicationStmt/tei:publisher ! string()
+    let $date as xs:string := ft:field($hit, "formatted-date")
+    order by $title
+    return
+    <m:article>
+        <m:id>{$id}</m:id>
+        <m:title>{$title}</m:title>
+        {
+            for $p in $publisher
+            return 
+            <m:publisher>{$p}</m:publisher>
+        }
+        <m:date>{$date}</m:date>
+    </m:article>
+}</m:articles>
+```
+
+As was the case with facets, field information can be retrieved only from results returned by `ft:query()`. Just as facet information is then retrieved from a query with `ft:facets()`, where results of the `ft:query()` operation serve as the first parameter, field information is retrieved with `ft:field()` with the same first parameter. One important difference is that the facets to be retrieved do not have to have been specified in the original `ft:query()` but fields do, which is why we used:
+
+```xquery
+ft:query(., (), map { "fields" : "formatted-title" } )
+```
+
+Had we instead omitted the third argument and run just `ft:query(., ())`, eXist would not have had access to the field value.
+
+The preceding query returns results like the following (excerpted):
+
+```xml
+<m:articles xmlns:m="http://www.obdurodon.org/model">
+    <m:article>
+        <m:id>GH-19CUK-18380120</m:id>
+        <m:title>All the world...</m:title>
+        <m:publisher>The Penny Satirist</m:publisher>
+        <m:date>January 20, 1838</m:date>
+    </m:article>
+    <m:article>
+        <m:id>GH-19CUK-18380120</m:id>
+        <m:title>All the world...</m:title>
+        <m:publisher>The Penny Satirist</m:publisher>
+        <m:date>January 20, 1838</m:date>
+    </m:article>
+    <!-- some results removed-->
+    <m:article>
+        <m:id>GH-BRITP-18640514</m:id>
+        <m:title>Science: A new Ghost</m:title>
+        <m:publisher>The London Reader</m:publisher>
+        <m:date>May 14, 1864</m:date>
+    </m:article>
+    <m:article>
+        <m:id>GH-GNCCO-18750703</m:id>
+        <m:title>Substantial Ghost Story, A</m:title>
+        <m:publisher>The People’s Advocate</m:publisher>
+        <m:publisher>Altrincham Guardian</m:publisher>
+        <m:date>July 3, 1875</m:date>
+    </m:article>
+    <m:article>
+        <m:id>GH-GNCCO-18410227</m:id>
+        <m:title>Thoughts On Seeing Ghosts</m:title>
+        <m:publisher>The Odd Fellow</m:publisher>
+        <m:publisher>Yankee Notions</m:publisher>
+        <m:date>February 27, 1841</m:date>
+    </m:article>
+    <m:article>
+        <m:id>GH-19CUK-18320318</m:id>
+        <m:title>Tom Paine's Ghost</m:title>
+        <m:publisher>The Age</m:publisher>
+        <m:date>March 18, 1832</m:date>
+    </m:article>
+</m:articles>
+```
+
+Because these results are used to create a list of articles that will be alphabetized by article title, the article titles are rendered with leading definite and indefinite articles moved to the end, but publication titles are returned without that modification. The publication titles were modified in the facets, since they had to be alphabetized there. 
+
+### 3.3. Fields 
+
+In our Ghost Hoax app we retrieve constructed values using fields as a strategy for improving the performance of our queries. We do not use field values as query parameters, an addition aspect of fields that is described in the standard [eXist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?field=all&id=D3.15.73#query-fields).
