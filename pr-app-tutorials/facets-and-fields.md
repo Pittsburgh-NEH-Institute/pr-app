@@ -1,11 +1,3 @@
-<style>
-.note {
-    font-size: smaller;
-    border: 1px black solid; 
-    padding: .5em;
-    margin: .5em 0;
-}
-</style>
 # Facets and fields in eXist-db
 
 ----
@@ -243,9 +235,11 @@ it returns a list of all publishers with the numbers of times they occur in the 
 </facet_test>
 ```
 
-<div style="font-size: smaller; border: 1px black solid; margin: .5em 0; padding: .5em;">
-<b>Note:</b> The preceding is a simplified introductory result. In our app we move definite and indefinite articles in publisher names to the end for both sorting and retrieval, so that, for example, “The Weekly Times” becomes “Weekly Times, The” and sorts with titles that begin with “w“. We illustrate below how we enhance our facet configuration to perform this modification at index time, which avoids the repeated performance cost that would come with doing it at query time.
-</div>
+----
+
+**Note:** The preceding is a simplified introductory result. In our app we move definite and indefinite articles in publisher names to the end for both sorting and retrieval, so that, for example, “The Weekly Times” becomes “Weekly Times, The” and sorts with titles that begin with “w“. We illustrate below how we enhance our facet configuration to perform this modification at index time, which avoids the repeated performance cost that would come with doing it at query time.
+
+----
 
 We could have written the following regular FLWOR expression to return essentially the same results:
 
@@ -269,24 +263,25 @@ return
 
 One reason to prefer facets to the regular XQuery FLWOR strategy is that with facets the counts are computed at index time, while with FLWOR they are computed at query time. With a small amount of data the difference will not be noticeable, but computing counts at index time has the same performance advantage as indexing in general: a precomputed value is computed only once and in a context where performance is not critical, and the result can then be retrieved quickly because it does not have to be recomputed each time it is needed.
 
-<div style="font-size: smaller; border: 1px black solid; margin: .5em 0; padding: .5em;">
-<b>Note:</b> XQuery FLWOR expressions since version 3.0 support a <code>count</code> clause that can be used for counting members of a group, but that feature is not supported by eXist-db (as of version 6.0.1, the latest stable release as we write this tutorial in May 2022).
-</div>
+----
+
+**Note:** XQuery FLWOR expressions since version 3.0 support a <code>count</code> clause that can be used for counting members of a group, but that feature is not supported by eXist-db (as of version 6.0.1, the latest stable release as we write this tutorial in May 2022).
+
+----
 
 Here’s how the facet strategy works:
 
 We can ask about facets in our XQuery only if we first perform a full-text query using `ft:query()`. In the XPath expression above we retrieve all documents in our corpus and then use the `ft:query()` function to filter them to keep only those that contain the word ‘ghost’ anywhere inside the `<TEI>` root element. We bind the result of this query to a variable we call `$hits`.
 
-<div class="note">
-<b>Note:</b> If we want to retrieve all documents without filtering on string content we can use an empty sequence as the second argument to the `ft:query()` function instead of an explicit string:
+----
+
+**Note:** If we want to retrieve all documents without filtering on string content we can use an empty sequence as the second argument to the `ft:query()` function instead of an explicit string:
 
 ```xquery
 collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., ())]
 ```
-</div>
 
-<div class="note">
-<b>Note:</b> Because of the way that eXist-db indexed retrieval works, we must specify the documents and the predicate in the same statement. For example, the XPath in the snippet below is informationally identical to that of the first version, above, and also easier to read because it uses <dfn>convenience variables</dfn>. Unfortunately, it will not quickly or reliably produce correct results in eXist-db because it selects the documents on one line and applies the predicate on a different line:
+**Note:** Because of the way that eXist-db indexed retrieval works, we must specify the documents and the predicate in the same statement. For example, the XPath in the snippet below is informationally identical to that of the first version, above, and also easier to read because it uses <dfn>convenience variables</dfn>. Unfortunately, it will not quickly or reliably produce correct results in eXist-db because it selects the documents on one line and applies the predicate on a different line:
 
 ```xquery
 (: bad code :)
@@ -295,7 +290,8 @@ let $articles as element(tei:TEI)+ :=
 let $hits as element(tei:TEI)+ := 
     $articles[ft:query(., 'ghost')]
 ```
-</div>
+
+----
 
 Once we have bound the variable `$hits` to the `<TEI>` elements in our corpus that contain the string ‘ghost’ we then use the `ft:facets()` function to return the publisher names for those documents with a count of the number of matching articles by each publisher. Note that *we do no explicit counting in our FLWOR*; the counts are created at index time and are available without having to count at query time. The first argument to the function `ft:facets()` is the result of `ft:query()` (in this case the `$hits` variable), the second argument is the name of the `@dimension` we declared for the `publisher` facet in the index (in this case the string `"publisher"`), and the third argument (which is optional) is the maximum number of results to return (we omit this argument to return all hits).
 
