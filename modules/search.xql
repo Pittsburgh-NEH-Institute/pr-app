@@ -169,7 +169,6 @@ Return results, order is meaningful (order is used to create view):
     }</m:articles>
     <m:selected-facets>
         <!-- Not rendered directly, but used to restore checkbox state -->
-        <m:controller>{$exist:controller}</m:controller>
         <m:decades>{$decades}</m:decades>
         <m:date-facets-for-search>{serialize(
                 $date-facets-array, 
