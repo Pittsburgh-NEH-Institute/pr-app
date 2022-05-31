@@ -16,7 +16,7 @@
    * 2.8. Facets and boolean queries
    * 2.9. Querying on hierarchical facets
    * 2.10. Facets conclusion
-  3. Fields
+3. Fields
    * 3.1. Configuring fields
    * 3.2. Returning field values in a query
    * 3.3. Fields conclusion
