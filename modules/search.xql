@@ -14,7 +14,15 @@ declare option output:method "xml";
 declare option output:indent "no";
 
 (: =====
-Retrieve parameters
+Retrieve controller parameters
+
+Default path to data is xmldb:exist:///db/apps/pr-app/data/hoax_xml
+===== :)
+declare variable $exist:root as xs:string := request:get-parameter("exist:root", "xmldb:exist:///db/apps");
+declare variable $exist:controller as xs:string := request:get-parameter("exist:controller", "/pr-app");
+declare variable $path-to-data as xs:string := $exist:root || $exist:controller || '/data/hoax_xml';
+(: =====
+Retrieve query parameters
 User can specify:
     term : single word or phrase (no quotation marks around phrase)
     publishers
@@ -27,9 +35,7 @@ declare variable $retrieved-term as xs:string? := (request:get-parameter('term',
 declare variable $publishers as xs:string* := request:get-parameter('publishers[]', ());
 declare variable $decades as xs:string* := request:get-parameter('decades[]', ());
 declare variable $month-years as xs:string* := request:get-parameter('month-years[]', ());
-declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');(: declare variable $query-term as xs:string? := if ($term) then $term else (); :)
 declare variable $term as xs:string? := if ($retrieved-term) then $retrieved-term else ();
-(: TODO: Remove unneeded uses of formatted-title field :)
 (: =====
 hoax:construct-date-facets() removes redundant (because of decades) month-years 
 ===== :)
@@ -60,7 +66,7 @@ declare variable $all-options as map(*) := map {
     "fields" : $fields
 };
 declare variable $all-hits as element(tei:TEI)* := 
-    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
+    collection($path-to-data)/tei:TEI
     [ft:query(., $term, $all-options)];
 (: =====
 Publisher options returns hits filtered by publishers and term
@@ -71,7 +77,7 @@ declare variable $publisher-options as map(*) := map {
     "fields" : $fields
 };
 declare variable $publisher-hits as element(tei:TEI)* :=
-    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
+    collection($path-to-data)/tei:TEI
     [ft:query(., $term, $publisher-options)];
 (: =====
 Date option returns hits filter by date and term
@@ -81,7 +87,7 @@ declare variable $date-options as map(*) := map {
     "facets" : map { "publication-date": $date-facets-array}
 };
 declare variable $date-hits as element(tei:TEI)* :=
-    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
+    collection($path-to-data)/tei:TEI
     [ft:query(., $term, $date-options)]
 ;
 (: =====
@@ -163,6 +169,7 @@ Return results, order is meaningful (order is used to create view):
     }</m:articles>
     <m:selected-facets>
         <!-- Not rendered directly, but used to restore checkbox state -->
+        <m:controller>{$exist:controller}</m:controller>
         <m:decades>{$decades}</m:decades>
         <m:date-facets-for-search>{serialize(
                 $date-facets-array, 
