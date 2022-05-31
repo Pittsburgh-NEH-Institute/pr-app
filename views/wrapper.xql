@@ -12,7 +12,6 @@ declare option output:omit-xml-declaration "no";
 declare option output:html-version "5.0";
 declare option output:indent "no";
 declare option output:include-content-type "no";
-declare option output:exclude-result-prefixes "#all";
 
 declare variable $text := request:get-data(); (:this variable allows the pipeline to work:)
      
