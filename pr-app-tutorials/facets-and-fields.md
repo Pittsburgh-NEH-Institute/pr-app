@@ -26,15 +26,11 @@
 
 *Facets* and *fields* are part of the *full-text indexing* feature of eXist-db. As the name implies, full-text indexing provides a mechanism for retrieving documents according to any of the words they contain, e.g., “Find all documents that contain the word ‘ghost’” (anywhere in the document) or “Find all documents that contain the word ‘ghost’ in the title”, etc.
 
-The official eXist-db documentation for full-text indexing is clear, but when we first looked there to begin to learn about facets and fields we found that portion of the documentation too brief to serve as a full and clear introduction to those features. The purpose of this document is to explain why and how to use facets and fields in an eXist-db app, with examples drawn from our Ghost Hoax app, which is designed to explore a collection of Victorian-era newspaper articles about ghost hoaxes.
+The official eXist-db documentation for full-text indexing is clear, but when we first looked there to begin to learn about facets and fields we found that portion of the documentation too brief to serve as a full and clear introduction to those features. The purpose of this document is to explain why and how to use facets and fields in an eXist-db app, with examples drawn from our [Ghost Hoax app](https://github.com/Pittsburgh-NEH-Institute/pr-app), which is designed to explore a collection of Victorian-era newspaper articles about ghost hoaxes.
 
 The difference between facets and fields is described clearly in Alex Kennedy’s [The definitive guide to the difference between filters and facets](https://www.search.io/blog/the-difference-between-filters-and-facets) (text in square brackets is our own):
 
 > Both exist to serve the same purpose: narrowing down search results by eliminating results or pages that don’t match selected criteria […] For clarity’s sake, we’re going to define them as follows: *filters* [that is, *fields*] exclude results based on **initial criteria and do not change with each search**, while *facets* exclude using the **properties from returned results and do change with each search**.
-
-Louise Vollaire’s [Filters vs. facets for site search](https://www.algolia.com/blog/ux/filters-vs-facets-in-site-search/) further explains that:
-
->Facets, also known as facet filters, allow users to refine their searches by multiple dimensions at the same time […] Unlike filters, facets change based on the search results returned for a given query. [… A] search for women’s shoes shows facets like color, size, and occasion. But when you search for women’s sunglasses, you see facets like shape and material. “Shape” is not an applicable facet for women’s shoes, and “occasion” is not a relevant facet for sunglasses. Instead, the facets are intelligently applied based on the characteristics of the items returned in the search. 
 
 This tutorial makes the following assumptions:
 
@@ -43,16 +39,17 @@ This tutorial makes the following assumptions:
 
 Both facets and fields can index on computed values, which, for reasons described below, can improve response time during query and retrieval. The computation can use the standard XPath and XQuery function libraries, as well as user-defined functions. Below we describe first facets and then fields, including also information about how to import user-defined functions into an index file so that they can be used during configuration.
 
-The code that supports faceted searching in the Ghost Hoax app is available in our [GitHub repo](https://github.com/Pittsburgh-NEH-Institute/pr-app). Facets and fields are configured as part of the [*collection.xconf*](https://github.com/Pittsburgh-NEH-Institute/pr-app/blob/main/collection.xconf) index file. We use a model-view-controller implementation (managed by [*controller.xql*](https://github.com/Pittsburgh-NEH-Institute/pr-app/blob/main/controller.xql)), where the model is created by [*modules/search.xql*](https://github.com/Pittsburgh-NEH-Institute/pr-app/blob/main/modules/search.xql) and then piped through [*views/search-to-html.xql*](https://github.com/Pittsburgh-NEH-Institute/pr-app/blob/main/views/search-to-html.xql) and [*views/wrapper.xql*](https://github.com/Pittsburgh-NEH-Institute/pr-app/blob/main/views/wrapper.xql) to create the HTML that is returned to the user.
-
 ## 2. Facets
 
 ### 2.1. Overview of faceted searching in the Ghost Hoax app
 
-The Ghost Hoax Advanced search interface exposes three search components: *text*, *publisher*, *date*. All three function equivalently to constrain (filter) the titles returned, and any of the three can be modified at any time to refine a previous search step.
+The Ghost Hoax Advanced search interface exposes three search components: *text*, *publisher*, *date*. All three function equivalently to constrain (filter) the titles returned, and any of the three can be modified at any time to refine a previous search step. The Advanced search page looks like the following, and the panels then change in response to user selections and specifications:
+
+<img src="facet-output-1.png">
+
 1. **Text:** Text searching is case-insensitive. The simplest text search is a single word; more complex text specifications (e.g., phrases, wildcards, proximity) are also supported (see the [Lucene documentation](https://lucene.apache.org/core/4_10_4/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description) for details). 
-2. **Publisher:** The name of publisher, with definite and indefinite article moved to end (e.g., “Times, The” instead of “The Times”.) Users interact with publisher values by means of a checklist.
-3. **Date:** Hierarchical, with *decade* (e.g., "1800" for the 1800–09 decade) at the top level and *month-year* in human-readable form (e.g., “January 1804”) as second level. Users interact with dates by means of a checklist. 
+2. **Publisher:** The name of the publisher, with definite and indefinite articles moved to end (e.g., “Times, The” instead of “The Times”.) Users interact with publisher values by means of a checklist.
+3. **Date:** Hierarchical, with *decade* (e.g., "1800" for the 1800–09 decade) at the top level and *month-year* in human-readable form (e.g., “January 1804”) as second level. Users interact with date values by means of a checklist. 
 
 The checkbox interface in the Ghost Hoax app supports the following operations:
 
@@ -63,19 +60,18 @@ The checkbox interface in the Ghost Hoax app supports the following operations:
 
 The facets in the Ghost Host app have the following characteristics:
 
-1. Categories (*publisher*, *date*) are multi-select, that is, multiple selections within a category form an `or` operation.
+1. Categories (`publisher`, `date`) are multi-select, that is, multiple selections within a category form an `or` operation.
 1. Combinations of facet categories (`text`, `publisher`, `date`) form an `and` operation.
 1. The interface updates only when the **Search** button is pressed. Unlike some faceted search interfaces it does not update automatically on each check.
 1. Each query retrieves the article titles selected by the checked facet values plus only those facets (with counts) that can be used to constrain or expand the results. 
 
-The default behavior of eXist-db facets is only to “drill down”, that is, to narrow the results of a previous query. In the case of the Ghost Hoax app this is inconvenient because we also want to be able to expand a result. For example, if we select one publisher and one date and we then want to keep the date but add another publisher, under the default eXist-db behavior we would have to unselect the publisher we already chose in order to see a list of publishers that published articles on our selected dates. The behavior we want is to be able to broaden our selection of one or another facet without having to undo any prior selection, which means that we want to see all publishers who published on our selected dates, both those we have checked and those we haven’t checked. 
+The default behavior of eXist-db facets is only to “drill down”, that is, to narrow the results of a previous query. In the case of the Ghost Hoax app this is inconvenient because we also want to be able to expand a result. For example, if we select one publisher and one date and we then want to keep the date but add another publisher, under the default eXist-db behavior we would have to unselect the publisher we already chose in order to be able to see and check other publishers that published articles on our selected dates. The behavior we want is to be able to broaden our selection of one or another facet without having to undo any prior selection, which means that we want to see all publishers who published on our selected dates, whether we selected them or not, and likes for all dates associated with our publishers, both selected and not selected. 
 
-In order to support both narrowing and expanding we perform three queries behind the scenes and combine the results, as follows:
+In order to support both narrowing and expanding a search we perform three queries behind the scenes and combine the results. For all three queries, if a text value is specified, only articles that contain that text are selected.
 
-1. For all three queries, if a text value is specified, only articles that contain that text are selected.
-2. **To create the list of matching articles:** Publisher and date facets are combined to select only articles that match the intersection of both publisher and date selections. For example, is we check only the 1830s and *The Weekly Times*, we select only the two articles published in that decade in that paper. If no publishers have been checked, there is no filtering by publisher, and the same is true of dates. 
-3. **To create new publisher facets:**  To return facet values, with counts, for publishers who match the text and date (that is, values we might use to narrow or expand the publisher selections for our query) we perform a query using a combination of text plus selected date facets, ignoring selected publisher facets. This makes it possible to broaden the search by selecting additional publishers. Publishers who did not publish anything with the specified text on the specified dates are not shown, and the counts shown for the publisher options include only articles that match any specified text and dates.
-4. **To create new date facets:** Similarly, new date facets are returned according to a combination of text plus selected publisher facets.
+1. **To create the list of matching articles:** Publisher and date facets are combined to select only articles that match the intersection of both publisher and date selections. For example, is we check only the 1830s and *The Weekly Times*, we select only the articles published in that decade in that paper. If no publishers have been checked, there is no filtering by publisher, and the same is true of dates. 
+2. **To create new publisher facets:**  To return facet values, with counts, for publishers who match the text and date (that is, values we might use to narrow or expand the publisher selections for our query) we perform a query using a combination of text plus selected date facets, ignoring selected publisher facets. This makes it possible to broaden the search by selecting additional publishers. Publishers who did not publish anything with the specified text on the specified dates are not shown, and the counts shown for the publisher options include only articles that match any specified text and dates.
+3. **To create new date facets:** Similarly, new date facets are returned according to a combination of text plus selected publisher facets.
 
 ### 2.2. Using facets to control a search
 
@@ -89,10 +85,10 @@ Facets can be configured as hierarchical, about which the eXist-db documentation
 
 > Hierarchical facets may also hold multiple values, for example if we would like to associate our documents with a subject classification on various levels of granularity (say: science with math and physics as subcategories or humanities with art, sociology and history). This way we enable the user to drill down into broad humanities or science subject first and choose particular topics afterwards.
 
-Facets in eXist-db they provide quick and efficient access to counts and they support a relatively simple syntax for compound queries. Any query that uses facets can be rewritten without facets, but where appropriate facets are likely to have two types of advantages:
+Facets in eXist-db provide quick and efficient access to counts and they support a relatively simple syntax for compound queries. Any query that uses facets can be rewritten without facets, but where appropriate facets are likely to have two types of advantages:
 
 1. Queries that use facets may be more performative than an alternative query without facets.
-2. The syntax of queries that use facets may be simpler than the syntax of an alternative query without facets.
+2. The syntax of queries that use facets may be simpler than the syntax of alternative queries without facets.
 
 We say more about those two advantages below
 
@@ -119,7 +115,7 @@ The following eXist-db *collection.xconf* index file creates a simple facet for 
 </collection>
 ```
 
-The `<text>` elements in our index file instruct eXist-db to construct full-text indexes for `<body>`, `<placeName>`, and the root `<TEI>` element, and the `<facet>` child of the configuration for the `<TEI>` element says that `<TEI>` elements should be retrievable with a facet called `publisher` (the value of the `@dimension` attribute) that refers to the `<publisher>` child of the `<publicationStmt>` element (the value of the `@expression` attribute). (This is a simplified example. We describe below how, in our real app, we use a formatted version of the publisher name, so that, for example, *The Times* is stored as “Times, The”.)
+The `<text>` elements in our index file instruct eXist-db to construct full-text indexes for `<body>`, `<placeName>`, and the root `<TEI>` element, and the `<facet>` child of the configuration for the `<TEI>` element says that `<TEI>` elements should be retrievable with a facet called `publisher` (the value of the `@dimension` attribute) that refers to the `<publisher>` child of the `<publicationStmt>` element (the value of the `@expression` attribute). (This is a simplified example. We describe below how, in our real app, we use a formatted version of the publisher name instead of the literal value from the XML. For example, *The Times* in the XML is also stored as “Times, The” in the eXist-db index.)
 
 ### 2.4. Counting with facets
 
@@ -158,78 +154,7 @@ it returns a list of all publishers of documents that contain the string `"ghost
         <label>The Leader</label>
         <count>3</count>
     </facet>
-    <facet>
-        <label>The Penny Satirist</label>
-        <count>3</count>
-    </facet>
-    <facet>
-        <label>John Bull</label>
-        <count>2</count>
-    </facet>
-    <facet>
-        <label>The Age</label>
-        <count>2</count>
-    </facet>
-    <facet>
-        <label>Altrincham Guardian</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>Bell’s Life in London and Sporting Chronicle</label>
-        <count>w</count>
-    </facet>
-    <facet>
-        <label>Chambers's Journal</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>Cleave's Weekly Police Gazette</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>Douglas Jerrold's Weekly Newspaper</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>Household Words</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>Morning Chronicle</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>Sunderland Herald</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>The Cabinet Newspaper</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>The English Leader</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>The London Reader</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>The Morning Post</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>The Odd Fellow</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>The People’s Advocate</label>
-        <count>1</count>
-    </facet>
-    <facet>
-        <label>The Satirist; or Censor of the Times</label>
-        <count>1</count>
-    </facet>
+    <!-- some results removed -->
     <facet>
         <label>The Weekly Times</label>
         <count>2</count>
@@ -265,7 +190,7 @@ return
     }</facet_test>
 ```
 
-One reason to prefer facets to the regular XQuery FLWOR strategy is that with facets the counts are computed at index time, while with FLWOR they are computed at query time. With a small amount of data the difference will not be noticeable, but computing counts at index time can provide a substantial improvement in performance because 1) the counting is performed only once (instead of being repeated for each query) and 2) performance is typically more valuable at qhery time than during indexing.
+One reason to prefer facets over the regular XQuery FLWOR strategy is that with facets the counts are computed at index time, while with FLWOR they are computed at query time. With a small amount of data the difference will not be noticeable, but counting at index time can provide a substantial improvement in performance because 1) the counting is performed only once (instead of being repeated for each query) and 2) performance is typically a higher priority at query time than during indexing.
 
 ----
 
@@ -297,18 +222,18 @@ let $hits as element(tei:TEI)+ :=
 
 ----
 
-Once we have bound the variable `$hits` to the `<TEI>` elements in our corpus that contain the string `"ghost"` we then use the `ft:facets()` function to return the publisher names for those documents with a count of the number of matching articles by each publisher. Note that *we do no explicit counting in our FLWOR*; the counts are created at index time and are available without having to count at query time. The first argument to the function `ft:facets()` is the result of `ft:query()` (in this case the `$hits` variable), the second argument is the name of the facet, which we specified as the value of the `@dimension` attribute in the index file  (in this case the string `"publisher"`), and the third argument (which is optional) is the maximum number of results to return (we omit this argument to return all hits).
+Once we have boundthe `<TEI>` elements in our corpus that contain the string `"ghost"` to the variable `$hits`, we then use the `ft:facets()` function to return the publisher names for those documents with a count of the number of matching articles by each publisher. Note that *we do no explicit counting in our FLWOR*; the counts are created at index time and are available without having to count at query time. The first argument to the function `ft:facets()` is the result of `ft:query()` (in this case the `$hits` variable), the second argument is the name of the facet, which we specified as the value of the `@dimension` attribute in the index file  (in this case the string `"publisher"`), and the third argument (which is optional) is the maximum number of results to return (we omit this argument to return all results).
 
 The `ft:facets()` function returns a *map*, which is a structure that contains *key:value* pairs. In this case the *keys* are the string values of each unique `<publisher>` element in the corpus and the associated *values* in the map are the numbers of documents for each  publisher. Maps cannot easily be serialized (rendered, printed) directly, and we want to convert the map structure into XML anyway. Furthermore, the entries in the map returned by `ft:facets()` are automatically sorted from highest to lowest counts, which is part of what we want, but the keys with the same count come back in an unpredictable order, and we want to alphabetize them in our output, which means that we need to sort them ourselves. We address these requirements by converting the map to a sequence of XML elements and then sorting the elements, as follows:
 
 1. In our example above we use the `map:for-each()` function to loop over the *key: value* pairs.
 2. For each *key: value* pair, we bind the key (the name of the publisher) to the variable name `$label` and the value (the number of times that publisher appears in the collection of documents represented by `$hits`) to the variable name `$count`. 
 3. We create an XML `<facet>` element (you can call it whatever you want) with two children and write the label and count values into the children.
-4. We bind that sequence of `<facet>` elements to a variable called `$facet-elements` and use a FLWOR to traverse over the values (`for`), sort them the way we want (`order by`), and output them in the new order.
+4. We bind that sequence of `<facet>` elements to a variable called `$facet-elements` and use a FLWOR to traverse over the values (`for`), sort them the way we want (`order by`), and return them in the new order.
 
 ### 2.5. Computed values
 
-The facet example above uses the string value of the `<publisher>` element as it appears in the XML source files, but we actually want to sort and render the publisher names in a list with definite and indefinite articles moved to the end. For example, we want a publisher name like *The Weekly Times* to be sorted and rendered as “Weekly Times, The”. Facets let us perform that operation at index time, instead of query time, which means that we perform it only once, and at a time when performance speed is less important.
+The facet example above uses the string value of the `<publisher>` element as it appears in the XML source files, but we actually want to sort and render the publisher names in a list with definite and indefinite articles moved to the end. For example, we want a publisher name like *The Weekly Times* to be sorted and rendered as “Weekly Times, The”. Facets let us perform that string surgery at index time, instead of query time, which means that we perform it only once, and at a time when performance speed is less important.
 
 We can use an inline XPath expression to create a computed facet value, but the XPath to perform the operation we want is long enough that inlining it would make our index file difficult to read, and we also need to use the same function elsewhere in our app and we don’t want to have to write it out more than once. For that reason we create the function in a separate function library, which we then import into our *collection.xconf* index file. The function that moves the definite and indefinite articles around is:
 
@@ -343,7 +268,7 @@ This says that the string that will be returned as the name of the facet with a 
 
 ### 2.6. Hierarchical facets
 
-The eXist-db facet documentation illustrates a hierarchical facet with an example that divides an ISO date (e.g., `1806-02-04`) into a hierarchy of year, then month, and then day. A user could filter first by years and then filter the results for each year by month, and then filter those by day. Our requirements were more complex because we wanted to use a computed decade as our top-level date facet and a computed human-readable month + year as a second level. The rendered view, with one of the decade facets expanded, looks like:
+The eXist-db facet documentation illustrates a hierarchical facet with an example that divides an ISO date (e.g., `1806-02-04`) into a hierarchy of year, then month, and then day. A user could filter first by years and then filter the results for a particular year by month, and then filter those results by day. Our requirements were more complex because we wanted to use a computed decade as our top-level date facet and a computed human-readable month + year as a second level. The rendered view, with one of the decade facets expanded, looks like:
 
 <img src="facet-output-4.png" width="40%"/>
 
@@ -423,102 +348,7 @@ This returns:
         </m:year>
     </m:years>
 </m:decade>
-<m:decade>
-    <m:label>1830</m:label>
-    <m:count>14</m:count>
-    <m:years>
-        <m:year>
-            <m:label>1830-07</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1832-01</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1832-03</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1833-12</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1836-09</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1836-10</m:label>
-            <m:count>3</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1838-01</m:label>
-            <m:count>5</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1838-11</m:label>
-            <m:count>1</m:count>
-        </m:year>
-    </m:years>
-</m:decade>
-<m:decade>
-    <m:label>1840</m:label>
-    <m:count>3</m:count>
-    <m:years>
-        <m:year>
-            <m:label>1841-02</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1844-10</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1847-09</m:label>
-            <m:count>1</m:count>
-        </m:year>
-    </m:years>
-</m:decade>
-<m:decade>
-    <m:label>1850</m:label>
-    <m:count>5</m:count>
-    <m:years>
-        <m:year>
-            <m:label>1852-10</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1852-11</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1853-07</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1857-11</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1858-12</m:label>
-            <m:count>1</m:count>
-        </m:year>
-    </m:years>
-</m:decade>
-<m:decade>
-    <m:label>1860</m:label>
-    <m:count>2</m:count>
-    <m:years>
-        <m:year>
-            <m:label>1864-05</m:label>
-            <m:count>1</m:count>
-        </m:year>
-        <m:year>
-            <m:label>1864-07</m:label>
-            <m:count>1</m:count>
-        </m:year>
-    </m:years>
-</m:decade>
+<!-- some results removed -->
 <m:decade>
     <m:label>1870</m:label>
     <m:count>1</m:count>
@@ -545,7 +375,7 @@ The decade beginning in 1810 is missing because there are no articles in the cor
 
 ### 2.7. Using facets to constrain a query
 
-When we retrieve the titles of all articles that contain the string “ghost” along with lists of publishers and dates with article counts, we can then select one or more of those publishers or dates and rerun the query to return only articles that match the publishers or dates that we have checked. To constrain a query by a facet values we need to specify the facet names and values as part of an `ft:query()` operation. For example, the following query selects all articles in the corpus that have `"Times, The"` or `"John Bull"` as the values of their `publisher` facets (10 of the 36 articles in the corpus satisfy this requirement):
+When we retrieve the titles of all articles that contain the string “ghost” along with lists of publishers and dates with article counts, we can then select one or more of those publishers or dates and rerun the query to return only articles that match the publishers or dates that we have specified. To constrain a query by a facet values we need to specify the facet names and values as part of an `ft:query()` operation. For example, the following query selects all articles in the corpus that have `"Times, The"` or `"John Bull"` as the values of their `publisher` facets (10 of the 36 articles in the corpus satisfy this requirement):
 
 ```xquery
 xquery version "3.1";
@@ -605,7 +435,7 @@ That query returns:
 
 ----
 
-**Note:** In the example above we incorporate a call fo the XPath `format-date()` function in our XQuery. We illustrate below how to improve performance by using an eXist-db field to create the formatted date at index time, which avoids the processing overhead of running it (repeatedly) at query time.
+**Note:** In the example above we incorporate a call to the XPath `format-date()` function in our XQuery. We illustrate below how to improve performance by using an eXist-db field to create the formatted date at index time, which avoids the processing overhead of running it (repeatedly) at query time.
 
 ----
 
@@ -614,7 +444,7 @@ That query returns:
 We specified the publication date as a hierarchical facet, which requires special handing if we want to query on multiple values. For example, if we
 change the value of the `publication-date` in the example above to `("1830", "1840")` eXist-db will raise an error, even though specifying a sequence of two strings as publishers was valid. The reason is that although multiple values for regular (non-hierarchical) facets can be specified as a sequence, multiple values of a hierarchical faced must instead be specified as an array. If we write `["1830", "1840"]` instead of `("1830", "1840")` (the square brackets construct an array; the parentheses construct a sequence), the query will succeed.
 
-The reason for this special treatment is that querying on hierarchical facets requires specifying *all* levels of the hierarchy as a *sequence*. For example, to select the five articles published in January 1838 we cannot specify just `"1838-01"`; we need instead to specify a facet value of `("1830", "1838-01")`, which eXist-db will understand correctly as a single hierarchical value (the January 1838 subset of the set published in the 1830s decade). Because sequences when specifying hierarchical facets are used to combine hierarchical levels, different non-hierarchical values must be combined as an array. For example, to retrieve the six articles published in either January 1838 (five articles) or November 1852 (one article) we write:
+The reason for this special treatment is that querying on hierarchical facets requires specifying *all* levels of the hierarchy as a *sequence*. For example, to select the five articles published in January 1838 we cannot specify just `"1838-01"`; we need instead to specify a facet value of `("1830", "1838-01")`, which eXist-db will understand correctly as a single hierarchical value (the January 1838 subset of the set published in the 1830s decade). Because sequences when specifying hierarchical facets are used to combine hierarchical levels into a single compound value, different non-hierarchical values must be combined as an array. For example, to retrieve the six articles published in either January 1838 (five articles) or November 1852 (one article) we write:
 
 ```xquery
 xquery version "3.1";
@@ -638,7 +468,7 @@ return
 ```
 ----
 
-**Note:** XPath automatically flattens nested sequences, so that, for example, `(("1830", "1838-01"), ("1850", "1852-11"))` will be understood (incorrectly, for our purposes) as `("1830", "1838-01", "1850", "1852-11")`. This four-item sequence will look like it is trying to select a single value in a four-level hierarchy; it is not an error, but it will not return results because the `publication-date` facet in our app has a different (two-level) structure. Arrays, unlike sequences, are not automatically flattened, so `[("1830", "1838-01"), ("1850", "1852-11")]` will be understood correctly as two two-item sequences.
+**Note:** XPath automatically flattens nested sequences, so that, for example, `(("1830", "1838-01"), ("1850", "1852-11"))` would be understood (incorrectly, for our purposes) as `("1830", "1838-01", "1850", "1852-11")`. This four-item sequence will look like it is trying to select a single value in a four-level hierarchy; it is not an error, but it will not return results because the `publication-date` facet in our app has a different (two-level) structure. Arrays, unlike sequences, are not automatically flattened, so `[("1830", "1838-01"), ("1850", "1852-11")]` will be understood correctly as two two-item sequences.
 
 ----
 
