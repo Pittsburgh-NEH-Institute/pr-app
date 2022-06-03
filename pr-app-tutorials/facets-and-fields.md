@@ -385,7 +385,7 @@ When we retrieve the titles of all articles that contain the string “ghost” 
 xquery version "3.1";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 let $publishers as xs:string* := ("Times, The", "John Bull")
-let $options := map { 
+let $options as map(*) := map { 
     "facets": map { 
         "publisher": $publishers
     }
@@ -409,13 +409,12 @@ The follow example selects and returns information about articles published in o
 ```xquery
 xquery version "3.1";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-let $options as map(*) :=
-    map {
-            "facets": map {
-                "publisher" : ("Times, The", "Penny Satirist, The"),
-                "publication-date" : "1830"
-            }
+let $options as map(*) := map {
+    "facets": map {
+        "publisher" : ("Times, The", "Penny Satirist, The"),
+        "publication-date" : "1830"
     }
+}
 let $hits as element(tei:TEI)+ := 
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., (), $options)]
 for $hit in $hits
