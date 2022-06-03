@@ -62,7 +62,7 @@ The facets in the Ghost Host app have the following characteristics (see the ima
 1. The interface updates only when the **Search** button is pressed. Unlike some faceted search interfaces it does not update automatically on each check.
 1. Each query retrieves the article titles selected by the checked facet values plus only those facets (with counts) that can be used to constrain or expand the results. 
 
-<img src="facet-output-2a.png" width="45%"/> &nbsp;&nbsp;<img src="facet-output-2b.png" width="45%">
+<img src="facet-output-2a.png" width="25%"/> &nbsp;&nbsp;<img src="facet-output-2b.png" width="25%">
 
 The default behavior of eXist-db facets is only to “drill down”, that is, to narrow the results of a previous query. In the case of the Ghost Hoax app this is inconvenient because we also want to be able to expand a result. For example, if we select one publisher and one date and we then want to keep the date but add another publisher, under the default eXist-db behavior we would have to unselect the publisher we already chose in order to be able to see and check other publishers that published articles on our selected dates. The behavior we want is to be able to broaden our selection of one or another facet without having to undo any prior selection, which means that we want to see all publishers who published on our selected dates, whether we selected them or not, and likes for all dates associated with our publishers, both selected and not selected. 
 
