@@ -446,20 +446,18 @@ That query returns:
 We specified the publication date as a hierarchical facet, which requires special handing if we want to query on multiple values. For example, if we
 change the value of the `publication-date` in the example above to `("1830", "1840")` eXist-db will raise an error, even though specifying a sequence of two strings as publishers was valid. The reason is that although multiple values for regular (non-hierarchical) facets can be specified as a sequence, multiple values of a hierarchical faced must instead be specified as an array. If we write `["1830", "1840"]` instead of `("1830", "1840")` (the square brackets construct an array; the parentheses construct a sequence), the query will succeed.
 
-The reason for this special treatment is that querying on hierarchical facets requires specifying *all* levels of the hierarchy as a *sequence*. For example, to select the five articles published in January 1838 we cannot specify just `"1838-01"`; we need instead to specify a facet value of `("1830", "1838-01")`, which eXist-db will understand correctly as a single hierarchical value (the January 1838 subset of the set published in the 1830s decade). Because sequences when specifying hierarchical facets are used to combine hierarchical levels into a single compound value, different non-hierarchical values must be combined as an array. For example, to retrieve the six articles published in either January 1838 (five articles) or November 1852 (one article) we write:
+The reason for this special treatment is that querying on hierarchical facets requires specifying *all* levels of the hierarchy as a *sequence*. For example, to select the five articles published in January 1838 we cannot specify just `"1838-01"`; we need instead to specify a facet value of `("1830", "1838-01")`, which eXist-db will understand correctly as a single hierarchical value (the January 1838 subset of the set published in the 1830s decade). Because in the case of hierarchical facets a sequence combines hierarchical levels into a single compound value, a combination of those compound values must be expressed as an array. For example, to retrieve the six articles published in either January 1838 (five articles) or November 1852 (one article) we write:
 
 ```xquery
 xquery version "3.1";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+let $options as map(*) := map {
+    "facets": map {
+        "publication-date" : [("1830", "1838-01"), ("1850", "1852-11")]
+    }
+}
 let $hits  as element(tei:TEI)+ := 
-    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(
-        ., 
-        (),
-        map {
-            "facets": map {
-                "publication-date" : [("1830", "1838-01"), ("1850", "1852-11")]
-            }
-        })]
+    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., (), $options)]
 for $hit in $hits
 let $title as element(tei:title) := $hit//tei:titleStmt/tei:title
 let $publisher as element(tei:publisher) := $hit//tei:publicationStmt/tei:publisher
@@ -470,7 +468,7 @@ return
 ```
 ----
 
-**Note:** XPath automatically flattens nested sequences, so that, for example, `(("1830", "1838-01"), ("1850", "1852-11"))` would be understood (incorrectly, for our purposes) as `("1830", "1838-01", "1850", "1852-11")`. This four-item sequence will look like it is trying to select a single value in a four-level hierarchy; it is not an error, but it will not return results because the `publication-date` facet in our app has a different (two-level) structure. Arrays, unlike sequences, are not automatically flattened, so `[("1830", "1838-01"), ("1850", "1852-11")]` will be understood correctly as two two-item sequences.
+**Note:** XPath automatically flattens nested sequences, so that, for example, `(("1830", "1838-01"), ("1850", "1852-11"))` would be understood (incorrectly, for our purposes) as `("1830", "1838-01", "1850", "1852-11")`. This four-item sequence would look as if it was trying to select a single value in a four-level hierarchy; it is not an error, but it will not return results because the `publication-date` facet in our app has a different (two-level) structure. Arrays, unlike sequences, are not automatically flattened, so `[("1830", "1838-01"), ("1850", "1852-11")]` will be understood correctly as two two-item sequences.
 
 ----
 
@@ -490,16 +488,16 @@ The [eXist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?field
 > 
 > Fields can be queried in the same expression as the parent node, resulting in fast response times. Their content can optionally be stored to speed up display or sorting. Fields may also use a different analyzer than the parent node, which allows e.g. multiple languages to be handled separately.
 
-The eXist-db documentation describes several contexts in which fields may be useful, and the one we focus on here is that fields, like facets, can hold precomputed values. In the Ghost Hoax app we want to render a full formatted date as part of the information for each article, along the lines of:
+The eXist-db documentation describes several contexts in which fields may be useful, and the one we focus on here is that fields, like facets, can hold precomputed values. In the Ghost Hoax app we want to render a full formatted, human-readable date as part of the information for each article, along the lines of:
 
 <img src="facet-output-5.png" width="80%"/>
 
-The newspaper titles can be retrieved verbatim from the XML sources, but the article title and date that we render do not appear literally in the source documents:
+The newspaper titles can be retrieved verbatim from the XML sources, but the article title and date as we render them do not appear literally in the source documents:
 
-1. The article title may begin with a definite or indefinite article and we want to move those to the end, after an inserted comma and space, before sorting and rendering. For example, where the original title reads “A ghost, a bear, or a devil” we want to display “Ghost, a bear, or a devil, A”.
+1. The article title may begin with a definite or indefinite article that we want to move to the end, after an inserted comma and space, before sorting and rendering. For example, where the original title reads “A ghost, a bear, or a devil” we want to display “Ghost, a bear, or a devil, A”.
 2. The date information is present only in ISO format. For example, a date of September 24, 1836 is represented in the XML as `1836-09-24`, and we need to apply the XPath `format-date()` function to create user-friendly output.
 
-We choose fields, rather than facets, for this task because we don’t need to group and count by article titles or dates, we don’t need a hierarchy, and we don’t use these values to refine a query. All we need is to preconstruct string values and retrieve them (instead of computing them) at query time.
+We choose fields, rather than facets, for this task because 1) we don’t need to group and count by article titles or dates, 2) we don’t need a hierarchy, and 3) we don’t use these values to refine a query. All we need is to preconstruct string values and retrieve them (instead of computing them) at query time.
 ### 3.1. Configuring fields
 
 The simplest way to configure a field is to add a `<field>` element to the index file, as in:
