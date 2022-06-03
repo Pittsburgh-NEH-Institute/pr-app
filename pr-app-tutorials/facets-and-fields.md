@@ -1,11 +1,6 @@
 # Facets and fields in eXist-db
-
-----
-
 ## Contents
 
-- [Facets and fields in eXist-db](#facets-and-fields-in-exist-db)
-  - [Contents](#contents)
   - [1. About facets and fields](#1-about-facets-and-fields)
   - [2. Facets](#2-facets)
     - [2.1. Overview of faceted searching in the Ghost Hoax app](#21-overview-of-faceted-searching-in-the-ghost-hoax-app)
