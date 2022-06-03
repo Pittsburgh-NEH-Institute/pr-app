@@ -25,7 +25,7 @@
     "url": "https://github.com/Pittsburgh-NEH-Institute/pr-app",
     "license": "MIT"
   },
-  " "devDependencies": {
+  "devDependencies": {
     "chai": "^4.3.6",
     "chai-xml": "^0.4.0",
     "cypress": "^9.5.4",
