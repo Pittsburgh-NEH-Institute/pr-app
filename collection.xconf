@@ -10,7 +10,7 @@
             <text qname="tei:placeName"/>
             <text qname="tei:TEI">
                 <!-- ==================================================== -->
-                <!-- Word count                                           -->
+                <!-- Word count (field)                                   -->
                 <!--                                                      -->
                 <!-- word-count() function counts words (here, in body)   -->
                 <!-- ==================================================== -->
@@ -18,7 +18,7 @@
                     name="word-count" 
                     expression="descendant::tei:body => hoax:word-count()"/>
                 <!-- ==================================================== -->
-                <!-- Publisher                                            -->
+                <!-- Publisher (facet)                                    -->
                 <!--                                                      -->
                 <!-- format-title() function moves article to end after   -->
                 <!--     comma                                            -->
@@ -27,7 +27,7 @@
                     expression="descendant::tei:publicationStmt/tei:publisher 
                         ! hoax:format-title(.)"/>
                 <!-- ==================================================== -->
-                <!-- Article title                                        -->
+                <!-- Article title (field)                                -->
                 <!--                                                      -->
                 <!-- format-title() function, as for publisher, above     -->
                 <!-- ==================================================== -->
@@ -36,11 +36,11 @@
                     expression="descendant::tei:titleStmt/tei:title 
                         ! hoax:format-title(.)"/>
                 <!-- ==================================================== -->
-                <!-- Theme                                                -->
+                <!-- Theme (field)                                        -->
                 <!-- ==================================================== -->
                 <field name="theme" expression="descendant::tei:rs/@ref"/>
                 <!-- ==================================================== -->
-                <!-- Publication date                                     -->
+                <!-- Publication date (facet and field)                   -->
                 <!--                                                      -->
                 <!-- Facet "publication-date" is hierarchical:            -->
                 <!--     decade and then ISO YYYY-MM                      -->
@@ -55,7 +55,7 @@
                         )" hierarchical="yes"/>
                 <field name="formatted-date" 
                     expression="descendant::tei:publicationStmt/tei:date/@when
-                    ! xs:date(substring(., 1, 7) || '-01') 
+                    ! xs:date(.)
                     ! format-date(., '[MNn] [D], [Y]')"/>
             </text>
         </lucene>

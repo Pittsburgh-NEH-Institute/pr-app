@@ -14,7 +14,15 @@ declare option output:method "xml";
 declare option output:indent "no";
 
 (: =====
-Retrieve parameters
+Retrieve controller parameters
+
+Default path to data is xmldb:exist:///db/apps/pr-app/data/hoax_xml
+===== :)
+declare variable $exist:root as xs:string := request:get-parameter("exist:root", "xmldb:exist:///db/apps");
+declare variable $exist:controller as xs:string := request:get-parameter("exist:controller", "/pr-app");
+declare variable $path-to-data as xs:string := $exist:root || $exist:controller || '/data/hoax_xml';
+(: =====
+Retrieve query parameters
 User can specify:
     term : single word or phrase (no quotation marks around phrase)
     publishers
@@ -27,9 +35,7 @@ declare variable $retrieved-term as xs:string? := (request:get-parameter('term',
 declare variable $publishers as xs:string* := request:get-parameter('publishers[]', ());
 declare variable $decades as xs:string* := request:get-parameter('decades[]', ());
 declare variable $month-years as xs:string* := request:get-parameter('month-years[]', ());
-declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');(: declare variable $query-term as xs:string? := if ($term) then $term else (); :)
 declare variable $term as xs:string? := if ($retrieved-term) then $retrieved-term else ();
-(: TODO: Remove unneeded uses of formatted-title field :)
 (: =====
 hoax:construct-date-facets() removes redundant (because of decades) month-years 
 ===== :)
@@ -47,7 +53,7 @@ declare variable $date-facets-array as array(*)? := array:join((
 (: =====
 The only field we care about is the formatted title, e.g., "Times, The"
 ===== :)
-declare variable $fields as xs:string := "formatted-title";
+declare variable $fields as xs:string+ := ("formatted-title", "formatted-date");
 (: =====
 $all-hits is used for articles list, but not for facets to refine search
 ===== :)
@@ -60,7 +66,7 @@ declare variable $all-options as map(*) := map {
     "fields" : $fields
 };
 declare variable $all-hits as element(tei:TEI)* := 
-    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
+    collection($path-to-data)/tei:TEI
     [ft:query(., $term, $all-options)];
 (: =====
 Publisher options returns hits filtered by publishers and term
@@ -71,7 +77,7 @@ declare variable $publisher-options as map(*) := map {
     "fields" : $fields
 };
 declare variable $publisher-hits as element(tei:TEI)* :=
-    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
+    collection($path-to-data)/tei:TEI
     [ft:query(., $term, $publisher-options)];
 (: =====
 Date option returns hits filter by date and term
@@ -81,7 +87,7 @@ declare variable $date-options as map(*) := map {
     "facets" : map { "publication-date": $date-facets-array}
 };
 declare variable $date-hits as element(tei:TEI)* :=
-    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
+    collection($path-to-data)/tei:TEI
     [ft:query(., $term, $date-options)]
 ;
 (: =====
@@ -140,16 +146,24 @@ Return results, order is meaningful (order is used to create view):
     <m:articles>
         { (: from $all-hits: article data for list of articles with links :)
         for $hit in $all-hits
-        let $id := $hit/@xml:id ! string()
-        let $title := ft:field($hit, "formatted-title")
-        let $publisher := $hit/descendant::tei:publicationStmt/tei:publisher ! string()
-        let $date := $hit/descendant::tei:publicationStmt/tei:date/@when ! string()
+        let $id as xs:string := 
+            $hit/@xml:id ! string()
+        let $title as xs:string := 
+            ft:field($hit, "formatted-title")
+        let $publisher as xs:string+ := 
+            $hit/descendant::tei:publicationStmt/tei:publisher ! string()
+        let $date as xs:string := 
+            ft:field($hit, "formatted-date")
         order by $title
         return
         <m:article>
             <m:id>{$id}</m:id>
             <m:title>{$title}</m:title>
-            <m:publisher>{$publisher}</m:publisher>
+            {
+                for $p in $publisher
+                return
+                <m:publisher>{$p}</m:publisher>
+            }
             <m:date>{$date}</m:date>
         </m:article>
     }</m:articles>
