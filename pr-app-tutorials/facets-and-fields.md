@@ -4,22 +4,24 @@
 
 ## Contents
 
-1. About facets and fields
-2. Facets
-   * 2.1. Overview of faceted searching in Ghost Hoax App
-   * 2.2. Using facets to control a search
-   * 2.3. Configuring facets
-   * 2.4. Counting with facets
-   * 2.5. Computed values
-   * 2.6. Hierarchical facets
-   * 2.7. Using facets to constrain a query
-   * 2.8. Facets and boolean queries
-   * 2.9. Querying on hierarchical facets
-   * 2.10. Facets conclusion
-3. Fields
-   * 3.1. Configuring fields
-   * 3.2. Returning field values in a query
-   * 3.3. Fields conclusion
+- [Facets and fields in eXist-db](#facets-and-fields-in-exist-db)
+  - [Contents](#contents)
+  - [1. About facets and fields](#1-about-facets-and-fields)
+  - [2. Facets](#2-facets)
+    - [2.1. Overview of faceted searching in the Ghost Hoax app](#21-overview-of-faceted-searching-in-the-ghost-hoax-app)
+    - [2.2. Using facets to control a search](#22-using-facets-to-control-a-search)
+    - [2.3. Configuring facets](#23-configuring-facets)
+    - [2.4. Counting with facets](#24-counting-with-facets)
+    - [2.5. Computed values](#25-computed-values)
+    - [2.6. Hierarchical facets](#26-hierarchical-facets)
+    - [2.7. Using facets to constrain a query](#27-using-facets-to-constrain-a-query)
+    - [2.8. Facets and boolean queries](#28-facets-and-boolean-queries)
+    - [2.9. Querying on hierarchical facets](#29-querying-on-hierarchical-facets)
+    - [2.10. Facets conclusion](#210-facets-conclusion)
+  - [3. Fields](#3-fields)
+    - [3.1. Configuring fields](#31-configuring-fields)
+    - [3.2. Returning field values in a query](#32-returning-field-values-in-a-query)
+    - [3.3. Fields](#33-fields)
 
 ----
 ## 1. About facets and fields
