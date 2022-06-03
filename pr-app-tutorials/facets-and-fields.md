@@ -95,8 +95,6 @@ Facets in eXist-db provide quick and efficient access to counts and they support
 1. Queries that use facets may be more performative than an alternative query without facets.
 2. The syntax of queries that use facets may be simpler than the syntax of alternative queries without facets.
 
-We say more about those two advantages below
-
 ### 2.3. Configuring facets
 
 The following eXist-db *collection.xconf* index file creates a simple facet for the publisher of our corpus documents:
@@ -120,7 +118,7 @@ The following eXist-db *collection.xconf* index file creates a simple facet for 
 </collection>
 ```
 
-The `<text>` elements in our index file instruct eXist-db to construct full-text indexes for `<body>`, `<placeName>`, and the root `<TEI>` element, and the `<facet>` child of the configuration for the `<TEI>` element says that `<TEI>` elements should be retrievable with a facet called `publisher` (the value of the `@dimension` attribute) that refers to the `<publisher>` child of the `<publicationStmt>` element (the value of the `@expression` attribute). (This is a simplified example. We describe below how, in our real app, we use a formatted version of the publisher name instead of the literal value from the XML. For example, *The Times* in the XML is also stored as “Times, The” in the eXist-db index.)
+The `<text>` elements in our index file instruct eXist-db to construct full-text indexes for `<body>`, `<placeName>`, and the root `<TEI>` element, and the `<facet>` child of the configuration for the `<TEI>` element says that `<TEI>` elements should be retrievable with a facet called `publisher` (the value of the `@dimension` attribute) that refers to the `<publisher>` child of the `<publicationStmt>` element (the value of the `@expression` attribute). (This is a simplified example. We describe below how, in our real app, we use a formatted version of the publisher name instead of the literal value from the XML. For example, *The Times* in the XML is stored as a facet value of “Times, The” in the eXist-db index.)
 
 ### 2.4. Counting with facets
 
@@ -195,7 +193,7 @@ return
     }</facet_test>
 ```
 
-One reason to prefer facets over the regular XQuery FLWOR strategy is that with facets the counts are computed at index time, while with FLWOR they are computed at query time. With a small amount of data the difference will not be noticeable, but counting at index time can provide a substantial improvement in performance because 1) the counting is performed only once (instead of being repeated for each query) and 2) performance is typically a higher priority at query time than during indexing.
+One reason to prefer facets over the regular XQuery FLWOR strategy is that with facets the counts are computed at index time, while with FLWOR they are computed at query time. Although the difference may not be noticeable with a small amount of data, counting at index time can provide a substantial improvement in performance because 1) the counting is performed only once (instead of being repeated for each query) and 2) performance is typically a higher priority at query time than during indexing.
 
 ----
 
@@ -203,9 +201,7 @@ One reason to prefer facets over the regular XQuery FLWOR strategy is that with 
 
 ----
 
-Here’s how retrieving facets with counts works:
-
-We can ask about facets in our XQuery only if we first perform a full-text query using `ft:query()`. In the XPath expression above we select all documents in our corpus and then use the `ft:query()` function to filter them to keep only those that contain the word `"ghost"` anywhere inside the `<TEI>` root element. We bind the result of this query to a variable we call `$hits`.
+We can ask about facets in our XQuery only if we first perform a full-text query using `ft:query()`. In the XPath expression above we select the root `<TEI>` element of all documents in our corpus and then use the `ft:query()` function to filter them to keep only those that contain the word `"ghost"`. We bind the result of this query to a variable we call `$hits`.
 
 ----
 
@@ -227,9 +223,9 @@ let $hits as element(tei:TEI)+ :=
 
 ----
 
-Once we have boundthe `<TEI>` elements in our corpus that contain the string `"ghost"` to the variable `$hits`, we then use the `ft:facets()` function to return the publisher names for those documents with a count of the number of matching articles by each publisher. Note that *we do no explicit counting in our FLWOR*; the counts are created at index time and are available without having to count at query time. The first argument to the function `ft:facets()` is the result of `ft:query()` (in this case the `$hits` variable), the second argument is the name of the facet, which we specified as the value of the `@dimension` attribute in the index file  (in this case the string `"publisher"`), and the third argument (which is optional) is the maximum number of results to return (we omit this argument to return all results).
+Once we have bound the `<TEI>` elements in our corpus that contain the string `"ghost"` to the variable `$hits`, we then use the `ft:facets()` function to return the publisher names for those documents with a count of the number of matching articles by each publisher. Note that *we do no explicit counting in our FLWOR*; the counts are created at index time and are available without having to count at query time. The first argument to `ft:facets()` is the result of `ft:query()` (in this case the `$hits` variable), the second argument is the name of the facet, which we specified as the value of the `@dimension` attribute in the index file  (in this case the string `"publisher"`), and the third argument (which is optional) is the maximum number of results to return (we omit this argument to return all results).
 
-The `ft:facets()` function returns a *map*, which is a structure that contains *key:value* pairs. In this case the *keys* are the string values of each unique `<publisher>` element in the corpus and the associated *values* in the map are the numbers of documents for each  publisher. Maps cannot easily be serialized (rendered, printed) directly, and we want to convert the map structure into XML anyway. Furthermore, the entries in the map returned by `ft:facets()` are automatically sorted from highest to lowest counts, which is part of what we want, but the keys with the same count come back in an unpredictable order, and we want to alphabetize them in our output, which means that we need to sort them ourselves. We address these requirements by converting the map to a sequence of XML elements and then sorting the elements, as follows:
+The `ft:facets()` function returns a *map*, which is a structure that contains *key: value* pairs. In this case the *keys* are the string values of each unique `<publisher>` element in the corpus and the associated *values* in the map are the numbers of documents for each  publisher. Maps cannot easily be serialized (rendered, printed) directly, and we want to convert the map structure into XML anyway. Furthermore, the entries in the map returned by `ft:facets()` are automatically sorted from highest to lowest counts, which is part of what we want, but the keys with the same count come back in an unpredictable order, and we want to alphabetize them in our output, which means that we need to sort them ourselves. We address these requirements by converting the map to a sequence of XML elements and then sorting the elements, as follows:
 
 1. In our example above we use the `map:for-each()` function to loop over the *key: value* pairs.
 2. For each *key: value* pair, we bind the key (the name of the publisher) to the variable name `$label` and the value (the number of times that publisher appears in the collection of documents represented by `$hits`) to the variable name `$count`. 
@@ -267,7 +263,7 @@ This function is part of a function library located at *modules/index-functions.
     ! hoax:format-title(.)"/>
 ```
 
-This says that the string that will be returned as the name of the facet with a dimension value of `"publisher"` will be constructed by applying our user-defined function to the name of the publisher as it appears in our source documents. After we retrieve and style our publisher facets that portion of our page looks like:
+This says that the string that will be returned as the name of the facet with a dimension value of `publisher` will be constructed by applying our user-defined function to the name of the publisher as it appears in our source documents. After we retrieve and style our publisher facets that portion of our page looks like:
 
 <img src="facet-output-3.png" width="40%"/>
 
@@ -279,12 +275,6 @@ The eXist-db facet documentation illustrates a hierarchical facet with an exampl
 
 Although we need to render our month + year combinations in human-readable form, we want to sort them in ISO order. For that reason we create a second-level facet (with decades as the first level) based on just the year and month of an ISO date (e.g., `1806-02`). That lets us group, count, retrieve, and sort our results, and we then convert the value to a human-readable form for rendering.
 
-----
-
-**Note:** A string like `1806-02` does not match a valid ISO date because it is missing the required day portion, which means that it is not acceptable input to the XPath `format-date()` function. At the same time, we want to group our documents for facet purposes by just year and month, so we don’t want to include the day in the facet value. We meet those requirements by using just the year and month (e.g., `1806-02`) portion of the date as the second-level facet value (so that all articles from the same month of the same year are grouped and counted together) and then appending `-01` to each value before passing it into `format-date()` with a picture string of `"[MNn] [Y]"` for rendering. Appending a fake day at render time maps the facet value onto a valid ISO date and our picture string then ignores the day component and outputs only the month and year.
-
-----
-
 The portion of our index file that constructs the date facets is:
 
 ```xml
@@ -295,6 +285,12 @@ The portion of our index file that constructs the date facets is:
             substring(., 1, 7)
         )" hierarchical="yes"/>
 ```
+
+----
+
+**Note:** A string like `1806-02` does not match a valid ISO date because it is missing the required day portion, which means that it is not acceptable input to the XPath `format-date()` function. At the same time, we want to group our documents for facet purposes by just year and month, so we don’t want to include the day in the facet value. We meet those requirements by using just the year and month (e.g., `1806-02`) portion of the date as the second-level facet value (so that all articles from the same month of the same year are grouped and counted together) and then appending `-01` to each value before passing it into `format-date()` with a picture string of `"[MNn] [Y]"` for rendering. Appending a fake day at render time maps the facet value onto a valid ISO date and our picture string then ignores the day component and outputs only the month and year.
+
+----
 
 Hierarchical facets are created by specifying the value of a `@hierarchical` attribute as `"yes"` and specifying a sequence of values for the `@expression` attribute. In this case our XPath expression will, for example, map a date like `1806-02-04` to the sequence `('1800', '1806-02')` The first value is the top-level facet, the decade, and the second will be transformed to `"February 1806"` for rendering.
 
@@ -376,11 +372,14 @@ This returns:
 </m:decade>
 ```
 
-The decade beginning in 1810 is missing because there are no articles in the corpus from that decade. Facets never return keys for which the count is zero, so if we want to list all decades, including those with no articles, we need to anticipate and handle any missing values ourselves.
+----
 
+**Note:** The decade beginning in 1810 is missing because there are no articles in the corpus from that decade. Facets never return keys for which the count is zero because they are designed to narrow (or, in our case, also broaden) a search, and a facet with a count of zero is of no use for those purposes.
+
+----
 ### 2.7. Using facets to constrain a query
 
-When we retrieve the titles of all articles that contain the string “ghost” along with lists of publishers and dates with article counts, we can then select one or more of those publishers or dates and rerun the query to return only articles that match the publishers or dates that we have specified. To constrain a query by a facet values we need to specify the facet names and values as part of an `ft:query()` operation. For example, the following query selects all articles in the corpus that have `"Times, The"` or `"John Bull"` as the values of their `publisher` facets (10 of the 36 articles in the corpus satisfy this requirement):
+When we retrieve the titles of all articles that contain the string “ghost” along with lists of publishers and dates with article counts, we can then select one or more of those publishers or dates and rerun the query to return only articles that match the publishers or dates that we have specified. To constrain a query by a facet values we need to specify the facet names and values as part of an `ft:query()` operation. For example, the following query selects all articles in the corpus that have `"Times, The"` or `"John Bull"` as the values of their `publisher` facets:
 
 ```xquery
 xquery version "3.1";
@@ -396,7 +395,7 @@ let $hits as element(tei:TEI)* :=
 return $hits
 ```
 
-When facets are used to constrain a query they are specified as part of a third argument to the `ft:query()` function. That third argument is an XPath map that accepts as keys the strings `"facets"` and `"fields"`. Here we specify only facets, and the value associated with the `"facets"` key is another map, where the keys are the `@dimension` values of the facets we care about and the values are a sequence of facet values that we want to use to filter our results. Note that because we moved the definite and indefinite articles to the end of the string when we created the publisher facets, we have to make that same adjustment when we use the value for querying (e.g., we specify “Times, The” and not “The Times”).
+When facets are used to constrain a query they are specified as part of a third argument to the `ft:query()` function. That third argument is an XPath map that accepts as keys the strings `"facets"` and `"fields"`. Here we specify only facets, and the value associated with the `"facets"` key is another map, where the keys are the `@dimension` values of the facets we care about and the values are a sequence of facet values for that dimension that we want to use to filter our results. Note that because we moved the definite and indefinite articles to the end of the string when we created the publisher facets, we have to make that same adjustment when we use the value for querying (e.g., we specify “Times, The” and not “The Times”).
 
 ### 2.8. Facets and boolean queries
 
@@ -410,16 +409,15 @@ The follow example selects and returns information about articles published in o
 ```xquery
 xquery version "3.1";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-let $hits  as element(tei:TEI)+ := 
-    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(
-        ., 
-        (),
-        map {
+let $options as map(*) :=
+    map {
             "facets": map {
                 "publisher" : ("Times, The", "Penny Satirist, The"),
                 "publication-date" : "1830"
             }
-        })]
+    }
+let $hits as element(tei:TEI)+ := 
+    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., (), $options)]
 for $hit in $hits
 let $title as element(tei:title) := $hit//tei:titleStmt/tei:title
 let $publisher as element(tei:publisher) := $hit//tei:publicationStmt/tei:publisher
