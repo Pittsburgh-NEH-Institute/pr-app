@@ -1,10 +1,12 @@
-import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
+import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/index-functions.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 declare namespace m="http://www.obdurodon.org/model";
 
 declare namespace html="http://www.w3.org/1999/xhtml";
+
+declare variable $places as element(tei:TEI) := doc('/db/apps/pr-app/data/aux_xml/places.xml')/tei:TEI;
 
 declare variable $collection as element(tei:TEI)+ :=
     collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI;
@@ -19,11 +21,21 @@ declare variable $collection as element(tei:TEI)+ :=
         specify the fields you want (there are other fields defined that we aren't looking for). The map 'keys' in the 
         key value pair can use either 'fields' or 'facets'. The 'value' in the key-value pair is a sequence of field names we care about.
         In our case, it's just one field, so we don't use parens :)
+
     for $article in $articles
+    let $title as xs:string := $article/descendant::tei:titleStmt/tei:title/string()
+    let $format-title := hoax:format-title($title)
+    let $place-refs as element(tei:placeName)* := $article/descendant::tei:body/descendant::tei:placeName
+    let $place-id := $place-refs[. = $places//tei:place/@xml:id]
+    
     return 
     <m:article>
+        <m:title>{$format-title}</m:title>
         <m:id>{$article/@xml:id}</m:id>
-        <m:count>{ft:field($article, 'word-count')}</m:count>
+        <m:word-count>{ft:field($article, 'word-count')}</m:word-count>
+        <m:place-count>{$place-refs}</m:place-count>
+        <m:place-id>{$place-id}</m:place-id>
+
     </m:article>
     (:ft:field() takes two arguments: the haystack and the needle. Haystack is a node we filtered using ft:query
     and the needle is the name of the field we specified using ft:query. It returns the field value for the haystack.:)
