@@ -76,7 +76,7 @@ In order to support both narrowing and expanding a search we perform three queri
 
 ----
 
-**Note:** We chose to update only when the user pushes the Search button, and not on every checkbox event (which is more common in faceted search interfaces), to reduce the delay associated with multiple reloads. One side-effect of that decision is that it is possible to select facet values that return no results, e.g., one publisher and one date where the selected publisher did not publish anything on the selected date. In that situation the interface will show “No matching articles found” plus facet values that could, if selected, return results (publishers that match the dates chosen and vice versa).
+**Note:** We chose to update the display only when the user pushes the Search button, and not on every checkbox event (which is more common in faceted search interfaces), to reduce the delay associated with multiple reloads. One side-effect of that decision is that it is possible to select facet values that return no results, e.g., one publisher and one date where the selected publisher did not publish anything on the selected date. In that situation the interface will show “No matching articles found” plus facet values that could, if selected, return results (publishers that match the dates chosen and vice versa).
 
 ----
 
@@ -195,7 +195,7 @@ return
     }</facet_test>
 ```
 
-One reason to prefer facets over the regular XQuery FLWOR strategy is that with facets the counts are computed at index time, while with FLWOR they are computed at query time. Although the difference may not be noticeable with a small amount of data, counting at index time can provide a substantial improvement in performance because 1) the counting is performed only once (instead of being repeated for each query) and 2) performance is typically a higher priority at query time than during indexing.
+One reason to prefer facets over the regular XQuery FLWOR strategy is that with facets the counts are computed at index time, while with FLWOR they are computed at query time. Although the difference may not be noticeable with a small amount of data, counting at index time can improve performance because 1) the counting is performed only once (instead of being repeated for each query) and 2) performance is typically a higher priority at query time than during indexing.
 
 ----
 
@@ -470,7 +470,7 @@ return
 ```
 ----
 
-**Note:** XPath automatically flattens nested sequences, so that, for example, `(("1830", "1838-01"), ("1850", "1852-11"))` would be understood (incorrectly, for our purposes) as `("1830", "1838-01", "1850", "1852-11")`. This four-item sequence would look as if it was trying to select a single value in a four-level hierarchy; it is not an error, but it will not return results because the `publication-date` facet in our app has a different (two-level) structure. Arrays, unlike sequences, are not automatically flattened, so `[("1830", "1838-01"), ("1850", "1852-11")]` will be understood correctly as two two-item sequences.
+**Note:** XPath automatically flattens nested sequences, so that, for example, `(("1830", "1838-01"), ("1850", "1852-11"))` would be understood (incorrectly, for our purposes) as `("1830", "1838-01", "1850", "1852-11")`. This four-item sequence would look as if it was trying to select a single value in a four-level hierarchy; it is not a syntax error, but it will not return results because the `publication-date` facet in our app has a different (two-level) structure. Arrays, unlike sequences, are not automatically flattened, so `[("1830", "1838-01"), ("1850", "1852-11")]` will be understood correctly as two two-item sequences.
 
 ----
 
@@ -502,7 +502,7 @@ The newspaper titles can be retrieved verbatim from the XML sources, but the art
 We choose fields, rather than facets, for this task because 1) we don’t need to group and count by article titles or dates, 2) we don’t need a hierarchy, and 3) we don’t use these values to refine a query. All we need is to preconstruct string values and retrieve them (instead of computing them) at query time.
 ### 3.1. Configuring fields
 
-The simplest way to configure a field is to add a `<field>` element to the index file, as in:
+A field is configured by adding a `<field>` element to the index file, as in:
 
 ```xml
 <collection xmlns="http://exist-db.org/collection-config/1.0" xmlns:tei="http://www.tei-c.org/ns/1.0">
@@ -528,7 +528,7 @@ The simplest way to configure a field is to add a `<field>` element to the index
 </collection>
 ```
 
-1. The configuration of the `formatted-title` field above uses the `hoax:format-title()` function (which we employed to format publication titles in our facets) to create a field called `formatted-title` that removes a leading definite or indefinite article from the beginning of an article title and moves it to the end after a comma and a space. For example, if the article title is “A ghost, a bear, or a devil” the associated `formatted-title` field value would be “Ghost, a bear, or a devil, A”.
+1. The configuration of the `formatted-title` field above uses our custom `hoax:format-title()` function (which we employed to format publication titles in our facets) to create a field called `formatted-title` that removes a leading definite or indefinite article from the beginning of an article title and moves it to the end after a comma and a space. For example, if the article title is “A ghost, a bear, or a devil” the associated `formatted-title` field value would be “Ghost, a bear, or a devil, A”.
 1. The configuration of the `formatted-date` field above uses the standard library functions `xs:date()` and `format-date()` to create a human-readable full date. For example, if the publication date is “1838-11-04” the associated `formatted-date` field value would be “November 4, 1838”.
 
 We could perform these string operations at query time, but implementing them instead at indexing time means that they have to be performed only once and that the values are available on demand, without having to be generated afresh. 
@@ -541,9 +541,11 @@ The following XQuery returns metadata about all articles in the collection, incl
 xquery version "3.1";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace m="http://www.obdurodon.org/model";
+declare variable $options as map(*) := map {
+    "fields" : ("formatted-title", "formatted-date")
+};
 declare variable $all-hits as element(tei:TEI)+ :=
-    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI
-    [ft:query(., (), map { "fields" : ("formatted-title", "formatted-date") })];
+    collection('/db/apps/pr-app/data/hoax_xml')/tei:TEI[ft:query(., (), $options)];
 <m:articles>{
     for $hit in $all-hits
     let $id as xs:string := $hit/@xml:id ! string()
@@ -571,7 +573,7 @@ As was the case with facets, field information can be retrieved only from result
 ft:query(., (), map { "fields" : "formatted-title" } )
 ```
 
-Had we instead omitted the third argument and run just `ft:query(., ())`, eXist would not have had access to the field value.
+Had we instead omitted the third argument and run just `ft:query(., ())`, eXist would not have had access to the field values (even though all facet information would have been available with `ft:facets()`).
 
 The preceding query returns results like the following (excerpted):
 
@@ -619,8 +621,8 @@ The preceding query returns results like the following (excerpted):
 </m:articles>
 ```
 
-Because these results are used to create a list of articles that will be alphabetized by article title, the article titles are rendered with leading definite and indefinite articles moved to the end, but publication titles are returned without that modification. The publication titles were modified in the facets, since they had to be alphabetized there. 
+Because these results are used to create a list of articles that will be alphabetized by article title, the article titles are sorted and rendered with leading definite and indefinite articles moved to the end, but publication titles are returned without that modification. (The publication titles were modified in the facets, though, because they had to be alphabetized there.) 
 
-### 3.3. Fields 
+### 3.3. Fields conclusion
 
-In our Ghost Hoax app we retrieve constructed values using fields as a strategy for improving the performance of our queries. We do not use field values as query parameters, an addition aspect of fields that is described in the standard [eXist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?field=all&id=D3.15.73#query-fields).
+In our Ghost Hoax app we retrieve constructed values using fields as a strategy for improving the performance of our queries. The standard [eXist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?field=all&id=D3.15.73#query-fields) also describes additional uses of fields that we do not employ in the Ghost Hoax app, such as using field values for querying (not just display), using different Lucene analyzers (e.g., to support multiple languages), specifying datatypes (e.g., dates and times), and constructing fields only if specific conditions are met.
