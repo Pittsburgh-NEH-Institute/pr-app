@@ -23,7 +23,7 @@
 
 *Facets* and *fields* are part of the *full-text indexing* feature of eXist-db. As the name implies, full-text indexing provides a mechanism for retrieving documents according to any of the words they contain, e.g., “Find all documents that contain the word ‘ghost’” (anywhere in the document) or “Find all documents that contain the word ‘ghost’ in the title”, etc.
 
-The official eXist-db documentation for full-text indexing is clear, but when we first looked there to begin to learn about facets and fields we found that portion of the documentation too brief to serve as a full and clear introduction to those features. The purpose of this document is to explain why and how to use facets and fields in an eXist-db app, with examples drawn from our [Ghost Hoax app](https://github.com/Pittsburgh-NEH-Institute/pr-app), which is designed to explore a collection of Victorian-era newspaper articles about ghost hoaxes.
+The description of facets and fields in [official eXist-db documentation for full-text indexing](http://exist-db.org/exist/apps/doc/lucene.xml?field=all&id=D3.15.73#D3.15.73) provides a clear overview of these features, but in some places without as much detail as we would like. The purpose of this document is to explain why and how to use facets and fields in an eXist-db app, with examples drawn from our [Ghost Hoax app](https://github.com/Pittsburgh-NEH-Institute/pr-app), which is designed to explore a collection of Victorian-era newspaper articles about ghost hoaxes.
 
 The difference between facets and fields is described clearly in Alex Kennedy’s [The definitive guide to the difference between filters and facets](https://www.search.io/blog/the-difference-between-filters-and-facets) (text in square brackets is our own):
 
@@ -34,7 +34,7 @@ This tutorial makes the following assumptions:
 1. Readers who are not familiar with eXist-db full-text indexing must first read the documentation at <http://exist-db.org/exist/apps/doc/lucene>. 
 2. Because facets and fields use maps and arrays, which were added to XPath only in version 3.1 (2017), users who are not familiar with those data structures must first read the Saxonica [Maps in XPath](https://www.saxonica.com/html/documentation11/expressions/xpath30maps.html) and [Arrays in XPath](https://www.saxonica.com/html/documentation11/expressions/xpath31arrays.html). More complete documentation is available in the [3.11 Maps and Arrays](https://www.saxonica.com/html/documentation11/expressions/xpath31arrays.html) section of the XPath 3.1 specification.
 
-Both facets and fields can index on computed values, which, for reasons described below, can improve response time during query and retrieval. The computation can use the standard XPath and XQuery function libraries, as well as user-defined functions. Below we describe first facets and then fields, including also information about how to import user-defined functions into an index file so that they can be used during configuration.
+Both facets and fields can index on computed values (that is, values that do not appear literally in the source XML), which, for reasons described below, can improve response time during query and retrieval. The computation can use the standard XPath and XQuery function libraries, as well as user-defined functions. Below we describe first facets and then fields, including also information about how to import user-defined functions into an index file so that they can be used during configuration.
 
 ## 2. Facets
 
