@@ -7,7 +7,7 @@
             <title>Resuscitation of The Hammersmith Ghost</title>
             <respStmt>
                <resp>Originally published by</resp>
-               <name>Weekly True Sun</name>
+               <name>The Weekly True Sun</name>
             </respStmt>
             <respStmt>
                <resp>Transcribed and encoded by</resp>
@@ -15,11 +15,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-               <!-- 2022-05-02 djb "The" prepended to publisher 
-               to match hampsteadghost_weeklytruesun_1836_edited.xml-->
-            <publisher>The Weekly True Sun</publisher>
-            <date when="1833-12-15"/>
-            <idno>GH-GNCCO-18331215</idno>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -28,7 +24,7 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>"Resuscitation of the Hammersmith Ghost." Weekly True Sun, 15 Dec. 1833, p.
+            <p><bibl>"Resuscitation of the Hammersmith Ghost." <publisher rend="The">Weekly True Sun</publisher>, <date when="1833-12-15">15 Dec. 1833</date>, p.
                   123. Nineteenth Century Collections Online,
                   http://tinyurl.galegroup.com/tinyurl/8wMqL7. Accessed 30 Jan. 2019.</bibl></p>
          </sourceDesc>

@@ -15,10 +15,9 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher>The Times</publisher>
-            <date when="1838-01-09"/>
-            <idno>GH-TIMES-18380109</idno>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
+         <seriesStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
          </seriesStmt>
@@ -26,7 +25,7 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>"Police." Times, 9 Jan. 1838, p. 4. The Times Digital Archive,
+            <p><bibl>"Police." <publisher rend="The">Times</publisher>, <date when="1838-01-09">9 Jan. 1838</date>, p. 4. The Times Digital Archive,
                   http://tinyurl.galegroup.com/tinyurl/8tRZH4. Accessed 25 Jan. 2019.</bibl></p>
          </sourceDesc>
 

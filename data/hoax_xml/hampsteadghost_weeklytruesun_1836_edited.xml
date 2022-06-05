@@ -7,7 +7,7 @@
             <title>The Hampstead Ghost? Legal Proceedings against the Police</title>
             <respStmt>
                <resp>Originally published by</resp>
-               <name/>
+               <name>The Weekly True Sun</name>
             </respStmt>
             <respStmt>
                <resp>Transcribed and encoded by</resp>
@@ -15,7 +15,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <p>placeholder</p>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -24,7 +24,7 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>"The Hampstead Ghost? Legal Proceedings against the Police."<publisher>Weekly True Sun</publisher>, <date when="1836-10-08">20
+            <p><bibl>"The Hampstead Ghost? Legal Proceedings against the Police."<publisher rend="The">Weekly True Sun</publisher>, <date when="1836-10-08">20
                   Nov. 1836</date>, p. 1350. Nineteenth Century Collections Online,
                   tinyurl.galegroup.com/tinyurl/54d3N1. Accessed 26 July 2017.</bibl></p>
          </sourceDesc>

@@ -16,8 +16,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher>The Leader</publisher>
-            <date when="1853-07-09"/>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -26,7 +25,7 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>"Nelson's Ghost." Leader, 9 July 1853, p. 660. Nineteenth Century Collections
+            <p><bibl>"Nelson's Ghost." <publisher rend="The">Leader</publisher>, <date when="1853-07-09">9 July 1853</date>, p. 660. Nineteenth Century Collections
                   Online, tinyurl.galegroup.com/tinyurl/55AEu4. Accessed 29 July 2017.</bibl></p>
          </sourceDesc>
 

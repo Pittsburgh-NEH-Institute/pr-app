@@ -15,9 +15,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher>Bell’s Life in London and Sporting Chronicle</publisher>
-            <date when="1825-01-30"/>
-            <idno>GH-19CUK-18250130</idno>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -26,8 +24,8 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>"The New Hammersmith Ghost." Bell’s Life in London and Sporting Chronicle, 30
-                  Jan. 1825. 19th Century UK Periodicals, http://tinyurl.com/yahgex6w. Accessed 31
+            <p><bibl>"The New Hammersmith Ghost." <publisher>Bell’s Life in London and Sporting Chronicle</publisher>, <date when="1825-01-30">30
+                  Jan. 1825</date>. 19th Century UK Periodicals, http://tinyurl.com/yahgex6w. Accessed 31
                   July 2017.</bibl></p>
          </sourceDesc>
 
