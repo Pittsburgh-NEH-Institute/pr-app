@@ -4,7 +4,7 @@
   <sch:ns uri="http://www.tei-c.org/ns/1.0" prefix="tei"/>
   <sch:p>Validation for ghost hoax source files</sch:p>
   <sch:pattern>
-    <sch:let name="all-docs" value="collection('../hoax_xml')/tei:TEI"/>
+    <sch:let name="all-docs" value="collection('../hoax_xml?select=*.xml')/tei:TEI"/>
     <sch:let name="all-ids" value="$all-docs/@xml:id"/>
     <sch:rule context="tei:TEI">
       <sch:let name="myid" value="@xml:id"/>
