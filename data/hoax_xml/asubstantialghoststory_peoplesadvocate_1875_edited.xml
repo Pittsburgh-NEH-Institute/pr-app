@@ -15,10 +15,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher>The People’s Advocate</publisher>
-            <publisher>Altrincham Guardian</publisher>
-            <date when="1875-07-03"/>
-            <idno>GH-GNCCO-18750703</idno>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -27,7 +24,7 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>"A Substantial Ghost Story." People's Advocate, 3 July 1875. Nineteenth Century
+            <p><bibl>"A Substantial Ghost Story." <publisher rend="The">People's Advocate</publisher>, <date when="1875-07-03">3 July 1875</date>. Nineteenth Century
                   Collections Online, http://tinyurl.galegroup.com/tinyurl/7M6cU4. Accessed 10 Oct.
                   2018.</bibl></p>
          </sourceDesc>

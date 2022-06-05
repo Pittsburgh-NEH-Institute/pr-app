@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../schemas/hoax.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-19CUK-18380120">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-19CUK-18380120-P">
    <teiHeader>
       <fileDesc>
          <titleStmt>
@@ -15,9 +15,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher>The Penny Satirist</publisher>
-            <date when="1838-01-20"/>
-            <idno>GH-19CUK-18380120</idno>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -28,7 +26,7 @@
                appears exactly as given.</p>
             <p><bibl>"All the world has by this time heard of the London Ghost, who is known in the
                   suburbs, by the name of 'Spring-heeled Jack,' who has been jumping Jim Crow in our
-                  neighbourhood in rather a novel style." The Penny Satirist, 20 Jan. 1838, p. 2.
+                  neighbourhood in rather a novel style." <publisher rend="The">Penny Satirist</publisher>, <date when="1838-01-20">20 Jan. 1838</date>, p. 2.
                   19th Century UK Periodicals, http://tinyurl.galegroup.com/tinyurl/9RpMs5. Accessed
                   11 Mar. 2019.</bibl></p>
          </sourceDesc>

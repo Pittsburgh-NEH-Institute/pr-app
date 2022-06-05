@@ -15,9 +15,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher>The Times</publisher>
-            <date when="1804-01-19"/>
-            <idno>GH-TIMES-18040119</idno>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -27,7 +25,7 @@
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
             <p><bibl>ANOTHER GHOST!-A Gentleman of great respectability in the service of the East
-                  India. The Times (London, England), Thursday, Jan 19, 1804; pg. 3; Issue 5923.
+               India. <publisher rend="The">Times</publisher> (London, England), Thursday, <date when="1804-01-19">Jan 19, 1804</date>; pg. 3; Issue 5923.
                   (591 words)</bibl></p>
          </sourceDesc>
 

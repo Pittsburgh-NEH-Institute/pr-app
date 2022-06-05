@@ -15,9 +15,7 @@
                 </respStmt>
             </titleStmt>
             <publicationStmt>
-                <publisher>The Penny Satirist</publisher>
-                <date when="1844-10-05"/>
-                <idno>GH-19CUK-18441005</idno>
+                <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
             </publicationStmt>
             <seriesStmt>
                 <title>Ghost hoaxes in 19th-century British news media</title>
@@ -26,7 +24,7 @@
                 <p>All texts in this collection were sourced from British periodical and newspaper
                     archives, transcribed,and encoded. The citation below was provided by the
                     archive and appears exactly as given.</p>
-                <p><bibl>"A POMERANIAN GHOST." The Penny Satirist, 5 Oct. 1844, p. 4. 19th Century
+                <p><bibl>"A POMERANIAN GHOST." <publisher rend="The">Penny Satirist</publisher>, <date when="1844-10-05">5 Oct. 1844</date>, p. 4. 19th Century
                         UK Periodicals, http://tinyurl.galegroup.com/tinyurl/6qmuYX. Accessed 8 Aug.
                         2018.</bibl></p>
             </sourceDesc>

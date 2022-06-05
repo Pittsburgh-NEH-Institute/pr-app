@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/hoax.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-BRITP-18890504-F">
    <teiHeader>
       <fileDesc>
@@ -14,9 +15,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher>Chambers's Journal</publisher>
-            <date when="1889-05-04"/>
-            <idno>GH-BRITP-18890504-F</idno>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -25,8 +24,8 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>GHOST CUT GHOST. Chambers's journal of popular literature, science and arts,
-                  Jan. 1854- Nov. 1897; May 4, 1889; 6, 279; British Periodicals pg. 285</bibl></p>
+            <p><bibl>GHOST CUT GHOST. <publisher>Chambers's journal</publisher> of popular literature, science and arts,
+               Jan. 1854- Nov. 1897; <date when="1889-05-04">May 4, 1889</date>; 6, 279; British Periodicals pg. 285</bibl></p>
          </sourceDesc>
 
       </fileDesc>

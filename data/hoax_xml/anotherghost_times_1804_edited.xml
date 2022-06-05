@@ -15,9 +15,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher>The Times</publisher>
-            <date when="1804-01-13"/>
-            <idno>GH-TIMES-18040113</idno>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -26,7 +24,7 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>The Times (London, England), Friday, Jan 13, 1804; pg. 2; Issue 5918. (629
+            <p><bibl><publisher rend="The">Times</publisher> (London, England), Friday, <date when="1804-01-13">Jan 13, 1804</date>; pg. 2; Issue 5918. (629
                words)</bibl></p>
          </sourceDesc>
          

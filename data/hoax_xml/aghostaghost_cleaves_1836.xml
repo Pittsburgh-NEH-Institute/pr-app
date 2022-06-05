@@ -15,9 +15,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher>Cleave's Weekly Police Gazette</publisher>
-            <date when="1836-09-24"/>
-            <idno>GH-19CUK-18360924</idno>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -26,7 +24,7 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>"A Ghost! a Ghost!" Cleave's Weekly Police Gazette, 24 Sept. 1836. Nineteenth
+            <p><bibl>"A Ghost! a Ghost!" <publisher>Cleave's Weekly Police Gazette</publisher>, <date when="1836-09-24">24 Sept. 1836</date>. Nineteenth
                   Century Collections Online, http://tinyurl.galegroup.com/tinyurl/9RxC29. Accessed
                   11 Mar. 2019.</bibl></p>
          </sourceDesc>

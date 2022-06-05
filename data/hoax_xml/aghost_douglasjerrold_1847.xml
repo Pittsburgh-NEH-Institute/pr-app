@@ -15,10 +15,7 @@
                 </respStmt>
             </titleStmt>
             <publicationStmt>
-                <publisher rendition="original">Sunderland Herald</publisher>
-                <publisher rendition="reprint">Douglas Jerrold's Weekly Newspaper</publisher>
-                <date when="1847-09-04"/>
-                <idno>GH-GNCCO-18470904</idno>
+                <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
             </publicationStmt>
             <seriesStmt>
                 <title>Ghost hoaxes in 19th-century British news media</title>
@@ -27,7 +24,7 @@
                 <p>All texts in this collection were sourced from British periodical and newspaper
                     archives, transcribed,and encoded. The citation below was provided by the
                     archive and appears exactly as given.</p>
-                <p><bibl>"A Ghost!" Douglas Jerrold's Weekly Newspaper, 4 Sept. 1847, p. 1119.
+                <p><bibl>"A Ghost!" <publisher>Douglas Jerrold's Weekly Newspaper</publisher>, <date when="1847-09-04">4 Sept. 1847</date>, p. 1119.
                         Nineteenth Century Collections Online, tinyurl.galegroup.com/tinyurl/54Rtk8.
                         Accessed 25 July 2017.</bibl></p>
             </sourceDesc>

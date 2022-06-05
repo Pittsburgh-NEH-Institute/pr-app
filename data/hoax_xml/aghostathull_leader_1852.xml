@@ -15,9 +15,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher>The Leader</publisher>
-            <date when="1852-10-30"/>
-            <idno>GH-GNCCO-18521030</idno>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -26,7 +24,7 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>"A 'Ghost' at Hull." Leader, 30 Oct. 1852, p. 1034. Nineteenth Century Collections
+            <p><bibl>"A 'Ghost' at Hull." <publisher rend="The">Leader</publisher>, <date when="1852-10-30">30 Oct. 1852</date>, p. 1034. Nineteenth Century Collections
                Online, tinyurl.galegroup.com/tinyurl/55Nxm6. Accessed 31 July 2017.</bibl></p>
          </sourceDesc>
          
