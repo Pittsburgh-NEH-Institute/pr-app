@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/hoax.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-19CUK-18380120">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>All the world...</title>
+            <respStmt>
+               <resp>Originally published by</resp>
+               <name>The Penny Satirist</name>
+            </respStmt>
+            <respStmt>
+               <resp>Transcribed and encoded by</resp>
+               <name>Gabi Keane</name>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>The Penny Satirist</publisher>
+            <date when="1838-01-20"/>
+            <idno>GH-19CUK-18380120</idno>
+         </publicationStmt>
+         <seriesStmt>
+            <title>Ghost hoaxes in 19th-century British news media</title>
+         </seriesStmt>
+         <sourceDesc>
+            <p>All texts in this collection were sourced from British periodical and newspaper
+               archives, transcribed,and encoded. The citation below was provided by the archive and
+               appears exactly as given.</p>
+            <p><bibl>"All the world has by this time heard of the London Ghost, who is known in the
+                  suburbs, by the name of 'Spring-heeled Jack,' who has been jumping Jim Crow in our
+                  neighbourhood in rather a novel style." The Penny Satirist, 20 Jan. 1838, p. 2.
+                  19th Century UK Periodicals, http://tinyurl.galegroup.com/tinyurl/8AFiT1. Accessed
+                  27 Oct. 2018.</bibl></p>
+         </sourceDesc>
+
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p>This document is part of a larger digital collection of stories of ghost hoaxes from
+               the 18th and 19th century London newspapers and periodicals. The project explores the
+               beginnings of mass print media in a metropolitan area at a time when technology and
+               education made reading increasingly common and inexpensive.</p>
+            <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
+               various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
+               online databases were transcribed using ABBYFineReader OCR, then corrected and
+               occasionally manually transcribed if document quality necessitated it. After
+               normalization in plain text, all documents were upconverted to TEI XML.</p>
+         </projectDesc>
+         <editorialDecl>
+            <normalization>
+               <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                  Typographic em dashes are longer than modern em dashes, so all dashes have been
+                  normalized to modern em dash length.</p>
+            </normalization>
+            <quotation>
+               <p>All extraneous white space used by printers to avoid overlapping with letters has
+                  been removed. All quotes are simply tagged with the q tag.</p>
+            </quotation>
+         </editorialDecl>
+      </encodingDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <p>All the world has by this time heard of the <placeName ref="#london">London</placeName> Ghost, who is known in the suburbs,
+            by the name of <q><rs ref="springheeledjack">Spring-heeled Jack</rs>,</q> who has been
+            jumping Jim Crow in our neighbourhood in rather a novel style. Various conjectures are
+            afloat respecting this solemn, grave looking personage. Some say it is <persName ref="#springrice">Spring
+               Rice</persName>, <rs ref="pol">who has taken this opportunity of diverting the minds of the people
+            from political scrutiny, and financial investigations</rs>. Others again say it is <persName ref="#johnrussell">Jack
+            Russell</persName>, on the secret service of the Home Department; others, <persName ref="#henrybrougham">Lord Brougham</persName>, looking
+            for glow-worms to enlighten the people, We cannot say we agree with any of these popular
+            rumours. We have too much faith in ghosts, to doubt the possibility of its being a
+               <q>genevine bony fidy</q> spirit incarnate, sent from Tartar-us to warn the sinful
+            inhabitants of this land of <rs ref="pol">the coming judgments of the Devil, for their awful
+            selfishness and grasping greediness, by which they suck the blood of the poor, and
+            fasten upon the produce of their industry, with their savage claws</rs>. The rumours that
+            prevail about a wager between some wealthy scamps of aristocracy are much too
+            imaginative and incredible for our sober minds. Who the d--e could make boots for a
+            sham-appariton that would enable the wearer to jump over garden walls and fly over the
+            tops of houses, to ride across the weathercocks of churches and to peep in at the back
+            window of a house at the very moment he was knocking at the front door, and frightening
+            the maid into her inward senses? This is an age of discovery, truly; but science has not
+            yet ascended to such an altitude as this amongst the honourable corporation of snobs, on
+            whose shoulders the whole guilt of this wonderful apparition is very unjustly laid.</p>
+         <p>The ghost is generally about the size of a man, but it takes various forms. Sometimes it
+            has the shape of a bear, sometimes it jumps like a kangaroo, and very frequently it is
+            dressed like one of the knights of Jerusalem, in shining bring armour, which gleams with
+            a white light, like phosphorus. We saw a man who told us that, being at <placeName
+               ref="#ilford">Ilford</placeName> one day, he met a man who told him he had fallen in
+            love with a woman who positively assured him that she knew a girl who had fairly lost
+            her old wits by the sight of the ghost, and had been provided with a new set of wits so
+            entirely different that it was hard to believe she was the same person. A servant girl
+            in <placeName ref="#kensington">Kensington</placeName>, we are informed, has been so
+            powerfully affected that her person has swelled so enormously that her mistress has
+            dismissed her as unfit for houshold work. A gentleman in Hammersmith has horns growing
+            on his head, which are generally supposed to be produced by one of <rs ref="springheeledjack">Springheeled Jack's</rs>
+            incantations. But the strangest rumour of all is this, that the present hard frost is
+            owing to the immense consumption of heat by the apparition, which, having lately left
+            the furnace underneath presented such an attraction ot the fiery element above, that he
+            has absorbed it all for his own private satisfaction, leaving us to experience the same
+            shivering sensation which he felt himself when he came up amongst us.</p>
+         <p>We have been privately informed that there are Thugs in England; and several in Ireland;
+            and that the Thugs in Irelande have joined the Trades' Associations, and are <rs ref="or">privately
+            proselytizing the sons of Erin to the worship of Kalee</rs>. <rs ref="springheeledjack">This
+               report, which is believed in certain circles, has probably given rise to the rumour,
+               which we lately heard repeated by a respectable gentleman, that Springheeled Jack was
+               a Thug.</rs> <rs ref="or">It is well known that the Thugs pride themselves in killing without
+            shedding blood. The Irish do not understand this doctrine. It seems so unnatural.</rs> The
+            Thugs have, therefore, experienced considerable difficulty in the Green Isle in
+            propagating their principles. In this country it seemed impossible to pursue their
+            favourite system of social amelioration, on account of the vigilance of the police.
+            <rs ref="or">They, therefore, so says the report, have resorted to this ghostly method of sacrificing
+            to their favourite Kalee, the goddess of bloodless death.</rs></p>
+         <p><rs ref="doubt">We have no faith in this idle tale</rs>; but we can assure our readers that we have heard,
+            from a respectable quarter, that a woman has brought forth a child with horns on its
+            head, and sharp-pointed nails on its fingers. The father swears it is not his, and the
+            wife quotes the Poor Law Amendment Bill to prove that it is. <rs ref="rel">We hope the Bishop of
+            London is exercising his ghostly jurisdiction in the diocese</rs>. Mayhap this Springheeled
+            Jack is the doctor himself. Darkness is the natural element of a Bishop. No man burneth
+            a candle in daylight. And as Bishops are candles, they are made only for dark times, and
+            dark places, being entirely extinguished when the broad glare of the day-star beams upon
+            them. Bishops were very luminous in the dark ages. Now-a-days one can scarcely see them.
+            They are like fires which the sun-beams have played upon. It is natural enough that
+            these men should desire to restore their ghostly attendants, whose services he can at
+            all times command to carry out his spiritual plans of ecclesiastical government. Now the
+            ghost is evidently a combination of individuals. It is seen in <placeName ref="#kensington">Kensington</placeName>, <placeName ref="#hammersmith">Hammersmith</placeName>,
+            <placeName ref="#ilford">Ilford</placeName>, <placeName ref="#peckham">Peckham</placeName>, <placeName ref="#highgate">Highgate</placeName>, and <placeName ref="#greenwich">Greenwich</placeName>, at one and the same time. <rs ref="rel pol">The most natural
+            inference, therefore, is that it is a clerical manoeuvre</rs>. The churches, we understand,
+            have been rather better attended on account of it, and we ourselves have heard of one
+            woman who was so frightened that she went to church on Sunday last to charm away the
+            evil one from herself and children, who had not been in church for twelvemonths
+            previous.</p>
+         <p>But how to account for the <emph>springing</emph> is difficult. There is something
+            beyond flesh and blood, and clerical manoeuvering, in this. There must be a real ghost
+            in pay somehow. This we are told is now not so difficult as it has been for a century or
+            two. Astrology is reviving. We know several sorcerers in London, and one man assured us
+            that he has raised hosts of devils, and made them sit till he drew their pictures. He
+            also showed us the pictures of several, and amongst the rest <emph>Cashiel</emph> riding
+            on a dragon, a fierce looking fellow. He bring sthem up in a glass, but he thinks it not
+            impossible for a parson to make them move about in the open air.</p>
+         <p>Now the girl at <placeName ref="#ilford">Ilford</placeName> swears that she saw the moon through the ghost's head.</p>
+         <p>The Lord Mayor has received several important letters on the subject, and promises to do
+            his utmost to throw light upon it. But it ain't arsenic candles, we can assure his
+            Lordship, that will remove an evil so disastrous as this. The fact is, some people
+            ascribe it wholly to the arsenic candles. One servant girl, on opening a door, ahd the
+            flame of the candle blowin in her face. She fainted, and fell on the floor: and when she
+            recovered, she said she saw a man with an owl's face, all covered with feathers, from
+            head to foot. The doctor gave her a turn out, and she is as well as ever; but the candle
+            being examined it was found to be a wax-end perhaps one of the Lord Mayor's best. If the
+            spirit of arsenic has actually been embodied and personified, it will be a heavy crime
+            for the chandlers to answer for. The bar, in our opinion, is more suitable than the
+            bench for such gentlemen.</p>
+         <p>But two lawyers have kindly offered their services to lay this devil. The Lord Mayor is
+            highly gratified with this promised aid. If a lawyer cannot lay the devil, he has little
+            faith in a parson. <rs ref="pol rel">But his Lordship is no Christian to talk thus.</rs> <q>If satan cast out
+               satan, how can his kingdom stand?</q> It is another manoeuvre to inveigle the public.
+            Better employ <persName ref="#josephady">Joseph Ady</persName> at once to hunt it down— or to make a good job of it, with the
+            Lord Mayor's forged seal attached to his Commission.</p>
+         <p>But we must pause for want of space. Our friend McDougal, is out after this son of the
+            mist, and most probably will make important discoveries.</p>
+      </body>
+   </text>
+</TEI>
