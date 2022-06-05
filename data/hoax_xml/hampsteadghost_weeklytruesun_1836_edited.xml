@@ -14,10 +14,7 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <!-- 2022-05-02 djb publisher added from Gale online image, cf. <bibl> below -->
-            <publisher>The Weekly True Sun</publisher>
-            <date when="1836-10-08"/>
-            <idno>GH-GNCCO-18361008</idno>
+            <p>placeholder</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -26,8 +23,8 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>"The Hampstead Ghost? Legal Proceedings against the Police."Weekly True Sun, 20
-                  Nov. 1836, p. 1350. Nineteenth Century Collections Online,
+            <p><bibl>"The Hampstead Ghost? Legal Proceedings against the Police."<publisher>Weekly True Sun</publisher>, <date when="1836-10-08">20
+                  Nov. 1836</date>, p. 1350. Nineteenth Century Collections Online,
                   tinyurl.galegroup.com/tinyurl/54d3N1. Accessed 26 July 2017.</bibl></p>
          </sourceDesc>
 
