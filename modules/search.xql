@@ -151,7 +151,7 @@ Return results, order is meaningful (order is used to create view):
         let $title as xs:string := 
             ft:field($hit, "formatted-title")
         let $publisher as xs:string+ := 
-            $hit/descendant::tei:publicationStmt/tei:publisher ! string()
+            $hit/descendant::tei:sourceDesc/descendant::tei:bibl/tei:publisher ! string()
         let $date as xs:string := 
             ft:field($hit, "formatted-date")
         order by $title
