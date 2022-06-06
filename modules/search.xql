@@ -23,7 +23,11 @@ Behaviors:
    plus checked facet settings with count values of 0. This is the same result
    as above, except with different informative message because no search term.
 
-Create facet values for 3–5, above, only on demand as needed. 
+Create facet values for 3–5, above, only as needed. Create default values 
+first.
+
+TODO: Perform the triage first and don't create default values if they won't be 
+used.
 ==== :)
 
 (: =====
@@ -52,12 +56,13 @@ declare variable $path-to-data as xs:string := $exist:root || $exist:controller 
 (: =====
 Retrieve query parameters
 User can specify:
-    term : single word or phrase (no quotation marks around phrase)
+    term : typically single word (as per Lucene defaults)
     publishers
     decades
     month-years
 Null term value is return as an empty string, and not as missing, so set
-    explicitly to an empty sequence if no meaningful value is supplied
+    $term explicitly to an empty sequence if no meaningful value is supplied
+    to avoid raising an error
 ===== :)
 declare variable $retrieved-term as xs:string? := (request:get-parameter('term', ()));
 declare variable $publishers as xs:string* := request:get-parameter('publishers[]', ());
@@ -79,7 +84,7 @@ declare variable $date-facets-array as array(*)? := array:join((
         $month-year-facets-for-search ! [(substring(., 1, 3) || '0', substring(., 1, 7))]
     ));
 (: =====
-The only field we care about is the formatted title, e.g., "Times, The"
+Fields must be specified in initial ft:query() in order to be retrievable
 ===== :)
 declare variable $fields as xs:string+ := ("formatted-title", "formatted-date");
 (: =====
@@ -196,7 +201,9 @@ Return results, order is meaningful (order is used to create view):
         </m:article>
     }</m:articles>
     <m:selected-facets>
-        <!-- Not rendered directly, but used to restore checkbox state -->
+        <!-- Not rendered directly, but used to restore 
+        checkbox state and triage returns with no hits -->
+        <m:term>{$term}</m:term>
         <m:decades>{$decades}</m:decades>
         <m:date-facets-for-search>{serialize(
                 $date-facets-array, 
