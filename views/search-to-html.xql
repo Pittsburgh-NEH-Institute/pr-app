@@ -64,10 +64,11 @@ declare function local:data($node as element(m:data)) as element(html:section) {
             {if ($node/m:articles/m:article)
             then local:dispatch($node/m:articles)
             else <html:p style="margin-left: 1em;">{
-                if ($node/descendant::m:term ! string(.)) then
-                ("No matching articles found for ", <html:strong>{$node/descendant::m:term}</html:strong>)
-                else
-                "No articles were published by your selected publishers on your selected dates"
+                if ($node/descendant::m:term ! string(.)) (: query string but no hits, may be in other records:)
+                then
+                    ("No matching articles found for ", <html:strong>{$node/descendant::m:term}</html:strong>)
+                else (: no query string and no hits = term is nowhere in corpus:)
+                    "No articles were published by your selected publishers on your selected dates."
             }</html:p>
             }
         </html:section>

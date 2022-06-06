@@ -204,12 +204,13 @@ Return results, order is meaningful (order is used to create view):
         <!-- Not rendered directly, but used to restore 
         checkbox state and triage returns with no hits -->
         <m:term>{$term}</m:term>
-        <m:decades>{$decades}</m:decades>
+        <!-- debug only
         <m:date-facets-for-search>{serialize(
                 $date-facets-array, 
                 map { "method" : "json"}
             )}</m:date-facets-for-search>
         <m:all-facets>{serialize($all-facets, map { "method" : "json" })}</m:all-facets>
+        -->
         <m:publishers>{
             $publishers ! <m:publisher>{.}</m:publisher>
         }</m:publishers>
