@@ -1,4 +1,32 @@
 (: =====
+modules/search.xql
+
+Last update 2022-06-06 djb
+
+Constructs model, which is serialized by views/search-to-html.xql
+
+Behaviors:
+
+1. Facets and term are multi-select, with update only on Search button.
+2. Normally returns articles that match combination of search term (Lucene),
+   publisher facets, date facets. Left panel maintains checkbox state and
+   filters facets to show only those that can be used to broaden or narrow.
+3. If search term is not found in *any* documents (not just for selected
+   facets), return informative message and clear term and facet selections
+   for completely new search.
+4. If search term is not found in selected documents (but appears in others),
+   return informative message, facets to broaden, plus checked facet settings
+   with count values of 0. These must be added explicitly because facets with
+   0 values are not returned.
+5. If no search term and no results because selected publishers and dates do
+   do not intersect, return (different) informative message, facets to broaden,
+   plus checked facet settings with count values of 0. This is the same result
+   as above, except with different informative message because no search term.
+
+Create facet values for 3–5, above, only on demand as needed. 
+==== :)
+
+(: =====
 Import functions
 ===== :)
 import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/index-functions.xqm";
