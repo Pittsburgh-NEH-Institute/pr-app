@@ -19,7 +19,7 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
     <head>
         <title>Hoax</title>
         <link rel="stylesheet" media="screen" type="text/css" href="resources/css/hoax.css"/>
-        <link rel="icon" href="typewriter.jpg"/>
+        <link rel="icon" type="image/jpg" href="resources/img/typewriter.jpg"/>
     </head>
     <body>
         <section class="nav-menu">    
