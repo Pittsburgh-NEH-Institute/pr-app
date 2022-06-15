@@ -86,7 +86,7 @@ declare variable $date-facets-array as array(*)? := array:join((
 (: =====
 Fields must be specified in initial ft:query() in order to be retrievable
 ===== :)
-declare variable $fields as xs:string+ := ("formatted-title", "formatted-date");
+declare variable $fields as xs:string+ := ("formatted-title", "formatted-date", "formatted-publisher");
 (: =====
 $all-hits is used for articles list, but not for facets to refine search
 ===== :)
@@ -184,7 +184,7 @@ Return results, order is meaningful (order is used to create view):
         let $title as xs:string := 
             ft:field($hit, "formatted-title")
         let $publisher as xs:string+ := 
-            $hit/descendant::tei:sourceDesc/descendant::tei:bibl/tei:publisher ! string()
+            ft:field($hit, "formatted-publisher")
         let $date as xs:string := 
             ft:field($hit, "formatted-date")
         order by $title
@@ -192,11 +192,7 @@ Return results, order is meaningful (order is used to create view):
         <m:article>
             <m:id>{$id}</m:id>
             <m:title>{$title}</m:title>
-            {
-                for $p in $publisher
-                return
-                <m:publisher>{$p}</m:publisher>
-            }
+            <m:publisher>{$publisher}</m:publisher>
             <m:date>{$date}</m:date>
         </m:article>
     }</m:articles>
@@ -204,13 +200,12 @@ Return results, order is meaningful (order is used to create view):
         <!-- Not rendered directly, but used to restore 
         checkbox state and triage returns with no hits -->
         <m:term>{$term}</m:term>
-        <!-- debug only
+        <!-- debug only -->
         <m:date-facets-for-search>{serialize(
                 $date-facets-array, 
                 map { "method" : "json"}
             )}</m:date-facets-for-search>
         <m:all-facets>{serialize($all-facets, map { "method" : "json" })}</m:all-facets>
-        -->
         <m:publishers>{
             $publishers ! <m:publisher>{.}</m:publisher>
         }</m:publishers>

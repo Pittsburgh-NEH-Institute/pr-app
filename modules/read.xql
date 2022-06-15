@@ -1,16 +1,31 @@
 xquery version "3.1";
-import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
+(: =====
+Import functions
+===== :)
+import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/index-functions.xqm";
 
+(: =====
+Declare namespaces
+===== :)
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare variable $doc-name := 
-    request:get-parameter('title', 'hammersmithghost_times_1804') || '.xml';
-declare variable $exist:controller := request:get-parameter('exist:controller', 'hi');
-declare variable $exist:prefix := request:get-parameter('exist:prefix', 'hi');
-declare variable $doc as document-node() := doc($exist:prefix || $exist:controller || '/data/hoax_xml/' || $doc-name);
-declare variable $metadata as element(tei:teiHeader) := $doc/descendant::tei:teiHeader;
-declare variable $body as element(tei:body) := $doc/descendant::tei:body;
-document {
-    element results {
-        $metadata, $body
-    }
-}
+declare namespace m="http://www.obdurodon.org/model";
+
+declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
+declare option output:method "xml";
+declare option output:indent "no";
+
+(: =====
+Retrieve controller parameters
+Default path to data is xmldb:exist:///db/apps/pr-app/data/hoax_xml
+===== :)
+declare variable $exist:root as xs:string := request:get-parameter("exist:root", "xmldb:exist:///db/apps");
+declare variable $exist:controller as xs:string := request:get-parameter("exist:controller", "/pr-app");
+declare variable $path-to-data as xs:string := $exist:root || $exist:controller || '/data/hoax_xml//';
+(: =====
+Retrieve query parameter
+===== :)
+declare variable $id as xs:string? := request:get-parameter('id', ());
+
+if ($id) then collection($path-to-data)//id($id)
+else <m:result>None</m:result>
+

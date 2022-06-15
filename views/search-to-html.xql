@@ -152,7 +152,7 @@ declare function local:articles($node as element(m:articles)) as element(html:ul
 };
 declare function local:article($node as element(m:article)) as element(html:li) {
     <html:li>
-        <html:a href="read?title={$node/m:id}"><html:q>{$node/m:title ! string()}</html:q></html:a>
+        <html:a href="read?id={$node/m:id}"><html:q>{$node/m:title ! string()}</html:q></html:a>
         (<html:cite> {string-join($node/m:publisher, '; ')}</html:cite>,
         {$node/m:date ! string()})      
     </html:li>
