@@ -18,7 +18,9 @@
                     name="word-count" 
                     expression="descendant::tei:body => hoax:word-count()"/>
                 <!-- ==================================================== -->
-                <!-- Publisher (facet)                                    -->
+                <!-- Publisher                                            -->
+                <!--   facet: "publisher"                                 -->
+                <!--   field: "formatted-publisher"                       -->
                 <!--                                                      -->
                 <!-- Definite and indefinite articles are stored in @rend -->
                 <!--  on <bibl>; we append them, e.g., from               -->
@@ -28,6 +30,9 @@
                 <facet dimension="publisher"
                     expression="descendant::tei:sourceDesc/descendant::tei:bibl/tei:publisher 
                         ! string-join((., @rend), ', ')"/>
+                <field name="formatted-publisher"
+                    expression="descendant::tei:sourceDesc/descendant::tei:bibl/tei:publisher
+                        ! string-join((@rend, .), ' ')"/>
                 <!-- ==================================================== -->
                 <!-- Article title (field)                                -->
                 <!--                                                      -->
