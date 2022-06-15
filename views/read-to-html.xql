@@ -18,6 +18,7 @@ declare function local:dispatch($node as node()) as item()* {
         case text() return $node
         case element(m:result) return local:result($node)
         case element(tei:TEI) return local:TEI($node)
+        case element(tei:bibl) return local:bibl($node)
         case element(tei:p) return local:p($node)
         default return local:passthru($node)
 };
@@ -31,9 +32,14 @@ declare function local:result($node as element(m:result)) as element(html:sectio
 declare function local:TEI($node as element(tei:TEI)) as element(html:section){
     <html:section>
         <html:h2>{local:dispatch($node/descendant::tei:titleStmt/tei:title)}</html:h2>
-        {local:dispatch($node/descendant::tei:body)}
+        {local:dispatch($node/descendant::tei:sourceDesc/descendant::tei:bibl),
+        local:dispatch($node/descendant::tei:body)}
     </html:section>
 };
+
+declare function local:bibl($node as node()) as item()* {
+    <html:p class="bibl">{for $child in $node/node() return local:dispatch($child)}</html:p>
+}; 
 
 declare function local:p($node as element(tei:p)) as element(html:p){
     <html:p>{for $child in $node/node() return local:dispatch($child)}</html:p>

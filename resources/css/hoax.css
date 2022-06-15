@@ -1,6 +1,6 @@
 /* 
 ==========
-W4apper
+Wrapper
 ==========
 */
 body{
@@ -99,3 +99,15 @@ Advanced search
     padding-left: 2em;
 }
 fieldset {margin: 1em 0;}
+
+/*
+==========
+Reading view
+========== 
+*/
+.bibl {
+    font-size: smaller;
+    color: gray; 
+    border: 1px solid; 
+    padding: .5em;
+}
