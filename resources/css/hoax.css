@@ -118,10 +118,20 @@ Advanced search
 }
 
 .info {
+    /* Must be relative so that absolute child (tooltip <div>) will refer to it */
     position: relative;
 }
 
 .info > .tooltip {
+    /*  
+        Colors from https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3
+        Darker solid border avoids visual interferences from background (main) text
+        Positioned relative to parent .info element
+        Visibility + opacity + transition supports quick fade-in
+            (without transition the appearance is too abrupt)
+        White-space configuration sets container width to width of content
+            (use <br/> between lines)
+    */
     position:absolute;
     top: -1em;;
     left: 2em;
@@ -129,13 +139,9 @@ Advanced search
     opacity:0;
     transition: .5s opacity;
     white-space: nowrap;
-}
-
-.tooltip {
     padding: .5em;
     background-color: #e5f5f9;
     outline: #2ca25f solid .2em;
-    border-radius: 2rem;
     border-radius: .5em;
 }
 
@@ -144,6 +150,10 @@ Advanced search
 }
 
 .info:hover > .tooltip {
+    /*
+        Visibility + opacity + transition supports quick fade-in
+        (without transition the appearance is too abrupt)
+    */
     visibility: visible;
     opacity: 1;
 };
