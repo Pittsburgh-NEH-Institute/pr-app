@@ -125,18 +125,27 @@ Advanced search
     position:absolute;
     top: -1em;;
     left: 2em;
-    display: none;
+    visibility: hidden;
+    opacity:0;
+    transition: .5s opacity;
     white-space: nowrap;
 }
 
 .tooltip {
     padding: .5em;
-    background-color: lightpink;
-    border: 1px solid black;
+    background-color: #e5f5f9;
+    outline: #2ca25f solid .2em;
+    border-radius: 2rem;
     border-radius: .5em;
 }
+
+.tooltip > kbd {
+    font-weight: bold;
+}
+
 .info:hover > .tooltip {
-    display: block;
+    visibility: visible;
+    opacity: 1;
 };
 
 fieldset {margin: 1em 0;}

@@ -83,10 +83,11 @@ declare function local:search-term($node as element(m:search-term)) as item()+ {
         <html:button type="submit">Search</html:button>
         <html:div class="info">ⓘ
             <html:div class="tooltip">
-                <html:strong>ghost</html:strong> matches <html:q>ghost</html:q> but not <html:q>ghosts</html:q><html:br/>
-                <html:strong>ghost*</html:strong> matches any any word that begins with the letters <html:q>ghost</html:q><html:br/>
-                <html:strong>police constable</html:strong> matches either <html:q>police</html:q> or <html:q>constable</html:q><html:br/>
-                <html:strong>"police constable"</html:strong> matches the phrase <html:q>police constable</html:q>
+                <html:kbd>ghost</html:kbd> matches <html:q>ghost</html:q> but not <html:q>ghosts</html:q><html:br/>
+                <html:kbd>ghost*</html:kbd> matches any any word that begins with the letters <html:q>ghost</html:q><html:br/>
+                <html:kbd>police constable</html:kbd> matches either <html:q>police</html:q> or <html:q>constable</html:q><html:br/>
+                <html:kbd>"police constable"</html:kbd> matches the phrase <html:q>police constable</html:q><html:br/>
+                All searches are case-insensitive
             </html:div>
             </html:div>
         </html:div>
