@@ -6,6 +6,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace m="http://www.obdurodon.org/model";
 declare namespace html="http://www.w3.org/1999/xhtml";
 declare namespace hoax ="http://obdurodon.org/hoax";
+declare namespace exist="http://exist.sourceforge.net/NS/exist";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";
@@ -20,6 +21,7 @@ declare function local:dispatch($node as node()) as item()* {
         case element(tei:TEI) return local:TEI($node)
         case element(tei:bibl) return local:bibl($node)
         case element(tei:p) return local:p($node)
+        case element(exist:match) return local:match($node)
         default return local:passthru($node)
 };
 
@@ -37,12 +39,16 @@ declare function local:TEI($node as element(tei:TEI)) as element(html:section){
     </html:section>
 };
 
-declare function local:bibl($node as node()) as item()* {
+declare function local:bibl($node as element(tei:bibl)) as item()* {
     <html:p class="bibl">{for $child in $node/node() return local:dispatch($child)}</html:p>
 }; 
 
-declare function local:p($node as element(tei:p)) as element(html:p){
+declare function local:p($node as element(tei:p)) as element(html:p) {
     <html:p>{for $child in $node/node() return local:dispatch($child)}</html:p>
+};
+
+declare function local:match($node as element(exist:match)) as element(html:span) {
+    <html:span class="query-term">{for $child in $node/node() return local:dispatch($child)}</html:span>
 };
 
 declare function local:passthru($node as node()) as item()* {

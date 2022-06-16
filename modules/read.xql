@@ -22,10 +22,11 @@ declare variable $exist:root as xs:string := request:get-parameter("exist:root",
 declare variable $exist:controller as xs:string := request:get-parameter("exist:controller", "/pr-app");
 declare variable $path-to-data as xs:string := $exist:root || $exist:controller || '/data/hoax_xml//';
 (: =====
-Retrieve query parameter
+Retrieve query parameters
 ===== :)
 declare variable $id as xs:string? := request:get-parameter('id', ());
+declare variable $term as xs:string? := request:get-parameter('term', ());
 
-if ($id) then collection($path-to-data)//id($id)
+if ($id) then collection($path-to-data)//id($id)[ft:query(., $term)] => util:expand()
 else <m:result>None</m:result>
 
