@@ -7,7 +7,7 @@ xquery version "3.1";
  : @see http://www.obdurodon.org
  :)
 
-module namespace tests = "http://www.obdurodon.org/pr-app/tests";
+module namespace tests = "http://www.obdurodon.org/apps/pr-app/tests";
 
 declare namespace test="http://exist-db.org/xquery/xqsuite";
 import module namespace hoax="http://obdurodon.org/hoax" at "../../modules/index-functions.xqm";
