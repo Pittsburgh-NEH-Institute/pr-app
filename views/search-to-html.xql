@@ -78,9 +78,19 @@ declare function local:passthru($node as node()) as item()* {
 Search term functions
 ----- :)
 declare function local:search-term($node as element(m:search-term)) as item()+ {
-        <html:input id="term" name="term" type="search" placeholder="[Search term]" value="{string($node)}">{string($node)}</html:input>,
-        '&#xa0;',
+        <html:div id="search-term-row">
+        <html:input id="term" name="term" type="search" placeholder="[Search term]" value="{string($node)}">{string($node)}</html:input>
         <html:button type="submit">Search</html:button>
+        <html:div class="info">ⓘ
+            <html:div class="tooltip">
+                <html:strong>ghost</html:strong> matches <html:q>ghost</html:q> but not <html:q>ghosts</html:q><html:br/>
+                <html:strong>ghost*</html:strong> matches any any word that begins with the letters <html:q>ghost</html:q><html:br/>
+                <html:strong>police constable</html:strong> matches either <html:q>police</html:q> or <html:q>constable</html:q><html:br/>
+                <html:strong>"police constable"</html:strong> matches the phrase <html:q>police constable</html:q>
+            </html:div>
+            </html:div>
+        </html:div>
+
 };
 (: =====
 Publisher functions

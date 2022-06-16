@@ -1,3 +1,17 @@
+/*
+==========
+General
+==========
+*/
+q {
+    quotes: "“" "”" "‘" "’";
+  }
+  q::before {
+      content: open-quote;
+  }
+  q::after {
+      content: close-quote;
+  }
 /* 
 ==========
 Wrapper
@@ -98,6 +112,33 @@ Advanced search
 #search-widgets ul ul {
     padding-left: 2em;
 }
+#search-term-row { 
+    display: flex;
+    gap: .5em;
+}
+
+.info {
+    position: relative;
+}
+
+.info > .tooltip {
+    position:absolute;
+    top: -1em;;
+    left: 2em;
+    display: none;
+    white-space: nowrap;
+}
+
+.tooltip {
+    padding: .5em;
+    background-color: lightpink;
+    border: 1px solid black;
+    border-radius: .5em;
+}
+.info:hover > .tooltip {
+    display: block;
+};
+
 fieldset {margin: 1em 0;}
 
 /*
