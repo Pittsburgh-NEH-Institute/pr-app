@@ -65,6 +65,13 @@
                     expression="descendant::tei:sourceDesc/descendant::tei:bibl/tei:date/@when
                     ! xs:date(.)
                     ! format-date(., '[MNn] [D], [Y]')"/>
+                <!-- ==================================================== -->
+                <!-- Incipit (field)                                      -->
+                <!--                                                      -->
+                <!-- First five words of <body>, with trailing ellipsis   -->
+                <!-- ==================================================== -->
+                <field name="incipit"
+                    expression="string-join((descendant::tei:body ! tokenize(.)[position() lt 6], '…'), ' ')"/>
             </text>
         </lucene>
     </index>

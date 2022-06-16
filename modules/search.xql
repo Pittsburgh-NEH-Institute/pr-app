@@ -86,7 +86,7 @@ declare variable $date-facets-array as array(*)? := array:join((
 (: =====
 Fields must be specified in initial ft:query() in order to be retrievable
 ===== :)
-declare variable $fields as xs:string+ := ("formatted-title", "formatted-date", "formatted-publisher");
+declare variable $fields as xs:string+ := ("formatted-title", "formatted-date", "formatted-publisher", "incipit");
 (: =====
 $all-hits is used for articles list, but not for facets to refine search
 ===== :)
@@ -187,6 +187,8 @@ Return results, order is meaningful (order is used to create view):
             ft:field($hit, "formatted-publisher")
         let $date as xs:string := 
             ft:field($hit, "formatted-date")
+        let $incipit as xs:string :=
+            ft:field($hit, "incipit")
         order by $title
         return
         <m:article>
@@ -194,6 +196,7 @@ Return results, order is meaningful (order is used to create view):
             <m:title>{$title}</m:title>
             <m:publisher>{$publisher}</m:publisher>
             <m:date>{$date}</m:date>
+            <m:incipit>{$incipit}</m:incipit>
         </m:article>
     }</m:articles>
     <m:selected-facets>

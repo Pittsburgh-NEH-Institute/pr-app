@@ -167,7 +167,7 @@ declare function local:article($node as element(m:article)) as element(html:li) 
         '?id=' || $node/m:id ||
         (if (exists(root($node)/descendant::m:term/node())) then ('&amp;term=' || root($node)/descendant::m:term) else ())
     return
-    <html:li>
+    <html:li title="{$node/m:incipit}">
         <html:a href="read{$query-string}"><html:q>{$node/m:title ! string()}</html:q></html:a>
         (<html:cite> {string-join($node/m:publisher, '; ')}</html:cite>,
         {$node/m:date ! string()})      
