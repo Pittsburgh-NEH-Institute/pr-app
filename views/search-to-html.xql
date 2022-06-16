@@ -151,8 +151,13 @@ declare function local:articles($node as element(m:articles)) as element(html:ul
     <html:ul>{local:passthru($node)}</html:ul>
 };
 declare function local:article($node as element(m:article)) as element(html:li) {
+    (: Pass along query term if it exists so that it can be highlighted in reading view :)
+    let $query-string as xs:string := 
+        '?id=' || $node/m:id ||
+        (if (exists(root($node)/descendant::m:term/node())) then ('&amp;term=' || root($node)/descendant::m:term) else ())
+    return
     <html:li>
-        <html:a href="read?id={$node/m:id}"><html:q>{$node/m:title ! string()}</html:q></html:a>
+        <html:a href="read{$query-string}"><html:q>{$node/m:title ! string()}</html:q></html:a>
         (<html:cite> {string-join($node/m:publisher, '; ')}</html:cite>,
         {$node/m:date ! string()})      
     </html:li>
