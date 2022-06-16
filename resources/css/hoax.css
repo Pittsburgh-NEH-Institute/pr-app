@@ -96,6 +96,11 @@ Advanced search
 #advanced-search {
     display: flex;
 } 
+#search-widgets > form {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
 #advanced-search h2 {
     text-align: center;
 }
