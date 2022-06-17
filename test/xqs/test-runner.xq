@@ -10,18 +10,9 @@ import module namespace test="http://exist-db.org/xquery/xqsuite" at "resource:o
 import module namespace tests="http://www.obdurodon.org/apps/pr-app/tests" at "test-suite.xql";
 
 declare namespace output="http://www.w3.org/2010/xslt-xquery-serialization";
-declare option output:method "xml";
-declare option output:media-type "application/xml";
+declare option output:method "json";
+declare option output:media-type "application/json";
 
-
-(: test:suite(
-  inspect:module-functions(xs:anyURI("test-suite.xql"))
-) :)
-
-let $result as element(testsuites) := test:suite(
-  inspect:module-functions(xs:anyURI("test-suite.xql"))
+test:suite(
+  inspect:module-functions(xs:anyURI("test-suite.xqm"))
 )
-(: let $formatted-result as element() :=
-  transform:transform($result, doc('junit-noframes-saxon.xsl'), ()) :)
-
-return $result
