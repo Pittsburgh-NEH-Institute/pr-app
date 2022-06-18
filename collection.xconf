@@ -18,6 +18,42 @@
                     name="word-count" 
                     expression="descendant::tei:body => hoax:word-count()"/>
                 <!-- ==================================================== -->
+                <!-- Political reference count (field)                    -->
+                <!--                                                      -->
+                <!-- count() function counts political references         -->
+                <!-- ==================================================== -->
+                <field 
+                    name="pol-count" 
+                    expression="descendant::tei:body/descendant::tei:rs[@ref='pol'] 
+                        => count()"/>
+                <!-- ==================================================== -->
+                <!-- Religious reference count (field)                    -->
+                <!--                                                      -->
+                <!-- count() function counts religious references         -->
+                <!-- ==================================================== -->
+                <field 
+                    name="rel-count" 
+                    expression="descendant::tei:body/descendant::tei:rs[@ref='rel'] 
+                        => count()"/>
+                <!-- ==================================================== -->
+                <!-- Ghost reference count (field)                        -->
+                <!--                                                      -->
+                <!-- count() function counts ghost references             -->
+                <!-- ==================================================== -->
+                <field 
+                    name="ghost-count" 
+                    expression="descendant::tei:body/descendant::tei:rs[@ref='ghost'] 
+                        => count()"/>
+                <!-- ==================================================== -->
+                <!-- Place reference count (field)                       -->
+                <!--                                                      -->
+                <!-- count() function counts place references             -->
+                <!-- ==================================================== -->
+                <field 
+                    name="place-count" 
+                    expression="descendant::tei:body/descendant::tei:placeName 
+                        => count()"/>
+                <!-- ==================================================== -->
                 <!-- Publisher                                            -->
                 <!--   facet: "publisher"                                 -->
                 <!--   field: "formatted-publisher"                       -->
