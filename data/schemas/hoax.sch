@@ -16,5 +16,8 @@
           <sch:value-of select="$count"/> documents: <sch:value-of
           select="string-join($filenames, '; ')"/></sch:report>
     </sch:rule>
+    <sch:rule context="@ref">
+      <sch:report test=". eq ''">@ref attributes should not be empty</sch:report>
+    </sch:rule>
   </sch:pattern>
 </sch:schema>
