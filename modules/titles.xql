@@ -12,7 +12,7 @@ declare variable $docs :=collection('/db/apps/pr-app/data/hoax_xml');
 
 <m:items> {
 for $doc in $docs
-    let $date as attribute(when) := $doc//tei:date/@when
+    let $date as attribute(when) := $doc//tei:sourceDesc//tei:date/@when
     let $year as xs:string := substring-before($date, '-')
     let $title as xs:string := $doc//tei:titleStmt//tei:title/string()
     let $pub-names as xs:string := $doc//tei:publisher => string-join(", ")
@@ -26,7 +26,7 @@ for $doc in $docs
             <m:title>{$title}</m:title>
             <m:pub-names>{$pub-names}</m:pub-names>
             <m:date>{$date}</m:date>
-            <m:year>{$year}</m:year> 
+            <m:year>{$year}</m:year>
           </m:item>}
 
 </m:items>        
