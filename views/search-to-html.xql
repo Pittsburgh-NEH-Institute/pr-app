@@ -53,15 +53,20 @@ declare function local:dispatch($node as node()) as item()* {
 (: General functions:)
 declare function local:data($node as element(m:data)) as element(html:section) {
     <html:section id="advanced-search">
-        <html:section id="search-widgets">
-            <html:div><input type="radio" name="side"/></html:div>
+        <html:aside>
+            <input type="radio" name="tabs" id="guide-panel-tab" class="radiotab" checked="checked" />
+            <label for="guide-panel-tab">User guide</label>
+            <input type="radio" name="tabs" id="search-panel-tab" class="radiotab" />
+            <label for="search-panel-tab">Search</label>
             <xi:include href="/db/apps/pr-app/resources/includes/guide.xhtml"/>
-            <html:form action="search" method="get">{
-                for $search-area in $node/*[position() lt 4]
-                return local:dispatch($search-area)
-            }</html:form>
-            <html:script type="text/javascript" src="resources/js/search.js"></html:script>
-        </html:section>
+            <html:div class="panel search-panel" id="search-panel">
+                <html:form action="search" method="get">{
+                    for $search-area in $node/*[position() lt 4]
+                    return local:dispatch($search-area)
+                }</html:form>
+                <html:script type="text/javascript" src="resources/js/search.js"></html:script>
+            </html:div>
+        </html:aside>
         <html:section id="search-results">
             <html:h2>Stories ({count(root($node)/descendant::m:article)})</html:h2>
             {if ($node/m:articles/m:article)

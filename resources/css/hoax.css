@@ -3,6 +3,10 @@
 General
 ==========
 */
+:root {
+    --backgroundColor: whitesmoke;
+  }
+  
 q {
     quotes: "“" "”" "‘" "’";
   }
@@ -21,6 +25,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 99vh;
+    background: var(--backgroundColor);
 }
 main {
     flex: 1;
