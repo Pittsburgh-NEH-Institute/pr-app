@@ -114,22 +114,23 @@ Radio tabs: https://medium.com/allenhwkim/how-to-build-tabs-only-with-css-844718
 #advanced-search {
     display: flex;
 }
-#advanced-search > aside {
-    flex: 1;
+
+#advanced-search>aside {
+    width: 25em;
     padding-right: 1em;
     border-right: 1px lightgray solid;
 }
-#advanced-search > section {
-    flex: 4;
-}
-#advanced-search > aside > input[type="radio"] {
+
+#advanced-search>aside>input[type="radio"] {
     display: none;
 }
-#search-widgets>form {
+
+#search-panel>form {
     display: flex;
     flex-direction: column;
     gap: .5em;
 }
+
 input[type="radio"]+label {
     display: inline-block;
     border: 1px solid black;
@@ -141,46 +142,52 @@ input[type="radio"]+label {
     top: 1px;
     font-size: smaller;
 }
+
 input~.panel {
     display: none;
 }
+
 #guide-panel-tab:checked~.guide-panel,
 #search-panel-tab:checked~.search-panel {
-  display: block;
+    display: block;
 }
+
 input:checked+label {
     background: var(--backgroundColor);
     border-bottom: 1px solid transparent;
 }
+
 input~.panel {
     border-top: 1px solid black;
 }
+
 #search-panel {
     padding-top: 1em;
 }
+
 #advanced-search h2 {
     text-align: center;
 }
+
 #search-panel-form {
     margin-top: 1em;
 }
-#search-widgets {
-    width: 25em;
-    border-right: 1px lightgray solid;
-    padding-right: 1em;
-}
-#search-widgets ul {
+
+#search-panel ul {
     list-style-type: none;
     padding-left: 1.5em;
     text-indent: -1.5em;
 }
-#search-widgets ul ul {
+
+#search-panel ul ul {
     padding-left: 2em;
 }
+
 #search-term-row {
     display: flex;
     gap: .5em;
 }
+
 .info {
     /* Must be relative so that absolute child (tooltip <div>) will refer to it */
     position: relative;
@@ -195,6 +202,7 @@ input~.panel {
             (without transition the appearance is too abrupt)
         White-space configuration sets container width to width of content
             (use <br/> between lines)
+        Transition-delay avoids accidental mouse-trap reveal
     */
     position: absolute;
     top: -1em;
@@ -210,9 +218,11 @@ input~.panel {
     outline: #2ca25f solid .2em;
     border-radius: .5em;
 }
+
 .tooltip>kbd {
     font-weight: bold;
 }
+
 .info:hover>.tooltip {
     /*
         Visibility + opacity + transition supports quick fade-in
@@ -220,9 +230,6 @@ input~.panel {
     */
     visibility: visible;
     opacity: 1;
-}
-fieldset {
-    margin: 1em 0;
 }
 
 /*
