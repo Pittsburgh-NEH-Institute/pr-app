@@ -5,36 +5,42 @@ General
 */
 :root {
     --backgroundColor: whitesmoke;
-  }
-  
+}
+
 q {
-    quotes: "“" "”" "‘" "’";
-  }
-  q::before {
-      content: open-quote;
-  }
-  q::after {
-      content: close-quote;
-  }
+    quotes: "“""”""‘""’";
+}
+
+q::before {
+    content: open-quote;
+}
+
+q::after {
+    content: close-quote;
+}
+
 /* 
 ==========
 Wrapper
 ==========
 */
-body{
+body {
     display: flex;
     flex-direction: column;
     min-height: 99vh;
     background: var(--backgroundColor);
 }
+
 main {
     flex: 1;
 }
+
 .nav-menu {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
 }
+
 /* 
 * Title header
 * */
@@ -50,18 +56,21 @@ Main navigation
 nav {
     display: flex;
     flex-flow: row wrap-reverse;
-    align-items: center;  
+    align-items: center;
 }
-nav > ul {
+
+nav>ul {
     display: flex;
     flex-flow: row;
 }
-nav > ul > li {
-    flex:auto;
+
+nav>ul>li {
+    flex: auto;
     padding: 2em;
     list-style-type: none;
 }
-nav > form {
+
+nav>form {
     display: flex;
 }
 
@@ -74,7 +83,8 @@ https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
 footer {
     display: block;
 }
-footer > hr {
+
+footer>hr {
     border: 0;
     height: 2px;
     background-color: lightgray;
@@ -89,25 +99,70 @@ this corrects it visually
 pre.tei {
     white-space: pre-line;
 }
-pre.tei > code {
+
+pre.tei>code {
     white-space: pre;
 }
 
 /* 
 ==========
 Advanced search 
+
+Radio tabs: https://medium.com/allenhwkim/how-to-build-tabs-only-with-css-844718d7de2f
 ========== 
 */
 #advanced-search {
     display: flex;
-} 
-#search-widgets > form {
+}
+#advanced-search > aside {
+    flex: 1;
+    padding-right: 1em;
+    border-right: 1px lightgray solid;
+}
+#advanced-search > section {
+    flex: 4;
+}
+#advanced-search > aside > input[type="radio"] {
+    display: none;
+}
+#search-widgets>form {
     display: flex;
     flex-direction: column;
     gap: .5em;
 }
+input[type="radio"]+label {
+    display: inline-block;
+    border: 1px solid black;
+    background: #DBD7D2;
+    margin: 0 1px;
+    padding: .25em 1em;
+    border-radius: .65em .65em 0 0;
+    position: relative;
+    top: 1px;
+    font-size: smaller;
+}
+input~.panel {
+    display: none;
+}
+#guide-panel-tab:checked~.guide-panel,
+#search-panel-tab:checked~.search-panel {
+  display: block;
+}
+input:checked+label {
+    background: var(--backgroundColor);
+    border-bottom: 1px solid transparent;
+}
+input~.panel {
+    border-top: 1px solid black;
+}
+#search-panel {
+    padding-top: 1em;
+}
 #advanced-search h2 {
     text-align: center;
+}
+#search-panel-form {
+    margin-top: 1em;
 }
 #search-widgets {
     width: 25em;
@@ -122,17 +177,16 @@ Advanced search
 #search-widgets ul ul {
     padding-left: 2em;
 }
-#search-term-row { 
+#search-term-row {
     display: flex;
     gap: .5em;
 }
-
 .info {
     /* Must be relative so that absolute child (tooltip <div>) will refer to it */
     position: relative;
 }
 
-.info > .tooltip {
+.info>.tooltip {
     /*  
         Colors from https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3
         Darker solid border avoids visual interferences from background (main) text
@@ -142,11 +196,12 @@ Advanced search
         White-space configuration sets container width to width of content
             (use <br/> between lines)
     */
-    position:absolute;
-    top: -1em;;
+    position: absolute;
+    top: -1em;
+    ;
     left: 2em;
     visibility: hidden;
-    opacity:0;
+    opacity: 0;
     transition: .5s opacity;
     transition-delay: .5s;
     white-space: nowrap;
@@ -155,21 +210,20 @@ Advanced search
     outline: #2ca25f solid .2em;
     border-radius: .5em;
 }
-
-.tooltip > kbd {
+.tooltip>kbd {
     font-weight: bold;
 }
-
-.info:hover > .tooltip {
+.info:hover>.tooltip {
     /*
         Visibility + opacity + transition supports quick fade-in
         (without transition the appearance is too abrupt)
     */
     visibility: visible;
     opacity: 1;
-};
-
-fieldset {margin: 1em 0;}
+}
+fieldset {
+    margin: 1em 0;
+}
 
 /*
 ==========
@@ -178,11 +232,12 @@ Reading view
 */
 .bibl {
     font-size: smaller;
-    color: gray; 
-    border: 1px solid; 
+    color: gray;
+    border: 1px solid;
     padding: .5em;
 }
+
 .query-term {
     font-weight: bold;
-    background-color:lightpink;
+    background-color: lightpink;
 }

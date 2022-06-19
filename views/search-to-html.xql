@@ -54,10 +54,10 @@ declare function local:dispatch($node as node()) as item()* {
 declare function local:data($node as element(m:data)) as element(html:section) {
     <html:section id="advanced-search">
         <html:aside>
-            <input type="radio" name="tabs" id="guide-panel-tab" class="radiotab" checked="checked" />
-            <label for="guide-panel-tab">User guide</label>
-            <input type="radio" name="tabs" id="search-panel-tab" class="radiotab" />
-            <label for="search-panel-tab">Search</label>
+            <html:input type="radio" name="tabs" id="guide-panel-tab" class="radiotab" />
+            <html:label for="guide-panel-tab">User guide</html:label>
+            <html:input type="radio" name="tabs" id="search-panel-tab" class="radiotab" checked="checked" />
+            <html:label for="search-panel-tab">Search</html:label>
             <xi:include href="/db/apps/pr-app/resources/includes/guide.xhtml"/>
             <html:div class="panel search-panel" id="search-panel">
                 <html:form action="search" method="get">{
