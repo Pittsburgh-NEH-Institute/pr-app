@@ -12,21 +12,22 @@ document.addEventListener('DOMContentLoaded', (e) => {
     // console.log("in init: decades = " + decades + "(count: " + decades.length + ")");
     for (var i = 0, length = decades.length; i < length; i++) {
         decades[i].addEventListener('change', process_decade_check, false);
-        var all_children = decades[i].parentElement.parentElement.nextElementSibling.querySelectorAll('input');
-        // console.log("in init: all_children = " + all_children + " (" + all_children.length + ")");
-        var checked_children = decades[i].parentElement.parentElement.nextElementSibling.querySelectorAll('input:checked');
-        // console.log("in init: checked_children = " + checked_children + " (" + checked_children.length + ")");
+        var all_children = decades[i].closest('summary').nextElementSibling.querySelectorAll('input');
+        // console.log("all_children = " + all_children + " (" + all_children.length + ")");
+        var checked_children = decades[i].closest('summary').nextElementSibling.querySelectorAll('input:checked');
+        // console.log("checked_children = " + checked_children + " (" + checked_children.length + ")");
         if (0 < checked_children.length && checked_children.length < all_children.length) { // set intermediate if some but not all children are checked
             decades[i].indeterminate = true;
         }
         if (0 < checked_children.length) { // open if any children are checked
-            decades[i].parentElement.parentElement.parentElement.setAttribute('open', '');
+            // decades[i].parentElement.parentElement.parentElement.setAttribute('open', '');
+            decades[i].closest('details').setAttribute('open', '');
         }
         if (checked_children.length == all_children.length) {
             decades[i].checked = true;
         }
     }
-    var month_years = document.querySelectorAll('#search-widgets details > ul > li input');
+    var month_years = document.querySelectorAll('#search-panel details > ul > li input');
     // console.log("in init: month+years = " + month_years + " (" + month_years.length + ")");
     for (var i = 0, length = month_years.length; i < length; i++) {
         month_years[i].addEventListener('change', process_month_year_check, false);
@@ -44,8 +45,8 @@ function process_decade_check() {
     // console.log("in process_decade_check: this = " + this);
     if (this.checked) { // We just checked it
         /* Open accordion; check all children */
-        this.parentElement.parentElement.parentElement.setAttribute('open', '');
-        var month_years = this.parentElement.parentElement.nextElementSibling.getElementsByTagName('li');
+        this.closest('details').setAttribute('open', '');
+        var month_years = this.closest('summary').nextElementSibling.getElementsByTagName('li');
         for (var i = 0, length = month_years.length; i < length; i++) {
             month_years[i].firstElementChild.firstElementChild.checked = true;
         }
@@ -62,9 +63,9 @@ function process_month_year_check() {
     * Check ancestor decade when all child years are checked
     * Set to intermediate when some are checked
     */
-    var decade_checkbox = this.parentElement.parentElement.parentElement.parentElement.querySelector('summary input');
+    var decade_checkbox = this.closest('details').querySelector('summary input');
     var all_siblings_checked = 
-        this.parentElement.parentElement.parentElement.querySelectorAll('input').length == this.parentElement.parentElement.parentElement.querySelectorAll('input:checked').length;
+        this.closest('ul').querySelectorAll('input').length == this.closest('ul').querySelectorAll('input:checked').length;
     if (all_siblings_checked) { // All checked, so check decade
         decade_checkbox.checked = true;
         decade_checkbox.indeterminate = false;
