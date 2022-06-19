@@ -29,16 +29,11 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
             <nav>
                 <ul>
                     <li><a href="index">Home</a></li> 
-                    <li><a href="titles">Articles guide</a></li>
+                    <li><a href="search">Articles</a></li>
                     <li><a href="maps">Maps</a></li> 
                     <li><a href="places">Places</a></li>
-                    <li><a href="persons">People</a></li>  
-                    <li><a href="search">Advanced search</a></li>        
-                </ul>  
-                <form action="xquery/search.xql" method="get">
-                    <input type="search" placeholder="search term" aria-label="Search"/>
-                    <button type="submit">Search</button>
-                </form>
+                    <li><a href="persons">People</a></li>     
+                </ul>
             </nav>
         </section> 
         <main>{$text}</main>

@@ -143,6 +143,7 @@ Advanced search
     visibility: hidden;
     opacity:0;
     transition: .5s opacity;
+    transition-delay: .5s;
     white-space: nowrap;
     padding: .5em;
     background-color: #e5f5f9;

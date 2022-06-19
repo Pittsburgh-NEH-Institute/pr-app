@@ -20,6 +20,7 @@ declare namespace html="http://www.w3.org/1999/xhtml";
 declare namespace hoax ="http://obdurodon.org/hoax";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace m="http://www.obdurodon.org/model";
+declare namespace xi="http://www.w3.org/2001/XInclude";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";
@@ -53,6 +54,8 @@ declare function local:dispatch($node as node()) as item()* {
 declare function local:data($node as element(m:data)) as element(html:section) {
     <html:section id="advanced-search">
         <html:section id="search-widgets">
+            <html:div><input type="radio" name="side"/></html:div>
+            <xi:include href="/db/apps/pr-app/resources/includes/guide.xhtml"/>
             <html:form action="search" method="get">{
                 for $search-area in $node/*[position() lt 4]
                 return local:dispatch($search-area)
@@ -60,7 +63,7 @@ declare function local:data($node as element(m:data)) as element(html:section) {
             <html:script type="text/javascript" src="resources/js/search.js"></html:script>
         </html:section>
         <html:section id="search-results">
-            <html:h2>Stories</html:h2>
+            <html:h2>Stories ({count(root($node)/descendant::m:article)})</html:h2>
             {if ($node/m:articles/m:article)
             then local:dispatch($node/m:articles)
             else <html:p style="margin-left: 1em;">No matching articles found for selected publishers and dates.</html:p>
@@ -78,7 +81,7 @@ declare function local:passthru($node as node()) as item()* {
 Search term functions
 ----- :)
 declare function local:search-term($node as element(m:search-term)) as item()+ {
-        <html:div id="search-term-row">
+    <html:div id="search-term-row">
         <html:input id="term" name="term" type="search" placeholder="[Search term]" value="{string($node)}">{string($node)}</html:input>
         <html:button type="submit">Search</html:button>
         <html:div class="info">ⓘ
@@ -89,9 +92,8 @@ declare function local:search-term($node as element(m:search-term)) as item()+ {
                 <html:kbd>"police constable"</html:kbd> matches the phrase <html:q>police constable</html:q><html:br/>
                 All searches are case-insensitive
             </html:div>
-            </html:div>
         </html:div>
-
+    </html:div>
 };
 (: =====
 Publisher functions
