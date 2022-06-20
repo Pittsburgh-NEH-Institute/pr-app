@@ -174,10 +174,10 @@ declare function local:article($node as element(m:article)) as element(html:li) 
         '?id=' || $node/m:id ||
         (if (exists(root($node)/descendant::m:term/node())) then ('&amp;term=' || root($node)/descendant::m:term) else ())
     return
-    <html:li title="{$node/m:incipit}">
-        <html:a href="read{$query-string}"><html:q>{$node/m:title ! string()}</html:q></html:a>
+    <html:li>
+        <html:a href="read{$query-string}" title="{$node/m:incipit}"><html:q>{$node/m:title ! string()}</html:q></html:a>
         (<html:cite> {string-join($node/m:publisher, '; ')}</html:cite>,
-        {$node/m:date ! string()})      
+        {$node/m:date ! string()}) (<html:a href="tei{$query-string}"><xi:include href="/db/apps/pr-app/resources/img/xml-link.svg"/></html:a>)      
     </html:li>
 };
 (:=====
