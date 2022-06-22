@@ -6,6 +6,7 @@
     <sch:rule context="tei:geo">
       <sch:assert test="matches(., '^\S+ \S+$')">Whitespace error in &lt;geo&gt;
         element</sch:assert>
+      <sch:assert test="every $geopart in tokenize(., ' ') satisfies $geopart castable as xs:double">Some part of <sch:value-of select="."/> is not numeric. Is there a comma inside?</sch:assert>
     </sch:rule>
     <sch:rule context="tei:placeName">
       <sch:assert test=". eq normalize-space(.)">Whitespace error in placeName: <sch:value-of

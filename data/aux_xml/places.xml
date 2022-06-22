@@ -192,7 +192,7 @@ These two data points are children of location, as they're hyper close to
                         <place xml:id="angelpub" type="pub">
                             <placeName>Angel Public House</placeName>
                             <location>
-                                <geo>51.492368, -0.228302</geo>
+                                <geo>51.492368 -0.228302</geo>
                             </location>
                         </place>
                     </place>
@@ -541,7 +541,7 @@ These two data points are children of location, as they're hyper close to
                     <place xml:id="brooklands" type="geo">
                         <placeName>The Brooklands</placeName>
                         <location>
-                            <geo>53.4139076, -2.3213704</geo>
+                            <geo>53.4139076 -2.3213704</geo>
                         </location>
                     </place>
                     <place xml:id="sale_canal">
