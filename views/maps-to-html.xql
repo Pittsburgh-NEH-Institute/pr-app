@@ -35,12 +35,11 @@ declare variable $exist:controller as xs:string := request:get-parameter("exist:
 declare variable $ghost-icon as xs:string := $exist:root || $exist:controller || '/resources/img/ghost.png';
 
 declare variable $js-front as xs:string := "mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FiaWtlYW5lIiwiYSI6ImNqdWlzYWwxcTFlMjg0ZnBnM21kem9xZm4ifQ.CQ5LDwZO32ryoGVb-QQwCg';
-
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/light-v10',
-  center: [-96, 37.8],
-  zoom: 3
+  center: [-0.131719, 51.501029],
+  zoom: 12
 });
 
 ";
@@ -72,20 +71,23 @@ declare variable $js-marker-data as xs:string := "const geojson = {
   ]
 };";
 
-declare variable $js-back as xs:string := "for (const feature of geojson.features) {
+declare variable $js-back as xs:string := "// add markers to map
+for (const feature of geojson.features) {
   // create a HTML element for each feature
   const el = document.createElement('div');
   el.className = 'marker';
 
   // make a marker for each feature and add to the map
-  new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).setPopup(
+  new mapboxgl.Marker(el)
+  .setLngLat(feature.geometry.coordinates)
+  .setPopup(
     new mapboxgl.Popup({ offset: 25 }) // add popups
       .setHTML(
         `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
       )
   )
-  .addTo(map);
-}";
+  .addTo(map);;
+};";
 
 declare variable $map as element(fn:map) := <fn:map>
     <fn:string
@@ -107,8 +109,8 @@ declare variable $map as element(fn:map) := <fn:map>
                             key='type'>Point</fn:string>
                         <fn:array
                             key='coordinates'>
-                            <fn:number>{$lat}</fn:number>
-                            <fn:number>{$long}</fn:number>             
+                            <fn:number>{$long}</fn:number>
+                            <fn:number>{$lat}</fn:number>             
                         </fn:array>
                     </fn:map>
                     <fn:map
@@ -123,13 +125,12 @@ declare variable $map as element(fn:map) := <fn:map>
 
 declare variable $geojson as xs:string := concat('const geojson = ', xml-to-json($map), ';');
 
-<html:section>
+<html:section> 
 
 <html:div id="map"></html:div>
 
 <html:script>
 {concat($js-front, $geojson, $js-back)}
-
 </html:script>
 
 </html:section>
