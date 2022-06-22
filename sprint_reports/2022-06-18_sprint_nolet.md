@@ -41,5 +41,5 @@
 ## Emma to-do
 - Canny Scot article transcription + markup (Gabi to email)
 
-## Sprint Meeting Fillier's @ 2022-06-25
+## Sprint Meeting Filliers @ 2022-06-25
 - Code Review, new markup review + administrative tasks
