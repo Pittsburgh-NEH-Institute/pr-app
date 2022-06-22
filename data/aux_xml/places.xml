@@ -305,8 +305,7 @@ These two data points are children of location, as they're hyper close to
                     <placeName rend="the United States">United States of America</placeName>
                 </place>
                 <place xml:id="r26seymour" type="residence">
-                    <placeName>Stone/Hayden
-                        Residence<!-- questionable, difficult to verify who actually lived there --></placeName>
+                    <placeName>Stone/Hayden Residence<!-- questionable, difficult to verify who actually lived there --></placeName>
                     <location>
                         <geo>51.5151 -0.1562</geo>
                         <address>
@@ -333,7 +332,7 @@ These two data points are children of location, as they're hyper close to
                     </location>
                 </place>
                 <place xml:id="stsepulchre" type="church">
-                <placeName>St. Sepulchre</placeName>
+                    <placeName>St. Sepulchre</placeName>
                     <location>
                         <geo>51.5166 -0.1023</geo>
                         <address>
@@ -348,31 +347,31 @@ These two data points are children of location, as they're hyper close to
                         <geo>51.5227 -0.1058</geo>
                     </location>
 
-                <place xml:id="pentonville" type="neighborhood">
-                    <placeName>Pentonville</placeName>
-                    <location>
-                        <geo>51.5318579 -0.1084232</geo>
-                    </location>
-                    <bibl>https://www.british-history.ac.uk/survey-london/vol47/pp322-338</bibl>
-                <place xml:id="frenchcolony" type="neighborhood">
-                    <placeName>French Colony</placeName>
-                    <location>
-                        <geo>51.5320640 -0.1223565</geo>
-                    </location>
-                </place>
-                </place> 
+                    <place xml:id="pentonville" type="neighborhood">
+                        <placeName>Pentonville</placeName>
+                        <location>
+                            <geo>51.5318579 -0.1084232</geo>
+                        </location>
+                        <bibl>https://www.british-history.ac.uk/survey-london/vol47/pp322-338</bibl>
+                        <place xml:id="frenchcolony" type="neighborhood">
+                            <placeName>French Colony</placeName>
+                            <location>
+                                <geo>51.5320640 -0.1223565</geo>
+                            </location>
+                        </place>
+                    </place>
                 </place>
                 <place xml:id="rhodeisland" type="state">
-                <placeName>Rhode Island</placeName>
+                    <placeName>Rhode Island</placeName>
                     <location>
                         <geo>41.75038 -71.49978</geo>
                     </location>
                 </place>
                 <place xml:id="newyork" type="state">
-                <placeName>New York</placeName>
-                <location>
-                <geo>42.93173 -76.56605</geo>
-                </location>
+                    <placeName>New York</placeName>
+                    <location>
+                        <geo>42.93173 -76.56605</geo>
+                    </location>
                     <place xml:id="auburn" type="college">
                         <placeName>Auburn</placeName>
                         <location>
@@ -441,8 +440,8 @@ These two data points are children of location, as they're hyper close to
                         <geo>53.5512 14.12396</geo>
                     </location>
                 </place>
-                
-                
+
+
                 <place xml:id="hattongarden">
                     <placeName>Hatton Garden</placeName>
                     <location>
@@ -464,22 +463,22 @@ These two data points are children of location, as they're hyper close to
                     </location>
                 </place>
                 <place xml:id="Islington" type="neighborhood">
-                <placeName>Islington</placeName>
+                    <placeName>Islington</placeName>
 
-                <place xml:id="copenhouse" type="pub">
-                    <placeName>Copenhagen House</placeName>
-                    <location>
-                        <geo>51.5361033 -0.1122418</geo>
-                    </location>
-                </place>
-                <place xml:id="CTLane" type="street">
-                    <placeName>Cut-throat Lane</placeName>
-                    <location>
-                        <settlement>Islington</settlement>
-                        <geo>51.5087683 -0.2097627</geo>
-                    </location>
-                    <bibl>https://pubshistory.com/LondonPubs/Islington/WhiteConduit.shtml</bibl>
-                </place>
+                    <place xml:id="copenhouse" type="pub">
+                        <placeName>Copenhagen House</placeName>
+                        <location>
+                            <geo>51.5361033 -0.1122418</geo>
+                        </location>
+                    </place>
+                    <place xml:id="CTLane" type="street">
+                        <placeName>Cut-throat Lane</placeName>
+                        <location>
+                            <settlement>Islington</settlement>
+                            <geo>51.5087683 -0.2097627</geo>
+                        </location>
+                        <bibl>https://pubshistory.com/LondonPubs/Islington/WhiteConduit.shtml</bibl>
+                    </place>
                 </place>
                 <place xml:id="haggerstone" type="neighborhood">
                     <placeName>Haggerstone</placeName>
