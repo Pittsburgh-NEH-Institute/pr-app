@@ -110,17 +110,6 @@ Mapbox-provided styling
 via Custom Markers GL JS tutorial
 ==========
 */
-/*
-    2022-06-23
-    Defaulting the margin and padding to 0 messes up other pages
-    If it is required for the mapping page, we need to implement it
-        only for that page
-    */
-/* body {
-    margin: 0;
-    padding: 0;
-  } */
-
 #map {
     display:block;
     position:absolute;
