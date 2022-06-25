@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/hoax.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-19CUK-18380127">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>The Ghost</title>
+                <respStmt>
+                    <resp>Originally published by</resp>
+                    <name>The Penny Satirist</name>
+                </respStmt>
+                <respStmt>
+                    <resp>Transcribed and encoded by</resp>
+                    <name>Emma Schwarz</name>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <p>This project encoded newspaper and periodical articles on ghost hoaxes in the
+                    Victorian period. This publication of the text serves as data in a collaborative
+                    laboratory edition for the 2022 NEH Institute "Advanced digital editing:
+                    modeling the text and making the edition" at the University of Pittsburgh.</p>
+            </publicationStmt>
+            <seriesStmt>
+                <title>Ghost hoaxes in 19th-century British news media</title>
+            </seriesStmt>
+            <sourceDesc>
+                <p>All texts in this collection were sourced from British periodical and newspaper
+                    archives, transcribed,and encoded. The citation below was provided by the
+                    archive and appears exactly as given.</p>
+                <p>
+                    <bibl>"The Ghost." <publisher rend="The">Penny Satirist</publisher>, <date
+                            when="1838-01-27">27 Jan. 1838</date>, p. 2. 19th Century UK
+                        Periodicals, https://tinyurl.com/yejmuju9. Accessed 21 June 2022.</bibl>
+                </p>
+            </sourceDesc>
+
+        </fileDesc>
+        <encodingDesc>
+            <projectDesc>
+                <p>This document is part of a larger digital collection of stories of ghost hoaxes
+                    from the 18th and 19th century London newspapers and periodicals. The project
+                    explores the beginnings of mass print media in a metropolitan area at a time
+                    when technology and education made reading increasingly common and
+                    inexpensive.</p>
+                <p>The corpus holds 36 individual documents, which reflect a diverse mix of
+                    reporting on various hauntings in and around London between 1804 and 1889. The
+                    PDF and JPEGs from online databases were transcribed using ABBYFineReader OCR,
+                    then corrected and occasionally manually transcribed if document quality
+                    necessitated it. After normalization in plain text, all documents were
+                    upconverted to TEI XML.</p>
+            </projectDesc>
+            <editorialDecl>
+                <normalization>
+                    <p>Earlier texts have had some spelling normalization due to errors in OCR.
+                        Typographic em dashes are longer than modern em dashes, so all dashes have
+                        been normalized to modern em dash length.</p>
+                </normalization>
+                <quotation>
+                    <p>All extraneous white space used by printers to avoid overlapping with letters
+                        has been removed. All quotes are simply tagged with the q tag.</p>
+                </quotation>
+            </editorialDecl>
+        </encodingDesc>
+    </teiHeader>
+
+    <text>
+        <body>
+            <p>The canny Scot has been wilily hunting the <rs ref="ghost">canny ghost</rs> for
+                several days. The zeal of our friend, which was somewhat cool at first, and animated
+                alone by his patriotism, or public spirit, which is at all times but a niggardly
+                paymaster, was increased as he proceeded by the interesting particulars which he
+                learned by the way concerning this <rs ref="ghost">man of the mist</rs>. At
+                    <placeName ref="peckham">Peckham</placeName>, a young woman came running along,
+                as if for life, and threw herself into Macdougal's arms, screaming for protection.
+                It was with the greatest difficulty he could get rid of her. It was only by
+                proposing to rouse a Justice of the Peace, and give information of the spring-heeled
+                visitor's arrival, that the girl, whose delicacy prevented her from appearing in
+                such a public capacity, silently withdrew, and Sandy was left alone to brave the
+                pricipalities and <rs ref="ghost">the powers of the spiritual world</rs>.</p>
+            <p> After this, he went out of the highway a little, to see if Chance would direct him
+                to <rs ref="ghost">the monster against which he had previously well secured
+                    himself</rs>, by putting a horse shoe into his pocket, and eating an adder
+                boiled in ewe's milk, and there he really did see <rs ref="ghost">a fearful image
+                    coming right up to him</rs>. There were <rs ref="ghost">two huge eyes gleaming
+                    fire and flame about the middle of its body, and a man's head above, strongly
+                    illuminated, and sending forth a glare of light for many yards around it</rs>.
+                Sandy held the horse shoe fast in his left hand, and rubbed his knees with the other
+                as he proceeded. Honour alone gave him resolution to go on, for he declares he had
+                very little faith in the horseshoe. At last <rs ref="ghost">the monster</rs>
+                approached him, <q>Avaunt thee, wraith</q>, said Sandy, horror-struck, and giving
+                way to let <rs ref="ghost">the deserter from the tomb</rs> have a free passage. <rs
+                    ref="ghost">The monster</rs> replied, <q>fine evening</q>, in a very mild tone.
+                Sandy resumed courage immediately, and looking up, saw a donkey with a lantern fixed
+                to each side of its head, and a stout, happy looking country lass sitting on its
+                back, with a lantern in one hand, and a basket in the other. <q>Fine evening</q>,
+                said Sandy, whose heart was immediately disburdened. But afraid to proceed any
+                further, he turned round, and proceeded towards the highway with the ass and its
+                fair pilot, who, however, seemed not to relish his company, for his sudden change of
+                resolution seemed somewhat suspicious. Just, then, an inspector of police rode up.
+                The girl stopped and spoke to him, and Sandy walked on. He was soon overtaken by the
+                police officer, who asked him where he had been, and whither he was going. Sandy did
+                not well know what to say. He was therefore suspected, taken to the station-house,
+                and when he ingeniously told his examiners that he had come from <placeName
+                    ref="london">London</placeName> upon a mission to lay <rs ref="ghost">the
+                    ghost</rs>, he raised a roar of laughter, but by no means tended to lay the
+                suspicions of the blues. He was kept in the station-house all night, and came home
+                in a deuce of a plight the next morning.</p>
+            <p>Not deterred, however, by this unfortunate termination to his first adventure, he
+                determined to make another attempt, and the Major himself proposed, for friendship
+                and a lark, to accompany him. The Major is an opium eater on important occasions,
+                and before he set out he administered to himself an unusual dose, and persuaded
+                Sandy to join him in the prescription. They proceeded towards <placeName
+                    ref="kensington">Kensington Gardens</placeName>, and their courage mounted as
+                they went. Their very eyes emitted rays of light, and their two sticks, which they
+                wielded with extraordinary vigour, so alarmed the minds of all they met, that there
+                can be no doubt that they were taken for <rs ref="ghost">the ghost itself</rs>, but
+                their good fortune, and the fears of the spectators, prevented them from being
+                apprehended. Being fatigued at last, they sat down on a seat in the garden, and the
+                Major fell fast asleep. Sandy was half dozing himself, but being afraid of the cold,
+                resolved to rouse the Major, and move; but just as he was about to stir, he heard
+                    <rs ref="ghost">a voice in the tree above</rs>, which at once electrified him,
+                and compelled him to listen to the following song, part of which he has forgotten,
+                and part is made up from a partial recollection:—</p>
+            <said>
+                <l>
+                    <emph rend="italic">Noo Toon—James Crow.</emph>
+                </l>
+                <lg>
+                    <l>I came from Pandemonium,</l>
+                    <l>If they lay me I'll go back;</l>
+                    <l>Meanwhile around the town I'll jump</l>
+                    <l><rs ref="ghost">Spring-heeled Jack</rs>.</l>
+                </lg>
+                <lg>
+                    <l><rs ref="ghost" type="desc">White, and green, and flaming blue</rs>,</l>
+                    <l><rs ref="ghost" type="desc">Sometimes dull black</rs>.</l>
+                    <l>Fling your feet around your head,</l>
+                    <l><rs ref="ghost">Spring-heeled Jack</rs>.</l>
+                </lg>
+                <lg>
+                    <l><rs ref="ghost" type="desc">Some say I am a Marquis</rs>,</l>
+                    <l>A-larking for a boast,</l>
+                    <l>And they lay their bets I'll soon be duck'd:</l>
+                    <l>But they never lay <rs ref="ghost">the ghost</rs>.</l>
+                </lg>
+                <lg>
+                    <l><rs ref="ghost" type="desc">Some say its Dan O'Connell</rs>,</l>
+                    <l>They feel so agitated;</l>
+                    <l><rs ref="ghost" type="desc">But others swear my step's too light</rs>,</l>
+                    <l>For Dan to imitate it.</l>
+                </lg>
+                <lg>
+                    <l><rs ref="ghost" type="desc">'Tis Baron Brougham, some maintain</rs>,</l>
+                    <l>On a soul-er expedition,</l>
+                    <l>To see if people's minds have yet</l>
+                    <l>Got rid of superstition.</l>
+                </lg>
+                <lg>
+                    <l>Ah, ah! its funny now to see</l>
+                    <l>Their scientific airs;</l>
+                    <l>I made an Infidel to-day</l>
+                    <l>Devoutly say his prayers.</l>
+                </lg>
+                <lg>
+                    <l>The fellow swore I was a hoax,</l>
+                    <l>And that he would me seize;</l>
+                    <l>I peeped in his face when strolling home,</l>
+                    <l>And left him on his knees.</l>
+                </lg>
+                <lg>
+                    <l>A bold inspector strutted up</l>
+                    <l>To take me to the station,</l>
+                    <l><q>Mary, come up</q>, says I, and he</l>
+                    <l>Soon fled in consternation.</l>
+                </lg>
+                <lg>
+                    <l>They set a watch-dog on me, too,</l>
+                    <l>To save themselves a fright,</l>
+                    <l>The watch-dog growled, and barked, and ran,</l>
+                    <l>But never dared to bite.</l>
+                </lg>
+                <lg>
+                    <l>With all the scientific skill</l>
+                    <l>And learning of the age,</l>
+                    <l>It's pleasing to see how safely still</l>
+                    <l><rs ref="ghost">A ghost</rs> can walk the stage.</l>
+                </lg>
+                <lg>
+                    <l>I'll back to Pandemonium</l>
+                    <l><rs ref="ghost">And bring a legion here</rs>;</l>
+                    <l>For I see that spite of gas and steam,</l>
+                    <l>The coast's still clear.</l>
+                </lg>
+                <lg>
+                    <l>The ghostly fathers of the church</l>
+                    <l>Are getting out of date,</l>
+                    <l>I'll bring <rs ref="ghost">another ghostly tribe</rs></l>
+                    <l>To pension on the State.</l>
+                </lg>
+                <lg>
+                    <l>There's nothing more poetical</l>
+                    <l>Than mystery, I ween,</l>
+                    <l>For truth without is stale as beer,</l>
+                    <l>That in the light has been.</l>
+                </lg>
+                <lg>
+                    <l>'Tis light that makes the Radicals</l>
+                    <l>So stale and common place;</l>
+                    <l>Destroying night, they've spoiled the rest</l>
+                    <l>Of all the human race.</l>
+                </lg>
+                <lg>
+                    <l>They'll never let their servants take</l>
+                    <l>A comfortable nap,</l>
+                    <l>For fearing this, and dreading that,</l>
+                    <l>Disastrous mishap.</l>
+                </lg>
+            </said>
+            <p> The spell was on Sandy as long as the song continued, and looking up he saw <rs
+                    ref="ghost">a huge green figure, very luminous and transparent, dancing Jim Crow
+                    on a large branch of the tree</rs>; how to proceed he knew not, he had never
+                studied magic, and could not draw the ring nor repeat the incantation, he had
+                forgotten to settle these necessary preliminaries before he set out; he therefore
+                determined to reserve the laying to another opportunity; accordingly, he roused the
+                Major, who was snoring loud, and would, most probably, have snored himself at last
+                out of time and space if he had not been thus forcibly dragged from the brink of
+                eternity—Sandy whispered in his ears, <q>there it is</q>, and pointed to the tree;
+                the Major hurriedly pulled out a pistol and fired right up, but <rs ref="ghost">the
+                    ghost swallowed up both the flash and the smoke, and the bullet whizzed right
+                    through its under jaw, and cerebellum, without doing it a bit of mischief</rs>.
+                They therefore solemnly concluded, that nothing but an adjuration in due form with
+                all the enchantments of frankincence and tripod, pentacle, chrystal and ring, would
+                prove effectual.</p>
+            <p> As this will be attended with considerable expence, it is proposed to institute a
+                subscription for the purpose, which we have no doubt the piety, and the public
+                spirit, and the patriotism of our readers, will meet with a ready and a cordial
+                reply. Subscribers' names will be regularly published. Those who subscribe one
+                sovereign and upwards, will have their names in capitals. Five shillings and
+                upwards, in Long Primer. One shilling, etc., in Brevier; and pence
+                in Nonpareil. Subscriptions will be received by all agents and venders of the <emph
+                    rend="italic">Penny Satirist</emph> in town and country.</p>
+        </body>
+    </text>
+</TEI>
