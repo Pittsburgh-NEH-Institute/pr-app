@@ -19,5 +19,9 @@
     <sch:rule context="@ref">
       <sch:report test=". eq ''">@ref attributes should not be empty</sch:report>
     </sch:rule>
+    <sch:rule context="tei:body//(tei:p | tei:l)">
+      <sch:report test="matches(., '^\s')">Paragraphs should not begin with whitespace.</sch:report>
+      <sch:report test="matches(.,'\s$')">Paragraphs should not end with whitespace.</sch:report>
+    </sch:rule>
   </sch:pattern>
 </sch:schema>
