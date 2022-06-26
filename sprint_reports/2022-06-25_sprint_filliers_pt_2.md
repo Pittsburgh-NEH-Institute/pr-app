@@ -7,7 +7,7 @@
 - Write to catering about better cheese and crudité
 - Write to Kornelia and Jim about budget
 - ask Cliff about unit testing inside typeswitch
-- update instructor schedule, spam instructors
+- [x] update instructor schedule, spam instructors
 - start working with Chelcie on project management
 - Implement Shea's suggestions around faceted searching
 - XSLT for 'musician view' - instructor-specific schedules
