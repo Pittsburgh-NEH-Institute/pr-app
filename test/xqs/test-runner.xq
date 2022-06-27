@@ -16,4 +16,3 @@ declare option output:media-type "application/json";
 test:suite(
   inspect:module-functions(xs:anyURI("test-suite.xql"))
 )
-
