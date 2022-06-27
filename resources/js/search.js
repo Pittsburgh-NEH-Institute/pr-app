@@ -6,8 +6,9 @@
  */
 
 document.addEventListener('DOMContentLoaded', (e) => {
-    /* Attach event listeners to decades and month-years (not publishers) */
-    /* Set indeterminate state for decade if only some month-years are checked */
+    /* Attach event listeners to decades, month-years, and publishers 
+       Set indeterminate state for decade if only some month-years are checked 
+       Resubmit the form on every checkbox change, but text input requires manual "Submit" press*/
     var decades = document.getElementsByClassName('decade-checkbox');
     // console.log("in init: decades = " + decades + "(count: " + decades.length + ")");
     for (var i = 0, length = decades.length; i < length; i++) {
@@ -32,8 +33,19 @@ document.addEventListener('DOMContentLoaded', (e) => {
     for (var i = 0, length = month_years.length; i < length; i++) {
         month_years[i].addEventListener('change', process_month_year_check, false);
     }
+
+    var publishers = document.querySelectorAll('#publishers input');
+    for (var i = 0, length = publishers.length; i < length; i++) {
+        publishers[i].addEventListener('change',process_publisher_check, false);
+    }
 },
 false);
+/*
+ * Resubmit form on every publisher check
+ */
+function process_publisher_check() {
+    document.getElementById('submit').click();
+}
 /*
  * Manage accordion for dates
  */

@@ -97,7 +97,7 @@ declare function local:search-term($node as element(m:search-term)) as item()+ {
                 All searches are case-insensitive
             </html:div>
         </html:div>
-        <html:input type="submit">Search</html:input>
+        <html:input id="submit" type="submit">Search</html:input>
         <html:button id="clear-form"><html:a href="search">Clear</html:a></html:button>
     </html:div>
 };
@@ -105,7 +105,7 @@ declare function local:search-term($node as element(m:search-term)) as item()+ {
 Publisher functions
 ===== :)
 declare function local:publishers($node as element(m:publishers)) as element(html:fieldset) {
-    <html:fieldset>
+    <html:fieldset id="publishers">
         <html:legend>Publishers</html:legend>
         <html:ul>{local:passthru($node)}</html:ul>
     </html:fieldset>
