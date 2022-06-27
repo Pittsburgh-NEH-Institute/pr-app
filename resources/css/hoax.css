@@ -263,6 +263,13 @@ input~.panel {
     opacity: 1;
 }
 
+#clear-form a {
+    /* Reset clears only most recent values; need to reload with no selection */
+    cursor: default;
+    text-decoration: none;
+    color: inherit;
+}
+
 /*
 ==========
 Reading view

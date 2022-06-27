@@ -7,27 +7,24 @@ Constructs model, which is serialized by views/search-to-html.xql
 
 Behaviors:
 
-1. Facets and term are multi-select, with update only on Search button.
-2. Normally returns articles that match combination of search term (Lucene),
-   publisher facets, date facets. Left panel maintains checkbox state and
-   filters facets to show only those that can be used to broaden or narrow.
-3. If search term is not found in *any* documents (not just for selected
-   facets), return informative message and clear term and facet selections
-   for completely new search.
-4. If search term is not found in selected documents (but appears in others),
-   return informative message, facets to broaden, plus checked facet settings
-   with count values of 0. These must be added explicitly because facets with
-   0 values are not returned.
-5. If no search term and no results because selected publishers and dates do
-   do not intersect, return (different) informative message, facets to broaden,
-   plus checked facet settings with count values of 0. This is the same result
-   as above, except with different informative message because no search term.
+1. All facet possibilities are always shown, whether selected or not. Facets 
+   are multi-select, so show zero-valued labels because they can be added to 
+   the selection.
+2. Update after each change.
+3. Facet counts are x/y, where x is number of items selected by other facet 
+   and y is total number of items (invariant). Whether the facet value is
+   selected is indicated by maintaining the checkbox state.
+4. Normally returns articles that match combination of search term, publisher 
+   facets, date facets.
+5. There are three situations that yield no hits:
+    a) If search term is not found in *any* documents (not just for selected
+    facets), return informative message.
+    b) If search term is not found in selected documents (but appears in others),
+    return informative message.
+    c) If no search term and no results because selected publishers and dates do
+    do not intersect, return informative message.
 
-Create facet values for 3–5, above, only as needed. Create default values 
-first.
-
-TODO: Perform the triage first and don't create default values if they won't be 
-used.
+TODO: Perform the triage first and don't create unneeded values
 ==== :)
 
 (: =====
@@ -56,11 +53,11 @@ declare variable $path-to-data as xs:string := $exist:root || $exist:controller 
 (: =====
 Retrieve query parameters
 User can specify:
-    term : typically single word (as per Lucene defaults)
+    term : most often single word,  but any valid Lucene expressions can be used
     publishers
     decades
     month-years
-Null term value is return as an empty string, and not as missing, so set
+Null term value is returned as an empty string, and not as missing, so set
     $term explicitly to an empty sequence if no meaningful value is supplied
     to avoid raising an error
 ===== :)
@@ -88,22 +85,29 @@ Fields must be specified in initial ft:query() in order to be retrievable
 ===== :)
 declare variable $fields as xs:string+ := ("formatted-title", "formatted-date", "formatted-publisher", "incipit");
 (: =====
+$all-values includes facets that will eventually have zero hits
+===== :)
+declare variable $all-values as element(tei:TEI)+ :=
+    collection($path-to-data)/tei:TEI
+    [ft:query(., ())]
+;
+(: =====
 $all-hits is used for articles list, but not for facets to refine search
 ===== :)
-declare variable $all-facets as map(*) := map {
+declare variable $hit-facets as map(*) := map {
     "publisher" : $publishers,
     "publication-date" : $date-facets-array
 };
-declare variable $all-options as map(*) := map {
-    "facets" : $all-facets,
+declare variable $hit-options as map(*) := map {
+    "facets" : $hit-facets,
     "fields" : $fields
 };
 declare variable $all-hits as element(tei:TEI)* := 
     collection($path-to-data)/tei:TEI
-    [ft:query(., $term, $all-options)];
+    [ft:query(., $term, $hit-options)];
 (: =====
 Publisher options returns hits filtered by publishers and term
-Used only to supply date facets to refine search
+Used only to supply date facet counts
 ===== :)
 declare variable $publisher-options as map(*) := map {
     "facets" : map { "publisher" : $publishers},
@@ -113,8 +117,8 @@ declare variable $publisher-hits as element(tei:TEI)* :=
     collection($path-to-data)/tei:TEI
     [ft:query(., $term, $publisher-options)];
 (: =====
-Date option returns hits filter by date and term
-Used only to supply publisher facets to refine search
+Date options return hits filtered by date and term
+Used only to supply publisher facet counts
 ===== :)
 declare variable $date-options as map(*) := map {
     "facets" : map { "publication-date": $date-facets-array}
@@ -135,12 +139,13 @@ Return results, order is meaningful (order is used to create view):
     <m:search-term>{$term}</m:search-term>
     <m:publisher-facets>
         <m:publishers>{
+            let $all-publisher-facets as map(*) := ft:facets($all-values, "publisher", ())
             let $publisher-facets as map(*) := ft:facets($date-hits, "publisher", ())
             let $publisher-elements := 
-                map:for-each($publisher-facets, function($label, $count) {
+                map:for-each($all-publisher-facets, function($label, $count) {
                     <m:publisher>
                         <m:label>{$label}</m:label>
-                        <m:count>{$count}</m:count>
+                        <m:count>{max((0,$publisher-facets($label)))}/{$count}</m:count>
                 </m:publisher>})
             for $publisher-element in $publisher-elements
             order by $publisher-element/m:label
@@ -150,26 +155,28 @@ Return results, order is meaningful (order is used to create view):
     <m:date-facets>
         <m:dates>{
             <m:decades>{
+                let $all-publication-date-facets as map(*) := ft:facets($all-values, "publication-date", ())
                 let $publication-date-facets as map(*) := ft:facets($publisher-hits, "publication-date", ())
                 let $publication-date-elements := 
-                    map:for-each($publication-date-facets, function($decade, $count) {
+                    map:for-each($all-publication-date-facets, function($decade, $count) {
                         <m:decade>
                             <m:label>{$decade}</m:label>
-                            <m:count>{$count}</m:count>
+                            <m:count>{max((0,$publication-date-facets($decade)))}/{$count}</m:count>
                             <m:month-years>{
+                                let $all-month-year-facets as map(*) := ft:facets($all-values, "publication-date", (), $decade)
                                 let $month-year-facets as map(*) := ft:facets($publisher-hits, "publication-date", (), $decade)
                                 let $month-year-elements :=
-                                    map:for-each($month-year-facets, function($m-label, $m-count) {
+                                    for $key in map:keys($all-month-year-facets)
+                                    return
                                         <m:month-year>
-                                            <m:label>{$m-label}</m:label>
-                                            <m:count>{$m-count}</m:count>
+                                            <m:label>{$key}</m:label>
+                                            <m:count>{($month-year-facets($key), 0)[1]}/{$all-month-year-facets($key)}</m:count>
                                         </m:month-year>
-                                    })
                                 for $month-year-element in $month-year-elements
                                 order by $month-year-element
                                 return $month-year-element
-                            }</m:month-years>                    
-                    </m:decade>})
+                            }</m:month-years>
+                        </m:decade>})
                 for $publication-date-element in $publication-date-elements
                 order by $publication-date-element/m:label
                 return $publication-date-element
@@ -208,7 +215,7 @@ Return results, order is meaningful (order is used to create view):
                 $date-facets-array, 
                 map { "method" : "json"}
             )}</m:date-facets-for-search>
-        <m:all-facets>{serialize($all-facets, map { "method" : "json" })}</m:all-facets>
+        <m:hit-facets>{serialize($hit-facets, map { "method" : "json" })}</m:hit-facets>
         <m:publishers>{
             $publishers ! <m:publisher>{.}</m:publisher>
         }</m:publishers>

@@ -88,7 +88,6 @@ Search term functions
 declare function local:search-term($node as element(m:search-term)) as item()+ {
     <html:div id="search-term-row">
         <html:input id="term" name="term" type="search" placeholder="[Search term]" value="{string($node)}">{string($node)}</html:input>
-        <html:button type="submit">Search</html:button>
         <html:div class="info">ⓘ
             <html:div class="tooltip">
                 <html:kbd>ghost</html:kbd> matches <html:q>ghost</html:q> but not <html:q>ghosts</html:q><html:br/>
@@ -98,6 +97,8 @@ declare function local:search-term($node as element(m:search-term)) as item()+ {
                 All searches are case-insensitive
             </html:div>
         </html:div>
+        <html:input type="submit">Search</html:input>
+        <html:button id="clear-form"><html:a href="search">Clear</html:a></html:button>
     </html:div>
 };
 (: =====
