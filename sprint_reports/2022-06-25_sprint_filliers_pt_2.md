@@ -5,7 +5,7 @@
 
 ## David to-do
 - [x] Write to catering about better cheese and crudité
-- Write to Kornelia and Jim about budget
+- [x] Write to Kornelia and Jim about budget
 - [x] ask Cliff about unit testing inside typeswitch
 - [x] update instructor schedule, spam instructors
 - [x] start working with Chelcie on project management
