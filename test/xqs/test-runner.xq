@@ -14,5 +14,6 @@ declare option output:method "json";
 declare option output:media-type "application/json";
 
 test:suite(
-  inspect:module-functions(xs:anyURI("test-suite.xqm"))
+  inspect:module-functions(xs:anyURI("test-suite.xql"))
 )
+
