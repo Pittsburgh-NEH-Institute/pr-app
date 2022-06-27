@@ -111,11 +111,12 @@ via Custom Markers GL JS tutorial
 ==========
 */
 #map {
-    display:block;
-    position:absolute;
+    display: block;
+    position: absolute;
     width: 50%;
     height: 50%;
-  }
+}
+
 .marker {
     background-image: url('../img/ghost.png');
     background-size: cover;
@@ -123,15 +124,16 @@ via Custom Markers GL JS tutorial
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
-  }
+}
+
 .mapboxgl-popup {
     max-width: 200px;
-  }
-  
+}
+
 .mapboxgl-popup-content {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
-  }
+}
 
 /* 
 ==========
@@ -277,3 +279,10 @@ Reading view
     font-weight: bold;
     background-color: lightpink;
 }
+
+/*
+==========
+XML “lozenge” link in reading view
+========== 
+*/
+.lozenge text {fill: var(--backgroundColor);}
