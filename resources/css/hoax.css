@@ -270,6 +270,13 @@ input~.panel {
     color: inherit;
 }
 
+.no-potential {
+    /* Gray out facets that cannot expand results with current other values 
+       NB: darkgray (#A9A9A9) is lighter than gray (#808080)
+    */
+    color: darkgray;
+}
+
 /*
 ==========
 Reading view

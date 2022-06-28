@@ -112,6 +112,7 @@ declare function local:publishers($node as element(m:publishers)) as element(htm
 };
 declare function local:publisher($node as element(m:publisher)) as element(html:li) {
     <html:li>
+        {if (starts-with($node/descendant::m:count, '0')) then attribute class {"no-potential"} else ()}
         <html:label>
             <html:input type="checkbox" name="publishers[]" value="{string($node/m:label)}">{
             (: Maintain checked state :)
@@ -136,6 +137,7 @@ declare function local:decade($node as element(m:decade)) as element(html:li) {
         <html:details>
             <html:summary>
                 <html:label>
+                    {if (starts-with($node/m:count, '0')) then attribute class {"no-potential"} else ()}
                     <html:input type="checkbox" class="decade-checkbox" name="decades[]" value="{string($node/m:label)}">{
                     (: Maintain checked state :)
                     if ($node/m:label = root($node)/descendant::selected-facets/descendant::m:decade) 
@@ -153,6 +155,7 @@ declare function local:month-years($node as element(m:month-years)) as element(h
 };
 declare function local:month-year($node as element(m:month-year)) as element(html:li) {
     <html:li>
+        {if (starts-with($node/descendant::m:count, '0')) then attribute class {"no-potential"} else ()}
         <html:label>
             <html:input type="checkbox" class="month-year-checkbox" name="month-years[]" value="{string($node/m:label)}">{
                 (: Maintain checked state :)
