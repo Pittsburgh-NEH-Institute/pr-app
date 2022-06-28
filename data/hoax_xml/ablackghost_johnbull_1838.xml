@@ -57,25 +57,24 @@
    </teiHeader>
 <text>
    <body>
-         <p>
-            For some time past the policemen and navigators employed on the <placeName>London and
+         <p>For some time past the policemen and navigators employed on the <placeName>London and
                Birmingham railroad, near the central station, at Wolverton</placeName>, have been
-            dreadfully alarmed by the appearance of <rs ref="ghost">a supernatural figure</rs> gliding up and down the
+            dreadfully alarmed by the appearance of <rs ref="ghost">a supernatural figure gliding up and down the
             line, at more than railroad velocity, enveloped in cloud of white smoke instead of
-            steam. <rs ref="or">This figure, <rs type="appear">which resembles a man of colour</rs>, is supposed by the
-               superstitious and terrified workmen to be no other than the ghost of a gigantic
-               black, designated <persName ref="#blackshag">Black Shag</persName>,</rs> and who,
+            steam</rs>. <rs ref="or">This figure, which resembles a man of colour, is supposed by the
+               superstitious and terrified workmen to be no other than <rs ref="ghost or">the ghost of a gigantic
+               black</rs>, designated <persName ref="#blackshag">Black Shag</persName>,</rs> and who,
             about two months since, was buried alive by the falling in of a quantity of earth at a
             place called <placeName>Sandy Hole</placeName>. The body of <persName ref="#blackshag"
                >Black Shag</persName> was got out, and buried in <placeName ref="#holytrinity"
-               >Wolverton Churchyard</placeName>. Since that period his <rs ref="ghost">ghost</rs>
-            has been extremely troublesome. Sometimes he has appeared to the excavators when engaged
-            at mining any dangerous part of the road, with <rs ref="ghost" type="appear">a huge pair of horns on his head, and as
+                  >Wolverton Churchyard</placeName>. Since that period <rs ref="ghost">his ghost
+            has been extremely troublesome</rs>. Sometimes he has appeared to the excavators when engaged
+            at mining any dangerous part of the road, with <rs ref="ghost">a huge pair of horns on his head, and as
             black as soot</rs>; and, after capering about in the most mysterious and awful manner, would
-            exclaim, <q who="#blackshag">Take warning by my fate,</q> and immediately vanish. <rs type="appear">At other times he is
+            exclaim, <q who="#blackshag">Take warning by my fate,</q> and immediately vanish. <rs type="ghost">At other times he is
             seen bearing the resemblance of a tall black, and eliding along the road with amazing
             velocity</rs>, choosing the <soCalled>witching hour of night</soCalled> for his extraordinary
-            pranks. Several policemen, as well as excavators, have been so terrified by <rs ref="#blackshag">the ghost of
+            pranks. Several policemen, as well as excavators, have been so terrified by <rs ref="#blackshag ghost">the ghost of
                <soCalled>Black Shag</soCalled></rs>, that they have thrown up their employment; and one
             man lies now in an alarming state of illness at the above village, from the shock he
             received at seeing this mysterious visitor, who is the talk of the whole
