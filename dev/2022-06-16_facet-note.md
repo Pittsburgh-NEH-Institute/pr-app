@@ -2,10 +2,10 @@
 
 ## 2022-06-17 Shea 
 
-Update on every click
-Total number of hits at top
-All facet possibilities visible at all times, even with 0 values
-Count shows number that matches the other facet
+* Update on every click
+* Total number of hits at top
+* All facet possibilities visible at all times, even with 0 values
+* Count shows number that matches the other facet
 
 Results depend on a combination of search term plus publisher facets plus date facets.
 
