@@ -68,6 +68,7 @@ function process_decade_check() {
         clear_checked_children(this);
     }
     this.indeterminate = false;
+    document.getElementById('submit').click();
 }
 function process_month_year_check() {
     /*
@@ -88,6 +89,7 @@ function process_month_year_check() {
         decade_checkbox.checked = false;
         decade_checkbox.indeterminate = false;
     }
+    document.getElementById('submit').click();
 }
 function clear_checked_children(target) {
     /*
