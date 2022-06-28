@@ -29,10 +29,17 @@ The difference between facets and fields is described clearly in Alex Kennedy’
 
 > Both exist to serve the same purpose: narrowing down search results by eliminating results or pages that don’t match selected criteria […] For clarity’s sake, we’re going to define them as follows: *filters* [that is, *fields*] exclude results based on **initial criteria and do not change with each search**, while *facets* exclude using the **properties from returned results and do change with each search**.
 
+----
+**Note:** The preceding description of how facets works addresses only the ability of facets to “drill down” into a result set, that is, to fine-tune the results by progressively *eliminating* matches according to specific features. Facets can also be used to *broaden* a search incrementally by adding additional values, an approach that we implement in our Ghost Hoax app and describe in detail below.
+
+----
+
 This tutorial makes the following assumptions:
 
 1. Readers who are not familiar with eXist-db full-text indexing must first read the documentation at <http://exist-db.org/exist/apps/doc/lucene>. 
 2. Because facets and fields use maps and arrays, which were added to XPath only in version 3.1 (2017), users who are not familiar with those data structures must first read the Saxonica [Maps in XPath](https://www.saxonica.com/html/documentation11/expressions/xpath30maps.html) and [Arrays in XPath](https://www.saxonica.com/html/documentation11/expressions/xpath31arrays.html). More complete documentation is available in the [3.11 Maps and Arrays](https://www.w3.org/TR/xpath-31/#id-maps-and-arrays) section of the XPath 3.1 specification.
+
+We also strongly recommend reading Raul Aliev’s accurately titled [Facet search: the most comprehensive guide. Best practices, design patterns, hidden caveats, and workarounds](https://hybrismart.com/2019/02/13/facet-search-the-most-comprehensible-guide-best-practices-design-patterns/) before proceding reading further in the present document. Familiarity with the content of Aliev’s essay will help contextualize our discussion of facets below, where we focus primarily on details of our Ghost Hoax app implementation. 
 
 Both facets and fields can index on computed values (that is, values that do not appear literally in the source XML), which, for reasons described below, can improve response time during query and retrieval. The computation can use the standard XPath and XQuery function libraries, as well as user-defined functions. Below we describe first facets and then fields, including also information about how to import user-defined functions into an index file so that they can be used during configuration.
 
