@@ -15,7 +15,10 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the
+               Victorian period. This publication of the text serves as data in a collaborative
+               laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the
+               text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -24,8 +27,11 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>GHOST CUT GHOST. <publisher>Chambers's journal</publisher> of popular literature, science and arts,
-               Jan. 1854- Nov. 1897; <date when="1889-05-04">May 4, 1889</date>; 6, 279; British Periodicals pg. 285</bibl></p>
+            <p>
+               <bibl>GHOST CUT GHOST. <publisher>Chambers's journal</publisher> of popular
+                  literature, science and arts, Jan. 1854- Nov. 1897; <date when="1889-05-04">May 4,
+                     1889</date>; 6, 279; British Periodicals pg. 285</bibl>
+            </p>
          </sourceDesc>
 
       </fileDesc>
@@ -57,17 +63,18 @@
    <text>
       <body>
          <p>That cold-blooded demon which we call Science is killing romance from amongst us. Years
-            ago everybody believed in the wonders of the invisible world, and ghosts were among the
-            regular inhabitants of every rural district. Now, we are so seldom suffered to see or
-            hear of a ghost, that a visitation has the effect of novelty. So far as we know, the
-            story of one ghost outwitting another is absolutely unique. The story which we purpose
-            to tell is of this character. We tell it as it was told to us by the most noted
-            detective in the Western States of America.</p>
+            ago everybody believed in the wonders of the invisible world, and <rs ref="ghost"
+               >ghosts</rs> were among the regular inhabitants of every rural district. Now, we are
+            so seldom suffered to see or hear of a <rs ref="ghost">ghost</rs>, that a visitation has
+            the effect of novelty. So far as we know, the story of <rs ref="ghost">one ghost
+               outwitting another</rs> is absolutely unique. The story which we purpose to tell is
+            of this character. We tell it as it was told to us by the most noted detective in the
+            Western States of America.</p>
          <p>You may imagine (said Nathan Dodge) that during my career as a detective I have had some
             singular jobs given me to work on. There was one little piece of business which I always
             look back upon with a good deal of professional pride, although the ending was a very
-            sad one. It was a case of diamond cut diamond—ghost cut ghost, I call it—and it took up
-            my time for the better part of six months.</p>
+            sad one. It was a case of diamond cut diamond—<rs ref="ghost">ghost cut ghost</rs>, I
+            call it—and it took up my time for the better part of six months.</p>
          <p>About <placeName ref="amb">ten miles outside the limits of San Francisco</placeName>—I’m
             speaking of about twenty years ago—stood a large farmhouse. This house had been vacant
             for three years before I saw it. The original owner had been murdered there, and the
@@ -84,8 +91,7 @@
             it was deserted by even those chance visitants; for it began to get about that the house
             was haunted. The panic caused by this report was such that for love or money you
             couldn’t have hired a carpenter to enter it even in the daytime. Of course I’d heard of
-            the haunted house; but as detectives are never called upon to arrest ghosts, I felt no
-            particular curiosity about it.</p>
+            the haunted house; but as detectives are never called upon to arrest <rs ref="ghost">ghosts</rs>, I felt no particular curiosity about it.</p>
          <p>One morning our chief put into my hands a case, against an absconding secretary named
             Coffin. Coffin was the secretary of the White Mountain Mining Company. All the funds had
             been under his control, and he had got away with some ten thousand dollars belonging to
@@ -130,8 +136,7 @@
             the owner returned and wished to claim it. Was it like his guest ? Not in the least.</p>
          <p>I went into one of the outhouses to look for the coloured boy, and found him sitting oil
             a log singing:</p>
-         <p><emph>Blow dat horn agin ; Bredren, fr’ends, companions dear, Blow dat horn
-            agin.</emph></p>
+         <p><emph>Blow dat horn agin ; Bredren, fr’ends, companions dear, Blow dat horn agin.</emph></p>
          <p>I made a dollar the avenue to that boy’s confidence. and quite unwittingly he gave me
             the information for which I was seeking. The bright fastening of the bag had aroused his
             curiosity. One day, in its owner’s absence, whilst he was playing with the lock, the bag
@@ -148,9 +153,11 @@
             and one of them was evidently greatly excited. His companions seemed to be ridiculing
             him, and he was getting what we call <q>ugly.</q> I made my way towards the little knot
             of talkers, and overheard the following conversation.</p>
-         <p><q>So, you didn</q>t think much of your lodgings in the haunted house, Bill ?’ ‘No, I
-            didn’t—no two ways about it.’ <q>What did you hear ?</q>
-            <q>Twasn</q>t what I heard—’twas what I saw.’ <q>What did you see, then?</q>
+         <p><q>So, you didn’t think much of your lodgings in the haunted house, Bill ?</q>
+            <q>No, I didn’t—no two ways about it.</q>
+            <q>What did you hear?</q>
+            <q>Twasn’t what I heard—’twas what I saw.</q>
+            <q>What did you see, then?</q>
             <q>Why, the doors openin’ and shuttin’ without anybody touchin’ em.</q>
             <q>Nonsense, man!</q>
             <q>Nonsense be blowed ! I tell you they did. And when I drawed my six-shooter and fired
@@ -159,14 +166,15 @@
                sucker, you bet. My heart began to bump so under my jacket that it’s a wonder it
                didn’t knock a button off. I wouldn’t go there agin for all the money in the State.
                But if anybody here thinks I’m a coward, he’s only got to say so.</q></p>
-         <p>It suddenly occurred to me that I had located Coffin—that he was the ghost in the
-            haunted house. A vague suspicion of this sort had, it is true, flitted through my mind
-            before; but now, without being able to explain why, I felt assured that, however
-            impossible it might seem, Coffin was the ghost in the haunted house. Beyond the facts
-            that the fame of the haunted house was widespread, and that everybody knew of its
-            existence, there was nothing to support my theory except the maxim of the most famous of
-            all detectives—a maxim destined to assure his after-fame: <q>Always suspect that which
-               seems probable; and begin by believing what appears incredible.</q></p>
+         <p>It suddenly occurred to me that I had located Coffin—that <rs ref="ghost">he was the
+               ghost in the haunted house</rs>. A vague suspicion of this sort had, it is true,
+            flitted through my mind before; but now, without being able to explain why, I felt
+            assured that, however impossible it might seem, <rs ref="ghost">Coffin was the ghost in
+               the haunted house</rs>. Beyond the facts that the fame of the haunted house was
+            widespread, and that everybody knew of its existence, there was nothing to support my
+            theory except the maxim of the most famous of all detectives—a maxim destined to assure
+            his after-fame: <q>Always suspect that which seems probable; and begin by believing what
+               appears incredible.</q></p>
          <p>I determined to call in the aid of another detective and visit the place next night. I
             chose for my companion George Webber, one of the most esteemed members of the force, a
             man who had proved his worth. Webber was a man of imperturbable calmness, and with great
@@ -199,7 +207,7 @@
             room was semi-dark. Our eyes and ears were on the alert; but the house was as still as a
             tomb; we saw nothing, and heard no sound.</p>
          <p>I had merely told my companion that I expected to make an important discovery. Of its
-            nature he knew nothing. </p>
+            nature he knew nothing.</p>
          <p>We waited in the most acute degree of expectation and attention until nearly midnight.
             All of a sudden I heard faint notes of music, which lasted for a few minutes. By-and-by
             the music was accompanied by a voice. The sounds were as fine and soft as the voice of a
@@ -220,8 +228,8 @@
          <p><q>What in thunder ails you, man?</q> I asked, feeling that the most creditable way of
             drawing my companion’s attention from my condition was to heighten the absurdity of
             his.</p>
-         <p><q>The ghost!</q> he gasped. <q>I wouldn’t go back to that house to save my
-            life.</q></p>
+         <p><q><rs ref="ghost">The ghost!</rs></q> he gasped. <q>I wouldn’t go back to that house to
+               save my life.</q></p>
          <p>There was nothing for it but to tell Webber what I’d seen and what I suspected. As I
             have said, my fellow-detective was as brave a man as ever took up a trail; and when I
             told him what I had seen, he became perfectly self-possessed. We spent the remainder of
@@ -233,15 +241,16 @@
             where I fancied I detected a slight noise overhead. There was no sign of this room
             having been inhabited. The old place was two stories high, with a garret at the top. The
             garret was evidently reached by a ladder, though none was visible. I surmised that the
-            ghost was in this garret, and that any one showing his head above the scuttle would get
-            it rapped, even if he didn’t get shot. There was a large cupboard facing the entrance to
-            the garret, and in the door of it I bored —on a level with my eyes—a few small holes
-            with a gimlet which I happened to have in my pocket-knife, first drawing it through my
-            hair, to prevent its making the slightest noise. My plan was to play the ghost for the
-            benefit of the occupant of the garret—ghost or no ghost. For this purpose Webber had
-            brought with him an old fiddle. I removed all the strings except one, told my companion
-            to allow me time to secrete myself above, and then to make a noise on that one string,
-            accompanying it with a few groans and other muffled noises.</p>
+               <rs ref="ghost">ghost</rs> was in this garret, and that any one showing his head
+            above the scuttle would get it rapped, even if he didn’t get shot. There was a large
+            cupboard facing the entrance to the garret, and in the door of it I bored —on a level
+            with my eyes—a few small holes with a gimlet which I happened to have in my
+            pocket-knife, first drawing it through my hair, to prevent its making the slightest
+            noise. My plan was to play the <rs ref="ghost">ghost</rs> for the benefit of the
+            occupant of the garret—<rs ref="ghost">ghost or no ghost</rs>. For this purpose Webber
+            had brought with him an old fiddle. I removed all the strings except one, told my
+            companion to allow me time to secrete myself above, and then to make a noise on that one
+            string, accompanying it with a few groans and other muffled noises.</p>
          <p>I hadn’t been hid many minutes before I heard the darnedest row from below. It wasn’t
             like anything earthly. At first it seemed like one shrieking in pain, then it sounded
             like belligerent cats, and then it died away in a few complaining sighs. It was so
