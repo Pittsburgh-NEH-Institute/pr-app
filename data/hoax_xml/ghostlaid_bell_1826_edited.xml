@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../schemas/hoax.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="GH-19CUK-18260312">
    <teiHeader>
       <fileDesc>
@@ -14,10 +15,8 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <publisher>Bell’s Life in London and Sporting Chronicle</publisher>
-            <date when="1826-03-12"/>
-            <idno>GH-19CUK-18260312</idno>
-         </publicationStmt>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
+          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
          </seriesStmt>
@@ -58,7 +57,7 @@
    </teiHeader>
    <text>
       <body>
-         <p>﻿A respectable old gentleman, residing <placeName ref="amb">not many miles from the New
+         <p>A respectable old gentleman, residing <placeName ref="amb">not many miles from the New
                Church,in the Strand</placeName>, and certainly not very superstitious, was, in the
             course of the last week, alarmed by an extraordinary and mysterious noise in his house,
             for which he was, for some nights, unable to account, and which, at length, almost
@@ -76,21 +75,21 @@
             determined to be on the watch, he placed himself in his room with the latch of the door
             in one hand, and a candle in the other. At the usual time the noise was repeated) and
             with no small trepidation our old friend cautiously peeped forth, and looked up the
-            first flight of stairs, down which the slip shod ghost seemed to be coming. At first he
+            first flight of stairs, down which <rs ref="ghost">the slip shod ghost</rs> seemed to be coming. At first he
             could see nothing—probably from the disorganized state of his vision in such an alarming
             state of things; but at last he distinctly saw something small, but white, come hopping
-            from step to step. It certainly had no earthly shape, and yet appeared to be gifted with
-            a power of motion, which, as it approached him, encreased his alarm. He wished to speak,
+            from step to step. <rs ref="ghost">It certainly had no earthly shape, and yet appeared to be gifted with
+            a power of motion</rs>, which, as it approached him, encreased his alarm. He wished to speak,
             but either from the sudden inactivity of his organs of speech, or from not knowing
             exactly what to say to so questionable a visitor, he could not utter a word—when, wound
             up to a pitch of extraordinary excitation, his doubts and his fears were at once allayed
-            by observing that the cause of his alarm was nothing more than a cake of Windsor soap,
+            by observing that the cause of his alarm was nothing more than <rs ref="ghost">a cake of Windsor soap,
             which a most portly and respectable sized rat had purloined from his bed-room, and was
-            thus conveying, with no small labour, to his haunts below. The sudden relief thus given
-            to his mind, induced him to make a motion that alarmed the industrious ghost, which, at
+            thus conveying, with no small labour, to his haunts below</rs>. The sudden relief thus given
+            to his mind, induced him to make a motion that alarmed <rs ref="ghost">the industrious ghost</rs>, which, at
             one spring, reached a place of safety, leaving his booty behind—thus solving a mystery
             which had often led to a severe scolding to the servant for having appropriated to her
-            own use divers pieces of soap and candle. On the next night the unfortunate freebooter
+            own use divers pieces of soap and candle. On the next night <rs ref="ghost">the unfortunate freebooter</rs>
             made another excursion in search of plunder, and was again bearing off his spoil; but,
             unluckily, a fine tom cat having been called into requisition, he put an end to the life
             of the extraordinary entruder,and thus left our friend to the peaceable pursuit of his
