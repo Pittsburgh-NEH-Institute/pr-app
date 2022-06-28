@@ -58,24 +58,24 @@
 
    <text>
       <body>
-         <p>﻿For some days, early in the week, the good folks of <placeName ref="#haggerstone"
+         <p>For some days, early in the week, the good folks of <placeName ref="#haggerstone"
                >Haggerstone</placeName> were in a state of considerable excitement, in consequence
-            of something, which was supposed to be an unearthly object, having been for several
+            of something, which was <rs ref="ghost">supposed to be an unearthly object</rs>, having been for several
             successive nights seen in the neighbourhood of <placeName ref="#haggerstonechurch"
                >Haggerstone Church Yard</placeName>. The spot where it was first seen was in Black
             Horse fields, close by the bone-house, which is at the side of the Church Yard; and the
             story of its appearance arose under the following circumstances. Two ladies, and a
             gentleman, were going along the foot-path, which crosses the fields, when they observed,
-            (the time being about twelve o’clock) what at first appeared to be a shadow: on
-            approaching they were bold enough to address it: but, as ghosts hold no communion with
-            mortals, no answer was given: the conclusion was, as the being was wrapped all in white,
-            that it was nothing less than a ghost. The party, therefore, prudently retired; and in
+            (the time being about twelve o’clock) <rs ref="ghost">what at first appeared to be a shadow</rs>: on
+            approaching they were bold enough to address it: but, as <rs ref="ghost">ghosts hold no communion with
+            mortals</rs>, no answer was given: the conclusion was, <rs ref="ghost">as the being was wrapped all in white,
+            that it was nothing less than a ghost</rs>. The party, therefore, prudently retired; and in
             seeing police constable 50 N, they informed him of what they had seen, and on the
             officer going to the place, he found his progress impeded by the same object, and which
-            stood motionless as a tomb-stone. The officer addressed it: but whether <q>a spirit from
-               heaven, or goblin d—d</q>—he obtained no reply: and as his orders were not to take
+            stood motionless as a tomb-stone. The officer addressed it: but whether <q><rs ref="ghost">a spirit from
+               heaven, or goblin d—d</rs></q>—he obtained no reply: and as his orders were not to take
             ghosts to the station-house, nor to send them back <q>to that bourne from which no
-               travellers return,</q> he was contented with not disturbing the hapless sprite, but
+               travellers return,</q> he was contented with not disturbing <rs ref="ghost">the hapless sprite</rs>, but
             he did hear, as he spread the report abroad, that a ghost paid a nocturnal visit to the
             spot: since the same unsightly object was there the following night. The effect was that
             the thoroughfare, which was much frequented, became deserted, and people went far round
@@ -85,14 +85,14 @@
             to remove this obstacle, and for this purpose, they collected in a body, arming
             themselves with sticks and brick-bats. But on information being communicated to
             Inspector Tong, at the <placeName ref="#robertstreet">Station-house in Robert
-               Street</placeName>, Hoxton, he believing in neither ghosts nor hobgoblins, sent
+               Street</placeName>, Hoxton, he believing in neither <rs ref="ghost">ghosts nor hobgoblins</rs>, sent
             Sergeant Budnell to make inquiries, and who ascertained that the fears of the
             inhabitants had been stirred up by no other being than the good wife of some industrious
             mechanic; who being anxious about the return of her husband, took a stroll in her
             nightly habiliment, being anxious for his coming home. On the Inspector being made
             acquainted with these circumstances, and as he was aware that the courage of the valiant
-            men of Haggerstone was about to be put to the test, sent a policeman to her cottage in
-            Black Horse Fields, warning her of her danger. She has, of course, not ventured forth
+            men of <placeName ref="#haggerstone">Haggerstone</placeName> was about to be put to the test, sent a policeman to her cottage in
+            <placeName ref="unknown">Black Horse Fields</placeName>, warning her of her danger. She has, of course, not ventured forth
             again at that hour of the night. The foot-path is rather more frequented than it was:
             though the more cautious cannot avoid giving a suspicious look, toward the heretofore
             dreaded spot.</p>
