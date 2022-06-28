@@ -21,7 +21,8 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
         <link rel="stylesheet" media="screen" type="text/css" href="resources/css/hoax.css"/>
         <link rel="icon" type="image/jpg" href="resources/img/typewriter.jpg"/>
 <!-- links for mapbox -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css"/>
+    <!-- Remove Open+Sans to speed load time -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css"/> -->
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet" type="text/css"/>
 <!-- links for mapbox -->    

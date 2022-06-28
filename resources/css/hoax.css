@@ -132,7 +132,9 @@ via Custom Markers GL JS tutorial
 
 .mapboxgl-popup-content {
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    /* Remove Open Sans to save load time*/
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* 
