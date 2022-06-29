@@ -291,7 +291,7 @@ Reading view
     padding: .5em;
 }
 
-.query-term {
+mark {
     font-weight: bold;
     background-color: lightpink;
 }

@@ -47,8 +47,8 @@ declare function local:p($node as element(tei:p)) as element(html:p) {
     <html:p>{for $child in $node/node() return local:dispatch($child)}</html:p>
 };
 
-declare function local:match($node as element(exist:match)) as element(html:span) {
-    <html:span class="query-term">{for $child in $node/node() return local:dispatch($child)}</html:span>
+declare function local:match($node as element(exist:match)) as element(html:mark) {
+    <html:mark>{for $child in $node/node() return local:dispatch($child)}</html:mark>
 };
 
 declare function local:passthru($node as node()) as item()* {
