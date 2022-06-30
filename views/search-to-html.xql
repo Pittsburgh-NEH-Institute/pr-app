@@ -106,7 +106,7 @@ Publisher functions
 ===== :)
 declare function local:publishers($node as element(m:publishers)) as element(html:fieldset) {
     <html:fieldset id="publishers">
-        <html:legend>Publishers</html:legend>
+        <html:legend>Publisher</html:legend>
         <html:ul>{local:passthru($node)}</html:ul>
     </html:fieldset>
 };
