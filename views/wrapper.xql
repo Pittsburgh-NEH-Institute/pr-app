@@ -21,7 +21,8 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
         <link rel="stylesheet" media="screen" type="text/css" href="resources/css/hoax.css"/>
         <link rel="icon" type="image/jpg" href="resources/img/typewriter.jpg"/>
 <!-- links for mapbox -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css"/>
+    <!-- Remove Open+Sans to speed load time -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css"/> -->
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet" type="text/css"/>
 <!-- links for mapbox -->    
@@ -47,7 +48,7 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
             <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img 
                 alt="Creative Commons License" 
                 style="border-width:0" 
-                src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" height="20" width="60"
+                src="resources/img/cc_license_88x31.png" height="15" width="45"
             /></a> This work is licensed under a 
                 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</footer>
     </body>

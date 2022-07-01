@@ -4,15 +4,16 @@
   - [1. About facets and fields](#1-about-facets-and-fields)
   - [2. Facets](#2-facets)
     - [2.1. Overview of faceted searching in the Ghost Hoax app](#21-overview-of-faceted-searching-in-the-ghost-hoax-app)
-    - [2.2. Using facets to control a search](#22-using-facets-to-control-a-search)
-    - [2.3. Configuring facets](#23-configuring-facets)
-    - [2.4. Counting with facets](#24-counting-with-facets)
-    - [2.5. Computed values](#25-computed-values)
-    - [2.6. Hierarchical facets](#26-hierarchical-facets)
-    - [2.7. Using facets to constrain a query](#27-using-facets-to-constrain-a-query)
-    - [2.8. Facets and boolean queries](#28-facets-and-boolean-queries)
-    - [2.9. Querying on hierarchical facets](#29-querying-on-hierarchical-facets)
-    - [2.10. Facets conclusion](#210-facets-conclusion)
+    - [2.2. Implementation ](#22-implementation)
+    - [2.3. Using facets to control a search](#23-using-facets-to-control-a-search)
+    - [2.4. Configuring facets](#24-configuring-facets)
+    - [2.5. Counting with facets](#25-counting-with-facets)
+    - [2.6. Computed values](#26-computed-values)
+    - [2.7. Hierarchical facets](#27-hierarchical-facets)
+    - [2.9. Using facets to constrain a query](#28-using-facets-to-constrain-a-query)
+    - [2.9. Facets and boolean queries](#29-facets-and-boolean-queries)
+    - [2.10. Querying on hierarchical facets](#210-querying-on-hierarchical-facets)
+    - [2.11. Facets conclusion](#211-facets-conclusion)
   - [3. Fields](#3-fields)
     - [3.1. Configuring fields](#31-configuring-fields)
     - [3.2. Returning field values in a query](#32-returning-field-values-in-a-query)
@@ -21,20 +22,34 @@
 ----
 ## 1. About facets and fields
 
-*Facets* and *fields* are part of the *full-text indexing* feature of eXist-db. As the name implies, full-text indexing provides a mechanism for retrieving documents according to any of the words they contain, e.g., “Find all documents that contain the word ‘ghost’” (anywhere in the document) or “Find all documents that contain the word ‘ghost’ in the title”, etc.
+*Facets* and *fields* are implemented as part of the *full-text indexing* feature of eXist-db. As the name implies, full-text indexing provides a mechanism for retrieving documents according to any of the words they contain, e.g., “Find all documents that contain the word ‘ghost’” (anywhere in the document) or “Find all documents that contain the word ‘ghost’ in the title”, etc.
 
 The description of facets and fields in [official eXist-db documentation for full-text indexing](http://exist-db.org/exist/apps/doc/lucene.xml?field=all&id=D3.15.73#D3.15.73) provides a clear overview of these features, but in some places without as much detail as we would like. The purpose of this document is to explain why and how to use facets and fields in an eXist-db app, with examples drawn from our [Ghost Hoax app](https://github.com/Pittsburgh-NEH-Institute/pr-app), which is designed to explore a collection of Victorian-era newspaper articles about ghost hoaxes.
 
-The difference between facets and fields is described clearly in Alex Kennedy’s [The definitive guide to the difference between filters and facets](https://www.search.io/blog/the-difference-between-filters-and-facets) (text in square brackets is our own):
+The difference between facets and fields in a search context is described clearly in Alex Kennedy’s [The definitive guide to the difference between filters and facets](https://www.search.io/blog/the-difference-between-filters-and-facets) (text in square brackets is our own):
 
 > Both exist to serve the same purpose: narrowing down search results by eliminating results or pages that don’t match selected criteria […] For clarity’s sake, we’re going to define them as follows: *filters* [that is, *fields*] exclude results based on **initial criteria and do not change with each search**, while *facets* exclude using the **properties from returned results and do change with each search**.
+
+Rauf Aliev’s [Facet search: the most comprehensive guide. Best practices, design patterns, hidden caveats, and workarounds](https://hybrismart.com/2019/02/13/facet-search-the-most-comprehensible-guide-best-practices-design-patterns/), citing the Nielsen Norman Group, writes that:
+
+>Faceted navigation is composed of multiple filters that comprehensively describe a set of content. Ideally, faceted navigation provides multiple filters, one for each different aspect of the content.
+
+This focus on the collaborative combination of multiple filters, each of which addresses a different aspect of the content, to identify a set of results is the essence of facets. In our Ghost Hoax app, we use facets for publishers and publication dates, each of which divides the corpus according to a different property of the articles.
+
+----
+
+**Note:** Faceted classification has occupied an important theoretical and practical space in library science at least since the 1933 first publication of S. R. Ranganathan’s *Colon classification*. For an overview see the Wikipedia entry for [Faceted classification](https://en.wikipedia.org/wiki/Faceted_classification), and especially the section there about [Comparison between faceted and single hierarchical classification](https://en.wikipedia.org/wiki/Faceted_classification#Comparison_between_faceted_and_single_hierarchical_classification).
+
+----
 
 This tutorial makes the following assumptions:
 
 1. Readers who are not familiar with eXist-db full-text indexing must first read the documentation at <http://exist-db.org/exist/apps/doc/lucene>. 
 2. Because facets and fields use maps and arrays, which were added to XPath only in version 3.1 (2017), users who are not familiar with those data structures must first read the Saxonica [Maps in XPath](https://www.saxonica.com/html/documentation11/expressions/xpath30maps.html) and [Arrays in XPath](https://www.saxonica.com/html/documentation11/expressions/xpath31arrays.html). More complete documentation is available in the [3.11 Maps and Arrays](https://www.w3.org/TR/xpath-31/#id-maps-and-arrays) section of the XPath 3.1 specification.
 
-Both facets and fields can index on computed values (that is, values that do not appear literally in the source XML), which, for reasons described below, can improve response time during query and retrieval. The computation can use the standard XPath and XQuery function libraries, as well as user-defined functions. Below we describe first facets and then fields, including also information about how to import user-defined functions into an index file so that they can be used during configuration.
+We also strongly recommend reading Rauf Aliev’s [Facet search: the most comprehensive guide. Best practices, design patterns, hidden caveats, and workarounds](https://hybrismart.com/2019/02/13/facet-search-the-most-comprehensible-guide-best-practices-design-patterns/).
+
+Both facets and fields can use computed values (that is, values that do not appear literally in the source XML, and that are created when the data is indexed as part of the installation process), which, for reasons described below, can improve response time during query and retrieval. The computation can use the standard XPath and XQuery function libraries, as well as user-defined functions. Below we describe first facets and then fields, including where appropriate information about how to import user-defined functions into an index file so that they can be used during configuration.
 
 ## 2. Facets
 
@@ -42,45 +57,66 @@ Both facets and fields can index on computed values (that is, values that do not
 
 The Ghost Hoax Advanced search interface exposes three search components: *text*, *publisher*, *date*. All three function equivalently to constrain (filter) the titles returned, and any of the three can be modified at any time to refine a previous search step. The Advanced search page looks like the following, and the panels then change in response to user selections and specifications:
 
-<img src="facet-output-1.png">
+<img src="facet-output-1a.png">
 
-1. **Text:** Text searching is case-insensitive. The simplest text search is a single word; more complex text specifications (e.g., phrases, wildcards, proximity) are also supported (see the [Lucene documentation](https://lucene.apache.org/core/4_10_4/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description) for details). 
-2. **Publisher:** The name of the publisher, with definite and indefinite articles moved to end (e.g., “Times, The” instead of “The Times”.) Users interact with publisher values by means of a checklist.
+1. **Text:** Text searching is case-insensitive. The simplest text search is a single word; more complex text specifications (e.g., phrases, wildcards, proximity) are also supported (see the [Lucene documentation](https://lucene.apache.org/core/4_10_4/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description) for details). Mousing over the circled “I” exposes a brief description of how text search works:  
+<img src="facet-output-1b.png" width="55%">
+2. **Publisher:** The name of the publisher, with definite and indefinite articles moved to end (e.g., “Age, The” instead of “The Age”.) Users interact with publisher values by means of a checklist. The meaning of the parenthesized numbers is described below.
 3. **Date:** Hierarchical, with *decade* (e.g., "1800" for the 1800–09 decade) at the top level and *month-year* in human-readable form (e.g., “January 1804”) as second level. Users interact with date values by means of a checklist. 
 
-The checkbox interface in the Ghost Hoax app supports the following operations:
+The hierarchical checkbox interface for dates has the following behaviors:
 
 1. Selecting a decade automatically selects (checks) all of its subcategories (month-year combinations).
 2. Unchecking a decade automatically unselects (unchecks) all of its subcategories.
 3. Checking all month-years in a decade automatically selects (checks) the decade.
-4. Checking some but not all month-years in a decade displays a dash in the checkbox for the decade, indicating that the decade is partially selected.
+4. Checking some but not all month-years in a decade displays a dash in the checkbox for the decade, indicating that the decade is partially selected. This behavior is illustrated in the image below and to the right:   
+<img src="facet-output-2a.png" width="25%">&nbsp;&nbsp;<img src="facet-output-2b.png" width="25%">
 
-The facets in the Ghost Host app have the following characteristics (see the images immediately below):
+The facets in the Ghost Host app have the following characteristics and behaviors:
 
-1. Categories (`publisher`, `date`) are multi-select, that is, multiple selections within a category form an `or` operation.
-1. Combinations of facet categories (`text`, `publisher`, `date`) form an `and` operation.
-1. The interface updates only when the **Search** button is pressed. Unlike some faceted search interfaces it does not update automatically on each check.
-1. Each query retrieves the article titles selected by the checked facet values plus only those facets (with counts) that can be used to constrain or expand the results. 
+1. The two facet categories (“Publisher”, “Date”) are multi-select, that is, multiple selections within a category form an `or` operation. For example, if you check “John Bull” and “Household words” in the “Publisher” section, your query will look for results published by either of those publishers.
+1. Combinations of query categories (“Text”, “Publisher”, “Date”) form an `and` operation. For example, our corpus contains two articles from *Bell’s Life in London and Sporting Chronicle*, one from January 1825 and the other from March 1826. If you check just that publisher and just one of those dates, you will select only the article published by that publisher on that date.
+2. The page is updated after every change in any checkbox state; the list of matching articles on the right changes and the numbers next to the publishers and dates change. In order to update the page after changing the “Text” field, though, it is necessary to click on the “Submit” button.
 
-<img src="facet-output-2a.png" width="25%"/> &nbsp;&nbsp;<img src="facet-output-2b.png" width="25%">
+The default behavior of eXist-db facets as described in the official documentation is only to “drill down”, that is, to narrow the results of a previous query, and values that would return zero results are not shown. For example, with the standard behavior if we were to select *The Age* from the publishers, the page would reload with that value checked *and no other publishers displayed* because no other publisher can be selected to “drill down” further within the current selection. eXist-db does support selecting multiple values within a facet category, but if we let the default behavior update the page after each selection, we will never be given a chance to select more than one publisher.
 
-The default behavior of eXist-db facets is only to “drill down”, that is, to narrow the results of a previous query. In the case of the Ghost Hoax app this is inconvenient because we also want to be able to expand a result. For example, if we select one publisher and one date and we then want to keep the date but add another publisher, under the default eXist-db behavior we would have to unselect the publisher we already chose in order to be able to see and check other publishers that published articles on our selected dates. The behavior we want is to be able to broaden our selection to include additional values for a facet without having to undo any prior selection, which means that we want to see all publishers who published on our selected dates, whether we selected them or not, and likewise for all dates associated with our publishers, both selected and not selected. In the example below, we have selected articles published in two newspapers and one entire decade. The results allow us to check additional newspapers that published articles in our selected decade and additional decades in which our selected newspapers published articles:
+----
+
+**Note:** The default eXist-db “drill-down” facet behavior support multiple selection within a category, but only as an `and` operation, and that isn’t the situation that obtains with publishers, since no article in our corpus was published by two publishers at the same time. In a correspondence corpus, though, such as [Alfred Escher Briefedition](https://www.briefedition.alfred-escher.ch/briefe/), if we select, for example, Gottlieb Koller as a “mentioned person”, the interface (see the image below) lets us further narrow the search to only letters that mention him **along with** other persons we might check. What the interface does not support is selecting letters that mention Koller **or** a specific other person.
+ 
+<img src="escher-multiselect.png" width="30%"/>
+
+----
+
+In the case of the Ghost Hoax app the behavior we want is to be able to include multiple values for a facet category, and since selecting one publisher necessarily means that we cannot select an additional publisher to narrow the results of selecting the first one, we need to adopt a different approach. In the example below we have selected articles published in two newspapers and one entire decade. The results allow us either narrow or broaden our search:
 
 <img src="facet-output-6.png" width="80%"/>
 
-In order to support both narrowing and expanding a search we perform three queries behind the scenes and combine the results. For all three queries, if a text value is specified, only articles that contain that text are selected.
+In the Ghost Hoax App all publishers and all dates are always visible and available for inclusion in the query. There are two numbers after each facet value, the second of which is the total count of documents in the corpus that match that value irrespective of values that are or are not checked. The first number is the number of items that either have been or can be added to the results by checking that facet value. In the example above:
 
-1. **To create the list of matching articles:** Publisher and date facets are combined to select only articles that match the intersection of both publisher and date selections. For example, if we check only the 1830s and *The Weekly Times*, we select only the articles published in that decade in that paper. If no publishers have been checked, there is no filtering by publisher, and the same is true of dates. 
-2. **To create new publisher facets:**  To return facet values, with counts, for publishers who match the text and date (that is, values we might use to narrow or expand the publisher selections for our query) we perform a query using a combination of text plus selected date facets, ignoring selected publisher facets. This makes it possible to broaden the search by selecting additional publishers. Publishers who did not publish anything with the specified text on the specified dates are not shown, and the counts shown for the publisher options include only articles that match any specified text and dates.
+1. *The Age* published two articles in the 1830s that are not shown (in the list on the right) because *The Age* is not checked. The “2/2” after the title means that both articles will be added to the results if that value is checked. 
+2. The “3/4” after *The Penny Satirist* means that three of the four articles in the collection were published in the selected dates (the 1830s) and are listed in the results. The fourth article was published in the 1840s, and the “1/3” after “1840” means that checking that decade would add one more result (in this case the fourth article from *The Penny Satirist*) to the list (and update the number next to *The Penny Satirist* to “4/4”).
+2. The “0/1” after *Chambers’s journal* means that one article was published by that newspaper, but not in the selected dates, so checking it would not change the results. If we were to check the 1880s decade, though, the numbers after *Chambers’s journal*, which published its one article in May 1889, would change from “0/1” to “1/1”.
+
+To make the meaningful next steps easier to find, values that would not add anything to the results are rendered in gray. If we were to check the 1880s decade, *Chambers’s journal* would be displayed in black instead of in gray.
+
+----
+
+**Note:** The use of gray text is potentially misleading because gray conventionally means that an option cannot be selected. In this case the option *can* be selected, but it will not change the results unless additional selections are also made in the other facet category.
+
+----
+
+### 2.2. Implementation
+
+
+In order to support both narrowing and expanding a search we perform four queries behind the scenes and combine the results. For all but the first of these queries, if a text value is specified, only articles that contain that text are selected.
+
+1. **To create a list of all publishers and all dates with total counts in the corpus**: We use `ft:query(., ())` in a predicate to select all articles in the corpus. Using `ft:query()` automatically makes facet names and counts available to the `ft:facets()` function, and because we are querying all documents in the corpus and not specifying any filtering, this function returns counts for the entire corpus for all facet values. The result of this query supplies the list of facet values and the second number after the value. For example, this query tells us that our corpus contains two articles published by *The Age*.
+1. **To create the list of matching articles:** Publisher and date facets are combined to select only articles that match the intersection of both publisher and date selections. For example, if we check only the 1830s and *The Weekly Times*, we select only the articles published in that decade in that paper. If no publishers have been checked, there is no filtering by publisher, and the same is true of dates. This query supplies the list of matching articles displayed on right side of the page. It also supplies the first number after the facet value for values that were checked and produced matches. In the example above this accounts for the first number (3) in the line that reads “Penny Satirist, The (3/4)”, which means that three articles were published in *The Penny Satirist* in the selected dates (in this case, the 1830s).
+2. **To create counts for publisher facets that were not checked:**  To return facet values, with counts, for publisher facets that are not checked we perform a query using a combination of text plus selected date facets, ignoring selected publisher facets. In the example above we did not check *The Age*, and the first 2 in the 2/2 that follows the title means that if we were to check that box we would add two results to the list of articles on the right. In this case that’s because both of the articles published in *The Age* were published in the dates we have selected, that is, the 1830s.
 3. **To create new date facets:** Similarly, new date facets are returned according to a combination of text plus selected publisher facets.
 
-----
-
-**Note:** We chose to update the display only when the user pushes the Search button, and not on every checkbox event (which is more common in faceted search interfaces), to reduce the delay associated with multiple reloads. One side-effect of that decision is that it is possible to select facet values that return no results, e.g., one publisher and one date where the selected publisher did not publish anything on the selected date. In that situation the interface will show “No matching articles found” plus facet values that could, if selected, return results (publishers that match the dates chosen and vice versa).
-
-----
-
-### 2.2. Using facets to control a search
+### 2.3. Using facets to control a search
 
 The [eXist-db documentation](http://exist-db.org/exist/apps/doc/lucene.xml?field=all&id=D3.15.73#facets-and-fields) writes that:
 
@@ -97,7 +133,7 @@ Facets in eXist-db provide quick and efficient access to counts and they support
 1. Queries that use facets may be more performative than an alternative query without facets.
 2. The syntax of queries that use facets may be simpler than the syntax of alternative queries without facets.
 
-### 2.3. Configuring facets
+### 2.4. Configuring facets
 
 The following eXist-db *collection.xconf* index file creates a simple facet for the publisher of our corpus documents:
 
@@ -122,7 +158,7 @@ The following eXist-db *collection.xconf* index file creates a simple facet for 
 
 The `<text>` elements in our index file instruct eXist-db to construct full-text indexes for `<body>`, `<placeName>`, and the root `<TEI>` element, and the `<facet>` child of the configuration for the `<TEI>` element says that `<TEI>` elements should be retrievable with a facet called `publisher` (the value of the `@dimension` attribute) that refers to the `<publisher>` child of the `<publicationStmt>` element (the value of the `@expression` attribute). (This is a simplified example. We describe below how, in our real app, we use a formatted version of the publisher name instead of the literal value from the XML. For example, *The Times* in the XML is stored as a facet value of “Times, The” in the eXist-db index.)
 
-### 2.4. Counting with facets
+### 2.5. Counting with facets
 
 When we run the following query against our corpus using the facet configuration above:
 
@@ -234,7 +270,7 @@ The `ft:facets()` function returns a *map*, which is a structure that contains *
 3. We create an XML `<facet>` element (you can call it whatever you want) with two children and write the label and count values into the children.
 4. We bind that sequence of `<facet>` elements to a variable called `$facet-elements` and use a FLWOR to traverse over the values (`for`), sort them the way we want (`order by`), and return them in the new order.
 
-### 2.5. Computed values
+### 2.6. Computed values
 
 The facet example above uses the string value of the `<publisher>` element as it appears in the XML source files, but we actually want to sort and render the publisher names in a list with definite and indefinite articles moved to the end. For example, we want a publisher name like *The Weekly Times* to be sorted and rendered as “Weekly Times, The”. Facets let us perform that string surgery at index time, instead of query time, which means that we perform it only once, and at a time when performance speed is less important.
 
@@ -267,13 +303,13 @@ This function is part of a function library located at *modules/index-functions.
 
 This says that the string that will be returned as the name of the facet with a dimension value of `publisher` will be constructed by applying our user-defined function to the name of the publisher as it appears in our source documents. After we retrieve and style our publisher facets that portion of our page looks like:
 
-<img src="facet-output-3.png" width="40%"/>
+<img src="facet-output-3.png" width="50%"/>
 
-### 2.6. Hierarchical facets
+### 2.7. Hierarchical facets
 
 The eXist-db facet documentation illustrates a hierarchical facet with an example that divides an ISO date (e.g., `1806-02-04`) into a hierarchy of year, then month, and then day. A user could filter first by years and then filter the results for a particular year by month, and then filter those results by day. Our requirements were more complex because we wanted to use a computed decade as our top-level date facet and a computed human-readable month + year as a second level. The rendered view, with one of the decade facets expanded, looks like:
 
-<img src="facet-output-4.png" width="40%"/>
+<img src="facet-output-4.png" width="50%"/>
 
 Although we need to render our month + year combinations in human-readable form, we want to sort them in ISO order. For that reason we create a second-level facet (with decades as the first level) based on just the year and month of an ISO date (e.g., `1806-02`). That lets us group, count, retrieve, and sort our results, and we then convert the value to a human-readable form for rendering.
 
@@ -290,7 +326,7 @@ The portion of our index file that constructs the date facets is:
 
 ----
 
-**Note:** A string like `1806-02` does not match a valid ISO date because it is missing the required day portion, which means that it is not acceptable input to the XPath `format-date()` function. At the same time, we want to group our documents for facet purposes by just year and month, so we don’t want to include the day in the facet value. We meet those requirements by using just the year and month (e.g., `1806-02`) portion of the date as the second-level facet value (so that all articles from the same month of the same year are grouped and counted together) and then appending `-01` to each value before passing it into `format-date()` with a picture string of `"[MNn] [Y]"` for rendering. Appending a fake day at render time maps the facet value onto a valid ISO date and our picture string then ignores the day component and outputs only the month and year.
+**Note:** A string like `1806-02` does not match a valid ISO date because it is missing the required day portion, which means that it is not acceptable input to the XPath `format-date()` function that we use to create the human-readable output. At the same time, we want to group our documents for facet purposes by just year and month, so we don’t want to include the day in the facet value. We meet those requirements by using just the year and month (e.g., `1806-02`) portion of the date as the second-level facet value (so that all articles from the same month of the same year are grouped and counted together) and then appending `-01` to each value before passing it into `format-date()` with a picture string of `"[MNn] [Y]"` for rendering. Appending a fake day at render time maps the facet value onto a valid ISO date and our picture string then ignores the day component and outputs only the month and year.
 
 ----
 
@@ -379,7 +415,7 @@ This returns:
 **Note:** The decade beginning in 1810 is missing because there are no articles in the corpus from that decade. Facets never return keys for which the count is zero because they are designed to narrow (or, in our case, also broaden) a search, and a facet with a count of zero is of no use for those purposes.
 
 ----
-### 2.7. Using facets to constrain a query
+### 2.8. Using facets to constrain a query
 
 When we retrieve the titles of all articles that contain the string “ghost” along with lists of publishers and dates with article counts, we can then select one or more of those publishers or dates and rerun the query to return only articles that match the publishers or dates that we have specified. To constrain a query by a facet values we need to specify the facet names and values as part of an `ft:query()` operation. For example, the following query selects all articles in the corpus that have `"Times, The"` or `"John Bull"` as the values of their `publisher` facets:
 
@@ -399,7 +435,7 @@ return $hits
 
 When facets are used to constrain a query they are specified as part of a third argument to the `ft:query()` function. That third argument is an XPath map that accepts as keys the strings `"facets"` and `"fields"`. Here we specify only facets, and the value associated with the `"facets"` key is another map, where the keys are the `@dimension` values of the facets we care about and the values are a sequence of facet values for that dimension that we want to use to filter our results. Note that because we moved the definite and indefinite articles to the end of the string when we created the publisher facets, we have to make that same adjustment when we use the value for querying (e.g., we specify “Times, The” and not “The Times”).
 
-### 2.8. Facets and boolean queries
+### 2.9. Facets and boolean queries
 
 Faceted searching supports `and` and `or` combinations in an intuitive and efficient way, as follows:
 
@@ -443,7 +479,7 @@ That query returns:
 
 ----
 
-### 2.9. Querying on hierarchical facets
+### 2.10. Querying on hierarchical facets
 
 We specified the publication date as a hierarchical facet, which requires special handing if we want to query on multiple values. For example, if we
 change the value of the `publication-date` in the example above to `("1830", "1840")` eXist-db will raise an error, even though specifying a sequence of two strings as publishers was valid. The reason is that although multiple values for regular (non-hierarchical) facets can be specified as a sequence, multiple values of a hierarchical faced must instead be specified as an array. If we write `["1830", "1840"]` instead of `("1830", "1840")` (the square brackets construct an array; the parentheses construct a sequence), the query will succeed.
@@ -470,11 +506,11 @@ return
 ```
 ----
 
-**Note:** XPath automatically flattens nested sequences, so that, for example, `(("1830", "1838-01"), ("1850", "1852-11"))` would be understood (incorrectly, for our purposes) as `("1830", "1838-01", "1850", "1852-11")`. This four-item sequence would look as if it was trying to select a single value in a four-level hierarchy; it is not a syntax error, but it will not return results because the `publication-date` facet in our app has a different (two-level) structure. Arrays, unlike sequences, are not automatically flattened, so `[("1830", "1838-01"), ("1850", "1852-11")]` will be understood correctly as two two-item sequences.
+**Note:** The reason we can’t construct a sequence of sequences is that XPath automatically flattens nested sequences. This means that, for example, `(("1830", "1838-01"), ("1850", "1852-11"))` would be understood (incorrectly, for our purposes) as `("1830", "1838-01", "1850", "1852-11")`. This four-item sequence would look as if it was trying to select a single value in a four-level hierarchy; it is not a syntax error, but it will not return results because the `publication-date` facet in our app has a different (two-level) structure. Arrays, unlike sequences, are not automatically flattened, so `[("1830", "1838-01"), ("1850", "1852-11")]` will be understood correctly as two two-item sequences.
 
 ----
 
-### 2.10. Facets conclusion
+### 2.11. Facets conclusion
 
 The primary benefits of using facets are:
 

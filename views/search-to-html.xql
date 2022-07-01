@@ -71,7 +71,7 @@ declare function local:data($node as element(m:data)) as element(html:section) {
             <html:h2>Stories ({count(root($node)/descendant::m:article)})</html:h2>
             {if ($node/m:articles/m:article)
             then local:dispatch($node/m:articles)
-            else <html:p style="margin-left: 1em;">No matching articles found for selected publishers and dates.</html:p>
+            else <html:p style="margin-left: 1em;">No matching articles found.</html:p>
             }
         </html:section>
     </html:section>
@@ -88,7 +88,6 @@ Search term functions
 declare function local:search-term($node as element(m:search-term)) as item()+ {
     <html:div id="search-term-row">
         <html:input id="term" name="term" type="search" placeholder="[Search term]" value="{string($node)}">{string($node)}</html:input>
-        <html:button type="submit">Search</html:button>
         <html:div class="info">ⓘ
             <html:div class="tooltip">
                 <html:kbd>ghost</html:kbd> matches <html:q>ghost</html:q> but not <html:q>ghosts</html:q><html:br/>
@@ -98,19 +97,22 @@ declare function local:search-term($node as element(m:search-term)) as item()+ {
                 All searches are case-insensitive
             </html:div>
         </html:div>
+        <html:input id="submit" type="submit">Search</html:input>
+        <html:button id="clear-form"><html:a href="search">Clear</html:a></html:button>
     </html:div>
 };
 (: =====
 Publisher functions
 ===== :)
 declare function local:publishers($node as element(m:publishers)) as element(html:fieldset) {
-    <html:fieldset>
-        <html:legend>Publishers</html:legend>
+    <html:fieldset id="publishers">
+        <html:legend>Publisher</html:legend>
         <html:ul>{local:passthru($node)}</html:ul>
     </html:fieldset>
 };
 declare function local:publisher($node as element(m:publisher)) as element(html:li) {
     <html:li>
+        {if (starts-with($node/descendant::m:count, '0')) then attribute class {"no-potential"} else ()}
         <html:label>
             <html:input type="checkbox" name="publishers[]" value="{string($node/m:label)}">{
             (: Maintain checked state :)
@@ -135,6 +137,7 @@ declare function local:decade($node as element(m:decade)) as element(html:li) {
         <html:details>
             <html:summary>
                 <html:label>
+                    {if (starts-with($node/m:count, '0')) then attribute class {"no-potential"} else ()}
                     <html:input type="checkbox" class="decade-checkbox" name="decades[]" value="{string($node/m:label)}">{
                     (: Maintain checked state :)
                     if ($node/m:label = root($node)/descendant::selected-facets/descendant::m:decade) 
@@ -152,6 +155,7 @@ declare function local:month-years($node as element(m:month-years)) as element(h
 };
 declare function local:month-year($node as element(m:month-year)) as element(html:li) {
     <html:li>
+        {if (starts-with($node/descendant::m:count, '0')) then attribute class {"no-potential"} else ()}
         <html:label>
             <html:input type="checkbox" class="month-year-checkbox" name="month-years[]" value="{string($node/m:label)}">{
                 (: Maintain checked state :)

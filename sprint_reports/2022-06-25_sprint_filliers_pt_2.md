@@ -9,22 +9,22 @@
 - [x] ask Cliff about unit testing inside typeswitch
 - [x] update instructor schedule, spam instructors
 - [x] start working with Chelcie on project management
-- Implement Shea's suggestions around faceted searching
+- [x] Implement Shea's suggestions around faceted searching
 - [x] XSLT for 'musician view' - instructor-specific schedules
 
 ## Gabi to-do
 - read.xql include aux data in model
     - use global title attribute for mouseover
 - max place count for right y-axis
-- [] distill https://github.com/Pittsburgh-NEH-Institute/pr-app/issues/12 into a tutorial + resources      
-- [] ODD work and schema generation
+- [ ] distill https://github.com/Pittsburgh-NEH-Institute/pr-app/issues/12 into a tutorial + resources      
+- [ ] ODD work and schema generation
 	- Read materials from Elli
 	- start with TEI bare and then add on, since there's not that much to add
 	- Roma
 	- confer with Elli on outcome
-- [] CSS + read.xql		
-- [] make ghost tags more consistent
-- [] write guide article
+- [ ] CSS + read.xql		
+- [ ] make ghost tags more consistent
+- [ ] write guide article
 
 ## Emma to-do
 - prepare command line lesson
