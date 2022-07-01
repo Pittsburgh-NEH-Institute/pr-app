@@ -16,6 +16,11 @@
     <text>
         <body>
             <listPerson>
+                <personGrp xml:id="thug" role="group">
+                    <persName>Thugs</persName>
+                    <bibl>https://www.britannica.com/topic/thug</bibl>
+                    
+                </personGrp>
                 <person sex="M" xml:id="stonegw" role="showman" >
                     <persName>
                         <surname>Stone</surname>

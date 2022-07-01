@@ -60,19 +60,19 @@
 
    <text>
       <body>
-         <p>All the world has by this time heard of the <placeName ref="london">London</placeName>
+         <p>All the world has by this time heard of <rs ref="ghost">the <placeName ref="london">London</placeName>
             Ghost, who is known in the suburbs, by the name of <q>Spring-heeled Jack,</q> who has
-            been jumping Jim Crow in our neighbourhood in rather a novel style. Various conjectures
-            are afloat respecting this solemn, grave looking personage. Some say it is Spring Rice,
+            been jumping Jim Crow in our neighbourhood in rather a novel style</rs>. Various conjectures
+            are afloat respecting this <rs ref="ghost">solemn, grave looking personage</rs>. Some say it is Spring Rice,
             who has taken this opportunity of diverting the minds of the people from political
             scrutiny, and financial investigations. Others again say it is Jack Russell, on the <rs
                ref="pol">secret service of the Home Department</rs>; others, Lord Brougham, looking
             for glow-worms to enlighten the people. We cannot say we agree with any of these popular
-            rumours. We have too much faith in ghosts, to doubt the possibility of its being a
-               <soCalled>genevine bony fidy</soCalled> spirit incarnate, sent from Tartar-us to warn
+            rumours. <rs ref="ghost just">We have too much faith in ghosts, to doubt the possibility of its being a
+               <soCalled>genevine bony fidy</soCalled> spirit incarnate, <rs ref="rel">sent from Tartar-us to warn
             the sinful inhabitants of this land of the coming judgments of the Devil, for their
             awful selfishness and grasping greediness, by which they suck the blood of the poor, and
-            fasten upon the produce of their industry, with their savage claws. The rumours that
+            fasten upon the produce of their industry, with their savage claws</rs>.</rs> The rumours that
             prevail about a wager between some wealthy scamps of aristocracy are much too
             imaginative and incredible for our sober minds. <note ana="generalized-fictional">Who
                the d—e could make hoots for a sham-apparition that would enable the wearer to jump
@@ -80,15 +80,15 @@
                churches and to peep in at the back window of a house at the very moment he was
                knocking at the front door, and frightening the maid into her inward senses?</note>
             This is an age of discovery, truly; but science has not yet ascended to such an altitude
-            as this amongst the honourable corporation of snobs, on whose shoulders the whole guilt
-            of this wonderful apparition is very unjustly laid.</p>
-         <p>The ghost is generally about the size of a man, but it takes various forms. Sometimes it
+            as this amongst the honourable corporation of snobs, on whose shoulders <rs ref="ghost">the whole guilt
+            of this wonderful apparition is very unjustly laid</rs>.</p>
+         <p><rs ref="ghost">The ghost is generally about the size of a man, but it takes various forms. Sometimes it
             has the shape of a bear, sometimes it jumps like a kangaroo, and very frequently it is
                <rs ref="rel">dressed like one of the knights of Jerusalem</rs>, in shining bright
-            armour, which gleams with a white light, like phosphorus. We saw a man who told us that,
+            armour, which gleams with a white light, like phosphorus.</rs> We saw a man who told us that,
             being at <placeName>Ilford</placeName> one day, he met a man who told him that he had
-            fallen in with a woman who positively assured him that she knew a girl who had fairly
-            lost her old wits by the sight of the ghost, and had been provided with a new set of
+            fallen in with a woman who positively assured him that she knew <rs ref="ghost">a girl who had fairly
+            lost her old wits by the sight of the ghost</rs>, and had been provided with a new set of
             wits so entirely different that it was hard to believe she was the same person. A
             servant girl in <placeName ref="#kensington">Kensington</placeName>, we are informed,
             has been so powerfully affected that her person has swelled so enormously that her
@@ -100,14 +100,13 @@
             the furnace underneath presented such an attraction to the fiery element above, that he
             has absorbed it all for his own private satisfaction, leaving us to experience the same
             shivering sensation which he felt himself when he came up amongst us.</p>
-         <p>We have been privately informed that there are <rs ref="pol rel" ana="researchme">Thugs
-               in England; and several in Ireland; and that the Thugs in Ireland have joined the
+         <p>We have been privately informed that there are <rs ref="pol rel"><persName ref="#thug">Thugs
+               in England</persName>; and several in Ireland; and that the <persName ref="#thug">Thugs in Ireland</persName> have joined the
                Trades’ Associations, and are privately proselytizing the sons of Erin to the worship
                of Kalee.</rs> This report, which is believed in certain circles, has probably given
             rise to the rumour, which we lately heard repeated by a respectable gentleman, that
             Springheeled Jack was a Thug. It is well known that the Thugs pride themselves in
-            killing without shedding blood. The Irish do not understand this doctrine. <rs ref="or"
-               ana="wow this is like doubly racist">It seems so unnatural. The Thugs have,
+            killing without shedding blood. The Irish do not understand this doctrine. <rs ref="or">It seems so unnatural. The Thugs have,
                therefore, experienced considerable difficulty in the Green Isle in propagating their
                principles.</rs> In this country it seemed impossible to pursue their favourite
             system of social amelioration, on account of the vigilance of the police. They,
@@ -115,7 +114,7 @@
             their favourite Kalee, the goddess of bloodless death.</p>
          <p>We have no faith in this idle tale; but we can assure our readers that we have heard,
             from a respectable quarter, that a woman has brought forth a child with horns on its
-            head, and sharp-pointed nails on its fingers. <rs ref="pol" ana="poorlaw">The father
+            head, and sharp-pointed nails on its fingers. <rs ref="pol">The father
                swears it is not his, and the wife quotes the Poor Law Amendment Bill to prove that
                it is.</rs></p>
          <p><rs ref="pol">We hope the Bishop of London is exercising his ghostly jurisdiction in the
@@ -129,22 +128,22 @@
                original genius to discover and put in practice the true and only method.</rs>
             Blomfield is an enterprising <emph>spirited</emph> fellow, and has a large fraternity of
             ghostly attendants, whose services he can at all times command to carry out his
-            spiritual plans of ecclesiastical government. Now the ghost is evidently a combination
-            of individuals. It is seen in Kensington, Hammersmith, Ilford, Pockham, Highgate, and
+            <rs ref="rel pol">spiritual plans of ecclesiastical government</rs>. <rs ref="ghost">Now the ghost is evidently a combination
+            of individuals.</rs> It is seen in Kensington, Hammersmith, Ilford, Pockham, Highgate, and
             Greenwich, at one and the same time. The most natural inference, therefore, is that it
-            is a clerical manœuvre. The churches, we understand, have been rather better attended
-            on account of it, and we ourselves have heard of one woman who was so frightened that
+            is a clerical manœuvre. <rs ref="rel">The churches, we understand, have been rather better attended
+            on account of it</rs>, and we ourselves have heard of <rs ref="rel">one woman who was so frightened that
             she went to church on Sunday last to charm away the evil one from herself and children,
-            who had not been in church for twelvemonths previous.</p>
+            who had not been in church for twelvemonths previous</rs>.</p>
          <p>But how to account for the <emph>springing</emph> is difficult. There is something
-            beyond flesh and blood, and clerical manœuvring, in this. There must be a real ghost in
-            pay somehow. This we are told is now not so difficult as it has been for a century or
+            beyond flesh and blood, and clerical manœuvring, in this. <rs ref="ghost">There must be a real ghost in
+            pay somehow.</rs> This we are told is now not so difficult as it has been for a century or
             two. Astrology is reviving. We know several sorcerers in London, and one man assured us
             that he has raised hosts of devils, and made them sit till he drew their pictures. He
-            also showed us the picturea of several, and amongst the rest <emph>Cashiel</emph> riding
+            also showed us the pictures of several, and amongst the rest <emph>Cashiel</emph> riding
             on a dragon, a fierce looking fellow. He brings them up in a glass, but he thinks it not
-            impossible for a parson to make them move about in the open air.</p>
-         <p>Now the girl at Ilford swears that she saw the moon through the ghost’s head.</p>
+            impossible for a person to make them move about in the open air.</p>
+         <p><rs ref="ghost">Now the girl at Ilford swears that she saw the moon through the ghost’s head.</rs></p>
          <p>The Lord Mayor has received several important letters on the subject, and promises to do
             his utmost to throw light upon it. But it ain’t arsenic candles, we can assure his
             Lordship, that will remove an evil so disastrous as this. The fact is, some people
@@ -158,8 +157,8 @@
             the bench for such gentlemen.</p>
          <p>But two lawyers have kindly offered their services to lay this devil. The Lord Mayor is
             highly gratified with this promised aid. If a lawyer cannot lay the devil, he has little
-            faith in a parson. But his Lordship is no Christian to talk thus. <q>If satan cast out
-            satan, how can his kingdom stand?</q> It is another manœuvre to inveigle tho public.
+            faith in a parson. <rs ref="rel">But his Lordship is no Christian to talk thus.</rs> <q>If satan cast out
+            satan, how can his kingdom stand?</q> It is another manœuvre to inveigle the public.
             Better employ Joseph Ady at once to hunt it down—or to raise a subscription to lay it.
             We have no doubt that Joseph would make a good job of it, with the Lord Mayor’s forged
             seal attached to his Commission. But we must pause for want of space. Our friend
