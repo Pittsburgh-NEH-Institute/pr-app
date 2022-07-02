@@ -23,10 +23,31 @@ declare variable $exist:controller as xs:string := request:get-parameter("exist:
 declare variable $path-to-data as xs:string := $exist:root || $exist:controller || '/data/hoax_xml//';
 (: =====
 Retrieve query parameters
-===== :)
+
 declare variable $id as xs:string? := request:get-parameter('id', ());
+===== :)
+declare variable $id as xs:string := 'GH-TIMES-1804-01-17-P';
 declare variable $term as xs:string? := request:get-parameter('term', ());
 
-if ($id) then collection($path-to-data)//id($id)[ft:query(., $term)] => util:expand()
+(: ====
+Retrieve auxiliary data
+==== :)
+declare variable $gazetteer := doc($exist:root || $exist:controller || '/data/aux_xml/places.xml');
+declare variable $pros := doc($exist:root || $exist:controller || '/data/aux_xml/people.xml');
+ 
+(: ====
+Retrieve article using $id
+=== :)
+declare variable $article as element() := collection($path-to-data)//id($id)[ft:query(., $term)];
+
+if ($id) then 
+
+<m:result>
+{$article => util:expand()}
+<m:aux>
+<m:places>{$gazetteer//tei:place[@xml:id = $article//tei:placeName/@ref[starts-with(., '#')] ! substring(., 2)]}</m:places>
+<m:people>{$pros//tei:person[@xml:id = $article//tei:persName/@ref[starts-with(., '#')] ! substring(., 2)]}</m:people>
+</m:aux>
+</m:result>
 else <m:result>None</m:result>
 
