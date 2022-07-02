@@ -1,0 +1,1524 @@
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace sch = "http://purl.oclc.org/dsdl/schematron"
+default namespace tei = "http://www.tei-c.org/ns/1.0"
+namespace teix = "http://www.tei-c.org/ns/Examples"
+namespace xlink = "http://www.w3.org/1999/xlink"
+
+# Schema generated from ODD source 2022-07-01T18:26:00Z. .
+# TEI Edition: Version 3.5.0. Last updated on
+#	29th January 2019, revision 3c0c64ec4
+# TEI Edition Location: http://www.tei-c.org/Vault/P5/Version 3.5.0/
+#
+
+# This material is dual-licensed.
+# [http://creativecommons.org/licenses/by-sa/3.0/] Distributed under a Creative Commons Attribution-ShareAlike 3.0 Unported License  [http://www.opensource.org/licenses/BSD-2-Clause] Copyright 2013 TEI Consortium. All rights reserved. Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. This software is provided by the copyright holders and contributors "as is" and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall the copyright holder or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage. TEI material can be licensed differently depending on the use you intend to make of it. Hence it is made available under both the CC+BY and BSD-2 licences. The CC+BY licence is generally appropriate for usages which treat TEI content as data or documentation. The BSD-2 licence is generally appropriate for usage of TEI content in a software environment. For further information or clarification, please contact the TEI Consortium.
+tei_hoaxmacro.paraContent =
+  (text
+   | tei_hoaxmodel.gLike
+   | tei_hoaxmodel.phrase
+   | tei_hoaxmodel.inter
+   | tei_hoaxmodel.global
+   | tei_hoaxlg
+   | tei_hoaxmodel.lLike)*
+tei_hoaxmacro.phraseSeq =
+  (text
+   | tei_hoaxmodel.gLike
+   | tei_hoaxmodel.qLike
+   | tei_hoaxmodel.phrase
+   | tei_hoaxmodel.global)*
+tei_hoaxmacro.phraseSeq.limited =
+  (text | tei_hoaxmodel.limitedPhrase | tei_hoaxmodel.global)*
+tei_hoaxmacro.specialPara =
+  (text
+   | tei_hoaxmodel.gLike
+   | tei_hoaxmodel.phrase
+   | tei_hoaxmodel.inter
+   | tei_hoaxmodel.divPart
+   | tei_hoaxmodel.global)*
+tei_hoaxatt.ascribed.attributes = tei_hoaxatt.ascribed.attribute.who
+tei_hoaxatt.ascribed.attribute.who =
+  
+  ## indicates the person, or group of people, to whom the element content is ascribed.
+  attribute who {
+    list { xsd:anyURI+ }
+  }?
+tei_hoaxatt.ascribed.directed.attributes =
+  tei_hoaxatt.ascribed.attributes,
+  tei_hoaxatt.ascribed.directed.attribute.toWhom
+tei_hoaxatt.ascribed.directed.attribute.toWhom =
+  
+  ## indicates the person, or group of people, to whom a speech act or action is directed.
+  attribute toWhom {
+    list { xsd:anyURI+ }
+  }?
+tei_hoaxatt.canonical.attributes =
+  tei_hoaxatt.canonical.attribute.key,
+  tei_hoaxatt.canonical.attribute.ref
+tei_hoaxatt.canonical.attribute.key =
+  
+  ## provides an externally-defined means of identifying the entity (or entities) being named, using a coded value of some kind.
+  attribute key { xsd:string }?
+tei_hoaxatt.canonical.attribute.ref =
+  
+  ## (reference) provides an explicit means of locating a full definition or identity for the entity being named by means of one or more URIs.
+  attribute ref {
+    list { xsd:anyURI+ }
+  }?
+tei_hoaxatt.breaking.attributes = tei_hoaxatt.breaking.attribute.break
+tei_hoaxatt.breaking.attribute.break =
+  
+  ## indicates whether or not the element bearing this attribute should be considered to mark the end of an orthographic token in the same way as whitespace.
+  attribute break {
+    xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+  }?
+tei_hoaxatt.cReferencing.attributes =
+  tei_hoaxatt.cReferencing.attribute.cRef
+tei_hoaxatt.cReferencing.attribute.cRef =
+  
+  ## (canonical reference) specifies the destination of the pointer by supplying a canonical reference expressed using the scheme defined in a refsDecl element in the TEI header
+  attribute cRef { xsd:string }?
+tei_hoaxatt.datable.w3c.attributes =
+  tei_hoaxatt.datable.w3c.attribute.when,
+  tei_hoaxatt.datable.w3c.attribute.notBefore,
+  tei_hoaxatt.datable.w3c.attribute.notAfter,
+  tei_hoaxatt.datable.w3c.attribute.from,
+  tei_hoaxatt.datable.w3c.attribute.to
+tei_hoaxatt.datable.w3c.attribute.when =
+  
+  ## supplies the value of the date or time in a standard form, e.g. yyyy-mm-dd.
+  attribute when {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+  }?
+tei_hoaxatt.datable.w3c.attribute.notBefore =
+  
+  ## specifies the earliest possible date for the event in standard form, e.g. yyyy-mm-dd.
+  attribute notBefore {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+  }?
+tei_hoaxatt.datable.w3c.attribute.notAfter =
+  
+  ## specifies the latest possible date for the event in standard form, e.g. yyyy-mm-dd.
+  attribute notAfter {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+  }?
+tei_hoaxatt.datable.w3c.attribute.from =
+  
+  ## indicates the starting point of the period in standard form, e.g. yyyy-mm-dd.
+  attribute from {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+  }?
+tei_hoaxatt.datable.w3c.attribute.to =
+  
+  ## indicates the ending point of the period in standard form, e.g. yyyy-mm-dd.
+  attribute to {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+  }?
+sch:pattern [
+  id = "tei_hoax-att.datable.w3c-att-datable-w3c-when-constraint-rule-1"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "tei:*[@when]"
+    "\x{a}" ~
+    "        "
+    sch:report [
+      test = "@notBefore|@notAfter|@from|@to"
+      role = "nonfatal"
+      "The @when attribute cannot be used with any other att.datable.w3c attributes."
+    ]
+    "\x{a}" ~
+    "      "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id = "tei_hoax-att.datable.w3c-att-datable-w3c-from-constraint-rule-2"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "tei:*[@from]"
+    "\x{a}" ~
+    "        "
+    sch:report [
+      test = "@notBefore"
+      role = "nonfatal"
+      "The @from and @notBefore attributes cannot be used together."
+    ]
+    "\x{a}" ~
+    "      "
+  ]
+  "\x{a}" ~
+  "   "
+]
+sch:pattern [
+  id = "tei_hoax-att.datable.w3c-att-datable-w3c-to-constraint-rule-3"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "tei:*[@to]"
+    "\x{a}" ~
+    "        "
+    sch:report [
+      test = "@notAfter"
+      role = "nonfatal"
+      "The @to and @notAfter attributes cannot be used together."
+    ]
+    "\x{a}" ~
+    "      "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tei_hoaxatt.datable.attributes =
+  tei_hoaxatt.datable.w3c.attributes,
+  tei_hoaxatt.datable.iso.attributes,
+  tei_hoaxatt.datable.custom.attributes,
+  tei_hoaxatt.datable.attribute.calendar,
+  tei_hoaxatt.datable.attribute.period
+tei_hoaxatt.datable.attribute.calendar =
+  
+  ## indicates the system or calendar to which the date represented by the content of this element belongs.
+  attribute calendar { xsd:anyURI }?
+sch:pattern [
+  id = "tei_hoax-att.datable-calendar-calendar-constraint-rule-4"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "tei:*[@calendar]"
+    "\x{a}" ~
+    "            "
+    sch:assert [
+      test = "string-length(.) gt 0"
+      "\x{a}" ~
+      "@calendar indicates the system or calendar to which the date represented by the content of this element\x{a}" ~
+      "belongs, but this "
+      sch:name [ ]
+      " element has no textual content."
+    ]
+    "\x{a}" ~
+    "          "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tei_hoaxatt.datable.attribute.period =
+  
+  ## supplies a pointer to some location defining a named period of time within which the datable item is understood to have occurred.
+  attribute period { xsd:anyURI }?
+tei_hoaxatt.fragmentable.attributes =
+  tei_hoaxatt.fragmentable.attribute.part
+tei_hoaxatt.fragmentable.attribute.part =
+  
+  ## specifies whether or not its parent element is fragmented in some way, typically by some other overlapping structure: for example a speech which is divided between two or more verse stanzas, a paragraph which is split across a page division, a verse line which is divided between two speakers.
+  [ a:defaultValue = "N" ]
+  attribute part {
+    
+    ## (yes) the element is fragmented in some (unspecified) respect
+    "Y"
+    | 
+      ## (no) the element is not fragmented, or no claim is made as to its completeness
+      "N"
+    | 
+      ## (initial) this is the initial part of a fragmented element
+      "I"
+    | 
+      ## (medial) this is a medial part of a fragmented element
+      "M"
+    | 
+      ## (final) this is the final part of a fragmented element
+      "F"
+  }?
+tei_hoaxatt.divLike.attributes =
+  tei_hoaxatt.fragmentable.attributes,
+  tei_hoaxatt.divLike.attribute.org,
+  tei_hoaxatt.divLike.attribute.sample
+tei_hoaxatt.divLike.attribute.org =
+  
+  ## (organization) specifies how the content of the division is organized.
+  [ a:defaultValue = "uniform" ]
+  attribute org {
+    
+    ## no claim is made about the sequence in which the immediate contents of this division are to be processed, or their inter-relationships.
+    "composite"
+    | 
+      ## the immediate contents of this element are regarded as forming a logical unit, to be processed in sequence.
+      "uniform"
+  }?
+tei_hoaxatt.divLike.attribute.sample =
+  
+  ## indicates whether this division is a sample of the original source and if so, from which part.
+  [ a:defaultValue = "complete" ]
+  attribute sample {
+    
+    ## division lacks material present at end in source.
+    "initial"
+    | 
+      ## division lacks material at start and end.
+      "medial"
+    | 
+      ## division lacks material at start.
+      "final"
+    | 
+      ## position of sampled material within original unknown.
+      "unknown"
+    | 
+      ## division is not a sample.
+      "complete"
+  }?
+tei_hoaxatt.docStatus.attributes =
+  tei_hoaxatt.docStatus.attribute.status
+tei_hoaxatt.docStatus.attribute.status =
+  
+  ## describes the status of a document either currently or, when associated with a dated element, at the time indicated.
+  ## Sample values include: 1] approved; 2] candidate; 3] cleared; 4] deprecated; 5] draft; 6] embargoed; 7] expired; 8] frozen; 9] galley; 10] proposed; 11] published; 12] recommendation; 13] submitted; 14] unfinished; 15] withdrawn
+  [ a:defaultValue = "draft" ]
+  attribute status {
+    xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+  }?
+tei_hoaxatt.global.responsibility.attributes =
+  tei_hoaxatt.global.responsibility.attribute.cert,
+  tei_hoaxatt.global.responsibility.attribute.resp
+tei_hoaxatt.global.responsibility.attribute.cert =
+  
+  ## (certainty) signifies the degree of certainty associated with the intervention or interpretation.
+  attribute cert {
+    xsd:double
+    | (
+       ##
+       "high"
+       | 
+         ##
+         "medium"
+       | 
+         ##
+         "low"
+       | 
+         ##
+         "unknown")
+  }?
+tei_hoaxatt.global.responsibility.attribute.resp =
+  
+  ## (responsible party) indicates the agency responsible for the intervention or interpretation, for example an editor or transcriber.
+  attribute resp {
+    list { xsd:anyURI+ }
+  }?
+tei_hoaxatt.editLike.attributes =
+  tei_hoaxatt.editLike.attribute.evidence,
+  tei_hoaxatt.editLike.attribute.instant
+tei_hoaxatt.editLike.attribute.evidence =
+  
+  ## indicates the nature of the evidence supporting the reliability or accuracy of the intervention or interpretation.
+  ## Suggested values include: 1] internal; 2] external; 3] conjecture
+  attribute evidence {
+    list {
+      (
+       ## there is internal evidence to support the intervention.
+       "internal"
+       | 
+         ## there is external evidence to support the intervention.
+         "external"
+       | 
+         ## the intervention or interpretation has been made by the editor, cataloguer, or scholar on the basis of their expertise.
+         "conjecture"
+       | xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" })+
+    }
+  }?
+tei_hoaxatt.editLike.attribute.instant =
+  
+  ## indicates whether this is an instant revision or not.
+  [ a:defaultValue = "false" ]
+  attribute instant {
+    xsd:boolean
+    | (
+       ##
+       "unknown"
+       | 
+         ##
+         "inapplicable")
+  }?
+tei_hoaxatt.global.rendition.attributes =
+  tei_hoaxatt.global.rendition.attribute.rend,
+  tei_hoaxatt.global.rendition.attribute.style,
+  tei_hoaxatt.global.rendition.attribute.rendition
+tei_hoaxatt.global.rendition.attribute.rend =
+  
+  ## (rendition) indicates how the element in question was rendered or presented in the source text.
+  attribute rend {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_hoaxatt.global.rendition.attribute.style =
+  
+  ## contains an expression in some formal style definition language which defines the rendering or presentation used for this element in the source text
+  attribute style { xsd:string }?
+tei_hoaxatt.global.rendition.attribute.rendition =
+  
+  ## points to a description of the rendering or presentation used for this element in the source text.
+  attribute rendition {
+    list { xsd:anyURI+ }
+  }?
+tei_hoaxatt.global.source.attributes =
+  tei_hoaxatt.global.source.attribute.source
+tei_hoaxatt.global.source.attribute.source =
+  
+  ## specifies the source from which some aspect of this element is drawn.
+  attribute source {
+    list { xsd:anyURI+ }
+  }?
+tei_hoaxatt.global.attributes =
+  tei_hoaxatt.global.rendition.attributes,
+  tei_hoaxatt.global.responsibility.attributes,
+  tei_hoaxatt.global.source.attributes,
+  tei_hoaxatt.global.attribute.xmlid,
+  tei_hoaxatt.global.attribute.n,
+  tei_hoaxatt.global.attribute.xmllang,
+  tei_hoaxatt.global.attribute.xmlbase,
+  tei_hoaxatt.global.attribute.xmlspace
+tei_hoaxatt.global.attribute.xmlid =
+  
+  ## (identifier) provides a unique identifier for the element bearing the attribute.
+  attribute xml:id { xsd:ID }?
+tei_hoaxatt.global.attribute.n =
+  
+  ## (number) gives a number (or other label) for an element, which is not necessarily unique within the document.
+  attribute n { xsd:string }?
+tei_hoaxatt.global.attribute.xmllang =
+  
+  ## (language) indicates the language of the element content using a tag generated according to BCP 47.
+  attribute xml:lang {
+    xsd:language
+    | (
+       ##
+       "")
+  }?
+tei_hoaxatt.global.attribute.xmlbase =
+  
+  ## provides a base URI reference with which applications can resolve relative URI references into absolute URI references.
+  attribute xml:base { xsd:anyURI }?
+tei_hoaxatt.global.attribute.xmlspace =
+  
+  ## signals an intention about how white space should be managed by applications.
+  attribute xml:space {
+    
+    ## signals that the application's default white-space processing modes are acceptable
+    "default"
+    | 
+      ## indicates the intent that applications preserve all white space
+      "preserve"
+  }?
+tei_hoaxatt.internetMedia.attributes =
+  tei_hoaxatt.internetMedia.attribute.mimeType
+tei_hoaxatt.internetMedia.attribute.mimeType =
+  
+  ## (MIME media type) specifies the applicable multimedia internet mail extension (MIME) media type
+  attribute mimeType {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_hoaxatt.naming.attributes =
+  tei_hoaxatt.canonical.attributes,
+  tei_hoaxatt.naming.attribute.role,
+  tei_hoaxatt.naming.attribute.nymRef
+tei_hoaxatt.naming.attribute.role =
+  
+  ## may be used to specify further information about the entity referenced by this name in the form of a set of whitespace-separated values, for example the occupation of a person, or the status of a place.
+  attribute role {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_hoaxatt.naming.attribute.nymRef =
+  
+  ## (reference to the canonical name) provides a means of locating the canonical form (nym) of the names associated with the object named by the element bearing it.
+  attribute nymRef {
+    list { xsd:anyURI+ }
+  }?
+tei_hoaxatt.typed.attributes =
+  tei_hoaxatt.typed.attribute.type, tei_hoaxatt.typed.attribute.subtype
+tei_hoaxatt.typed.attribute.type =
+  
+  ## characterizes the element in some sense, using any convenient classification scheme or typology.
+  attribute type {
+    xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+  }?
+tei_hoaxatt.typed.attribute.subtype =
+  
+  ## provides a sub-categorization of the element, if needed
+  attribute subtype {
+    xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+  }?
+sch:pattern [
+  id = "tei_hoax-att.typed-subtypeTyped-constraint-rule-5"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "tei:*[@subtype]"
+    "\x{a}" ~
+    "        "
+    sch:assert [
+      test = "@type"
+      "The "
+      sch:name [ ]
+      " element should not be categorized in detail with @subtype unless also categorized in general with @type"
+    ]
+    "\x{a}" ~
+    "      "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tei_hoaxatt.sortable.attributes = tei_hoaxatt.sortable.attribute.sortKey
+tei_hoaxatt.sortable.attribute.sortKey =
+  
+  ## supplies the sort key for this element in an index, list or group which contains it.
+  attribute sortKey {
+    xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+  }?
+tei_hoaxatt.edition.attributes =
+  tei_hoaxatt.edition.attribute.ed, tei_hoaxatt.edition.attribute.edRef
+tei_hoaxatt.edition.attribute.ed =
+  
+  ## (edition) supplies a sigil or other arbitrary identifier for the source edition in which the associated feature (for example, a page, column, or line break) occurs at this point in the text.
+  attribute ed {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_hoaxatt.edition.attribute.edRef =
+  
+  ## (edition reference) provides a pointer to the source edition in which the associated feature (for example, a page, column, or line break) occurs at this point in the text.
+  attribute edRef {
+    list { xsd:anyURI+ }
+  }?
+tei_hoaxatt.spanning.attributes = tei_hoaxatt.spanning.attribute.spanTo
+tei_hoaxatt.spanning.attribute.spanTo =
+  
+  ## indicates the end of a span initiated by the element bearing this attribute.
+  attribute spanTo { xsd:anyURI }?
+sch:pattern [
+  id = "tei_hoax-att.spanning-spanTo-spanTo-2-constraint-rule-6"
+  "\x{a}" ~
+  "      "
+  sch:rule [
+    context = "tei:*[@spanTo]"
+    "\x{a}" ~
+    "            "
+    sch:assert [
+      test =
+        "id(substring(@spanTo,2)) and following::*[@xml:id=substring(current()/@spanTo,2)]"
+      "\x{a}" ~
+      "The element indicated by @spanTo ("
+      sch:value-of [ select = "@spanTo" ]
+      ") must follow the current element "
+      sch:name [ ]
+      "\x{a}" ~
+      "                  "
+    ]
+    "\x{a}" ~
+    "          "
+  ]
+  "\x{a}" ~
+  "   "
+]
+tei_hoaxmodel.nameLike.agent = tei_hoaxpersName
+tei_hoaxmodel.nameLike.agent_alternation = tei_hoaxpersName
+tei_hoaxmodel.nameLike.agent_sequence = tei_hoaxpersName
+tei_hoaxmodel.nameLike.agent_sequenceOptional = tei_hoaxpersName?
+tei_hoaxmodel.nameLike.agent_sequenceOptionalRepeatable =
+  tei_hoaxpersName*
+tei_hoaxmodel.nameLike.agent_sequenceRepeatable = tei_hoaxpersName+
+tei_hoaxmodel.segLike = notAllowed
+tei_hoaxmodel.hiLike = notAllowed
+tei_hoaxmodel.hiLike_alternation = notAllowed
+tei_hoaxmodel.hiLike_sequence = empty
+tei_hoaxmodel.hiLike_sequenceOptional = empty
+tei_hoaxmodel.hiLike_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.hiLike_sequenceRepeatable = notAllowed
+tei_hoaxmodel.emphLike =
+  tei_hoaxforeign | tei_hoaxemph | tei_hoaxsoCalled | tei_hoaxtitle
+tei_hoaxmodel.emphLike_alternation =
+  tei_hoaxforeign | tei_hoaxemph | tei_hoaxsoCalled | tei_hoaxtitle
+tei_hoaxmodel.emphLike_sequence =
+  tei_hoaxforeign, tei_hoaxemph, tei_hoaxsoCalled, tei_hoaxtitle
+tei_hoaxmodel.emphLike_sequenceOptional =
+  tei_hoaxforeign?, tei_hoaxemph?, tei_hoaxsoCalled?, tei_hoaxtitle?
+tei_hoaxmodel.emphLike_sequenceOptionalRepeatable =
+  tei_hoaxforeign*, tei_hoaxemph*, tei_hoaxsoCalled*, tei_hoaxtitle*
+tei_hoaxmodel.emphLike_sequenceRepeatable =
+  tei_hoaxforeign+, tei_hoaxemph+, tei_hoaxsoCalled+, tei_hoaxtitle+
+tei_hoaxmodel.highlighted =
+  tei_hoaxmodel.hiLike | tei_hoaxmodel.emphLike
+tei_hoaxmodel.dateLike = notAllowed
+tei_hoaxmodel.dateLike_alternation = notAllowed
+tei_hoaxmodel.dateLike_sequence = empty
+tei_hoaxmodel.dateLike_sequenceOptional = empty
+tei_hoaxmodel.dateLike_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.dateLike_sequenceRepeatable = notAllowed
+tei_hoaxmodel.measureLike = tei_hoaxgeo
+tei_hoaxmodel.measureLike_alternation = tei_hoaxgeo
+tei_hoaxmodel.measureLike_sequence = tei_hoaxgeo
+tei_hoaxmodel.measureLike_sequenceOptional = tei_hoaxgeo?
+tei_hoaxmodel.measureLike_sequenceOptionalRepeatable = tei_hoaxgeo*
+tei_hoaxmodel.measureLike_sequenceRepeatable = tei_hoaxgeo+
+tei_hoaxmodel.egLike = notAllowed
+tei_hoaxmodel.egLike_alternation = notAllowed
+tei_hoaxmodel.egLike_sequence = empty
+tei_hoaxmodel.egLike_sequenceOptional = empty
+tei_hoaxmodel.egLike_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.egLike_sequenceRepeatable = notAllowed
+tei_hoaxmodel.graphicLike = notAllowed
+tei_hoaxmodel.offsetLike = notAllowed
+tei_hoaxmodel.offsetLike_alternation = notAllowed
+tei_hoaxmodel.offsetLike_sequence = empty
+tei_hoaxmodel.offsetLike_sequenceOptional = empty
+tei_hoaxmodel.offsetLike_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.offsetLike_sequenceRepeatable = notAllowed
+tei_hoaxmodel.pPart.msdesc = notAllowed
+tei_hoaxmodel.pPart.editorial = notAllowed
+tei_hoaxmodel.pPart.editorial_alternation = notAllowed
+tei_hoaxmodel.pPart.editorial_sequence = empty
+tei_hoaxmodel.pPart.editorial_sequenceOptional = empty
+tei_hoaxmodel.pPart.editorial_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.pPart.editorial_sequenceRepeatable = notAllowed
+tei_hoaxmodel.pPart.transcriptional = notAllowed
+tei_hoaxmodel.pPart.transcriptional_alternation = notAllowed
+tei_hoaxmodel.pPart.transcriptional_sequence = empty
+tei_hoaxmodel.pPart.transcriptional_sequenceOptional = empty
+tei_hoaxmodel.pPart.transcriptional_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.pPart.transcriptional_sequenceRepeatable = notAllowed
+tei_hoaxmodel.pPart.edit =
+  tei_hoaxmodel.pPart.editorial | tei_hoaxmodel.pPart.transcriptional
+tei_hoaxmodel.ptrLike = tei_hoaxref
+tei_hoaxmodel.lPart = notAllowed
+tei_hoaxmodel.global.meta = notAllowed
+tei_hoaxmodel.milestoneLike = tei_hoaxlb
+tei_hoaxmodel.gLike = notAllowed
+tei_hoaxmodel.oddDecl = notAllowed
+tei_hoaxmodel.oddDecl_alternation = notAllowed
+tei_hoaxmodel.oddDecl_sequence = empty
+tei_hoaxmodel.oddDecl_sequenceOptional = empty
+tei_hoaxmodel.oddDecl_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.oddDecl_sequenceRepeatable = notAllowed
+tei_hoaxmodel.phrase.xml = notAllowed
+tei_hoaxmodel.specDescLike = notAllowed
+tei_hoaxmodel.biblLike = tei_hoaxbibl
+tei_hoaxmodel.biblLike_alternation = tei_hoaxbibl
+tei_hoaxmodel.biblLike_sequence = tei_hoaxbibl
+tei_hoaxmodel.biblLike_sequenceOptional = tei_hoaxbibl?
+tei_hoaxmodel.biblLike_sequenceOptionalRepeatable = tei_hoaxbibl*
+tei_hoaxmodel.biblLike_sequenceRepeatable = tei_hoaxbibl+
+tei_hoaxmodel.headLike = notAllowed
+tei_hoaxmodel.headLike_alternation = notAllowed
+tei_hoaxmodel.headLike_sequence = empty
+tei_hoaxmodel.headLike_sequenceOptional = empty
+tei_hoaxmodel.headLike_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.headLike_sequenceRepeatable = notAllowed
+tei_hoaxmodel.labelLike = notAllowed
+tei_hoaxmodel.labelLike_alternation = notAllowed
+tei_hoaxmodel.labelLike_sequence = empty
+tei_hoaxmodel.labelLike_sequenceOptional = empty
+tei_hoaxmodel.labelLike_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.labelLike_sequenceRepeatable = notAllowed
+tei_hoaxmodel.listLike = notAllowed
+tei_hoaxmodel.listLike_alternation = notAllowed
+tei_hoaxmodel.listLike_sequence = empty
+tei_hoaxmodel.listLike_sequenceOptional = empty
+tei_hoaxmodel.listLike_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.listLike_sequenceRepeatable = notAllowed
+tei_hoaxmodel.noteLike = notAllowed
+tei_hoaxmodel.lLike = tei_hoaxl
+tei_hoaxmodel.lLike_alternation = tei_hoaxl
+tei_hoaxmodel.lLike_sequence = tei_hoaxl
+tei_hoaxmodel.lLike_sequenceOptional = tei_hoaxl?
+tei_hoaxmodel.lLike_sequenceOptionalRepeatable = tei_hoaxl*
+tei_hoaxmodel.lLike_sequenceRepeatable = tei_hoaxl+
+tei_hoaxmodel.pLike = tei_hoaxp
+tei_hoaxmodel.pLike_alternation = tei_hoaxp
+tei_hoaxmodel.pLike_sequence = tei_hoaxp
+tei_hoaxmodel.pLike_sequenceOptional = tei_hoaxp?
+tei_hoaxmodel.pLike_sequenceOptionalRepeatable = tei_hoaxp*
+tei_hoaxmodel.pLike_sequenceRepeatable = tei_hoaxp+
+tei_hoaxmodel.stageLike = notAllowed
+tei_hoaxmodel.stageLike_alternation = notAllowed
+tei_hoaxmodel.stageLike_sequence = empty
+tei_hoaxmodel.stageLike_sequenceOptional = empty
+tei_hoaxmodel.stageLike_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.stageLike_sequenceRepeatable = notAllowed
+tei_hoaxmodel.global.edit = notAllowed
+tei_hoaxmodel.divPart =
+  tei_hoaxmodel.lLike | tei_hoaxmodel.pLike | tei_hoaxlg
+tei_hoaxmodel.placeNamePart = tei_hoaxplaceName
+tei_hoaxmodel.placeNamePart_alternation = tei_hoaxplaceName
+tei_hoaxmodel.placeNamePart_sequence = tei_hoaxplaceName
+tei_hoaxmodel.placeNamePart_sequenceOptional = tei_hoaxplaceName?
+tei_hoaxmodel.placeNamePart_sequenceOptionalRepeatable =
+  tei_hoaxplaceName*
+tei_hoaxmodel.placeNamePart_sequenceRepeatable = tei_hoaxplaceName+
+tei_hoaxmodel.placeStateLike =
+  tei_hoaxmodel.placeNamePart | tei_hoaxlocation
+tei_hoaxmodel.placeStateLike_alternation =
+  tei_hoaxmodel.placeNamePart_alternation | tei_hoaxlocation
+tei_hoaxmodel.placeStateLike_sequence =
+  tei_hoaxmodel.placeNamePart_sequence, tei_hoaxlocation
+tei_hoaxmodel.placeStateLike_sequenceOptional =
+  tei_hoaxmodel.placeNamePart_sequenceOptional?, tei_hoaxlocation?
+tei_hoaxmodel.placeStateLike_sequenceOptionalRepeatable =
+  tei_hoaxmodel.placeNamePart_sequenceOptionalRepeatable*,
+  tei_hoaxlocation*
+tei_hoaxmodel.placeStateLike_sequenceRepeatable =
+  tei_hoaxmodel.placeNamePart_sequenceRepeatable+, tei_hoaxlocation+
+tei_hoaxmodel.publicationStmtPart.agency = tei_hoaxpublisher
+tei_hoaxmodel.publicationStmtPart.detail = tei_hoaxmodel.ptrLike
+tei_hoaxmodel.quoteLike = notAllowed
+tei_hoaxmodel.quoteLike_alternation = notAllowed
+tei_hoaxmodel.quoteLike_sequence = empty
+tei_hoaxmodel.quoteLike_sequenceOptional = empty
+tei_hoaxmodel.quoteLike_sequenceOptionalRepeatable = empty
+tei_hoaxmodel.quoteLike_sequenceRepeatable = notAllowed
+tei_hoaxmodel.qLike = tei_hoaxmodel.quoteLike | tei_hoaxsaid | tei_hoaxq
+tei_hoaxmodel.qLike_alternation =
+  tei_hoaxmodel.quoteLike_alternation | tei_hoaxsaid | tei_hoaxq
+tei_hoaxmodel.qLike_sequence =
+  tei_hoaxmodel.quoteLike_sequence, tei_hoaxsaid, tei_hoaxq
+tei_hoaxmodel.qLike_sequenceOptional =
+  tei_hoaxmodel.quoteLike_sequenceOptional?, tei_hoaxsaid?, tei_hoaxq?
+tei_hoaxmodel.qLike_sequenceOptionalRepeatable =
+  tei_hoaxmodel.quoteLike_sequenceOptionalRepeatable*,
+  tei_hoaxsaid*,
+  tei_hoaxq*
+tei_hoaxmodel.qLike_sequenceRepeatable =
+  tei_hoaxmodel.quoteLike_sequenceRepeatable+, tei_hoaxsaid+, tei_hoaxq+
+tei_hoaxmodel.respLike = tei_hoaxrespStmt
+tei_hoaxmodel.divWrapper = notAllowed
+tei_hoaxmodel.divTopPart = tei_hoaxmodel.headLike
+tei_hoaxmodel.divTop =
+  tei_hoaxmodel.divWrapper | tei_hoaxmodel.divTopPart
+tei_hoaxmodel.divBottomPart = notAllowed
+tei_hoaxmodel.divBottom =
+  tei_hoaxmodel.divWrapper | tei_hoaxmodel.divBottomPart
+tei_hoaxmodel.imprintPart = tei_hoaxpublisher
+tei_hoaxmodel.nameLike =
+  tei_hoaxmodel.nameLike.agent
+  | tei_hoaxmodel.offsetLike
+  | tei_hoaxmodel.placeStateLike
+  | tei_hoaxrs
+  | tei_hoaxmodel.persNamePart
+tei_hoaxmodel.nameLike_alternation =
+  tei_hoaxmodel.nameLike.agent_alternation
+  | tei_hoaxmodel.offsetLike_alternation
+  | tei_hoaxmodel.placeStateLike_alternation
+  | tei_hoaxrs
+  | tei_hoaxmodel.persNamePart_alternation
+tei_hoaxmodel.nameLike_sequence =
+  tei_hoaxmodel.nameLike.agent_sequence,
+  tei_hoaxmodel.offsetLike_sequence,
+  tei_hoaxmodel.placeStateLike_sequence,
+  tei_hoaxrs,
+  tei_hoaxmodel.persNamePart_sequence
+tei_hoaxmodel.nameLike_sequenceOptional =
+  tei_hoaxmodel.nameLike.agent_sequenceOptional?,
+  tei_hoaxmodel.offsetLike_sequenceOptional?,
+  tei_hoaxmodel.placeStateLike_sequenceOptional?,
+  tei_hoaxrs?,
+  tei_hoaxmodel.persNamePart_sequenceOptional?
+tei_hoaxmodel.nameLike_sequenceOptionalRepeatable =
+  tei_hoaxmodel.nameLike.agent_sequenceOptionalRepeatable*,
+  tei_hoaxmodel.offsetLike_sequenceOptionalRepeatable*,
+  tei_hoaxmodel.placeStateLike_sequenceOptionalRepeatable*,
+  tei_hoaxrs*,
+  tei_hoaxmodel.persNamePart_sequenceOptionalRepeatable*
+tei_hoaxmodel.nameLike_sequenceRepeatable =
+  tei_hoaxmodel.nameLike.agent_sequenceRepeatable+,
+  tei_hoaxmodel.offsetLike_sequenceRepeatable+,
+  tei_hoaxmodel.placeStateLike_sequenceRepeatable+,
+  tei_hoaxrs+,
+  tei_hoaxmodel.persNamePart_sequenceRepeatable+
+tei_hoaxmodel.global =
+  tei_hoaxmodel.global.meta
+  | tei_hoaxmodel.milestoneLike
+  | tei_hoaxmodel.noteLike
+  | tei_hoaxmodel.global.edit
+tei_hoaxmodel.biblPart =
+  tei_hoaxmodel.respLike | tei_hoaxmodel.imprintPart | tei_hoaxbibl
+tei_hoaxmodel.pPart.data =
+  tei_hoaxmodel.dateLike
+  | tei_hoaxmodel.measureLike
+  | tei_hoaxmodel.nameLike
+tei_hoaxmodel.inter =
+  tei_hoaxmodel.egLike
+  | tei_hoaxmodel.oddDecl
+  | tei_hoaxmodel.biblLike
+  | tei_hoaxmodel.labelLike
+  | tei_hoaxmodel.listLike
+  | tei_hoaxmodel.stageLike
+  | tei_hoaxmodel.qLike
+tei_hoaxmodel.common = tei_hoaxmodel.divPart | tei_hoaxmodel.inter
+tei_hoaxmodel.phrase =
+  tei_hoaxmodel.segLike
+  | tei_hoaxmodel.highlighted
+  | tei_hoaxmodel.graphicLike
+  | tei_hoaxmodel.pPart.msdesc
+  | tei_hoaxmodel.pPart.edit
+  | tei_hoaxmodel.ptrLike
+  | tei_hoaxmodel.lPart
+  | tei_hoaxmodel.phrase.xml
+  | tei_hoaxmodel.specDescLike
+  | tei_hoaxmodel.pPart.data
+tei_hoaxmodel.limitedPhrase =
+  tei_hoaxmodel.hiLike
+  | tei_hoaxmodel.emphLike
+  | tei_hoaxmodel.pPart.msdesc
+  | tei_hoaxmodel.pPart.editorial
+  | tei_hoaxmodel.ptrLike
+  | tei_hoaxmodel.phrase.xml
+  | tei_hoaxmodel.pPart.data
+tei_hoaxmodel.divLike = notAllowed
+tei_hoaxmodel.divGenLike = notAllowed
+tei_hoaxmodel.div1Like = notAllowed
+tei_hoaxmodel.teiHeaderPart = notAllowed
+tei_hoaxmodel.sourceDescPart = notAllowed
+tei_hoaxmodel.resourceLike = tei_hoaxtext
+tei_hoaxatt.personal.attributes =
+  tei_hoaxatt.naming.attributes,
+  tei_hoaxatt.personal.attribute.full,
+  tei_hoaxatt.personal.attribute.sort
+tei_hoaxatt.personal.attribute.full =
+  
+  ## indicates whether the name component is given in full, as an abbreviation or simply as an initial.
+  [ a:defaultValue = "yes" ]
+  attribute full {
+    
+    ## the name component is spelled out in full.
+    "yes"
+    | 
+      ## (abbreviated) the name component is given in an abbreviated form.
+      "abb"
+    | 
+      ## (initial letter) the name component is indicated only by one initial.
+      "init"
+  }?
+tei_hoaxatt.personal.attribute.sort =
+  
+  ## specifies the sort order of the name component in relation to others within the name.
+  attribute sort { xsd:nonNegativeInteger }?
+tei_hoaxp =
+  
+  ## (paragraph) marks paragraphs in prose. [3.1. Paragraphs 7.2.5. Speech Contents]
+  element p {
+    tei_hoaxmacro.paraContent
+    >> sch:pattern [
+         id = "tei_hoax-p-abstractModel-structure-p-constraint-report-4"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "tei:p"
+           "\x{a}" ~
+           "               "
+           sch:report [
+             test =
+               "not(ancestor::tei:floatingText) and (ancestor::tei:p or ancestor::tei:ab)          and not(parent::tei:exemplum                |parent::tei:item                |parent::tei:note                |parent::tei:q                |parent::tei:quote                |parent::tei:remarks                |parent::tei:said                |parent::tei:sp                |parent::tei:stage                |parent::tei:cell                |parent::tei:figure                )"
+             "\x{a}" ~
+             "        Abstract model violation: Paragraphs may not occur inside other paragraphs or ab elements.\x{a}" ~
+             "      "
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id = "tei_hoax-p-abstractModel-structure-l-constraint-report-5"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "tei:p"
+           "\x{a}" ~
+           "               "
+           sch:report [
+             test =
+               "ancestor::tei:l[not(.//tei:note//tei:p[. = current()])]"
+             "\x{a}" ~
+             "        Abstract model violation: Lines may not contain higher-level structural elements such as div, p, or ab.\x{a}" ~
+             "      "
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.fragmentable.attributes,
+    empty
+  }
+tei_hoaxforeign =
+  
+  ## identifies a word or phrase as belonging to some language other than that of the surrounding text. [3.3.2.1. Foreign Words or Expressions]
+  element foreign {
+    tei_hoaxmacro.phraseSeq, tei_hoaxatt.global.attributes, empty
+  }
+tei_hoaxemph =
+  
+  ## (emphasized) marks words or phrases which are stressed or emphasized for linguistic or rhetorical effect. [3.3.2.2. Emphatic Words and Phrases 3.3.2. Emphasis, Foreign Words, and Unusual Language]
+  element emph {
+    tei_hoaxmacro.paraContent, tei_hoaxatt.global.attributes, empty
+  }
+tei_hoaxsaid =
+  
+  ## (speech or thought) indicates passages thought or spoken aloud, whether explicitly indicated in the source or not, whether directly or indirectly reported, whether by real people or fictional characters. [3.3.3. Quotation]
+  element said {
+    tei_hoaxmacro.specialPara,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.ascribed.directed.attributes,
+    
+    ## may be used to indicate whether the quoted matter is regarded as having been vocalized or signed.
+    attribute aloud {
+      xsd:boolean
+      | (
+         ##
+         "unknown"
+         | 
+           ##
+           "inapplicable")
+    }?,
+    
+    ## may be used to indicate whether the quoted matter is regarded as direct or indirect speech.
+    [ a:defaultValue = "true" ]
+    attribute direct {
+      xsd:boolean
+      | (
+         ##
+         "unknown"
+         | 
+           ##
+           "inapplicable")
+    }?,
+    empty
+  }
+tei_hoaxq =
+  
+  ## (quoted) contains material which is distinguished from the surrounding text using quotation marks or a similar method, for any one of a variety of reasons including, but not limited to: direct speech or thought, technical terms or jargon, authorial distance, quotations from elsewhere, and passages that are mentioned but not used. [3.3.3. Quotation]
+  element q {
+    tei_hoaxmacro.specialPara,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.ascribed.directed.attributes,
+    
+    ## may be used to indicate whether the offset passage is spoken or thought, or to characterize it more finely.
+    ## Suggested values include: 1] spoken; 2] thought; 3] written; 4] soCalled; 5] foreign; 6] distinct; 7] term; 8] emph; 9] mentioned
+    attribute type {
+      
+      ## representation of speech
+      "spoken"
+      | 
+        ## representation of thought, e.g. internal monologue
+        "thought"
+      | 
+        ## quotation from a written source
+        "written"
+      | 
+        ## authorial distance
+        "soCalled"
+      | 
+        ##
+        "foreign"
+      | 
+        ## linguistically distinct
+        "distinct"
+      | 
+        ## technical term
+        "term"
+      | 
+        ## rhetorically emphasized
+        "emph"
+      | 
+        ## refering to itself, not its normal referent
+        "mentioned"
+      | xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    empty
+  }
+tei_hoaxsoCalled =
+  
+  ## contains a word or phrase for which the author or narrator indicates a disclaiming of responsibility, for example by the use of scare quotes or italics. [3.3.3. Quotation]
+  element soCalled {
+    tei_hoaxmacro.phraseSeq, tei_hoaxatt.global.attributes, empty
+  }
+tei_hoaxrs =
+  
+  ## (referencing string) contains a general purpose name or referring string. [13.2.1. Personal Names 3.5.1. Referring Strings]
+  element rs {
+    tei_hoaxmacro.phraseSeq,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.naming.attributes,
+    tei_hoaxatt.typed.attributes,
+    empty
+  }
+tei_hoaxref =
+  
+  ## (reference) defines a reference to another location, possibly modified by additional text or comment. [3.6. Simple Links and Cross-References 16.1. Links]
+  element ref {
+    tei_hoaxmacro.paraContent
+    >> sch:pattern [
+         id = "tei_hoax-ref-refAtts-constraint-report-6"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "tei:ref"
+           "\x{a}" ~
+           "               "
+           sch:report [
+             test = "@target and @cRef"
+             "Only one of the\x{a}" ~
+             "	attributes @target' and @cRef' may be supplied on "
+             sch:name [ ]
+             "\x{a}" ~
+             "               "
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.internetMedia.attributes,
+    tei_hoaxatt.typed.attributes,
+    tei_hoaxatt.cReferencing.attributes,
+    empty
+  }
+tei_hoaxlb =
+  
+  ## (line beginning) marks the beginning of a new (typographic) line in some edition or version of a text. [3.10.3. Milestone
+  ## Elements 7.2.5. Speech Contents]
+  element lb {
+    empty,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.typed.attributes,
+    tei_hoaxatt.edition.attributes,
+    tei_hoaxatt.spanning.attributes,
+    tei_hoaxatt.breaking.attributes,
+    empty
+  }
+tei_hoaxrespStmt =
+  
+  ## (statement of responsibility) supplies a statement of responsibility for the intellectual content of a text, edition, recording, or series, where the specialized elements for authors, editors, etc. do not suffice or do not apply. May also be used to encode information about individuals or organizations which have played a role in the production or distribution of a bibliographic work. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.2. The Edition Statement 2.2.5. The Series Statement]
+  element respStmt {
+    ((tei_hoaxresp+, tei_hoaxmodel.nameLike.agent+)
+     | (tei_hoaxmodel.nameLike.agent+, tei_hoaxresp+)),
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.canonical.attributes,
+    empty
+  }
+tei_hoaxresp =
+  
+  ## (responsibility) contains a phrase describing the nature of a person's intellectual responsibility, or an organization's role in the production or distribution of a work. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.2. The Edition Statement 2.2.5. The Series Statement]
+  element resp {
+    tei_hoaxmacro.phraseSeq.limited,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.canonical.attributes,
+    tei_hoaxatt.datable.attributes,
+    empty
+  }
+tei_hoaxtitle =
+  
+  ## contains a title for any kind of work. [3.11.2.2. Titles, Authors, and Editors 2.2.1. The Title Statement 2.2.5. The Series Statement]
+  element title {
+    tei_hoaxmacro.paraContent,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.canonical.attributes,
+    tei_hoaxatt.typed.attribute.subtype,
+    tei_hoaxatt.datable.attributes,
+    
+    ## classifies the title according to some convenient typology.
+    ## Sample values include: 1] main; 2] sub (subordinate) ; 3] alt (alternate) ; 4] short; 5] desc (descriptive) 
+    attribute type {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }
+    }?,
+    
+    ## indicates the bibliographic level for a title, that is, whether it identifies an article, book, journal, series, or unpublished material.
+    attribute level {
+      
+      ## (analytic) the title applies to an analytic item, such as an article, poem, or other work published as part of a larger item.
+      "a"
+      | 
+        ## (monographic) the title applies to a monograph such as a book or other item considered to be a distinct publication, including single volumes of multi-volume works
+        "m"
+      | 
+        ## (journal) the title applies to any serial or periodical publication such as a journal, magazine, or newspaper
+        "j"
+      | 
+        ## (series) the title applies to a series of otherwise distinct publications such as a collection
+        "s"
+      | 
+        ## (unpublished) the title applies to any unpublished material (including theses and dissertations unless published by a commercial press)
+        "u"
+    }?,
+    empty
+  }
+tei_hoaxpublisher =
+  
+  ## provides the name of the organization responsible for the publication or distribution of a bibliographic item. [3.11.2.4. Imprint, Size of a Document, and Reprint Information 2.2.4. Publication, Distribution, Licensing, etc.]
+  element publisher {
+    tei_hoaxmacro.phraseSeq,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.canonical.attributes,
+    empty
+  }
+tei_hoaxbibl =
+  
+  ## (bibliographic citation) contains a loosely-structured bibliographic citation of which the sub-components may or may not be explicitly tagged. [3.11.1. Methods of Encoding Bibliographic References and Lists of References 2.2.7. The Source Description 15.3.2. Declarable Elements]
+  element bibl {
+    (text
+     | tei_hoaxmodel.gLike
+     | tei_hoaxmodel.highlighted
+     | tei_hoaxmodel.pPart.data
+     | tei_hoaxmodel.pPart.edit
+     | tei_hoaxmodel.segLike
+     | tei_hoaxmodel.ptrLike
+     | tei_hoaxmodel.biblPart
+     | tei_hoaxmodel.global)*,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.typed.attributes,
+    tei_hoaxatt.sortable.attributes,
+    tei_hoaxatt.docStatus.attributes,
+    empty
+  }
+tei_hoaxl =
+  
+  ## (verse line) contains a single, possibly incomplete, line of verse. [3.12.1. Core Tags for Verse 3.12. Passages of Verse or Drama 7.2.5. Speech Contents]
+  element l {
+    ((text
+      | tei_hoaxmodel.gLike
+      | tei_hoaxmodel.phrase
+      | tei_hoaxmodel.inter
+      | tei_hoaxmodel.global)*)
+    >> sch:pattern [
+         id = "tei_hoax-l-abstractModel-structure-l-constraint-report-7"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "tei:l"
+           "\x{a}" ~
+           "               "
+           sch:report [
+             test =
+               "ancestor::tei:l[not(.//tei:note//tei:l[. = current()])]"
+             "\x{a}" ~
+             "        Abstract model violation: Lines may not contain lines or lg elements.\x{a}" ~
+             "      "
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.fragmentable.attributes,
+    empty
+  }
+tei_hoaxlg =
+  
+  ## (line group) contains one or more verse lines functioning as a formal unit, e.g. a stanza, refrain, verse paragraph, etc. [3.12.1. Core Tags for Verse 3.12. Passages of Verse or Drama 7.2.5. Speech Contents]
+  element lg {
+    ((tei_hoaxmodel.divTop | tei_hoaxmodel.global)*,
+     (tei_hoaxmodel.lLike
+      | tei_hoaxmodel.stageLike
+      | tei_hoaxmodel.labelLike
+      | tei_hoaxlg),
+     (tei_hoaxmodel.lLike
+      | tei_hoaxmodel.stageLike
+      | tei_hoaxmodel.labelLike
+      | tei_hoaxmodel.global
+      | tei_hoaxlg)*,
+     (tei_hoaxmodel.divBottom, tei_hoaxmodel.global*)*)
+    >> sch:pattern [
+         id = "tei_hoax-lg-atleast1oflggapl-constraint-assert-4"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "tei:lg"
+           "\x{a}" ~
+           "               "
+           sch:assert [
+             test =
+               "count(descendant::tei:lg|descendant::tei:l|descendant::tei:gap) > 0"
+             "An lg element\x{a}" ~
+             "        must contain at least one child l, lg or gap element."
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ]
+    >> sch:pattern [
+         id =
+           "tei_hoax-lg-abstractModel-structure-l-constraint-report-8"
+         "\x{a}" ~
+         "            "
+         sch:rule [
+           context = "tei:lg"
+           "\x{a}" ~
+           "               "
+           sch:report [
+             test =
+               "ancestor::tei:l[not(.//tei:note//tei:lg[. = current()])]"
+             "\x{a}" ~
+             "        Abstract model violation: Lines may not contain line groups.\x{a}" ~
+             "      "
+           ]
+           "\x{a}" ~
+           "            "
+         ]
+         "\x{a}" ~
+         "         "
+       ],
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.divLike.attributes,
+    tei_hoaxatt.typed.attributes,
+    empty
+  }
+tei_hoaxteiHeader =
+  
+  ## (TEI header) supplies descriptive and declarative metadata associated with a digital resource or set of resources. [2.1.1. The TEI Header and Its Components 15.1. Varieties of Composite Text]
+  element teiHeader {
+    (tei_hoaxfileDesc, tei_hoaxmodel.teiHeaderPart*),
+    tei_hoaxatt.global.attributes,
+    empty
+  }
+tei_hoaxfileDesc =
+  
+  ## (file description) contains a full bibliographic description of an electronic file. [2.2. The File Description 2.1.1. The TEI Header and Its Components]
+  element fileDesc {
+    ((tei_hoaxtitleStmt, tei_hoaxpublicationStmt), tei_hoaxsourceDesc+),
+    tei_hoaxatt.global.attributes,
+    empty
+  }
+tei_hoaxtitleStmt =
+  
+  ## (title statement) groups information about the title of a work and those responsible for its content. [2.2.1. The Title Statement 2.2. The File Description]
+  element titleStmt {
+    (tei_hoaxtitle+, tei_hoaxmodel.respLike*),
+    tei_hoaxatt.global.attributes,
+    empty
+  }
+tei_hoaxpublicationStmt =
+  
+  ## (publication statement) groups information concerning the publication or distribution of an electronic or other text. [2.2.4. Publication, Distribution, Licensing, etc. 2.2. The File Description]
+  element publicationStmt {
+    ((tei_hoaxmodel.publicationStmtPart.agency,
+      tei_hoaxmodel.publicationStmtPart.detail*)+
+     | tei_hoaxmodel.pLike+),
+    tei_hoaxatt.global.attributes,
+    empty
+  }
+tei_hoaxsourceDesc =
+  
+  ## (source description) describes the source from which an electronic text was derived or generated, typically a bibliographic description in the case of a digitized text, or a phrase such as "born digital" for a text which has no previous existence. [2.2.7. The Source Description]
+  element sourceDesc {
+    (tei_hoaxmodel.pLike+
+     | (tei_hoaxmodel.biblLike
+        | tei_hoaxmodel.sourceDescPart
+        | tei_hoaxmodel.listLike)+),
+    tei_hoaxatt.global.attributes,
+    empty
+  }
+tei_hoaxTEI =
+  
+  ## (TEI document) contains a single TEI-conformant document, combining a single TEI header with one or more members of the model.resourceLike class. Multiple TEI elements may be combined to form a teiCorpus element. [4. Default Text Structure 15.1. Varieties of Composite Text]
+  element TEI {
+    (tei_hoaxteiHeader, tei_hoaxmodel.resourceLike+)
+    >> sch:ns [ prefix = "tei" uri = "http://www.tei-c.org/ns/1.0" ]
+    >> sch:ns [ prefix = "xs" uri = "http://www.w3.org/2001/XMLSchema" ]
+    >> sch:ns [
+         prefix = "rng"
+         uri = "http://relaxng.org/ns/structure/1.0"
+       ],
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.typed.attributes,
+    
+    ## specifies the version number of the TEI Guidelines against which this document is valid.
+    attribute version {
+      xsd:token { pattern = "[\d]+(\.[\d]+){0,2}" }
+    }?,
+    empty
+  }
+tei_hoaxtext =
+  
+  ## contains a single text of any kind, whether unitary or composite, for example a poem or drama, a collection of essays, a novel, a dictionary, or a corpus sample. [4. Default Text Structure 15.1. Varieties of Composite Text]
+  element text {
+    (tei_hoaxmodel.global*, (tei_hoaxbody), tei_hoaxmodel.global*),
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.typed.attributes,
+    empty
+  }
+tei_hoaxbody =
+  
+  ## (text body) contains the whole body of a single unitary text, excluding any front or back matter. [4. Default Text Structure]
+  element body {
+    (tei_hoaxmodel.global*,
+     (tei_hoaxmodel.divTop,
+      (tei_hoaxmodel.global | tei_hoaxmodel.divTop)*)?,
+     (tei_hoaxmodel.divGenLike,
+      (tei_hoaxmodel.global | tei_hoaxmodel.divGenLike)*)?,
+     ((tei_hoaxmodel.divLike,
+       (tei_hoaxmodel.global | tei_hoaxmodel.divGenLike)*)+
+      | (tei_hoaxmodel.div1Like,
+         (tei_hoaxmodel.global | tei_hoaxmodel.divGenLike)*)+
+      | ((tei_hoaxmodel.common, tei_hoaxmodel.global*)+,
+         ((tei_hoaxmodel.divLike,
+           (tei_hoaxmodel.global | tei_hoaxmodel.divGenLike)*)+
+          | (tei_hoaxmodel.div1Like,
+             (tei_hoaxmodel.global | tei_hoaxmodel.divGenLike)*)+)?)),
+     (tei_hoaxmodel.divBottom, tei_hoaxmodel.global*)*),
+    tei_hoaxatt.global.attributes,
+    empty
+  }
+tei_hoaxatt.datable.custom.attributes =
+  tei_hoaxatt.datable.custom.attribute.when-custom,
+  tei_hoaxatt.datable.custom.attribute.notBefore-custom,
+  tei_hoaxatt.datable.custom.attribute.notAfter-custom,
+  tei_hoaxatt.datable.custom.attribute.from-custom,
+  tei_hoaxatt.datable.custom.attribute.to-custom,
+  tei_hoaxatt.datable.custom.attribute.datingPoint,
+  tei_hoaxatt.datable.custom.attribute.datingMethod
+tei_hoaxatt.datable.custom.attribute.when-custom =
+  
+  ## supplies the value of a date or time in some custom standard form.
+  attribute when-custom {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_hoaxatt.datable.custom.attribute.notBefore-custom =
+  
+  ## specifies the earliest possible date for the event in some custom standard form.
+  attribute notBefore-custom {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_hoaxatt.datable.custom.attribute.notAfter-custom =
+  
+  ## specifies the latest possible date for the event in some custom standard form.
+  attribute notAfter-custom {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_hoaxatt.datable.custom.attribute.from-custom =
+  
+  ## indicates the starting point of the period in some custom standard form.
+  attribute from-custom {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_hoaxatt.datable.custom.attribute.to-custom =
+  
+  ## indicates the ending point of the period in some custom standard form.
+  attribute to-custom {
+    list {
+      xsd:token { pattern = "(\p{L}|\p{N}|\p{P}|\p{S})+" }+
+    }
+  }?
+tei_hoaxatt.datable.custom.attribute.datingPoint =
+  
+  ## supplies a pointer to some location defining a named point in time with reference to which the datable item is understood to have occurred
+  attribute datingPoint { xsd:anyURI }?
+tei_hoaxatt.datable.custom.attribute.datingMethod =
+  
+  ## supplies a pointer to a calendar element or other means of interpreting the values of the custom dating attributes.
+  attribute datingMethod { xsd:anyURI }?
+tei_hoaxmodel.persNamePart = tei_hoaxsurname | tei_hoaxforename
+tei_hoaxmodel.persNamePart_alternation =
+  tei_hoaxsurname | tei_hoaxforename
+tei_hoaxmodel.persNamePart_sequence = tei_hoaxsurname, tei_hoaxforename
+tei_hoaxmodel.persNamePart_sequenceOptional =
+  tei_hoaxsurname?, tei_hoaxforename?
+tei_hoaxmodel.persNamePart_sequenceOptionalRepeatable =
+  tei_hoaxsurname*, tei_hoaxforename*
+tei_hoaxmodel.persNamePart_sequenceRepeatable =
+  tei_hoaxsurname+, tei_hoaxforename+
+tei_hoaxatt.datable.iso.attributes =
+  tei_hoaxatt.datable.iso.attribute.when-iso,
+  tei_hoaxatt.datable.iso.attribute.notBefore-iso,
+  tei_hoaxatt.datable.iso.attribute.notAfter-iso,
+  tei_hoaxatt.datable.iso.attribute.from-iso,
+  tei_hoaxatt.datable.iso.attribute.to-iso
+tei_hoaxatt.datable.iso.attribute.when-iso =
+  
+  ## supplies the value of a date or time in a standard form.
+  attribute when-iso {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+    | xsd:token { pattern = "[0-9.,DHMPRSTWYZ/:+\-]+" }
+  }?
+tei_hoaxatt.datable.iso.attribute.notBefore-iso =
+  
+  ## specifies the earliest possible date for the event in standard form, e.g. yyyy-mm-dd.
+  attribute notBefore-iso {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+    | xsd:token { pattern = "[0-9.,DHMPRSTWYZ/:+\-]+" }
+  }?
+tei_hoaxatt.datable.iso.attribute.notAfter-iso =
+  
+  ## specifies the latest possible date for the event in standard form, e.g. yyyy-mm-dd.
+  attribute notAfter-iso {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+    | xsd:token { pattern = "[0-9.,DHMPRSTWYZ/:+\-]+" }
+  }?
+tei_hoaxatt.datable.iso.attribute.from-iso =
+  
+  ## indicates the starting point of the period in standard form.
+  attribute from-iso {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+    | xsd:token { pattern = "[0-9.,DHMPRSTWYZ/:+\-]+" }
+  }?
+tei_hoaxatt.datable.iso.attribute.to-iso =
+  
+  ## indicates the ending point of the period in standard form.
+  attribute to-iso {
+    xsd:date
+    | xsd:gYear
+    | xsd:gMonth
+    | xsd:gDay
+    | xsd:gYearMonth
+    | xsd:gMonthDay
+    | xsd:time
+    | xsd:dateTime
+    | xsd:token { pattern = "[0-9.,DHMPRSTWYZ/:+\-]+" }
+  }?
+tei_hoaxpersName =
+  
+  ## (personal name) contains a proper noun or proper-noun phrase referring to a person, possibly including one or more of the person's forenames, surnames, honorifics, added names, etc. [13.2.1. Personal Names]
+  element persName {
+    tei_hoaxmacro.phraseSeq,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.datable.attributes,
+    tei_hoaxatt.editLike.attributes,
+    tei_hoaxatt.personal.attributes,
+    tei_hoaxatt.typed.attributes,
+    empty
+  }
+tei_hoaxsurname =
+  
+  ## contains a family (inherited) name, as opposed to a given, baptismal, or nick name. [13.2.1. Personal Names]
+  element surname {
+    tei_hoaxmacro.phraseSeq,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.personal.attributes,
+    tei_hoaxatt.typed.attributes,
+    empty
+  }
+tei_hoaxforename =
+  
+  ## contains a forename, given or baptismal name. [13.2.1. Personal Names]
+  element forename {
+    tei_hoaxmacro.phraseSeq,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.personal.attributes,
+    tei_hoaxatt.typed.attributes,
+    empty
+  }
+tei_hoaxplaceName =
+  
+  ## contains an absolute or relative place name. [13.2.3. Place Names]
+  element placeName {
+    tei_hoaxmacro.phraseSeq,
+    tei_hoaxatt.datable.attributes,
+    tei_hoaxatt.editLike.attributes,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.personal.attributes,
+    tei_hoaxatt.typed.attributes,
+    empty
+  }
+tei_hoaxgeo =
+  
+  ## (geographical coordinates) contains any expression of a set of geographic coordinates, representing a point, line, or area on the surface of the earth in some notation. [13.3.4.1. Varieties of Location]
+  element geo { text, tei_hoaxatt.global.attributes, empty }
+tei_hoaxlocation =
+  
+  ## defines the location of a place as a set of geographical coordinates, in terms of other named geo-political entities, or as an address. [13.3.4. Places]
+  element location {
+    (tei_hoaxmodel.labelLike
+     | tei_hoaxmodel.placeNamePart
+     | tei_hoaxmodel.offsetLike
+     | tei_hoaxmodel.measureLike
+     | tei_hoaxmodel.noteLike
+     | tei_hoaxmodel.biblLike)*,
+    tei_hoaxatt.global.attributes,
+    tei_hoaxatt.typed.attributes,
+    tei_hoaxatt.datable.attributes,
+    tei_hoaxatt.editLike.attributes,
+    empty
+  }
+start = tei_hoaxTEI
