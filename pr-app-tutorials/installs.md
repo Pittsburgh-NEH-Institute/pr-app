@@ -108,6 +108,10 @@ If at any point you have issues using *npm* or *nvm*, check your Program Files f
 1. `npm i -g yo`
 2. `npm i -g @existdb/generator-exist`
 
+## Install *ant*
+
+1. `choco install ant`
+
 ## Create a new app 
 
 1. Follow the instructions at [yeoman.md](). 
