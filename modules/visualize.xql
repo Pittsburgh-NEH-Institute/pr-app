@@ -1,7 +1,7 @@
 (: =====
 Import functions
 ===== :)
-import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/index-functions.xqm";
+import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
 
 (: =====
 Declare namespaces

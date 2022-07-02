@@ -1,48 +1,51 @@
 xquery version "3.1";
-(:module namespace:)
+(:~ 
+ : This module provides the functions that will be imported into 
+ : collections.xconf for use when creating facets and fields.
+ :
+ : @author gab_keane
+ : @version 1.0
+ :)
+(:==========
+Import module (hoax), tei (tei), and model (m) namespaces
+==========:)
 module namespace hoax="http://obdurodon.org/hoax";
-
-(: tei and project namespaces :)
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace m="http://www.obdurodon.org/model";
 
-declare function hoax:title($story as document-node()) as element()+ {
-    let $storytitle := $story//tei:titleStmt/tei:title
-    let $pub := $story//tei:respStmt[1]/tei:name
-    let $date as element(tei:date) := $story//tei:publicationStmt/tei:date
-  return
-      ($storytitle, $pub, $date)
-    
+(:==========
+Functions for creating map view
+==========:)
+(:~ 
+ : hoax:get-lat() retrieves the latitude value from a given place entry in
+ : places.xml. 
+ : @param $geo a TEI geo element
+ : @return xs:string
+ :)
+declare function hoax:get-lat($geo as element(tei:geo)) as xs:string {
+    substring-before($geo, " ")
 };
+(:~ 
+ : hoax:get-long() retrieves the longitude value from a given place entry in
+ : places.xml.
+ : @param $geo a TEI geo element
+ : @return xs:string
+ :)
+declare function hoax:get-long($geo as element(tei:geo)) as xs:string {
+    substring-after($geo, " ")
+};
+(:~ 
+ : hoax:round-geo() retrieves the latitude value from a given place entry in
+ : places.xml. 
+ :
+ : @param $input : xs:string any lat or long value
+ : @return xs:double
+ :)
+declare function hoax:round-geo($input as xs:string) as xs:double {
+    $input ! number(.) ! format-number(. , '#.00') ! number(.)
 
-(: create list page for article titles :)
-declare function hoax:titlelistdate($docs as document-node()+){
-    
-    for $doc in $docs
-    let $date as attribute(when) := $doc//tei:date/@when
-    let $year as xs:string := substring-before($date, '-')
-    let $title as element(tei:title) := $doc//tei:titleStmt//tei:title
-    let $pubnames as xs:string := $doc//tei:publisher => string-join(", ")
-    let $filename as xs:string := concat(substring-before(tokenize(base-uri($doc), '/')[last()], '.'), ".xml")
-    let $listitem as xs:string := string-join(($year,$title,$pubnames), "; ")
-    order by $date
-    return
-          <tei:item><tei:anchor href="{$filename}">{$listitem}</tei:anchor></tei:item>
 };
-declare function hoax:titlelistalpha($docs){
-    
-    for $doc in $docs
-    let $date as attribute(when) := $doc//tei:date/@when
-    let $year as xs:string := substring-before($date, '-')
-    let $title as element(tei:title) := $doc//tei:titleStmt//tei:title
-    let $pubnames as xs:string := $doc//tei:publisher => string-join(", ")
-    let $filename as xs:string := concat(substring-before(tokenize(base-uri($doc), '/')[last()], '.'), ".xml")
-    let $listitem as xs:string := string-join(($title,$pubnames,$year), "; ")
-    order by $title
-    return
-          <tei:item><tei:anchor href="{$filename}">{$listitem}</tei:anchor></tei:item>
-};
-
-(: compile map titles and create links. So far, I've been doing this by creating individual xql files for each map. this isn't scalable
+(: Compile map titles and create links. So far, I've been doing this by creating individual xql files for each map. this isn't scalable
  : filter articles with place references, make the filename into a link so that when clicked it just appends to current URL
  : this solution allowed me to play around with adding drawings and annotations to each map. I'm not against changing this functionality to a more robust solution, but could foresee this solution working well for a project this small :)
  
@@ -56,13 +59,45 @@ declare function hoax:maplist($docs){
     let $filename := concat(substring-before(tokenize(fn:base-uri($placedoc), '/')[last()], '.'), "-map.xql")
     let $linkpath := concat("read?", $filename)
     order by $date
-return
+    return
       <item><anchor xml:id="{$linkpath}">{$title}</anchor></item>
 };
 
-(:these functions do HTML wrapping:)
-declare function hoax:wrapsection($content){
-    <section class="container">
-        {$content}
-    </section>
+
+(:==========
+Functions for manipulating data for indexing and rendering
+==========:)
+(: Move definite and indefinite article to end of title for rendering :)
+declare function hoax:format-title($title as xs:string) as xs:string {
+    if (matches($title, '^(The|An|A) '))
+        then replace($title, '^(The|An|A)( )(.+)', '$3, $1')
+            ! concat(upper-case(substring(., 1, 1)), substring(., 2))
+        else $title
+};
+
+(:~ 
+ : hoax:construct-date-facets() maps input date-related facets onto query 
+ : format
+ :
+ : @param $decades : xs:string* (e.g., '1800')
+ : @param $month-years : xs:string* (e.g., '1800-01')
+ :
+ : @return filtered month-years
+ :
+ : Logic:
+ :  If decade is present, all month-years are also checked, and should 
+ :      be removed before querying because they are implicit
+  :  Note:
+ :      One or both of the inputs could be empty
+ :)
+declare function hoax:construct-date-facets($decades as xs:string*, $month-years as xs:string*) as xs:string* {
+    let $decade-starts as xs:string? := $decades ! substring(., 1, 3) => string-join('|')
+    return 
+        if (empty($decades)) then $month-years
+        else if (empty($month-years)) then () else  
+        $month-years[not(matches(., $decade-starts))]
+};
+
+declare function hoax:word-count($body as element(tei:body)) as xs:integer {
+   count(tokenize($body))
 };
