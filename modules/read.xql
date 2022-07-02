@@ -2,7 +2,7 @@ xquery version "3.1";
 (: =====
 Import functions
 ===== :)
-import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/index-functions.xqm";
+import module namespace hoax ="http://obdurodon.org/hoax" at "functions.xqm";
 
 (: =====
 Declare namespaces

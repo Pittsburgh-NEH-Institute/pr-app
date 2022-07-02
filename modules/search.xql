@@ -30,7 +30,7 @@ TODO: Perform the triage first and don't create unneeded values
 (: =====
 Import functions
 ===== :)
-import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/index-functions.xqm";
+import module namespace hoax ="http://obdurodon.org/hoax" at "functions.xqm";
 
 (: =====
 Declare namespaces
