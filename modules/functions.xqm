@@ -48,7 +48,7 @@ declare function hoax:round-geo($input as xs:string) as xs:double {
 declare function hoax:get-place-info($place as element(tei:place)) as element(m:place) {
     let $place-id := $place/@xml:id
     let $name as xs:string := $place/tei:placeName ! string()
-    let $type as xs:string := $place/@type ! string()
+    let $type as xs:string? := $place/@type ! string()
     let $link as xs:string? := $place/tei:bibl ! string()
     let $geo as xs:string := $place/tei:location/tei:geo ! string()
     let $settlement as xs:string? := $place/tei:location/tei:settlement ! string ()
@@ -58,7 +58,8 @@ return
     {$place-id}
         <m:name>{$name}</m:name>
         <m:type>{$type}</m:type>
-        <m:link>{$link}</m:link>
+        {if (empty($link)) then ()
+        else <m:link>{$link}</m:link>}
         <m:geo>{$geo}</m:geo>
         <m:settlement>{$settlement}</m:settlement>
         <m:parent>{$parent}</m:parent>
@@ -101,8 +102,6 @@ return
         <m:gm>{$gm}</m:gm>
     </m:person>
 };
-
-
 (:==========
 Functions for manipulating data for indexing and rendering
 ==========:)
