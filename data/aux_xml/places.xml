@@ -7,7 +7,7 @@ Holborn data updated to :
          <location>
            <geo>51.518308 -0.114516</geo>
          </location>
-         <link target="https://www.british-history.ac.uk/old-new-london/vol2/pp526-542"/> 
+         <bibl>https://www.british-history.ac.uk/old-new-london/vol2/pp526-542</bibl> 
       <place xml:id="stpauls" type="landmark">
          <placeName>St. Paul's Cathedral</placeName>
          <location>
@@ -160,7 +160,7 @@ friction. desc is a social classification based on maps from the 1880s by Charle
                         <location>
                             <geo>51.492905 -0.232288</geo>
                         </location>
-                        <!-- Big thanks to https://www.british-genealogy.com/threads/68352-Help-Locating-Webbs-Lane-Hammersmith -->
+                        <bibl>https://www.british-genealogy.com/threads/68352-Help-Locating-Webbs-Lane-Hammersmith</bibl>
                     </place>
                     <place xml:id="brandenburghhouse" type="landmark">
                         <placeName>Brandenburgh House</placeName>
