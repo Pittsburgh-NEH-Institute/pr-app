@@ -45,6 +45,24 @@ declare function hoax:round-geo($input as xs:string) as xs:double {
     $input ! number(.) ! format-number(. , '#.00') ! number(.)
 
 };
+(: Compile map titles and create links. So far, I've been doing this by creating individual xql files for each map. this isn't scalable
+ : filter articles with place references, make the filename into a link so that when clicked it just appends to current URL
+ : this solution allowed me to play around with adding drawings and annotations to each map. I'm not against changing this functionality to a more robust solution, but could foresee this solution working well for a project this small :)
+ 
+declare function hoax:maplist($docs){
+    for $doc in $docs
+    let $filter := $doc[contains(.//tei:placeName/@ref,"#")]
+    for $placedoc in $filter
+    let $date := $placedoc//tei:date/@when
+    let $printdate := substring-before($date, '-')
+    let $title := concat($placedoc//tei:titleStmt//tei:title, ', ', $printdate)
+    let $filename := concat(substring-before(tokenize(fn:base-uri($placedoc), '/')[last()], '.'), "-map.xql")
+    let $linkpath := concat("read?", $filename)
+    order by $date
+    return
+      <item><anchor xml:id="{$linkpath}">{$title}</anchor></item>
+};
+
 
 (:==========
 Functions for manipulating data for indexing and rendering
@@ -83,24 +101,3 @@ declare function hoax:construct-date-facets($decades as xs:string*, $month-years
 declare function hoax:word-count($body as element(tei:body)) as xs:integer {
    count(tokenize($body))
 };
-(: =========
-Not used. Remove?
-========= :)
-(: Compile map titles and create links. So far, I've been doing this by creating individual xql files for each map. this isn't scalable
- : filter articles with place references, make the filename into a link so that when clicked it just appends to current URL
- : this solution allowed me to play around with adding drawings and annotations to each map. I'm not against changing this functionality to a more robust solution, but could foresee this solution working well for a project this small :)
- 
-declare function hoax:maplist($docs){
-    for $doc in $docs
-    let $filter := $doc[contains(.//tei:placeName/@ref,"#")]
-    for $placedoc in $filter
-    let $date := $placedoc//tei:date/@when
-    let $printdate := substring-before($date, '-')
-    let $title := concat($placedoc//tei:titleStmt//tei:title, ', ', $printdate)
-    let $filename := concat(substring-before(tokenize(fn:base-uri($placedoc), '/')[last()], '.'), "-map.xql")
-    let $linkpath := concat("read?", $filename)
-    order by $date
-    return
-      <item><anchor xml:id="{$linkpath}">{$title}</anchor></item>
-};
-
