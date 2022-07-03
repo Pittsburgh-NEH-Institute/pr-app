@@ -4,7 +4,10 @@ General
 ==========
 */
 :root {
-    --backgroundColor: whitesmoke;
+    --background-color: #f3f7f5;
+    --text-color: #444545;
+    --title-color: #152614;
+    --highlight-color: #ceded6;
 }
 
 q {
@@ -18,17 +21,29 @@ q::before {
 q::after {
     content: close-quote;
 }
+a:link {
+    color: var(--title-color);
+    text-decoration: none;
+}
+a:hover {
+    background-color: var(--highlight-color);
+    
+}
+a:visited {
+    text-decoration: underline;
+  }
 
 /* 
 ==========
 Wrapper
 ==========
-*/
+*/ 
 body {
     display: flex;
     flex-direction: column;
     min-height: 99vh;
-    background: var(--backgroundColor);
+    background: var(--background-color);
+    color: var(--text-color);
 }
 
 main {
@@ -46,6 +61,7 @@ main {
 * */
 h1 {
     font-family: Arial, Helvetica, sans-serif;
+    color: var(--title-color);
 }
 
 /*
@@ -167,7 +183,7 @@ Radio tabs: https://medium.com/allenhwkim/how-to-build-tabs-only-with-css-844718
 input[type="radio"]+label {
     display: inline-block;
     border: 1px solid black;
-    background: #DBD7D2;
+    background: #ceded6;
     margin: 0 1px;
     padding: .25em 1em;
     border-radius: .65em .65em 0 0;
@@ -186,7 +202,7 @@ input~.panel {
 }
 
 input:checked+label {
-    background: var(--backgroundColor);
+    background: var(--background-color);
     border-bottom: 1px solid transparent;
 }
 
@@ -295,10 +311,26 @@ mark {
     font-weight: bold;
     background-color: lightpink;
 }
+p {
+    display: block;
+    padding: 1.5em;
+    line-height: 1.5;
+}
+.ghost {
+    background-color: #f68e5f;
+}
+/*
+==========
+Tables
+========== 
+*/
+table, th, td {
+    border: 1px solid;
+  }
 
 /*
 ==========
 XML “lozenge” link in reading view
 ========== 
 */
-.lozenge text {fill: var(--backgroundColor);}
+.lozenge text {fill: var(--background-color);}

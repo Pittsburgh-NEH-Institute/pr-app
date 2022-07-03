@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="14" class="lozenge" viewBox="0 -18 36 18">
     <g>
         <!-- fill is specified in CSS as var(backgroundColor) -->
-        <rect x="0" y="-14" width="36" height="14" fill="sandybrown"/>
+        <rect x="0" y="-14" width="36" height="14" fill="#f68e5f"/>
         <text x="18" y="0" text-anchor="middle" dominant-baseline="central"
             font-family="Optima, Segoe, 'Segoe UI', Candara, Calibri, Arial, sans-serif"
             font-weight="bold" transform="translate(18,-7) scale(.8) translate (-18,0)"
