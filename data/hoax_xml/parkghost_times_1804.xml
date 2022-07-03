@@ -58,7 +58,7 @@
       <body>
          <p>Public Office, <placeName ref="#bowstreet">Bow-street</placeName>.</p>
          <p>Yesterday <persName ref="#georgejones">George Jones</persName>, of Lieut.-Col. Taylor’s Company of Coldstream Guards, whose
-            declaration respecting the <rs ref="stjparkghost">Park Ghost</rs> we yesterday published, was brought before <persName ref="richardford">Sir
+            declaration respecting the <rs ref="stjparkghost">Park Ghost</rs> we yesterday published, was brought before <persName ref="#richardford">Sir
             Richard Ford</persName>, to be interrogated respecting the sight he was supposed to have seen.
             Previous to his examination, <persName ref="stafford">Mr. Stafford</persName>, the Chief Clerk, endeavoured to find out
             whether his imagination had received any impressions from reading any dismal story, or

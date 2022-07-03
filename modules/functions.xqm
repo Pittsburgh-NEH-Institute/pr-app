@@ -14,7 +14,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace m="http://www.obdurodon.org/model";
 
 (:==========
-Functions for creating map view
+Functions for places
 ==========:)
 (:~ 
  : hoax:get-lat() retrieves the latitude value from a given place entry in
@@ -45,6 +45,26 @@ declare function hoax:round-geo($input as xs:string) as xs:double {
     $input ! number(.) ! format-number(. , '#.00') ! number(.)
 
 };
+declare function hoax:get-place-info($place as element(tei:place)) as element(m:place) {
+    let $place-id := $place/@xml:id
+    let $name as xs:string := $place/tei:placeName ! string()
+    let $type as xs:string? := $place/@type ! string()
+    let $link as xs:string? := $place/tei:bibl ! string()
+    let $geo as xs:string := $place/tei:location/tei:geo ! string()
+    let $settlement as xs:string? := $place/tei:location/tei:settlement ! string ()
+    let $parent as xs:string? := $place/parent::tei:place/tei:placeName ! string () 
+return    
+    <m:place>
+    {$place-id}
+        <m:name>{$name}</m:name>
+        <m:type>{$type}</m:type>
+        {if (empty($link)) then ()
+        else <m:link>{$link}</m:link>}
+        <m:geo>{$geo}</m:geo>
+        <m:settlement>{$settlement}</m:settlement>
+        <m:parent>{$parent}</m:parent>
+    </m:place>
+};
 (: Compile map titles and create links. So far, I've been doing this by creating individual xql files for each map. this isn't scalable
  : filter articles with place references, make the filename into a link so that when clicked it just appends to current URL
  : this solution allowed me to play around with adding drawings and annotations to each map. I'm not against changing this functionality to a more robust solution, but could foresee this solution working well for a project this small :)
@@ -62,8 +82,26 @@ declare function hoax:maplist($docs){
     return
       <item><anchor xml:id="{$linkpath}">{$title}</anchor></item>
 };
+(:==========
+Functions for persons
+==========:)
+declare function hoax:get-person-info ($person) as element(m:person) {
+    let $surname as xs:string := $person/tei:persName/tei:surname ! string()
+    let $forename as xs:string := $person/tei:persName/tei:forename[1] ! string()
+    let $abt as xs:string? := $person//tei:bibl ! string ()
+    let $job as xs:string? := $person//tei:occupation ! string()
+    let $role as xs:string? := $person/@role ! string()
+    let $gm as xs:string? := $person/@sex ! string()
 
-
+return
+    <m:person>
+        <m:name>{$surname || ', ' || $forename}</m:name>
+        <m:about>{$abt}</m:about>
+        <m:job>{$job}</m:job>
+        <m:role>{$role}</m:role>
+        <m:gm>{$gm}</m:gm>
+    </m:person>
+};
 (:==========
 Functions for manipulating data for indexing and rendering
 ==========:)

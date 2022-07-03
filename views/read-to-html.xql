@@ -17,25 +17,35 @@ declare variable $data as document-node() := request:get-data();
 declare function local:dispatch($node as node()) as item()* {
     typeswitch($node)
         case text() return $node
-        case element(m:result) return local:result($node)
-        case element(tei:TEI) return local:TEI($node)
+        case element(m:no-result) return local:no-result($node)
+        case element(m:result) return local:TEI($node)
         case element(tei:bibl) return local:bibl($node)
         case element(tei:p) return local:p($node)
+        case element(tei:rs) return local:rs($node)
+        case element(tei:q) return local:quote($node)
+        case element(m:aux) return local:aux($node)
+            case element (m:places) return local:places($node)
+            case element (m:place) return local:row($node)
+                case element (m:name) return local:link($node)
+                case element (m:type) return local:cell($node)
+                case element (m:geo) return local:cell($node)
+                case element (m:parent) return local:cell($node)
         case element(exist:match) return local:match($node)
         default return local:passthru($node)
 };
 
-declare function local:result($node as element(m:result)) as element(html:section){
+declare function local:no-result($node as element(m:no-result)) as element(html:section){
     <html:section>
         <html:p>No such document. This shouldn’t happen if you clicked on a link in the advanced search results.</html:p>
     </html:section>
 };
 
-declare function local:TEI($node as element(tei:TEI)) as element(html:section){
+declare function local:TEI($node as element(m:result)) as element(html:section){
     <html:section>
         <html:h2>{local:dispatch($node/descendant::tei:titleStmt/tei:title)}</html:h2>
         {local:dispatch($node/descendant::tei:sourceDesc/descendant::tei:bibl),
-        local:dispatch($node/descendant::tei:body)}
+        local:dispatch($node/descendant::tei:body),
+        local:dispatch($node/descendant::m:aux)}
     </html:section>
 };
 
@@ -47,12 +57,69 @@ declare function local:p($node as element(tei:p)) as element(html:p) {
     <html:p>{for $child in $node/node() return local:dispatch($child)}</html:p>
 };
 
+declare function local:quote($node as element(tei:q)) as element(html:q) {
+    <html:q>{for $child in $node/node() return local:dispatch($child)}</html:q>
+};
+
+(:enhancements - use contains token and a map:)
+declare function local:rs($node as element(tei:rs)) as element(html:span)* {
+    for $child in $node/node()
+    return
+        if (contains($node/@ref, 'ghost'))
+            then <html:span class="ghost">{local:passthru($node)}</html:span>
+        else if (contains($node/@ref, 'rel'))
+            then <html:span class="religion">{local:passthru($node)}</html:span>
+        else if (contains($node/@ref, 'or'))
+            then <html:span class="orientalism">{local:passthru($node)}</html:span>
+        else if (contains($node/@ref, 'public'))
+            then <html:span class="public">{local:passthru($node)}</html:span>
+        else if (contains($node/@ref, 'mis'))
+            then <html:span class="misinfo">{local:passthru($node)}</html:span>                   
+        else <html:span>{local:passthru($node)}</html:span>
+};
 declare function local:match($node as element(exist:match)) as element(html:mark) {
     <html:mark>{for $child in $node/node() return local:dispatch($child)}</html:mark>
 };
 
 declare function local:passthru($node as node()) as item()* {
     for $child in $node/node() return local:dispatch($child)
+};
+
+(: =====
+Functions for auxiliary data
+===== :)
+declare function local:aux($node as element(m:aux)) as element(html:section)? {
+    if (empty($node/*/*))
+    then ()
+    else <html:section class="aux">
+        <html:h2>References</html:h2>
+        {local:passthru($node)}
+    </html:section>
+};
+declare function local:places($node as element(m:places)) as element(html:table) {
+    <html:table>
+        <html:tr>
+            <html:th>Place name</html:th>
+            <html:th>Type/Settlement</html:th>
+            <html:th>Geo</html:th>
+            <html:th>Parent place</html:th>
+        </html:tr>
+      {local:passthru($node)}  
+    </html:table>
+};
+declare function local:row ($node as element(m:place)) as element(html:tr){
+    <html:tr>{local:passthru($node)}</html:tr>
+};
+declare function local:cell ($node as element()) as element(html:td){
+    <html:td>{local:passthru($node)}</html:td>
+};
+
+declare function local:link ($node as element (m:name)) as element (html:td){
+    <html:td>
+    {if ($node/parent::m:place/m:link)
+    then <html:a href='{$node/parent::m:place/m:link/string()}'>{local:passthru($node)}</html:a>
+    else local:passthru($node)}
+    </html:td>
 };
 
 local:dispatch($data)
