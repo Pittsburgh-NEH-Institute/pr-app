@@ -314,31 +314,55 @@ assertions) indicates the end of a single set of test input and result. That is,
 
 ### A more complex example
 
-**TODO: Errors in function and tests; code in repo is correct**
-
 The examples above test functions that require just a single argument. A more complex function in
-our Ghost Hoax app consolidates date-related user-selected values and requires multiple arguments.
-Further more, either of both of those arguments can be the empty sequence.
+our Ghost Hoax app, which consolidates date-related user-selected values to filter search results,
+requires multiple arguments and returns a sequence (rather than just a single atomic value) as a
+result.
+
+#### Filtering search by dates
 
 Users can specify dates to filter articles by selecting either an entire decade or a combination of 
-month+year. Decades look as expected (e.g., `'1820'`); month+year combinations look internally like 
-`'1825-01'` (for January 1825). Our interface is designed so that when a user selects a decade, all of 
-the month+year combinations within that decade are also automatically selected; this makes it easier
-for the user to fine-tune the selection in the interface. Meanwhile, our date facet configuration is 
-hierarchical (see our [Facets and fields tutorial](facets-and-fields.md)), which means that if we ask 
-for all results in, say, the 1820s, we do not want also to ask, redundantly for all of the results in 
-all of the month+year combinations in that decade. For example, if the user selects the decades 
-`'1800'` and `'1810'` and the month+year combinations `'1800-01'` and `'1820-01'`, we want our query 
-to ask for the two decades plus only the month+year combination that is not already subsumed by a 
-decade. We want our function, then, to ingest two arguments (a sequence of decades and a sequence of 
-month+year combinations) and return only the month+year combinations that do not fall within any of 
-the decades. The result of the function will then be combined with the specified decades to form the
-facet portion of the query.
+month+year. The user-facing selection widgets look like:
+
+<img src="dates-for-testing.png" width="45%"/>
+
+Internally the human-readable values are mapped to forms that are more convenient for processing.
+Decades look as expected (e.g., `'1820'`), but month+year combinations look internally like 
+`'1825-01'` (for January 1825). Whenever the user makes a selection the pages is updated by sending
+all of the selection information to eXist-db and returning a new result. As in the image above, if we 
+check just `'1820'` plus `'July 1830'`, the year+month combinations under `'1820'` are checked
+automatically and the form sends the following information to eXist-db:
+
+```
+http://localhost:8080/exist/apps/pr-app/search
+?term=
+&decades[]=1820
+&month-years[]=1825-01
+&month-years[]=1826-03
+&month-years[]=1830-07
+```
+
+This says that no term has been selected, that the only decades selection is `'1820'`, and that both 
+month+year combinations in that decade plus July 1830 have been selected. 
+
+We use the form submission information to filter query results, and if we ask for all results in, 
+say, the 1820s, we do not want also to ask explicitly (and redundantly) for all of the results in each 
+of the  month+year combinations in that decade. To filter out redundant month+year values before 
+running the actual query we apply a user-defined function called `hoax:construct-date-facets()`, which
+ingests two arguments (a sequence of decades and a sequence of month+year combinations) and returns 
+only the month+year combinations that do not fall within any of the decades. The result of the 
+function will then be combined with the specified decades to form the facet portion of the query. When 
+applied to the example above (a decade value of `'1820'` and month+year values of `'1825-01'`, 
+`'1826-03'`, and `'1830-07'`) , the function will remove `'1825-01'` and `'1826-03'` (because they are 
+subsumed by the `'1820'` decade value) and return only ``'1830-07'`.
 
 That function that removes redundant month+year combinations looks like:
 
 ```
-declare function hoax:construct-date-facets($decades as xs:string*, $month-years as xs:string*) as xs:string* {
+declare function hoax:construct-date-facets(
+		$decades as xs:string*, 
+		$month-years as xs:string*
+	) as xs:string* {
     let $decade-starts as xs:string := 
         '^(' || $decades ! substring(., 1, 3) => string-join('|') || ')'
     return 
@@ -359,37 +383,47 @@ test:
 expression to keep only month+year combinations that do not match. In the example above, where the
 user selects the decades `'1800'` and `'1810'` and the month+year combinations `'1800-01'` and 
 `'1820-01'`, we return only `'1820-01`, since the other month+year combination, `1800-01`, matches
-the regular expression `'180|181'`.
+the regular expression `^(180|181)`.
 
 We need tests to cover different possible inputs (like the multiple tests for our function that 
-formats titles, above) and we also have the following new complications:
+formats titles, above) and we also have the following new considerations:
 
-* An argument that consists of a sequence can be specified in `%test:arg()` by listing all of the
-sequence items after the argument name. For example `%test:arg('decades', '1800', 1810')` sets the
-value of `$decades` to the sequence `('1800', '1810')`.
-* Arguments can be empty, but because argument values in the test framework have to be atomic values,
-although we can specify an empty string as a value inside `%test:arg()`, we cannot specify an empty
-sequence. We therefore specify the empty string as a fake initial value (e.g., `%test:arg('decades', '')`) and then map it to an empty sequence inside the test function: `let $d as xs:string* := if ($decades[1] eq '') then () else $decades`
-* The function returns a sequence, which we cannot test with `%test:assertEqual()`, so instead we use `%test:assertXPath()` with the `deep-equal()` function, which is able to test sequences.
+* The functions we tested in our examples above all accepted just a single input parameter, but 
+`hoax:consruct-date-facets()` requires two arguments, one for decades and one for month+year
+combinations. The test framework understands that a sequence of `%test:arg()` values all pertain to
+the same test instance, and the list of arguments for a test instance ends when we reach an assertion 
+about the result. In the example below, then, each sequence of two `%test:arg()` lines plus the 
+following `%test:assertXPath()` line cause the test to be run with the two argument values.
+* All arguments in our earlier examples consisted of a single atomic value, but here the two arguments
+are both sequences (of zero or more items). An argument that is a sequence (and not just a single 
+value) can be specified in `%test:arg()` by listing all of the sequence items after the argument name,
+separated by commas.  In one of the tests in the example below our 
+`%test:arg('decades', '1800', 1810')` sets the value of `$decades` to the sequence `('1800', '1810')`.
+* Argument values for this function can be empty sequences, but because argument values in the test 
+framework have to be atomic values, although we can specify an empty string as a value inside 
+`%test:arg()`, we cannot specify an empty
+sequence. To work around this limitation in some of the test instances in the example below we 
+specify the empty string as a fake initial value in our test (e.g., `%test:arg('decades', '')`) and 
+then map it to an empty sequence inside the test function: 
+`let $d as xs:string* := if ($decades[1] eq '') then () else $decades`.
+* The function returns a sequence, which we cannot test with `%test:assertEqual()`, so instead we use `%test:assertXPath()` with the `deep-equal()` function, which is able to test sequences for equality.
 
-The testing function below calls our `hoax:construct-date-facets()` three times, once with both decade and year+month values, once with only decade values, and once with only year+month values. More 
-exhaustive testing
-
+The testing function below calls our `hoax:construct-date-facets()` three times, once with both decade and year+month values, once with only decade values, and once with only year+month values. 
 
 ```
 declare
+    (: If no decades, return all month-years :)
+    %test:arg('decades', '')
+    %test:arg('month-years', '1800-01', '1820-01')
+    %test:assertXPath("deep-equal($result, ('1800-01', '1820-01'))")
     (: Remove month-years shadowed by decades :)
     %test:arg('decades', '1800', '1810')
     %test:arg('month-years', '1800-01', '1820-01')
-    %test:assertXPath("deep-equal($result, ('1820-01'))")
+    %test:assertXPath("deep-equal($result, '1820-01')")
     (: If no month-years, return empty :)
     %test:arg('decades', '1800', '1810')
     %test:arg('month-years', '')
     %test:assertXPath("deep-equal($result, ())")
-    (: If no decades, return all month-years :)
-    %test:arg('decades', '')
-    %test:arg('month-years', '1800-01', '1820-01')
-    %test:XPath("deep-equal($result, ('1810-01', '1820-01'))")
     function tests:construct-date-facets(
         $decades as xs:string*, 
         $month-years as xs:string*
@@ -402,7 +436,64 @@ declare
 
 ### XML test input
 
-Setup and teardown
+Argument values specified in `%test:arg()` must be atomic and some of our user-defined functions 
+have parameters defined as elements. For example, our:
+
+```
+declare function hoax:word-count($body as element(tei:body)) as xs:integer {
+   count(tokenize($body))
+};
+``` 
+
+counts the words in a TEI `<body>` elements, which it expects as its input argument, but we cannot use
+`%test:arg()` to pass an element into a test. We work around this by creating a small fake document that we use only for testing, writing it into our project inside eXist-db, using it for our test, and
+then removing the sample document at the end. This is more reliable that depending on a specific real
+project document, since we might change our project data at some point in ways that would require us 
+to modify our test. If within our test suite we create a special document just for testing purposes,
+though, it is easier to ensure that it has the content it needs to support our tests. 
+
+XQSuite provides *set up* and *tear down* functions that are automatically run at the right time: the
+set up function before any tests and the tear down function after all tests. Our set up function 
+creates and stores our test XML document in the database and our tear down function removes it:
+
+```
+declare variable $tests:XML := document {
+    <TEI xmlns="http://www.tei-c.org/ns/1.0">
+        <tei:geo>51.513979 -0.098372</tei:geo>
+        <tei:body>
+            This sentence has five words.
+        </tei:body>
+
+    </TEI>
+};
+
+declare %test:setUp
+function tests:_test-set() {    
+    xmldb:store("/db/apps/pr-app", "test.xml", $tests:XML)
+};
+
+declare
+    %test:tearDown
+function tests:_test-teardown() {
+    xmldb:remove("/db/apps/pr-app", "test.xml")
+};
+```
+
+The following test counts the words in the body of the test document that the set up function stores
+into the database:
+
+```
+declare 
+    %test:assertEquals (5)
+    function tests:word-count() as xs:integer {
+        hoax:word-count(doc("/db/apps/pr-app/test.xml")//tei:body)
+    };
+```
+
+One complication
+of writing a test document into the database, though, is that we need to have write-permission when we
+run the test suite. We find it easiest to open eXide (the XQuery developer IDE that is bundled with
+eXist-db), authenticate as userid `admin`, and then open `test-runner.xq` in eXide and run it there.
 
 ## Function design and test driven development
 
@@ -410,31 +501,32 @@ Writing unit tests for individual functions makes sense in a context where each 
 function is an isolatable unit of functionality. It is possible to write large functions that do
 many things, but that makes them harder to test (and harder to develop and maintain in general). 
 In our Ghost Hoax app we aim to isolate one repsonsibility in each function, and if we need a
-function to return a complex result we let it call on other user-defined functions.
+function to return a complex result we let it call on other user-defined functions to manage the
+various components.
 
-Test driven development is a development strategy that creates the tests before writing the functions
-to which the tests apply. Those initial tests will fail because the functionality has not yet been
-implemented, and the developer then develops the function so that it will pass the tests. We rarely 
-apply test driven development in our own work because we find it more natural to write the function 
-before the tests, but advocates of the method correctly point out that test driven development has the
-advantage of ensuring that the developer both tests everything and does not write anything that cannot
-be tested.
+*Test driven development* is a development strategy that creates tests before writing the 
+functions to which the tests apply. Those initial tests will fail because the functionality has not 
+yet been implemented, and the developer then develops the function so that it will pass the tests. We 
+rarely apply test driven development in our own work because we find it more natural to write the 
+function before the tests, but advocates of the method correctly point out that test driven 
+development has the advantage of ensuring that the developer both tests everything and does not write 
+anything that cannot be tested.
 
 ## Limitations to unit testing
 
 Unit testing is only as good as the tests and the test coverage. It isn’t possible to test everything, 
 so a test suite can never be complete, and the tests themselves are, after all, user-defined
-functions, which means that they themselves can also have bugs. An important part of the “cannot test
-everything” issue is that some coding errors reveal themselves only at a level higher than an 
-individual function. Software development often combines unit testing with *integration testing* (to
-verify that units interact correctly) and *end-to-end* testing (to verify the integrity of the system
-at a higher level). Despite all of these limitations, we find that the effort of writing unit tests is
-quickly repaid by more robust and maintainable code, and we rarely undertake a project of any 
-appreciable size without writing unit tests for our functions. 
+functions, which means that they themselves can also contain bugs. An important part of the “cannot 
+test everything” issue is that some coding errors reveal themselves only at a level higher than an 
+individual function. For that reason software development often combines unit testing with 
+*integration testing* (to verify that units interact correctly) and *end-to-end* testing (to verify 
+the integrity of the system at a higher level). Despite all of the limitations to unit testing, we 
+find that the effort of writing unit tests is quickly repaid by more robust and maintainable code, and 
+we rarely undertake a project of any appreciable size without writing unit tests for our functions. 
 
 ## Unit-testing humor
 
-An example of how even with too many tests there can never be enough tests:
+Even with too many tests there can never be enough tests:
 
 >A software QA engineer walks into a bar. He orders a beer. Orders 0 beers. Orders 99999999999 beers. Orders a lizard. Orders -1 beers. Orders a ueicbksjdhd.
 >
