@@ -68,24 +68,28 @@ declare
 
 (: Test function to compute necessary month-year facets needed for next query :)
 declare
-    (: Remove month-years shadowed by decades :)
-    %test:arg('decades', '1800', '1810')
-    %test:arg('month-years', '1800-01', '1820-01')
-    %test:assertXPath("deep-equal($result, ('1820-01'))")
-    (: If no month-years, return empty :)
-    %test:arg('decades', '1800', '1810')
-    %test:arg('month-years', '')
-    %test:assertEquals('')
     (: If no decades, return all month-years :)
     %test:arg('decades', '')
     %test:arg('month-years', '1800-01', '1820-01')
-    %test:XPath("deep-equal($result, ('1810-01', '1820-01'))")
+    %test:assertXPath("deep-equal($result, ('1800-01', '1820-01'))")
+    (: Not a real year, but verifying that the match is anchored at the start :)
+    %test:arg('decades', '1810')
+    %test:arg('month-years', '1810-01', '1181-01')
+    %test:assertXPath("deep-equal($result, ('1181-01'))")
+    (: Remove month-years shadowed by decades :)
+    %test:arg('decades', '1800', '1810')
+    %test:arg('month-years', '1800-01', '1820-01')
+    %test:assertXPath("deep-equal($result, '1820-01')")
+    (: If no month-years, return empty :)
+    %test:arg('decades', '1800', '1810')
+    %test:arg('month-years', '')
+    %test:assertXPath("deep-equal($result, ())")
     function tests:construct-date-facets(
         $decades as xs:string*, 
         $month-years as xs:string*
     ) as xs:string* {
-        let $d as xs:string* := if ($decades[0] eq '') then () else $decades
-        let $m as xs:string* := if ($month-years[0] eq '') then () else $month-years
+        let $d as xs:string* := if ($decades[1] eq '') then () else $decades
+        let $m as xs:string* := if ($month-years[1] eq '') then () else $month-years
         return hoax:construct-date-facets($d, $m)
     };
 

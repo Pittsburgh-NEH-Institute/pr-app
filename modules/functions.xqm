@@ -91,7 +91,8 @@ declare function hoax:format-title($title as xs:string) as xs:string {
  :      One or both of the inputs could be empty
  :)
 declare function hoax:construct-date-facets($decades as xs:string*, $month-years as xs:string*) as xs:string* {
-    let $decade-starts as xs:string? := $decades ! substring(., 1, 3) => string-join('|')
+    let $decade-starts as xs:string := 
+        '^(' || $decades ! substring(., 1, 3) => string-join('|') || ')'
     return 
         if (empty($decades)) then $month-years
         else if (empty($month-years)) then () else  
