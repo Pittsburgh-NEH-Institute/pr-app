@@ -37,39 +37,66 @@ declare variable $word-count-max as xs:double := $data/descendant::m:word-count 
 declare variable $word-count-min as xs:double := $data/descendant::m:word-count => min();
 declare variable $place-count-max as xs:double := $data/descendant::m:place-count => max();
 declare variable $y-axis-height as xs:double := $word-count-max div 10;
+declare variable $y-scale-place as xs:double := $y-axis-height div $place-count-max;
+declare variable $x-axis as xs:integer := 2000;
 (:=====:)
 
 <html:section>
 
-<svg:svg height="300px"
-    viewBox="-10 -{$y-axis-height + 10} 820 {$y-axis-height + 10}">
+<svg:svg width="1000"
+    viewBox="-40 -{$y-axis-height + 10} 2050 {$y-axis-height + 10}">
 
     <!-- what are the view box attribute values? -->
 
     <!-- AXES -->
-         <svg:line x1="0" y1="0" x2="{100 * 5}" y2="0" stroke="black"/>
+         <svg:line x1="0" y1="0" x2="{$x-axis}" y2="0" stroke="black"/>
             <!-- draws x-axis, using number of years in which a story appears -->
          <svg:line x1="0" y1="0" x2="0" y2="-{$y-axis-height}" stroke="black"/>
             <!-- draws left y-axis -->
-         <svg:line x1="{100 * 5}" y1="0" x2="{100 * 5}" y2="-{$y-axis-height}" stroke="black"/>
+         <svg:line x1="{$x-axis}" y1="0" x2="{$x-axis}" y2="-{$y-axis-height}" stroke="black"/>
             <!-- draws right y-axis -->
 
+    <!-- Y-Axis Labels -->
+        <svg:g transform="rotate(270, -20, -{$y-axis-height div 2})">
+        <svg:text x="-20" y="-{$y-axis-height div 2}" text-anchor="middle"
+                dominant-baseline="middle">Word-count</svg:text>
+        </svg:g>
+            <!-- draws word count axis label -->
+       <svg:g transform="rotate(270, {$x-axis * 5 + 25}, -{$y-axis-height div 2})">
+        <svg:text x="{$x-axis + 25}" y="-{$y-axis-height div 2}" text-anchor="middle"
+                dominant-baseline="middle">Place-count</svg:text>
+       </svg:g>
+            <!-- draws place count label axis-->                   
     <!-- ARTICLE SEGMENTS -->
-{   for $article-group in $data/descendant::m:by-article/m:article
-    group by $year := $article-group/m:date ! substring(.,3,2) ! xs:integer(.)
-        for $article at $pos in $article-group
-            (:using 'at $pos' established a variable for the position in group
-                see pgs 96-97 in XQuery for Humanists:)
+ {   let $decades as xs:integer+ := $data/descendant::m:date ! substring(., 3, 1) ! xs:integer(.) => 
+                distinct-values() => sort()
+
+   for $article at $pos in ($data/descendant::m:by-article/m:article =>
+         sort((),function($a){$a/m:date}))
+        let $title as xs:string := $article/m:title ! string(.)
+        let $decade as xs:integer := $article/m:date ! substring(., 3, 1) ! xs:integer(.)
+        let $link as xs:string := ("read?id=" || $article/m:id)        
         let $word-count as xs:integer := $article/m:word-count ! xs:integer(.)
-        let $place-count as xs:integer := $article/m:place-count ! xs:integer(.)
-        let $x-pos as xs:integer := ($year + $pos) * 5
+        let $place-count as xs:integer := $article/m:place-count ! xs:integer(.)  
+        let $x-pos as xs:integer := $pos * 30
         
-            return
-            <svg:g>
-                <svg:line x1="{$x-pos}" x2="{$x-pos}" y1="{-$word-count div 10}" y2="{-$place-count * 25}" stroke="black"/>
-                <svg:circle cx="{$x-pos}" cy="{-$word-count div 10}" r="2" fill="red"/>
-                <svg:circle cx="{$x-pos}"  cy="{-$place-count * 25}" r="2" fill="blue"/>
-            </svg:g>    
+    return
+    <svg:g>
+        <svg:a href="{$link}">
+        <svg:rect x="{$x-pos - 15}" y="{-$y-axis-height}" width="30" height="{$y-axis-height}" fill="{if (index-of($decades, $decade) mod 2 eq 0)
+        then 'pink'
+        else 'teal'}"/>
+          <svg:line x1="{$x-pos}" x2="{$x-pos}" y1="{-$word-count div 10}" y2="{-$place-count * $y-scale-place}" stroke="black"/>
+          <svg:circle cx="{$x-pos}" cy="{-$word-count div 10}" r="2" fill="red"/>
+          <svg:circle cx="{$x-pos}"  cy="{-$place-count * $y-scale-place}" r="2" fill="blue"/>
+        
+          <svg:title>
+            <svg:tspan class="article_title">{$title}</svg:tspan>
+            <svg:tspan class="word-count">{'Word count: ' || $word-count}</svg:tspan>
+            <svg:tspan class="place-count">{'Place count: '|| $place-count}</svg:tspan>
+          </svg:title>
+        </svg:a>
+    </svg:g>    
                 
 }
 <!-- draw what you think a segment should look like:

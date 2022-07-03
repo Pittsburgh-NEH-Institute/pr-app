@@ -36,12 +36,11 @@ declare variable $path-to-data as xs:string := $exist:root || $exist:controller 
 
     for $article in $articles
     let $title as xs:string := $article/descendant::tei:titleStmt/tei:title/string()
-    let $format-title := hoax:format-title($title)
     let $date := $article/descendant::tei:sourceDesc/descendant::tei:bibl/tei:date/@when => string() 
     return 
     <m:article>
-        <m:title>{$format-title}</m:title>
-        <m:id>{$article/@xml:id}</m:id>
+        <m:title>{$title}</m:title>
+        <m:id>{$article/@xml:id ! string(.)}</m:id>
         <m:date>{$date}</m:date>
         <m:word-count>{ft:field($article, 'word-count')}</m:word-count>
         <m:place-count>{ft:field($article, 'place-count')}</m:place-count>
