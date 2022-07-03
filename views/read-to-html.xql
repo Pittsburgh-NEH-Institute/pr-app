@@ -17,12 +17,16 @@ declare variable $data as document-node() := request:get-data();
 declare function local:dispatch($node as node()) as item()* {
     typeswitch($node)
         case text() return $node
+        (:if no valid ID is passed, return error:)
         case element(m:no-result) return local:no-result($node)
+        (:if valid ID is passed, process node children:)
         case element(m:result) return local:TEI($node)
-        case element(tei:bibl) return local:bibl($node)
-        case element(tei:p) return local:p($node)
-        case element(tei:rs) return local:rs($node)
-        case element(tei:q) return local:quote($node)
+        (:process tei:body:)
+            case element(tei:bibl) return local:bibl($node)
+            case element(tei:p) return local:p($node)
+            case element(tei:rs) return local:rs($node)
+            case element(tei:q) return local:quote($node)
+        (:process m:aux:)    
         case element(m:aux) return local:aux($node)
             case element (m:places) return local:places($node)
             case element (m:place) return local:row($node)
@@ -30,6 +34,7 @@ declare function local:dispatch($node as node()) as item()* {
                 case element (m:type) return local:cell($node)
                 case element (m:geo) return local:cell($node)
                 case element (m:parent) return local:cell($node)
+                case element (m:link) return ()
         case element(exist:match) return local:match($node)
         default return local:passthru($node)
 };
@@ -43,9 +48,12 @@ declare function local:no-result($node as element(m:no-result)) as element(html:
 declare function local:TEI($node as element(m:result)) as element(html:section){
     <html:section>
         <html:h2>{local:dispatch($node/descendant::tei:titleStmt/tei:title)}</html:h2>
-        {local:dispatch($node/descendant::tei:sourceDesc/descendant::tei:bibl),
-        local:dispatch($node/descendant::tei:body),
-        local:dispatch($node/descendant::m:aux)}
+        <html:h3>{"From " || local:dispatch($node/descendant::m:publisher) || ", " || local:dispatch($node/descendant::m:date)}</html:h3>
+        <html:h4>{local:dispatch($node/descendant::m:word-count) || " words"}</html:h4>
+        {local:dispatch($node/descendant::tei:body),
+        <html:span class="ghost">Ghost descriptions</html:span>,
+        local:dispatch($node/descendant::m:aux),
+        local:dispatch($node/descendant::tei:sourceDesc/descendant::tei:bibl)}
     </html:section>
 };
 
@@ -118,7 +126,7 @@ declare function local:link ($node as element (m:name)) as element (html:td){
     <html:td>
     {if ($node/parent::m:place/m:link)
     then <html:a href='{$node/parent::m:place/m:link/string()}'>{local:passthru($node)}</html:a>
-    else local:passthru($node)}
+    else (local:passthru($node))}
     </html:td>
 };
 
