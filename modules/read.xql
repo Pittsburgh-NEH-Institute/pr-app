@@ -27,6 +27,7 @@ Retrieve query parameters
 declare variable $id as xs:string? := request:get-parameter('id', ());
 declare variable $term as xs:string? := request:get-parameter('term', ());
 
+
 (: ====
 Retrieve auxiliary data
 ==== :)
@@ -35,13 +36,16 @@ declare variable $pros := doc($exist:root || $exist:controller || '/data/aux_xml
 (: ====
 Retrieve article using $id
 === :)
-declare variable $article as element() := collection($path-to-data)//id($id)[ft:query(., $term)];
+declare variable $article as element() := collection($path-to-data)//id($id)[ft:query(., $term, map{'fields':('word-count','formatted-publisher', 'formatted-date')})];
 
 if ($id) then 
 
 <m:result>
 {$article => util:expand()}
 <m:aux>
+<m:publisher>{ft:field($article, 'formatted-publisher')}</m:publisher>
+<m:date>{ft:field($article, 'formatted-date')}</m:date>
+<m:word-count>{ft:field($article, 'word-count')}</m:word-count>
 <m:places>
 {for $place in $gazetteer//tei:place[@xml:id = 
                 $article//tei:placeName/@ref[starts-with(., '#')] 
@@ -58,5 +62,5 @@ if ($id) then
 </m:people>
 </m:aux>
 </m:result>
-else <m:result>None</m:result>
+else <m:no-result>None</m:no-result>
 

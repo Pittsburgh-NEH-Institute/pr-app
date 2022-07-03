@@ -58,11 +58,11 @@ return
     {$place-id}
         <m:name>{$name}</m:name>
         <m:type>{$type}</m:type>
-        {if (empty($link)) then ()
-        else <m:link>{$link}</m:link>}
         <m:geo>{$geo}</m:geo>
         <m:settlement>{$settlement}</m:settlement>
         <m:parent>{$parent}</m:parent>
+        {if (empty($link)) then ()
+        else <m:link>{$link}</m:link>}
     </m:place>
 };
 (: Compile map titles and create links. So far, I've been doing this by creating individual xql files for each map. this isn't scalable
