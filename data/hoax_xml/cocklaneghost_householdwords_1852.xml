@@ -8,7 +8,6 @@
         <respStmt>
           <resp>Originally published by</resp>
           <name>Household Words</name>
-          
         </respStmt>
         <respStmt>
           <resp>Transcribed and encoded by</resp>
@@ -60,14 +59,14 @@
           ref="CLghost">Cock Lane <rs ref="ghost">Ghost</rs></rs>, by an advertisement in the Times
         Newspaper, in which a demonstrator or showman, <name ref="#stone">Mr. Stone</name>, begged
           <q who="#stonegw">leave to inform the nobility and gentry that he has just returned from
-            <placeName ref="#usa">the United States</placeName>, accompanied by <name
+            <placeName ref="usa">the United States</placeName>, accompanied by <name
             ref="#haydenmb">Mrs. M. B. Hayden</name> for the purpose of Demonstrating the wonderful
           Phenomena known in that country as Spiritual Manifestations, and which have created the
           most intense excitement in all classes of society—<placeName ref="#r26seymour">Residence,
             Twenty-six, Upper Seymour Street, Portman Square</placeName>. Hours at home, from Eleven
           to Two and from Four to Six.</q> So the announcement ran. We had read something of the
         Rochester Rappers and of the mystery, if it be a mystery, called <soCalled><rs ref="spirit"
-            >spirit</rs> knocking</soCalled> in the sentimental language of <placeName ref="#usa"
+            >spirit</rs> knocking</soCalled> in the sentimental language of <placeName ref="usa"
           >America</placeName>. We resolved to visit Mrs. Hayden, and knock up an acquaintance with
         the <rs ref="ghost">ghosts</rs> who meet in her apartments, <placeName ref="#r26seymour">No.
           Twenty-six, Upper Seymour Street, Portman Square.</placeName> We ourselves happened to be
@@ -99,7 +98,7 @@
       <p>There have often been people impelled, out of the ignorance and coarseness of their
         natures, to the forging of clumsy tales, in which they themselves, together with the <name
           ref="rel">Supreme Being</name>, are the chief actors. Not many weeks ago two cowherd’s
-        children in <placeName ref="#france">France</placeName>—in consequence of information
+        children in <placeName ref="france">France</placeName>—in consequence of information
         received direct from the <rs ref="rel">Virgin Mary</rs>—became accredited by Infallibility
         itself as new apostles. <ref
           source="https://babel.hathitrust.org/cgi/pt?id=njp.32101076875358;view=1up;seq=78">Not
@@ -203,7 +202,7 @@
         number—abolished marriages. Emboldened by the credulity of thousands who believed in the
         establishment of a direct communication with the <rs ref="spirit">spirit</rs> world, some
         blasphemous persons at <placeName ref="#auburn">Auburn</placeName>, in the State of
-          <placeName ref="newyork">New York</placeName>—determined that no dark recess of profanity,
+          <placeName ref="#newyork">New York</placeName>—determined that no dark recess of profanity,
         out of which gold could be taken, should be left unvisited— published a newspaper, conducted
         by <rs type="rel">the Apostles and the Prophets, under the direction of the Lord
           Supreme!</rs> We quote from the prospectus, simply stating that the publication of the
@@ -267,7 +266,7 @@
         clumsy and common-place enough.</p>
       <p>This being the substance of our <rs ref="rapping">readings in the matter of knocking and
           rapping <rs ref="spirit">spirits</rs></rs>, we paid our visit to the London <rs
-          ref="ghost">ghosts</rs> established in genteel apartments in <placeName ref="r26seymour"
+          ref="ghost">ghosts</rs> established in genteel apartments in <placeName ref="#r26seymour"
           >Upper Seymour Street, Portman Square</placeName>, very soon after we accidentally saw the
         advertisement we have set forth.</p>
       <p>We were two—<name ref="#brown">Brown</name> and <name ref="#thompson">Thompson</name>. We
@@ -294,7 +293,7 @@
         was to bring us to the world of <rs ref="ghost">ghosts</rs>.</p>
       <p><q who="#stonegw">You are aware,</q> he said, <q who="#stonegw">that I have given a good
           deal of my attention to electro-biology?</q> We {were} aware. <q who="#stonegw"><rs
-            ref="rapping">I have recently visited <placeName ref="#usa">America</placeName>, where
+            ref="rapping">I have recently visited <placeName ref="usa">America</placeName>, where
             great sensation has been made by manifestations from the world of <rs ref="spirit"
               >spirits</rs>, made by means of a noise, like rapping. You have perhaps heard of the
             Rappers?</rs></q> Something; we came there to be informed. <q who="#stonegw">It is very

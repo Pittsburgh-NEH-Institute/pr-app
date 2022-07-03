@@ -47,23 +47,24 @@ declare function hoax:round-geo($input as xs:string) as xs:double {
 };
 declare function hoax:get-place-info($place as element(tei:place)) as element(m:place) {
     let $place-id := $place/@xml:id
-    let $name as xs:string := $place/tei:placeName ! string()
+    let $name as xs:string := string-join($place/tei:placeName, ', ')
     let $type as xs:string? := $place/@type ! string()
     let $link as xs:string? := $place/tei:bibl ! string()
     let $geo as xs:string := $place/tei:location/tei:geo ! string()
     let $settlement as xs:string? := $place/tei:location/tei:settlement ! string ()
-    let $parent as xs:string? := $place/parent::tei:place/tei:placeName ! string () 
-return    
-    <m:place>
-    {$place-id}
-        <m:name>{$name}</m:name>
-        <m:type>{$type}</m:type>
-        <m:geo>{$geo}</m:geo>
-        <m:settlement>{$settlement}</m:settlement>
-        <m:parent>{$parent}</m:parent>
-        {if (empty($link)) then ()
-        else <m:link>{$link}</m:link>}
-    </m:place>
+    let $parent-place as xs:string? := $place/parent::tei:place/tei:placeName ! string () 
+    return (: NB: Some values may be empty and should be created anyway :)
+        <m:place>
+            {$place-id}
+            <m:name>{$name}</m:name>
+            <m:type>{$type}</m:type>
+            <m:geo>{$geo}</m:geo>
+            <m:settlement>{$settlement}</m:settlement>
+            <m:parent>{$parent-place}</m:parent>
+            {if (empty($link)) 
+                then ()
+                else <m:link>{$link}</m:link>}
+        </m:place>
 };
 (: Compile map titles and create links. So far, I've been doing this by creating individual xql files for each map. this isn't scalable
  : filter articles with place references, make the filename into a link so that when clicked it just appends to current URL
@@ -87,7 +88,7 @@ Functions for persons
 ==========:)
 declare function hoax:get-person-info ($person) as element(m:person) {
     let $surname as xs:string := $person/tei:persName/tei:surname ! string()
-    let $forename as xs:string := $person/tei:persName/tei:forename[1] ! string()
+    let $forename as xs:string? := $person/tei:persName/tei:forename[1] ! string()
     let $abt as xs:string? := $person//tei:bibl ! string ()
     let $job as xs:string? := $person//tei:occupation ! string()
     let $role as xs:string? := $person/@role ! string()
@@ -95,7 +96,7 @@ declare function hoax:get-person-info ($person) as element(m:person) {
 
 return
     <m:person>
-        <m:name>{$surname || ', ' || $forename}</m:name>
+        <m:name>{string-join(($surname, $forename), ', ')}</m:name>
         <m:about>{$abt}</m:about>
         <m:job>{$job}</m:job>
         <m:role>{$role}</m:role>

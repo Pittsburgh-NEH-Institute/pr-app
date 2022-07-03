@@ -198,7 +198,6 @@ declare
     function tests:tautology() {
         1 = 1
 };
-
 ```
 
 The module and namespace declarations are housekeeping and should not be touched. Your module 

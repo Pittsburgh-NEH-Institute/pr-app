@@ -8,22 +8,32 @@ xquery version "3.1";
  :)
 
 module namespace tests = "http://www.obdurodon.org/apps/pr-app/tests";
-
 declare namespace test="http://exist-db.org/xquery/xqsuite";
 import module namespace hoax="http://obdurodon.org/hoax" at "../../modules/functions.xqm";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
+declare namespace m="http://www.obdurodon.org/model";
 
-
-(: Testing geo functions :)
+(: ==========
+Set up and tear down
+========== :)
 declare variable $tests:XML := document {
     <TEI xmlns="http://www.tei-c.org/ns/1.0">
         <tei:geo>51.513979 -0.098372</tei:geo>
         <tei:body>
             This sentence has five words.
         </tei:body>
-
     </TEI>
 };
+
+declare variable $tests:place-test-1 as element(tei:place) :=
+    <m:place xml:id="ealing">
+        <m:name>Hampstead</m:name>
+        <m:type>neighborhood</m:type>
+        <m:geo>51.5126553 -0.3051952</m:geo>
+        <m:settlement/>
+        <m:parent>London</m:parent>
+    </m:place>
+;
 
 declare %test:setUp
 function tests:_test-set() {    
@@ -37,6 +47,9 @@ function tests:_test-teardown() {
     xmldb:remove("/db/apps/pr-app", "test.xml")
 };
 
+(: ==========
+Tests for geo functions 
+========== :)
 declare
     %test:assertEquals('51.513979')
     function tests:get-lat() as xs:string {
@@ -50,7 +63,9 @@ declare
         hoax:round-geo($input)
     };
 
-(: Test function to move definite and indefinite article to end of string:)
+(: ==========
+Tests for fixing definitie and indefinite articles
+========== :)
 declare
     %test:arg('input', 'The Big Sleep')
     %test:assertEquals('Big Sleep, The')
@@ -66,7 +81,9 @@ declare
         hoax:format-title($input)
     };
 
-(: Test function to compute necessary month-year facets needed for next query :)
+(: ==========
+ Tests for computing necessary month-year facets needed for next query 
+ ========== :)
 declare
     (: If no decades, return all month-years :)
     %test:arg('decades', '')
@@ -89,9 +106,24 @@ declare
         return hoax:construct-date-facets($d, $m)
     };
 
- (:Test function that counts words :)  
+ (: ==========
+ Test for word count
+ ========== :)  
  declare 
-    %test:assertEquals (5)
+    %test:assertEquals(5)
     function tests:word-count() as xs:integer {
         hoax:word-count(doc("/db/apps/pr-app/test.xml")//tei:body)
+    };
+
+(: ==========
+Test for retrieving place info from gazetteer
+Depends on actual aux_xml/places.xml file
+========== :)
+declare
+    %test:arg("placename", "ealing")
+    %test:assertTrue
+    function tests:get-place-info($placename) as xs:boolean {
+        let $e as element(tei:place) := 
+            doc("/db/apps/pr-app/data/aux_xml/places.xml")//id("ealing")
+        return deep-equal(hoax:get-place-info($e), $tests:place-test-1)
     };
