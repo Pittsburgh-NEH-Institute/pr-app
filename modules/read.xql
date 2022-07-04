@@ -48,6 +48,13 @@ if ($article) then (: test for $article, not $id, because $id could be present b
             <m:publisher>{ft:field($article, 'formatted-publisher')}</m:publisher>
             <m:date>{ft:field($article, 'formatted-date')}</m:date>
             <m:word-count>{ft:field($article, 'word-count')}</m:word-count>
+            <m:ghost-references>{
+                (: alphabetized distinct values of ghost references, with counts :)
+                for $rs in $article//tei:rs[contains(@ref, 'ghost')]
+                group by $ref := $rs/@ref
+                order by $ref
+                return <m:ghost-reference>{concat($ref, ' (', count($rs), ')')}</m:ghost-reference>
+            }</m:ghost-references>
             <m:places>{
                 (: TODO: Create field to avoid having to navigate the leading hash :)
                 for $place in $gazetteer//tei:place
