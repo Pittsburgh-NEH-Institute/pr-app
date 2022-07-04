@@ -37,13 +37,13 @@ declare variable $pros := doc($exist:root || $exist:controller || '/data/aux_xml
 (: ====
 Retrieve article using $id
 === :)
-declare variable $article as element(tei:TEI) := 
+declare variable $article as element(tei:TEI)? := 
     collection($path-to-data)//id($id)
     [ft:query(., $term, map{'fields':('word-count','formatted-publisher', 'formatted-date')})];
 
-if ($id) then 
+if ($article) then (: test for $article, not $id, because $id could be present but incorrect :)
     <m:result> 
-        {$article => util:expand()} (: $article is a full TEI document in tei namespace :)
+        {$article => util:expand() (: $article is a full TEI document in tei namespace :) }
         <m:aux>
             <m:publisher>{ft:field($article, 'formatted-publisher')}</m:publisher>
             <m:date>{ft:field($article, 'formatted-date')}</m:date>
