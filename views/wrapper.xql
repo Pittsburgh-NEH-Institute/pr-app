@@ -37,6 +37,7 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
                     <li><a href="index">Home</a></li> 
                     <li><a href="search">Articles</a></li>
                     <li><a href="maps">Maps</a></li> 
+                    <li><a href="visualize">Visualization</a></li>
                     <li><a href="places">Places</a></li>
                     <li><a href="persons">People</a></li>     
                 </ul>

@@ -37,14 +37,23 @@ declare function hoax:get-long($geo as element(tei:geo)) as xs:string {
 (:~ 
  : hoax:round-geo() retrieves the latitude value from a given place entry in
  : places.xml. 
+ ;
+ ; Arity-1 version supplies default precision of 2 and calls arity-2 version
  :
  : @param $input : xs:string any lat or long value
  : @return xs:double
  :)
-declare function hoax:round-geo($input as xs:string) as xs:double {
-    $input ! number(.) ! format-number(. , '#.00') ! number(.)
-
+declare function hoax:round-geo($input as xs:string) as xs:string {
+    hoax:round-geo($input, 2)
 };
+
+declare function hoax:round-geo($input as xs:string, $precision as xs:integer) as xs:string {
+    format-number(
+        number($input), 
+        '0.' || string-join((1 to $precision) ! '0')
+    )
+};
+
 declare function hoax:get-place-info($place as element(tei:place)) as element(m:place) {
     let $place-id := $place/@xml:id
     let $name as xs:string := string-join($place/tei:placeName, ', ')
@@ -140,4 +149,8 @@ declare function hoax:construct-date-facets($decades as xs:string*, $month-years
 
 declare function hoax:word-count($body as element(tei:body)) as xs:integer {
    count(tokenize($body))
+};
+
+declare function hoax:initial-cap($input as xs:string) as xs:string {
+    concat(upper-case(substring($input, 1, 1)), substring($input, 2))
 };
