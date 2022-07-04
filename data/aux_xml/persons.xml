@@ -3,60 +3,70 @@
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title></title>
+                <title/>
             </titleStmt>
             <publicationStmt>
-                <publisher></publisher>
+                <publisher/>
             </publicationStmt>
             <sourceDesc>
-                <bibl></bibl>
+                <bibl/>
             </sourceDesc>
-            </fileDesc>
+        </fileDesc>
     </teiHeader>
     <text>
         <body>
             <listPerson>
                 <personGrp xml:id="thug" role="group">
                     <persName>Thugs</persName>
-                    <bibl>https://www.britannica.com/topic/thug</bibl>
-                    
+                    <bibl><ref target="https://www.britannica.com/topic/thug">The word "thugs"
+                            originates from Hindi and Sanskrit word, and here is referenced to
+                            suggest a group of organized criminals.</ref></bibl>
                 </personGrp>
-                <person sex="M" xml:id="stonegw" role="showman" >
+                <person sex="M" xml:id="stonegw" role="showman">
                     <persName>
                         <surname>Stone</surname>
                         <forename>George W.</forename>
                     </persName>
-                    <bibl>One can read Stone's work on Electrobiology and spiritualism online.
-                    
-                    https://play.google.com/books/reader?id=k55hAAAAcAAJ&amp;pg=GBS.PA2&amp;hl=en</bibl>
+                    <bibl>
+                        <ref
+                            target="https://play.google.com/books/reader?id=k55hAAAAcAAJ&amp;pg=GBS.PA2&amp;hl=en"
+                            >Stone is the author of Electro-Biology: or, the Electrical science of
+                            life</ref></bibl>
                 </person>
                 <person sex="F" xml:id="haydenmb" role="medium">
                     <persName>
                         <surname>Hayden</surname>
                         <forename>Maria B.</forename>
                     </persName>
-                    <bibl>https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/hayden-maria-b-ca-1852</bibl>
+                    <bibl><ref
+                            target="https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/hayden-maria-b-ca-1852"
+                            >Maria B. Hayden was an American medium who gained popularity in England
+                            during the 1850s.</ref></bibl>
                 </person>
-                <person sex="M" xml:id="wordsworth"  role="poet">
+                <person sex="M" xml:id="wordsworth" role="poet">
                     <persName>
                         <surname>Wordsworth</surname>
                         <forename>William</forename>
                     </persName>
-                    <bibl>https://en.wikipedia.org/wiki/William_Wordsworth#External_links</bibl>
                 </person>
                 <person sex="F" xml:id="parsonse" role="medium child">
                     <persName>
                         <surname>Parsons</surname>
                         <forename>Elizabeth</forename>
                     </persName>
-                    <bibl>Elizabeth Parsons was the child involved in the Cock Lane Ghost story. Parsons rappings drew the attention of the neighborhood, though eventually it was discovered she was fabricating the story, possibly at the behest of her father.</bibl>
+                    <bibl>Elizabeth Parsons was the child involved in the Cock Lane Ghost story.
+                        Parsons rappings drew the attention of the neighborhood, though eventually
+                        it was discovered she was fabricating the story, possibly at the behest of
+                        her father.</bibl>
                 </person>
                 <person sex="F" xml:id="lynesf" role="ghost">
                     <persName>
                         <surname>Lynes</surname>
                         <forename>Fanny</forename>
                     </persName>
-                    <bibl>Fanny Lynes was the woman supposed to be haunting the Parsons' home. It has been suggested that Lynes was poisoned with arsenic, though this cannot be confirmed.</bibl>
+                    <bibl>Fanny Lynes was the woman supposed to be haunting the Parsons' home. It
+                        has been suggested that Lynes was poisoned with arsenic, though this cannot
+                        be confirmed.</bibl>
                 </person>
                 <person sex="U" xml:id="robinsonj" role="spiritualist author">
                     <persName>
@@ -70,71 +80,82 @@
                     </persName>
                 </personGrp>
                 <personGrp xml:id="culvern" role="family">
-                <persName>
-                <surname>Culvern</surname>
-                </persName>
+                    <persName>
+                        <surname>Culvern</surname>
+                    </persName>
 
                 </personGrp>
-            
-            <person sex="M" xml:id="brown"  role="reporter">
-                <persName>
-                    <surname>Brown</surname>
-                </persName>
-            </person>
-            <person sex="M" xml:id="thompson" role="reporter">
-                <persName>
-                    <surname>Thompson</surname>
-                </persName>
-            </person>
-            <person sex="M" xml:id="kinghn" role="photographer">
-                <persName>
-                    <surname>King</surname>
-                    <forename>Horatio</forename>
-                    <forename>Nelson</forename>
-                </persName>
-                <bibl>Encyclopedia of Nineteenth-Century Photography. United Kingdom, Taylor &amp; Francis, 2013.</bibl>
-            </person>
-            <person sex="M" xml:id="blackshag" role="ghost">
-                <persName><surname>Black Shag</surname></persName>
-            </person>
-            <person sex="M" xml:id="schweim" role="ghost">
-                <persName>
-                <surname>Schweim</surname>
-                </persName>
-            </person>
-            <person sex="F" xml:id="ccrowe" role="author">
-                <persName>
-                    <surname>Crowe</surname>
-                    <forename>Catherine</forename>
-                </persName>
-                <bibl>https://www.kent.ac.uk/library/specialcollections/other/catherine-crowe/index.html#</bibl>
-            </person>
-            <person sex="M" xml:id="springrice" role="politician">
-                <persName>
-                    <surname>Spring Rice</surname>
-                    <forename>Thomas</forename>
-                </persName>
-                <bibl>http://www.historyofparliamentonline.org/volume/1820-1832/member/rice-thomas-1790-1866</bibl>
-            </person>
-           <person sex="M" xml:id="johnrussell" role="politician">
-               <occupation>Prime Minister</occupation>
+
+                <person sex="M" xml:id="brown" role="reporter">
+                    <persName>
+                        <surname>Brown</surname>
+                    </persName>
+                </person>
+                <person sex="M" xml:id="thompson" role="reporter">
+                    <persName>
+                        <surname>Thompson</surname>
+                    </persName>
+                </person>
+                <person sex="M" xml:id="kinghn" role="photographer">
+                    <persName>
+                        <surname>King</surname>
+                        <forename>Horatio</forename>
+                        <forename>Nelson</forename>
+                    </persName>
+                    <bibl>King was identified using the Encyclopedia of Nineteenth-Century
+                        Photography. United Kingdom, Taylor &amp; Francis, 2013.</bibl>
+                </person>
+                <person sex="M" xml:id="blackshag" role="ghost">
+                    <persName><surname>Black Shag</surname></persName>
+                </person>
+                <person sex="M" xml:id="schweim" role="ghost">
+                    <persName>
+                        <surname>Schweim</surname>
+                    </persName>
+                </person>
+                <person sex="F" xml:id="ccrowe" role="author">
+                    <persName>
+                        <surname>Crowe</surname>
+                        <forename>Catherine</forename>
+                    </persName>
+                    <bibl><ref
+                            target="https://www.kent.ac.uk/library/specialcollections/other/catherine-crowe/index.html#"
+                            >Catherine Crowe was a spiritualist and author.</ref></bibl>
+                </person>
+                <person sex="M" xml:id="springrice" role="politician">
+                    <persName>
+                        <surname>Spring Rice</surname>
+                        <forename>Thomas</forename>
+                    </persName>
+                    <bibl><ref
+                            target="http://www.historyofparliamentonline.org/volume/1820-1832/member/rice-thomas-1790-1866"
+                            >Thomas Rice was an Irish politician</ref></bibl>
+                </person>
+                <person sex="M" xml:id="johnrussell" role="politician">
+                    <occupation>Prime Minister</occupation>
                     <persName>
                         <addName role="honorary">Lord</addName>
                         <surname>Russell</surname>
-                        <forename>John</forename> 
+                        <forename>John</forename>
                     </persName>
-                    <bibl>https://www.gov.uk/government/history/past-prime-ministers/lord-john-russell-1st-earl-russell</bibl>
+                    <bibl><ref
+                            target="https://www.gov.uk/government/history/past-prime-ministers/lord-john-russell-1st-earl-russell"
+                            >Lord John Russell was British Prime Minister (Whig) from 1846 - 1852,
+                            and again from 1865 to 1866.</ref></bibl>
                 </person>
                 <person sex="M" xml:id="henrybrougham" role="politician">
                     <occupation>Lord Chancellor</occupation>
                     <persName>
                         <addName>Lord</addName>
                         <surname>Brougham</surname>
-                        <forename>Henry Peter</forename> 
+                        <forename>Henry Peter</forename>
                         <addName>1st Baron Brougham and Vaux</addName>
                     </persName>
-                    <bibl>https://www.britannica.com/biography/Henry-Peter-Brougham-1st-Baron-Brougham-and-Vaux</bibl>
-                </person>    
+                    <bibl><ref
+                            target="https://www.britannica.com/biography/Henry-Peter-Brougham-1st-Baron-Brougham-and-Vaux"
+                            >Lord Henry Brougham was a Whig politician and lord chancellor of
+                            England from 1830 - 1834</ref></bibl>
+                </person>
                 <person sex="M" xml:id="horationelson" role="admiral">
                     <occupation>Vice Admiral of the Royal Navy</occupation>
                     <persName>
@@ -142,55 +163,70 @@
                         <forename>Nelson</forename>
                         <roleName>1st Viscount Nelson</roleName>
                     </persName>
-                    <bibl>https://en.wikipedia.org/wiki/Horatio_Nelson,_1st_Viscount_Nelson</bibl>
+                    <bibl><ref
+                            target="https://en.wikipedia.org/wiki/Horatio_Nelson,_1st_Viscount_Nelson"
+                            >Horatio Nelson was a Naval official known for his death at the Battle
+                            of Trafalgar in 1805.</ref></bibl>
                 </person>
                 <person sex="M" xml:id="thomaspaine" role="writer">
                     <persName>
                         <surname>Paine</surname>
                         <forename>Thomas</forename>
                     </persName>
-                    <bibl>https://www.britannica.com/biography/Thomas-Paine</bibl>
+                    <bibl><ref target="https://www.britannica.com/biography/Thomas-Paine">Thomas
+                            Paine was the author of the pamphlet Common Sense.</ref></bibl>
                 </person>
                 <person sex="M" xml:id="matthewwood" role="mayor">
                     <persName>
                         <surname>Wood</surname>
                         <forename>Matthew</forename>
                     </persName>
-                    <bibl>https://www.historyofparliamentonline.org/volume/1820-1832/member/wood-matthew-1768-1843</bibl>
+                    <bibl><ref
+                            target="https://www.historyofparliamentonline.org/volume/1820-1832/member/wood-matthew-1768-1843"
+                            >Matthew Wood was a mayor of London from 1815-1817.</ref></bibl>
                 </person>
                 <person sex="M" xml:id="georgejones" role="guard">
                     <persName>
                         <surname>Jones</surname>
                         <forename>George</forename>
                     </persName>
-                    <bibl>https://www.gutenberg.org/files/58852/58852-h/58852-h.htm</bibl>
+                    <bibl><ref target="https://www.gutenberg.org/files/58852/58852-h/58852-h.htm"
+                            >George Jones was a Coldstream Guard, possibly part of the Buckingham
+                            House Guard.</ref></bibl>
                 </person>
                 <person sex="M" xml:id="richarddonkin" role="guard">
                     <persName>
                         <surname>Donkin</surname>
                         <forename>Richard</forename>
                     </persName>
-                    <bibl>https://www.gutenberg.org/files/58852/58852-h/58852-h.htm</bibl>
+                    <bibl><ref target="https://www.gutenberg.org/files/58852/58852-h/58852-h.htm"
+                            >Richard Donkin was a Coldstream Guard, possibly part of the Buckingham
+                            House Guard.</ref></bibl>
                 </person>
                 <person sex="M" xml:id="richardford" role="magistrate">
                     <persName>
                         <surname>Ford</surname>
                         <forename>Richard</forename>
                     </persName>
-                    <bibl>https://en.wikipedia.org/wiki/Richard_Ford_(East_Grinstead_MP)</bibl>
+                    <bibl><ref
+                            target="https://en.wikipedia.org/wiki/Richard_Ford_(East_Grinstead_MP)"
+                            >Sir Richard Ford was a police magistrate in London during the early
+                            1800s.</ref></bibl>
                 </person>
                 <person sex="M" xml:id="stafford" role="clerk">
                     <persName>
                         <surname>Stafford</surname>
-                        <forename></forename>
+                        <forename/>
                     </persName>
                 </person>
                 <person sex="M" xml:id="josephady" role="fraudster">
                     <persName>
                         <surname>Ady</surname>
-                        <forename>Joseph</forename> 
+                        <forename>Joseph</forename>
                     </persName>
-                    <bibl>https://victorianweb.org/previctorian/dequincey/secretsocieties.html</bibl>
+                    <bibl><ref
+                            target="https://en.wikisource.org/wiki/Dictionary_of_National_Biography,_1885-1900/Ady,_Joseph"
+                            >Joseph Ady was a famous fraudster in London.</ref></bibl>
                 </person>
             </listPerson>
         </body>
