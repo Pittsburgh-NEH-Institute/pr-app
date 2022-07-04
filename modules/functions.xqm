@@ -39,6 +39,7 @@ declare function hoax:get-long($geo as element(tei:geo)) as xs:string {
  : places.xml. 
  ;
  ; Arity-1 version supplies default precision of 2 and calls arity-2 version
+ ; Arity-2 version requires user-supplied precision as second argument
  :
  : @param $input : xs:string any lat or long value
  : @return xs:double

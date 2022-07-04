@@ -53,16 +53,41 @@ Tests for geo functions
 declare
     %test:assertEquals('51.513979')
     function tests:get-lat() as xs:string {
-        hoax:get-lat(doc("/db/apps/pr-app/test.xml")//tei:geo)
+        hoax:get-lat(doc("/db/apps/pr-app/test.xml")/tei:TEI/tei:geo)
     };
 
 declare
+    %test:assertEquals('-0.098372')
+    function tests:get-long() as xs:string {
+        hoax:get-long(doc("/db/apps/pr-app/test.xml")/tei:TEI/tei:geo)
+    };
+
+declare
+    %tests:name('round-geo() with default precision')
     %test:arg('input', '51.513979')
-    %test:assertEquals(51.51)
-    function tests:test-round-geo($input as xs:string) as xs:double {
+    %test:assertEquals('51.51')
+    %test:arg('input', '51.3')
+    %test:assertEquals('51.30')
+    %test:arg('input', '-.3')
+    %test:assertEquals('-0.30')
+    function tests:test-round-geo($input as xs:string) as xs:string {
         hoax:round-geo($input)
     };
 
+declare
+    %tests:name('round-geo() with specified precision')
+    %test:arg('input', '51.513979')
+    %test:arg('precision', 4)
+    %test:assertEquals('51.5140')
+    %test:arg('input', '51.3')
+    %test:arg('precision', 4)
+    %test:assertEquals('51.3000')
+    %test:arg('input', '-.3')
+    %test:arg('precision', 3)
+    %test:assertEquals('-0.300')
+    function tests:test-round-geo($input as xs:string, $precision as xs:integer) as xs:string {
+        hoax:round-geo($input, $precision)
+    };
 (: ==========
 Tests for fixing definitie and indefinite articles
 ========== :)
