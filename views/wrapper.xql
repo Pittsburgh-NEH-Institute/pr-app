@@ -28,8 +28,9 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
 <!-- links for mapbox -->    
     </head>
     <body>
-        <section class="nav-menu">    
-            <header >
+        <section class="nav-menu">
+            <img src="resources/img/typewriter.jpg" height="35px" style="margin-right:1em;"/>                     
+            <header>
                 <h1><a href="index">Hoax: ghosts in 19th-c. British press</a></h1>
             </header>
             <nav>
