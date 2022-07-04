@@ -38,6 +38,7 @@ a:hover {
     
 }
 table, tr, th, td {
+    border: 1px black solid;
     border-collapse: collapse;
 }
 
@@ -313,9 +314,8 @@ mark {
     font-weight: bold;
     background-color: lightpink;
 }
-p {
-    display: block;
-    line-height: 1.2;
+.reading * {
+    line-height: 1.4;
 }
 .ref {
     /* 
@@ -328,15 +328,6 @@ p {
 #aux {
     font-size: smaller;
 }
-/*
-==========
-Tables
-========== 
-*/
-table, th, td {
-    border: 1px solid;
-  }
-
 /*
 ==========
 XML “lozenge” link in reading view

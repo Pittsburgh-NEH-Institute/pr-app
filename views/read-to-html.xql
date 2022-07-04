@@ -16,6 +16,12 @@ declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";
 declare option output:indent "no";
 
+declare variable $gms as map(*) := map {
+    "M" : "Male",
+    "F" : "Female",
+    "U" : "Unknown"
+    };
+
 declare variable $data as document-node() := request:get-data();
 
 declare function local:dispatch($node as node()) as item()* {
@@ -25,7 +31,9 @@ declare function local:dispatch($node as node()) as item()* {
         case element(m:result) return local:TEI($node)
         (:process tei:body:)
             case element(tei:bibl) return local:bibl($node)
+            case element(tei:publisher) return local:publisher($node)
             case element(tei:p) return local:p($node)
+            case element(tei:ab) return local:p($node)
             case element(tei:rs) return local:rs($node)
             case element(tei:q) return local:quote($node)
         case element(m:aux) return local:aux($node)
@@ -34,10 +42,16 @@ declare function local:dispatch($node as node()) as item()* {
             case element(m:ghost-reference) return local:ghost-reference($node)
             case element (m:places) return local:places($node)
             case element (m:place) return local:row($node)
-            case element (m:name) return local:link($node)
-            case element (m:type) return local:cell($node)
+            case element(m:people) return local:people($node)
+            case element(m:person) return local:person($node)
+            case element (m:name) return local:cap-cell($node)
+            case element (m:job) return local:cap-cell($node)
+            case element (m:role) return local:cap-cell($node)
+            case element (m:gm) return local:gm($node)
+            case element (m:type) return local:cap-cell($node)
             case element (m:geo) return local:geo($node)
             case element (m:parent) return local:cell($node)
+            case element(m:settlement) return local:cell($node)
             case element (m:link) return ()
         case element(exist:match) return local:match($node)
         default return local:passthru($node)
@@ -56,10 +70,8 @@ declare function local:no-result($node as element(m:no-result)) as element(html:
 Functions for TEI body
 ========== :)
 declare function local:TEI($node as element(m:result)) as element(html:section){
-    <html:section>
+    <html:section class="reading">
         <html:h2>{local:dispatch($node/descendant::tei:titleStmt/tei:title)}</html:h2>
-        <html:h3>{"From " || local:dispatch($node/descendant::m:publisher) || ", " || local:dispatch($node/descendant::m:date)}</html:h3>
-        <html:h4>{local:dispatch($node/descendant::m:word-count) || " words"}</html:h4>
         {local:dispatch($node/descendant::tei:body),
         local:dispatch($node/descendant::m:aux),
         local:dispatch($node/descendant::tei:sourceDesc/descendant::tei:bibl)}
@@ -67,10 +79,24 @@ declare function local:TEI($node as element(m:result)) as element(html:section){
 };
 
 declare function local:bibl($node as element(tei:bibl)) as item()* {
-    <html:p class="bibl">{for $child in $node/node() return local:dispatch($child)}</html:p>
+    if ($node/ancestor::tei:sourceDesc) then 
+    <html:p class="bibl">{
+        local:passthru($node),
+        concat(' (', root($node)/descendant::m:word-count ,' words)')
+    }</html:p>
+    else if ($node/ancestor::tei:cit) then
+    (' (', local:passthru($node), ')')
+    else local:passthru($node)
 }; 
 
-declare function local:p($node as element(tei:p)) as element(html:p) {
+declare function local:publisher($node as element(tei:publisher)) as element(html:cite) {
+    <html:cite>{
+        if ($node/@rend) then concat('(', $node/@rend, ') ') else (),
+        local:passthru($node)
+    }</html:cite>
+};
+
+declare function local:p($node as element()) as element(html:p) {
     <html:p>{for $child in $node/node() return local:dispatch($child)}</html:p>
 };
 
@@ -79,7 +105,10 @@ declare function local:quote($node as element(tei:q)) as element(html:q) {
 };
 
 declare function local:rs($node as element(tei:rs)) as element(html:span) {
-    <html:span class="ref" title="{$node/@ref}">{for $child in$node/node() return local:dispatch($child)}</html:span>
+    <html:span 
+        class="{string-join(('ref', $node/@ref), ' ')}" 
+        title="{$node/@ref}"
+    >{for $child in$node/node() return local:dispatch($child)}</html:span>
 };
 
 declare function local:match($node as element(exist:match)) as element(html:mark) {
@@ -104,17 +133,19 @@ declare function local:aux($node as element(m:aux)) as element()* {
         }</html:section>)
 };
 
-declare function local:ghost-references($node as element(m:ghost-references)) as element()+ {
-    <html:h2>Ghost references</html:h2>,
-    <html:ul>{
-        for $child in $node/node() return local:dispatch($child)
-    }</html:ul>
+declare function local:ghost-references($node as element(m:ghost-references)) as element()* {
+    if (exists($node/*)) then
+        (<html:h2>Ghost references</html:h2>,
+        <html:ul>{
+            for $child in $node/node() 
+            order by lower-case($child)
+            return local:dispatch($child)
+        }</html:ul>)
+    else ()
 };
 
 declare function local:ghost-reference($node as element(m:ghost-reference)) as element(html:li) {
-    <html:li>{
-        for $child in $node/node() return local:dispatch($child)
-    }</html:li>
+    <html:li>{local:passthru($node)}</html:li>
 };
 
 declare function local:places($node as element(m:places)) as element()* {
@@ -123,20 +154,58 @@ declare function local:places($node as element(m:places)) as element()* {
     <html:table>
         <html:tr>
             <html:th>Place name</html:th>
-            <html:th>Type/Settlement</html:th>
-            <html:th>Geo</html:th>
+            <html:th>Type</html:th>
+            <html:th>Coordinates</html:th>
+            <html:th>Settlement</html:th>
             <html:th>Parent place</html:th>
         </html:tr>
-      {for $child in $node/node() return local:dispatch($child)}  
+      {
+        for $child in $node/node() 
+        order by lower-case($child)
+        return local:dispatch($child)}  
     </html:table>)
     else ()
 };
-declare function local:row ($node as element(m:place)) as element(html:tr){
+declare function local:people($node as element(m:people)) as element()* {
+    if (exists($node/*)) then
+    (<html:h2>Person references</html:h2>,
+    <html:table>
+        <html:tr>
+            <html:th>Name</html:th>
+            <html:th>Job</html:th>
+            <html:th>Role</html:th>
+            <html:th>Gender</html:th>
+        </html:tr>
+      {for $child in $node/node() 
+      order by lower-case($child)
+      return local:dispatch($child)}  
+    </html:table>)
+    else ()
+};
+
+declare function local:person($node as element(m:person)) as element(tei:tr) {
+    <html:tr>{for $child in $node/(node() except m:about) return local:dispatch($child)}</html:tr>
+};
+
+declare function local:row ($node as element()) as element(html:tr){
     <html:tr>{local:passthru($node)}</html:tr>
 };
 
 declare function local:cell ($node as element()) as element(html:td){
-    <html:td>{local:passthru($node)}</html:td>
+    <html:td>{
+        if (exists($node/node())) 
+            then local:passthru($node)
+            else "(None)"
+    }</html:td>
+};
+
+declare function local:cap-cell ($node as element()) as element(html:td){
+    (: Capitalize first letter of content:)
+    <html:td>{
+        if (exists($node/node())) 
+            then hoax:initial-cap($node)
+            else "(None)"
+    }</html:td>
 };
 
 declare function local:geo ($node as element(m:geo)) as element(html:td) {
@@ -152,6 +221,13 @@ declare function local:link ($node as element (m:name)) as element (html:td){
     then <html:a href='{$node/parent::m:place/m:link/string()}'>{local:passthru($node)}</html:a>
     else (local:passthru($node))}
     </html:td>
+};
+
+declare function local:gm($node as element(m:gm)) as element(html:td) {
+    <html:td>{
+        if (exists($node/node())) then $gms(string($node))
+        else "&#xa0;"
+    }</html:td>
 };
 
 local:dispatch($data)

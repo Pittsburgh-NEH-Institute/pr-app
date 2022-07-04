@@ -43,14 +43,14 @@ declare function hoax:get-long($geo as element(tei:geo)) as xs:string {
  : @param $input : xs:string any lat or long value
  : @return xs:double
  :)
-declare function hoax:round-geo($input as xs:string) as xs:double {
+declare function hoax:round-geo($input as xs:string) as xs:string {
     hoax:round-geo($input, 2)
 };
 
-declare function hoax:round-geo($input as xs:string, $precision as xs:integer) as xs:double {
+declare function hoax:round-geo($input as xs:string, $precision as xs:integer) as xs:string {
     format-number(
         number($input), 
-        '#.' || string-join((1 to $precision) ! '0')
+        '0.' || string-join((1 to $precision) ! '0')
     )
 };
 
@@ -149,4 +149,8 @@ declare function hoax:construct-date-facets($decades as xs:string*, $month-years
 
 declare function hoax:word-count($body as element(tei:body)) as xs:integer {
    count(tokenize($body))
+};
+
+declare function hoax:initial-cap($input as xs:string) as xs:string {
+    concat(upper-case(substring($input, 1, 1)), substring($input, 2))
 };
