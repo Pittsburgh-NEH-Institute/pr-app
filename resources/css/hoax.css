@@ -9,6 +9,8 @@ General
     --text-color: #444545;
     --title-color: darkgreen;
     --highlight-color: #ceded6;
+    --svg-red: #EF233C;
+    --svg-blue: #4d7ea8;
 }
 
 q {
@@ -335,3 +337,18 @@ XML “lozenge” link in reading view
 ========== 
 */
 .lozenge text {fill: var(--background-color);}
+
+/*
+==========
+SVG Visualization
+
+colors
+========== 
+*/
+svg|.wc {
+    fill: var(--svg-red);
+}
+
+svg|.pc {
+    fill: var(--svg-blue);
+}
