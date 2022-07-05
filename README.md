@@ -10,7 +10,7 @@ a practice application designed with users in mind
 
 ## Requirements
 
-*   [exist-db](http://exist-db.org/exist/apps/homepage/index.html) version: `5.x` or greater
+*   [exist-db](http://exist-db.org/exist/apps/homepage/index.html) version: `6.0.1` or greater
 
 *   [ant](http://ant.apache.org) version: `1.10.7` \(for building from source\)
 
@@ -19,7 +19,7 @@ a practice application designed with users in mind
 
 ## Installation
 
-1.  Download  the `pr-app-1.0.0.xar` file from GitHub [releases](https://github.com/gabikeane/pr-app/releases) page.
+1.  Download  the `pr-app-1.0.0.xar` file from GitHub [releases](https://github.com/gabikeane/pr-app/releases) page. (**2022-07-05: No releases are available yet; clone the repo, build locally with `ant`, and install the non-dev version from the *build* subdirectory of the repo.**)
 
 2.  Open the [dashboard](http://localhost:8080/exist/apps/dashboard/index.html) of your eXist-db instance and click on `package manager`.
 
