@@ -38,43 +38,166 @@ declare variable $word-count-min as xs:double := $data/descendant::m:word-count 
 declare variable $place-count-max as xs:double := $data/descendant::m:place-count => max();
 declare variable $y-axis-height as xs:double := $word-count-max div 10;
 declare variable $y-scale-place as xs:double := $y-axis-height div $place-count-max;
-declare variable $x-axis as xs:integer := 2000;
+declare variable $x-axis as xs:integer := ($article-count * 30) + 30;
 (:=====:)
 
 <html:section>
 
 <svg:svg width="1000"
-    viewBox="-40 -{$y-axis-height + 10} 2050 {$y-axis-height + 10}">
+    viewBox="-100 -{$y-axis-height + 150} 2150 {$y-axis-height + 200}">
 
-    <!-- what are the view box attribute values? -->
-
-    <!-- AXES -->
-         <svg:line x1="0" y1="0" x2="{$x-axis}" y2="0" stroke="black"/>
-            <!-- draws x-axis, using number of years in which a story appears -->
-         <svg:line x1="0" y1="0" x2="0" y2="-{$y-axis-height}" stroke="black"/>
-            <!-- draws left y-axis -->
-         <svg:line x1="{$x-axis}" y1="0" x2="{$x-axis}" y2="-{$y-axis-height}" stroke="black"/>
-            <!-- draws right y-axis -->
-
-    <!-- Y-Axis Labels -->
-        <svg:g transform="rotate(270, -20, -{$y-axis-height div 2})">
-        <svg:text x="-20" y="-{$y-axis-height div 2}" text-anchor="middle"
-                dominant-baseline="middle">Word-count</svg:text>
+<!-- AXES -->
+        <!-- X-axis, using number of years in which a story appears -->
+         <svg:line  x1="0" 
+                    y1="0" 
+                    x2="{$x-axis}" 
+                    y2="0" 
+                    stroke="black"/>
+         <svg:text  x="{$x-axis div 2}"
+                    y="35"
+                    text-anchor="middle"
+                    dominant-baseline="middle"
+                    >Year in 1800s</svg:text>           
+        <!-- draws left y-axis -->            
+         <svg:line  x1="0"
+                    y1="0" 
+                    x2="0" 
+                    y2="-{$y-axis-height + 20}" 
+                    stroke="black"/>
+        <!-- draws right y-axis -->
+         <svg:line  x1="{$x-axis}"
+                    y1="0" 
+                    x2="{$x-axis}" 
+                    y2="-{$y-axis-height + 20}" 
+                    stroke="black"/>
+        <!-- Y-Axis Labels -->
+        <!-- word count axis label -->
+        <svg:g class="wc">
+        <!-- top label -->
+        <svg:text   x="0" 
+                    y="-{$y-axis-height + 30}" 
+                    text-anchor="middle"
+                    dominant-baseline="middle" 
+                    fill="red"
+                    >Word-count</svg:text>
+        <!-- middle (div 2) label -->            
+        <svg:line   x1="-5" 
+                    y1="-{$y-axis-height div 2}" 
+                    x2="5" 
+                    y2="-{$y-axis-height div 2}" 
+                    stroke="black"/>
+        <svg:text   x="-30" 
+                    y="-{$y-axis-height div 2}" 
+                    text-anchor="middle"
+                    stroke="red"
+                    dominant-baseline="middle"
+                    >{$word-count-max div 2}</svg:text>
+        <!-- 3/4 label -->            
+        <svg:line   x1="-5" 
+                    y1="-{($y-axis-height div 4)*3}" 
+                    x2="5" 
+                    y2="-{($y-axis-height div 4)*3}" 
+                    stroke="black"/>
+        <svg:text   x="-30" 
+                    y="-{($y-axis-height div 4)*3}" 
+                    text-anchor="middle"
+                    stroke="red"
+                    dominant-baseline="middle"
+                    >{($word-count-max div 4) *3}</svg:text>
+        <!-- max number label -->             
+        <svg:line   x1="-5" 
+                    y1="-{$y-axis-height}" 
+                    x2="5" 
+                    y2="-{$y-axis-height}" 
+                    stroke="black"/>
+        <svg:text   x="-30" 
+                    y="-{$y-axis-height}" 
+                    text-anchor="middle"
+                    stroke="red"
+                    dominant-baseline="middle"
+                    >{$word-count-max}</svg:text>
+        <!-- 1/4 label -->            
+        <svg:line   x1="-5" 
+                    y1="-{($y-axis-height div 4)}" 
+                    x2="5" 
+                    y2="-{($y-axis-height div 4)}" 
+                    stroke="black"/>
+        <svg:text   x="-30" 
+                    y="-{($y-axis-height div 4)}" 
+                    text-anchor="middle"
+                    stroke="red"
+                    dominant-baseline="middle"
+                    >{($word-count-max div 4)}</svg:text>                                   
         </svg:g>
-            <!-- draws word count axis label -->
-       <svg:g transform="rotate(270, {$x-axis * 5 + 25}, -{$y-axis-height div 2})">
-        <svg:text x="{$x-axis + 25}" y="-{$y-axis-height div 2}" text-anchor="middle"
-                dominant-baseline="middle">Place-count</svg:text>
-       </svg:g>
-            <!-- draws place count label axis-->                   
-    <!-- ARTICLE SEGMENTS -->
- {   let $decades as xs:integer+ := $data/descendant::m:date ! substring(., 3, 1) ! xs:integer(.) => 
-                distinct-values() => sort()
+        <!-- draws place count label axis-->
+       <svg:g class="pc">
+        <svg:text   x="{$x-axis}" 
+                    y="-{$y-axis-height + 30}" 
+                    text-anchor="middle"
+                    dominant-baseline="middle"
+                    stroke="blue"
+                    >Place-count</svg:text>
+        <!-- 1/4 label -->            
+        <svg:line   x1="{$x-axis - 5}" 
+                    y1="-{($y-axis-height div 4)}" 
+                    x2="{$x-axis + 5}" 
+                    y2="-{($y-axis-height div 4)}" 
+                    stroke="black"/>
+        <svg:text   x="{$x-axis + 30}" 
+                    y="-{($y-axis-height div 4)}" 
+                    text-anchor="middle"
+                    stroke="blue"
+                    dominant-baseline="middle"
+                    >{($place-count-max div 4)}</svg:text> 
+        <!-- 1/2 label -->            
+        <svg:line   x1="{$x-axis - 5}" 
+                    y1="-{($y-axis-height div 2)}" 
+                    x2="{$x-axis + 5}" 
+                    y2="-{($y-axis-height div 2)}" 
+                    stroke="black"/>
+        <svg:text   x="{$x-axis + 30}" 
+                    y="-{($y-axis-height div 2)}" 
+                    text-anchor="middle"
+                    stroke="blue"
+                    dominant-baseline="middle"
+                    >{($place-count-max div 2)}</svg:text>
+        <!-- 3/4 label -->
+        <svg:line   x1="{$x-axis - 5}" 
+                    y1="-{($y-axis-height div 4)*3}" 
+                    x2="{$x-axis + 5}" 
+                    y2="-{($y-axis-height div 4)*3}" 
+                    stroke="black"/>
+        <svg:text   x="{$x-axis + 30}" 
+                    y="-{($y-axis-height div 4)*3}" 
+                    text-anchor="middle"
+                    stroke="blue"
+                    dominant-baseline="middle"
+                    >{($place-count-max div 4)*3}</svg:text>
+        <!-- max label -->
+        <svg:line   x1="{$x-axis - 5}" 
+                    y1="-{$y-axis-height}" 
+                    x2="{$x-axis + 5}" 
+                    y2="-{$y-axis-height}" 
+                    stroke="black"/>
+        <svg:text   x="{$x-axis + 30}" 
+                    y="-{$y-axis-height}" 
+                    text-anchor="middle"
+                    stroke="blue"
+                    dominant-baseline="middle"
+                    >{$place-count-max}</svg:text>                                                 
+        </svg:g>
+                               
+<!-- ARTICLE SEGMENTS -->
+ {let $decades as xs:integer+ := 
+        $data/descendant::m:date ! 
+        substring(., 3, 1) ! xs:integer(.) => 
+        distinct-values() => sort()
 
    for $article at $pos in ($data/descendant::m:by-article/m:article =>
          sort((),function($a){$a/m:date}))
         let $title as xs:string := $article/m:title ! string(.)
         let $decade as xs:integer := $article/m:date ! substring(., 3, 1) ! xs:integer(.)
+        let $year as xs:string := $article/m:date ! substring(., 3, 2)
         let $link as xs:string := ("read?id=" || $article/m:id)        
         let $word-count as xs:integer := $article/m:word-count ! xs:integer(.)
         let $place-count as xs:integer := $article/m:place-count ! xs:integer(.)  
@@ -83,13 +206,34 @@ declare variable $x-axis as xs:integer := 2000;
     return
     <svg:g>
         <svg:a href="{$link}">
-        <svg:rect x="{$x-pos - 15}" y="{-$y-axis-height}" width="30" height="{$y-axis-height}" fill="{if (index-of($decades, $decade) mod 2 eq 0)
-        then 'pink'
-        else 'teal'}"/>
-          <svg:line x1="{$x-pos}" x2="{$x-pos}" y1="{-$word-count div 10}" y2="{-$place-count * $y-scale-place}" stroke="black"/>
-          <svg:circle cx="{$x-pos}" cy="{-$word-count div 10}" r="2" fill="red"/>
-          <svg:circle cx="{$x-pos}"  cy="{-$place-count * $y-scale-place}" r="2" fill="blue"/>
-        
+        <svg:rect   x="{$x-pos - 15}" 
+                    y="{-$y-axis-height}" 
+                    width="30" 
+                    height="{$y-axis-height}" 
+                    fill="{if (index-of($decades, $decade) mod 2 eq 0)
+                            then '#ceded6'
+                            else '#D5DDEC'}"/>
+          <svg:line x1="{$x-pos}" 
+                    x2="{$x-pos}" 
+                    y1="{-$word-count div 10}" 
+                    y2="{-$place-count * $y-scale-place}" 
+                    stroke="black" stroke-width="2"/>
+          <svg:circle   class="wc"
+                        cx="{$x-pos}" 
+                        cy="{-$word-count div 10}" 
+                        r="7" 
+                        fill="red"/>
+          <svg:circle   class="pc"
+                        cx="{$x-pos}"  
+                        cy="{-$place-count * $y-scale-place}" 
+                        r="7" 
+                        fill="blue"/>
+          <svg:text     x="{$x-pos}" 
+                        y="15" 
+                        text-anchor="middle"
+                        dominant-baseline="middle" 
+                        stroke="black"
+                        >{$year}</svg:text>  
           <svg:title>
             <svg:tspan class="article_title">{$title}</svg:tspan>
             <svg:tspan class="word-count">{'Word count: ' || $word-count}</svg:tspan>
@@ -108,7 +252,6 @@ declare variable $x-axis as xs:integer := 2000;
             draws 4 placecount point for an article published in 1838 
             
             -->
-    
 </svg:svg>
 
 </html:section>
