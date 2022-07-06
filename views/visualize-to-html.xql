@@ -25,6 +25,7 @@ declare namespace hoax ="http://obdurodon.org/hoax";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace m="http://www.obdurodon.org/model";
 declare namespace svg="http://www.w3.org/2000/svg";
+declare namespace xi="http://www.w3.org/2001/XInclude";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";
@@ -42,8 +43,8 @@ declare variable $x-axis as xs:integer := ($article-count * 30) + 30;
 (:=====:)
 
 <html:section>
-
-<svg:svg width="1000"
+<html:h2>Article length and place count</html:h2>
+<svg:svg width="95%"
     viewBox="-100 -{$y-axis-height + 150} 2150 {$y-axis-height + 200}">
 
 <!-- AXES -->
@@ -253,5 +254,5 @@ declare variable $x-axis as xs:integer := ($article-count * 30) + 30;
             
             -->
 </svg:svg>
-
+<xi:include href="/db/apps/pr-app/resources/includes/visualize.xhtml"/>
 </html:section>
