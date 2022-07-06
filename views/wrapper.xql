@@ -29,7 +29,7 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
     </head>
     <body>
         <section class="nav-menu">
-            <img src="resources/img/typewriter.jpg" width="35px" style="margin-right:1em;"/>                     
+            <img src="resources/img/hoax-favicon.jpg" width="35px" style="margin-right:1em;"/>                     
             <header>
                 <h1><a href="index">Hoax: ghosts in 19th-c. British press</a></h1>
             </header>
