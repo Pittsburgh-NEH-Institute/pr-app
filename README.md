@@ -2,7 +2,7 @@
 
 [![License][license-img]][license-url]
 [![GitHub release][release-img]][release-url]
-![exist-db CI](https://github.com/gabikeane/pr-app/workflows/exist-db%20CI/badge.svg)
+![exist-db CI](https://github.com/gabikeane/pr-app/actions/workflows/exist.yml/badge.svg)
 
 <img src="icon.png" align="left" width="25%"/>
 
