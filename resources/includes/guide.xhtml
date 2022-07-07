@@ -1,39 +1,69 @@
 <div class="panel guide-panel" xmlns="http://www.w3.org/1999/xhtml">
     <h2>User guide</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Dis parturient montes nascetur ridiculus mus mauris vitae. Gravida neque convallis a cras semper.
-        Ac auctor augue mauris augue neque gravida in fermentum et. Orci ac auctor augue mauris augue. Vulputate ut
-        pharetra sit amet aliquam id diam maecenas. Lacus sed viverra tellus in hac habitasse platea dictumst. Sit amet
-        nisl purus in mollis nunc sed id. Sit amet nisl purus in mollis nunc sed id semper. Aliquam sem et tortor
-        consequat. Purus viverra accumsan in nisl nisi scelerisque eu ultrices vitae. Tincidunt eget nullam non nisi est
-        sit amet. Pretium fusce id velit ut tortor pretium viverra suspendisse potenti. Eget felis eget nunc lobortis
-        mattis aliquam faucibus. Sit amet nisl suscipit adipiscing. Venenatis lectus magna fringilla urna.</p>
-    <p>Tellus mauris a diam maecenas sed enim ut. Pharetra magna ac placerat vestibulum lectus mauris ultrices.
-        Pellentesque pulvinar pellentesque habitant morbi tristique senectus et. Quis lectus nulla at volutpat diam ut.
-        Maecenas sed enim ut sem viverra. Orci nulla pellentesque dignissim enim. At imperdiet dui accumsan sit amet
-        nulla facilisi morbi. In hendrerit gravida rutrum quisque non. Lorem donec massa sapien faucibus et molestie.
-        Enim ut tellus elementum sagittis. Porta lorem mollis aliquam ut porttitor leo.</p>
-    <p>Et malesuada fames ac turpis egestas integer eget aliquet. Consequat semper viverra nam libero justo laoreet sit.
-        Sit amet purus gravida quis blandit turpis. Vehicula ipsum a arcu cursus vitae congue mauris. Eget egestas purus
-        viverra accumsan in nisl nisi scelerisque eu. Habitant morbi tristique senectus et netus. Suscipit tellus mauris
-        a diam maecenas sed enim. Placerat duis ultricies lacus sed turpis tincidunt id. Facilisis mauris sit amet massa
-        vitae. Ut sem viverra aliquet eget. Vitae congue eu consequat ac. Nulla facilisi morbi tempus iaculis urna id.
-        Ultrices tincidunt arcu non sodales neque sodales. Aliquet porttitor lacus luctus accumsan tortor posuere ac.
-        Aliquam ultrices sagittis orci a scelerisque purus semper.</p>
-    <p>Justo eget magna fermentum iaculis eu non diam phasellus vestibulum. Aliquam malesuada bibendum arcu vitae
-        elementum curabitur vitae nunc sed. Imperdiet massa tincidunt nunc pulvinar. Dui sapien eget mi proin sed libero
-        enim sed. Bibendum neque egestas congue quisque egestas. Quis viverra nibh cras pulvinar mattis nunc sed blandit
-        libero. Sit amet tellus cras adipiscing enim. Et netus et malesuada fames ac turpis egestas maecenas.
-        Pellentesque dignissim enim sit amet venenatis. Massa sed elementum tempus egestas sed sed risus pretium quam.
-        Adipiscing vitae proin sagittis nisl. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Elit sed
-        vulputate mi sit amet. Lacinia at quis risus sed vulputate odio ut enim blandit. Vitae elementum curabitur vitae
-        nunc sed velit dignissim sodales ut.</p>
-    <p>Viverra ipsum nunc aliquet bibendum. Quam vulputate dignissim suspendisse in est ante in nibh. Augue eget arcu
-        dictum varius duis. Nibh ipsum consequat nisl vel pretium. Adipiscing elit duis tristique sollicitudin. Placerat
-        orci nulla pellentesque dignissim enim sit. Nunc aliquet bibendum enim facilisis gravida neque convallis a cras.
-        Ultrices in iaculis nunc sed. Volutpat lacus laoreet non curabitur gravida. Malesuada pellentesque elit eget
-        gravida cum sociis natoque penatibus. Lorem ipsum dolor sit amet. Odio tempor orci dapibus ultrices in. Nunc
-        pulvinar sapien et ligula ullamcorper malesuada proin libero. Interdum varius sit amet mattis vulputate. Eu sem
-        integer vitae justo eget magna. Sed velit dignissim sodales ut eu sem integer. Enim sed faucibus turpis in eu.
-        Elementum nibh tellus molestie nunc non. Pellentesque habitant morbi tristique senectus et netus.</p>
+    <h3>Filtering the article selection</h3>
+    <p>The <i>Articles</i> menu link displays a list of article titles (to the right) and options to filter that
+        list (to the left; click the <i>Search</i> tab above this User guide to display the search interface).</p>
+    <ul>
+        <li>
+            <p><strong>Term:</strong> Type a word into the Search term box and hit the Submit button to filter the
+                articles list (on the right) to show only those that contain the specified word. Mouse over the
+                circled letter <q>i</q> after the search box for information about other ways (more than just single
+                complete words) to specify search terms, and visit the
+                <a
+                    href="https://lucene.apache.org/core/4_10_4/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description">Apache
+                    Lucene
+                    documentation</a>
+                for additional details. If you edit the search-term box you need to click on the Submit button to
+                update the display.
+            </p>
+        </li>
+        <li>
+            <p><strong>Publishers:</strong> Click on a publisher to select articles by that publisher. The selection
+                updates automatically on each click and you can select as many publishers as you would like. If you
+                don’t select any publishers, the articles list to the right is not filtered by publisher, which means
+                that you implicitly select all publishers.</p>
+            <p>Each publisher name is followed by two numbers, e.g. “Times, The (8/8)”. The second number, which never
+                changes, is the total number of articles by that publisher in the corpus. The first number is the number
+                of those articles included in the list to the right (if checked) or available for inclusion (by
+                checking).
+            </p>
+        </li>
+        <li>
+            <p><strong>Dates:</strong> Date selection works like publisher selection except that it is hierarchical:
+                you can select either an entire decade or a month+year combination within the decade. You can make as
+                many date selections as you would like at either the decade or the month+year level of the hierarchy.
+                The two numbers after each date item have the same meaning as with publishers, and, as with publishers,
+                if you select no date values, you implicitly select all date values.</p>
+        </li>
+    </ul>
+    <p>Terms, publishers, and dates are combined to filter the list of articles shown to the right and the search area
+        to the left is updated to indicate meaningful search modifications. Publishers and dates are displayed in black
+        or in gray; black means that checking the box will add articles to the list on the right and gray means that
+        checking that box will not add any articles (although checking that box plus some others might add results). It
+        is possible to select incompatible values (for example, only a single decade and only a publisher who published
+        only in a different decade), in which case you can broaden your search to find matching values by selecting
+        options that are colored black.</p>
+    <h3>Selecting articles</h3>
+    <p>There are three ways to interact with an article in the list to the right:</p>
+    <ul>
+        <li>
+            <p>If you <strong>hover over an article title</strong> the first words of the text will appear as a <q>tool
+                    tip</q>. This can be useful for distinguishing articles that share titles and publishing
+                information, such as the two different articles entitled <q>The Park Ghost</q>, both published on the
+                same day in the same paper.
+            </p>
+        </li>
+        <li>
+            <p>If you <strong>click on an article title</strong> you open a formatted reading view of the article,
+                including summary analytic data below the text, followed by the original citation. If you entered
+                any search terms to filter your articles list, those terms will be highlighted in the reading
+                view.</p>
+        </li>
+        <li>
+            <p>If you <strong>click on the colored box</strong> (<img src="resources/img/xml-link.svg"
+                    alt="XML icon" />) at the end of an item in the articles list you open a view of the original TEI
+                XML source for the article.
+            </p>
+        </li>
+    </ul>
 </div>
