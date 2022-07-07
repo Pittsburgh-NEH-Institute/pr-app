@@ -5,10 +5,11 @@ const http = require('http')
 const expect = require('chai').expect
 const xmldoc = require('xmldoc')
 
+
 // Dynamically generate a mocha testsuite for xqsuite tests. Requires its own process, hence && in package.json
 let Test = Mocha.Test
 
-let url = 'http://localhost:8080/exist/rest/db/apps/pr-app/test/xqs/test-runner.xq'
+    let url = 'http://localhost:8080/exist/rest/db/apps/tmp/test/xqs/test-runner.xq'
 
 http.get(url, (res) => {
   let data = ''
@@ -20,10 +21,10 @@ http.get(url, (res) => {
 
   // called when the complete response is received.
   res.on('end', () => {
-    // NOTE(DP): XQST errors on testsuite, will be returned as application/xml
+    // NOTE(DP): XQTS errors on testsuite, will be returned as application/xml
     // The initial check will display the XQTS error, and run the test suite otherwise
     // see #800
-    if (res.ContentType == "application/json") {
+    if (res.headers['content-type'].includes("application/json")) {
       let xqsReport = JSON.parse(data)
       let xqsPkg = xqsReport.testsuite.package
       let xqstCount = xqsReport.testsuite.tests
@@ -51,8 +52,9 @@ http.get(url, (res) => {
       })
     }
     else {
-      let doc = new xmldoc.XmlDocument(data)
-      throw new Error(doc.childNamed("message").val)
+      try { let doc = new xmldoc.XmlDocument(data)
+      throw new Error(doc.childNamed("message").val) }
+      catch (e) { console.log(e.message) }
     }
   })
 }).on('error', (err) => {
@@ -60,7 +62,7 @@ http.get(url, (res) => {
 })
 
 // TODO: mark %pending xqstests as pending in mocha report
-function xqsTests(mochaInstance, xqsPkg, xqstCount, xqstCase) {
+function xqsTests (mochaInstance, xqsPkg, xqstCount, xqstCase) {
   let suiteInstance = Mocha.Suite.create(mochaInstance.suite, 'Xqsuite tests for ' + xqsPkg)
 
   if (xqstCase === undefined) {
@@ -77,9 +79,9 @@ function xqsTests(mochaInstance, xqsPkg, xqstCount, xqstCase) {
   }
 }
 
-function xqsResult(suiteInstance, xqstCase) {
+function xqsResult (suiteInstance, xqstCase) {
   suiteInstance.addTest(new Test('Test: ' + xqstCase.name, () => {
-    switch (Object.prototype.hasOwnProperty.call(xqstCase, '')) {
+    switch (Object.prototype.hasOwnProperty.call(xqstCase, '') ){
       // Red xqs test: filter to dynamically ouput messages only when record contains them
       case 'failure':
         expect(xqstCase, 'Function ' + xqstCase.class + ' ' + xqstCase.failure.message).to.not.have.own.property('failure')
