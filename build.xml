@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="all" name="pr-app">
-  <description>a practice application designed with users in mind</description>
+  <description>a practice application</description>
   <xmlproperty file="expath-pkg.xml" />
   <property name="project.version" value="${package(version)}" />
   <property name="project.app" value="pr-app" />
