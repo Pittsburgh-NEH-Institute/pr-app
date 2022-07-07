@@ -72,7 +72,7 @@ jobs:
         run: docker cp ./build/*-dev.xar exist-ci:exist/autodeploy
 
       - name: Start Exist Container
-        run: docker start exist-ci && sleep 30
+        run: docker start exist-ci && sleep 60
 
       # Testing 
       - name: Run Unit Tests     
