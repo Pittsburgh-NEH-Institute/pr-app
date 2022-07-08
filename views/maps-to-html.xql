@@ -22,17 +22,16 @@ declare namespace html="http://www.w3.org/1999/xhtml";
 declare namespace hoax ="http://obdurodon.org/hoax";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace m="http://www.obdurodon.org/model";
+declare namespace console="http://existdb.org/xquery/console";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";
 declare option output:indent "no";
 
-declare variable $data as document-node() := request:get-data();
-
-
 declare variable $exist:root as xs:string := request:get-parameter("exist:root", "xmldb:exist:///db/apps");
 declare variable $exist:controller as xs:string := request:get-parameter("exist:controller", "/pr-app");
-declare variable $ghost-icon as xs:string := $exist:root || $exist:controller || '/resources/img/ghost.png';
+
+declare variable $data as document-node() := request:get-data();
 
 declare variable $js-front as xs:string := "mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FiaWtlYW5lIiwiYSI6ImNqdWlzYWwxcTFlMjg0ZnBnM21kem9xZm4ifQ.CQ5LDwZO32ryoGVb-QQwCg';
 const map = new mapboxgl.Map({
@@ -83,7 +82,8 @@ for (const feature of geojson.features) {
   .setPopup(
     new mapboxgl.Popup({ offset: 25 }) // add popups
       .setHTML(
-        `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+       `<h3>${feature.properties.name}</h3>
+        <p>${feature.properties.appears}</p>`
       )
   )
   .addTo(map);;
@@ -99,6 +99,9 @@ declare variable $map as element(fn:map) := <fn:map>
             let $name := $place/m:name ! string(.)
             let $lat as xs:double := $place/descendant::m:lat ! number(.)
             let $long as xs:double := $place/descendant::m:long ! number(.)
+            let $titles as xs:string* :=$place/descendant::m:article ! string(.)
+            let $print-titles as xs:string := string-join($titles, ', ')
+           (: let $links as xs:string* := $place/descendant::m:article/@xml:id ! ('read?id=' || .) :)
             return
                 <fn:map>
                     <fn:string
@@ -115,15 +118,27 @@ declare variable $map as element(fn:map) := <fn:map>
                     </fn:map>
                     <fn:map
                         key='properties'>
-                        <fn:string
-                            key='title'>{$name}</fn:string>
+                      <fn:string
+                            key='name'>{$name}</fn:string>
+                      <fn:string
+                            key="appears">Appears in {$print-titles}</fn:string>     
+                      <!-- <fn:array key="links">     
+                        {for-each-pair(
+                          $titles, $links, 
+                          function($title as xs:string, $link as xs:string)
+                          {  <fn:map key='article'>
+                              <fn:string key='title'>{$title}</fn:string>    
+                              <fn:string key='URL'>{$link}</fn:string>
+                              </fn:map>
+                           })} 
+                           </fn:array> --> 
                     </fn:map>
                 </fn:map>
         }
     </fn:array>
 </fn:map>;
 
-declare variable $geojson as xs:string := concat('const geojson = ', xml-to-json($map), ';');
+declare variable $geojson as xs:string := concat('const geojson = ', xml-to-json($map), ';') ;
 
 <html:section> 
 
