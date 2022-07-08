@@ -71,7 +71,12 @@ Functions for TEI body
 ========== :)
 declare function local:TEI($node as element(m:result)) as element(html:section){
     <html:section class="reading">
-        <html:h2>{local:dispatch($node/descendant::tei:titleStmt/tei:title)}</html:h2>
+        <html:div id="reading-title">
+            <html:h2>{local:dispatch($node/descendant::tei:titleStmt/tei:title)}</html:h2>
+            <html:div class="info">ⓘ
+                <html:div class="tooltip">Hover over green outlines to see reference type</html:div>
+            </html:div>
+        </html:div>
         {local:dispatch($node/descendant::tei:body),
         local:dispatch($node/descendant::m:aux),
         local:dispatch($node/descendant::tei:sourceDesc/descendant::tei:bibl)}
@@ -135,7 +140,12 @@ declare function local:aux($node as element(m:aux)) as element()* {
 
 declare function local:ghost-references($node as element(m:ghost-references)) as element()* {
     if (exists($node/*)) then
-        (<html:h2>Ghost references</html:h2>,
+        (<html:div id="ghost-reference-title">
+            <html:h2>Ghost references</html:h2>
+            <html:div class="info">ⓘ
+                <html:div class="tooltip">Click on ghost reference type to highlight instances</html:div>
+            </html:div>
+        </html:div>,
         <html:ul>{
             for $child in $node/node() 
             order by lower-case($child)
@@ -145,7 +155,7 @@ declare function local:ghost-references($node as element(m:ghost-references)) as
 };
 
 declare function local:ghost-reference($node as element(m:ghost-reference)) as element(html:li) {
-    <html:li>{local:passthru($node)}</html:li>
+    <html:li><html:label><html:input class="ghost-reference" type="checkbox" id="{$node}"/>{local:passthru($node)}</html:label></html:li>
 };
 
 declare function local:places($node as element(m:places)) as element()* {

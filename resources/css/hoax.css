@@ -3,7 +3,6 @@
 General
 ==========
 */
-
 :root {
     --background-color: #f3f7f5;
     --text-color: #444545;
@@ -47,6 +46,56 @@ table, tr, th, td {
 th, td {
     padding: .25em;
 }
+
+/*
+==========
+Information tooltips
+==========
+*/
+.info {
+    /* Must be relative so that absolute child (tooltip <div>) will refer to it */
+    position: relative;
+}
+
+.info>.tooltip {
+    /*  
+        Colors from https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3
+        Darker solid border avoids visual interferences from background (main) text
+        Positioned relative to parent .info element
+        Visibility + opacity + transition supports quick fade-in
+            (without transition the appearance is too abrupt)
+        White-space configuration sets container width to width of content
+            (use <br/> between lines)
+        Transition-delay avoids accidental mouse-trap reveal
+    */
+    position: absolute;
+    top: -1em;
+    /* override reading-view 1.4em */
+    left: 2em;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s opacity;
+    transition-delay: .5s;
+    white-space: nowrap;
+    padding: .5em;
+    background-color: #e5f5f9;
+    outline: #2ca25f solid .2em;
+    border-radius: .5em;
+}
+
+.tooltip>kbd {
+    font-weight: bold;
+}
+
+.info:hover>.tooltip {
+    /*
+        Visibility + opacity + transition supports quick fade-in
+        (without transition the appearance is too abrupt)
+    */
+    visibility: visible;
+    opacity: 1;
+}
+
 /* 
 ==========
 Wrapper
@@ -243,50 +292,6 @@ input~.panel {
     gap: .5em;
 }
 
-.info {
-    /* Must be relative so that absolute child (tooltip <div>) will refer to it */
-    position: relative;
-}
-
-.info>.tooltip {
-    /*  
-        Colors from https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3
-        Darker solid border avoids visual interferences from background (main) text
-        Positioned relative to parent .info element
-        Visibility + opacity + transition supports quick fade-in
-            (without transition the appearance is too abrupt)
-        White-space configuration sets container width to width of content
-            (use <br/> between lines)
-        Transition-delay avoids accidental mouse-trap reveal
-    */
-    position: absolute;
-    top: -1em;
-    ;
-    left: 2em;
-    visibility: hidden;
-    opacity: 0;
-    transition: .5s opacity;
-    transition-delay: .5s;
-    white-space: nowrap;
-    padding: .5em;
-    background-color: #e5f5f9;
-    outline: #2ca25f solid .2em;
-    border-radius: .5em;
-}
-
-.tooltip>kbd {
-    font-weight: bold;
-}
-
-.info:hover>.tooltip {
-    /*
-        Visibility + opacity + transition supports quick fade-in
-        (without transition the appearance is too abrupt)
-    */
-    visibility: visible;
-    opacity: 1;
-}
-
 #clear-form a {
     /* Reset clears only most recent values; need to reload with no selection */
     cursor: default;
@@ -306,6 +311,21 @@ input~.panel {
 Reading view
 ========== 
 */
+
+#reading-title, #ghost-reference-title {
+    display: flex;
+    flex-direction: row;
+    gap: .5em;
+    align-items: center;
+}
+#ghost-reference-title + ul {
+    margin-top: 0;
+    padding-left: 20px;
+    list-style-type: none;
+}
+.ghost-reference {
+    vertical-align: -2px;
+}
 .bibl {
     font-size: smaller;
     color: gray;
