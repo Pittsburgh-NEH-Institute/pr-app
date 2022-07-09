@@ -15,131 +15,193 @@
                 </respStmt>
             </titleStmt>
             <publicationStmt>
-                <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
+                <p>This project encoded newspaper and periodical articles on ghost hoaxes in the
+                    Victorian period. This publication of the text serves as data in a collaborative
+                    laboratory edition for the 2022 NEH Institute "Advanced digital editing:
+                    modeling the text and making the edition" at the University of Pittsburgh.</p>
             </publicationStmt>
             <seriesStmt>
                 <title>Ghost hoaxes in 19th-century British news media</title>
             </seriesStmt>
             <sourceDesc>
                 <p>All texts in this collection were sourced from British periodical and newspaper
-                    archives, transcribed,and encoded. The citation below was provided by the archive and
-                    appears exactly as given.</p>
-                <p><bibl>"The Ghost." <publisher rend="The">Satirist; or Censor of the Times</publisher>, <date when="1838-01-14">14 Jan. 1838</date>, p. 14. 19th Century UK Periodicals, http://tinyurl.galegroup.com/tinyurl/6nPBr8. Accessed 23 July 2018.</bibl>
+                    archives, transcribed,and encoded. The citation below was provided by the
+                    archive and appears exactly as given.</p>
+                <p>
+                    <bibl>"The Ghost." <publisher rend="The">Satirist; or Censor of the
+                            Times</publisher>, <date when="1838-01-14">14 Jan. 1838</date>, p. 14.
+                        19th Century UK Periodicals, http://tinyurl.galegroup.com/tinyurl/6nPBr8.
+                        Accessed 23 July 2018.</bibl>
                 </p>
             </sourceDesc>
-            
+
         </fileDesc>
         <encodingDesc>
             <projectDesc>
-                <p>This document is part of a larger digital collection of stories of ghost hoaxes from
-                    the 18th and 19th century London newspapers and periodicals. The project explores the
-                    beginnings of mass print media in a metropolitan area at a time when technology and
-                    education made reading increasingly common and inexpensive.</p>
-                <p>The corpus holds 36 individual documents, which reflect a diverse mix of reporting on
-                    various hauntings in and around London between 1804 and 1889. The PDF and JPEGs from
-                    online databases were transcribed using ABBYFineReader OCR, then corrected and
-                    occasionally manually transcribed if document quality necessitated it. After
-                    normalization in plain text, all documents were upconverted to TEI XML.</p>
+                <p>This document is part of a larger digital collection of stories of ghost hoaxes
+                    from the 18th and 19th century London newspapers and periodicals. The project
+                    explores the beginnings of mass print media in a metropolitan area at a time
+                    when technology and education made reading increasingly common and
+                    inexpensive.</p>
+                <p>The corpus holds 36 individual documents, which reflect a diverse mix of
+                    reporting on various hauntings in and around London between 1804 and 1889. The
+                    PDF and JPEGs from online databases were transcribed using ABBYFineReader OCR,
+                    then corrected and occasionally manually transcribed if document quality
+                    necessitated it. After normalization in plain text, all documents were
+                    upconverted to TEI XML.</p>
             </projectDesc>
             <editorialDecl>
                 <normalization>
                     <p>Earlier texts have had some spelling normalization due to errors in OCR.
-                        Typographic em dashes are longer than modern em dashes, so all dashes have been
-                        normalized to modern em dash length.</p>
+                        Typographic em dashes are longer than modern em dashes, so all dashes have
+                        been normalized to modern em dash length.</p>
                 </normalization>
                 <quotation>
-                    <p>All extraneous white space used by printers to avoid overlapping with letters has
-                        been removed. All quotes are simply tagged with the q tag.</p>
+                    <p>All extraneous white space used by printers to avoid overlapping with letters
+                        has been removed. All quotes are simply tagged with the q tag.</p>
                 </quotation>
             </editorialDecl>
         </encodingDesc>
     </teiHeader>
-    
+
     <text>
-    <body>
-        <div><q>Be thou <rs ref="ghost">a spirit of health</rs>, or <rs ref="ghost">goblin damned</rs>?</q> <p><rs ref="rel public">It would certainly have been a
-                pity if the Christmas had passed over without something to occupy the public
-                attention</rs>; and it must be gratifying to the lovers of the awful to find a fire and
-            a <rs ref="ghost">ghost to enliven the winter evenings</rs>. We shall not, however, speculate about the
-                former, as that is a real calamity; but with regard to the latter affair, we feel
-                bound to tell all we know, which will be best communicated by publishing some
-                letters received by us from parties of eminence and of undoubted veracity.</p></div>
-            <div><opener><salute>Sir—</salute></opener><p>I have just seen the <rs ref="ghost">ghost walking on the water</rs> under <placeName ref="#londonbridge">London-bridge</placeName>; <rs ref="ghost" type="desc">its breath was
-                fire, and when it opened its mouth wide, it had all the appearance of a baker’s
-                oven, red hot</rs>. I was terrified lest it should set the Thames on fire, and I could
-                not help exclaiming with Shakspeare— <q>The fishes beginning to sweat, Cried, ‘Damn
-                it, how hot we shall be!’</q> I was determined, if possible, to give it into custody,
-                when all of a sudden <rs ref="ghost">I saw it was in the shape of an ass</rs>, and just as the moon went
-                behind a cloud it vanished. I have to request that you will give me your opinion on
-                this important matter.</p>
-            <closer><salute>Faithfully your’s,</salute>
-            <persName>C. Hunter, Bart.</persName></closer></div>
-            <div><p>[In reply we beg to observe, that in our opinion Sir Claudius merely saw
-                his own shadow.]</p></div>
-                <div><opener><salute>Sir—</salute></opener><p><rs ref="ghost">It is not true that I have been personating the ghost which has thrown so many
-                old ladies into fits</rs>; and it is to me quite inexplicable that any one could
-                discover aught in my appearance at all calculated to render me a bugbear. I shall
-                certainly bring the affair before the Parliament, as superstitions feelings tend
-                greatly to impede the march of intellect, and particularly militate against any
-                system of national education. <rs ref="ghost">The ubiquity of the ghost is truly marvellous</rs>, being
-                seen at different places at the same moment; and it is well known that I never was
-                like Cerberus, playing the part of three gentlemen at once. It is my intention to
-                publish my opinions on <rs ref="ghost">apparitions</rs> in the <q>Penny Magazine;</q> but in the mean time I
-                request you to publish my denial of the charge that I have been playing either the
-                fool or the devil with old ladies.</p>
-                <closer><salute>I am, Sir, your’s, &amp;c.</salute> <persName>Brougham and Vaux</persName>.</closer></div>
-                <div><opener><salute>Sir—</salute></opener><p>As the story about the ghost is likely to injure my reputation considerably, I
-                entreat of you to undeceive the public mind. The only ghost worthy of attention is
-                the one I represent in the tragedy of Ham-let; mine is the only legitimate ghost
-                ex{}ant, and I consider the attempt which is made to impose upon the world, as
-                dictated by hatred and malice. I rely upon your candour and impartiality to render
-                me this act of justice, and beg to enclose an admission to the shilling gallery, as
-                I am seen to the best advantage at the greatest possible
-                distance.</p><closer><salute>Your obedient servant,</salute>
-                    <persName>John Cooter</persName>.</closer></div>
-            <div><opener><salute>My dear Sir—</salute></opener><p>I am compelled to apply to you for consolation at
-                this distressing moment: <rs ref="ghost">my tabby has miscarried owing to her being frightened by
-                the ghost</rs>. Seven little dear kittens, and one a real tortoise-shell Tom, deprived of
-                existence so prematurely! My poor Tabby was gently caterwauling, when <rs ref="ghost">the ghost came
-                in the shape of a huge dog</rs>, and bitoff half of her tail; her condition is
-                deplorable, but I am in hopes that I shall be able to restore that graceful
-                appendage to its proper length. Do lay <rs ref="ghost">the perturbed spirit</rs> if you possibly can, or
-                the most serious results may be expected. I have just heard of the following. An
-                elderly lady of my acquaintance was suddenly embraced by it in <rs ref="ghost">the shape of a
-                Life-guardsman</rs>, and her teeth chattered so much from fear that they all dropped out.
-                Her dentist declares that he must make her another new set. A servant girl in my
-                neighbourhood went out on an errand on Sunday night, and did not return home till
-                Monday morning, when she told a most lamentable story about being <rs ref="ghost">carried off
-                against her will by the ghost, and how she was detained by it all the night, and how
-                it seemed to oppress her like the nightmare, but would not let her sleep</rs>. The girl
-                further says, that <rs ref="ghost">the ghost has a spell over her</rs>, and that it is likely she shall
-                see it again. I have sent a worthy divine, <q>a powerful preacher,</q> to afford her
-                truly spiritual consolation. I have heard of something else which was told to my
-                informant by a person who saw a little boy who had spoken to an elderly woman that
-                thought she had had <rs ref="ghost">a glimpse of the ghost</rs>. I am making every inquiry possible, and
-                if I meet with the elderly woman, I will accompany her to communicate all she knows
-                and thinks, and thinks that she knows, I send you a present of one of my dear
-                kittens stuffed.</p><closer><salute>Believe me your affectionate Herald
-                Office.</salute><persName>Grandmama.</persName></closer></div>
-            <div><p>We hasten to give a place to the following from the M-P-ric of <placeName ref="#Finsbury">Finsbury</placeName>:—</p>
-            <div><opener><salute>Dear Sat—</salute></opener><p>An absurd report having got abroad that I am <rs ref="ghost">the ghost,
-                or devil, monster, or whatever it may be</rs> died, by which the suburbs of London are
-                reported to be haunted, I shall feel obliged by your giving a contradiction to the
-                same. <rs ref="ghost">I am neither ghost nor demon</rs>, although a devil of a fellow for moral and
-                medical dissection; nor have I been playing any pranks lately, except in the House
-                of Common and at <placeName ref="#WCHouse">White Conduit House</placeName>. I never wear a bear-skin dress, nor array
-                myself in a white sheet to frighten nursery girls out of their senses; nor was I
-                seen in <soCalled><placeName ref="#CTLane">Cut-throat Lane</placeName></soCalled> the other evening, clawing the clothes off the backs of
-                several females, as reported in the papers. It if true that many years back I cut
-                off the head of Thistlewood after his execution, having figured as <q>the man in the
-                mask</q> on the scaffold. But, my dear Sat, I submit that this trifling circumstance
-                forms no excuse for my being held up as the <soCalled>monster</soCalled> who has frightened the suburbs
-                from their propriety. Pray set the public right on this point, as I am peculiarly
-                nice on matters that affect my character. I send you a box of <rs ref="rel">Lucifer</rs>, forgetting an
-                instantaneous light, manufactured by myself, and I think you will allow them to
-                evince no small acquaintance with the science of chemistry and
-                combustion.</p><closer><salute>I am, dear Sat, everlastingly your admirer,</salute>
-            <persName>Thomas Wakley</persName>.</closer></div></div>
-    </body>
+        <body>
+            <div>
+                <p><q>Be thou <rs ref="ghost">a spirit of health</rs>, or <rs ref="ghost">goblin
+                            damned</rs>?</q></p>
+                <p><rs ref="rel public">It would certainly have been a pity if the Christmas had
+                        passed over without something to occupy the public attention</rs>; and it
+                    must be gratifying to the lovers of the awful to find a fire and a <rs
+                        ref="ghost">ghost to enliven the winter evenings</rs>. We shall not,
+                    however, speculate about the former, as that is a real calamity; but with regard
+                    to the latter affair, we feel bound to tell all we know, which will be best
+                    communicated by publishing some letters received by us from parties of eminence
+                    and of undoubted veracity.</p>
+            </div>
+            <div>
+                <opener>
+                    <salute>Sir—</salute>
+                </opener>
+                <p>I have just seen the <rs ref="ghost">ghost walking on the water</rs> under
+                    <placeName ref="#londonbridge">London-bridge</placeName>; <rs ref="ghost"
+                        type="desc">its breath was fire, and when it opened its mouth wide, it had
+                        all the appearance of a baker’s oven, red hot</rs>. I was terrified lest it
+                    should set the Thames on fire, and I could not help exclaiming with Shakspeare—
+                        <q>The fishes beginning to sweat, Cried, ‘Damn it, how hot we shall be!’</q>
+                    I was determined, if possible, to give it into custody, when all of a sudden <rs
+                        ref="ghost">I saw it was in the shape of an ass</rs>, and just as the moon
+                    went behind a cloud it vanished. I have to request that you will give me your
+                    opinion on this important matter.</p>
+                <closer>
+                    <salute>Faithfully your’s,</salute>
+                    <persName>C. Hunter, Bart.</persName>
+                </closer>
+            </div>
+            <div>
+                <p>[In reply we beg to observe, that in our opinion Sir Claudius merely saw his own
+                    shadow.]</p>
+            </div>
+            <div>
+                <opener>
+                    <salute>Sir—</salute>
+                </opener>
+                <p><rs ref="ghost">It is not true that I have been personating the ghost which has
+                        thrown so many old ladies into fits</rs>; and it is to me quite inexplicable
+                    that any one could discover aught in my appearance at all calculated to render
+                    me a bugbear. I shall certainly bring the affair before the Parliament, as
+                    superstitions feelings tend greatly to impede the march of intellect, and
+                    particularly militate against any system of national education. <rs ref="ghost"
+                        >The ubiquity of the ghost is truly marvellous</rs>, being seen at different
+                    places at the same moment; and it is well known that I never was like Cerberus,
+                    playing the part of three gentlemen at once. It is my intention to publish my
+                    opinions on <rs ref="ghost">apparitions</rs> in the <q>Penny Magazine;</q> but
+                    in the mean time I request you to publish my denial of the charge that I have
+                    been playing either the fool or the devil with old ladies.</p>
+                <closer><salute>I am, Sir, your’s, &amp;c.</salute>
+                    <persName>Brougham and Vaux</persName>.</closer>
+            </div>
+            <div>
+                <opener>
+                    <salute>Sir—</salute>
+                </opener>
+                <p>As the story about the ghost is likely to injure my reputation considerably, I
+                    entreat of you to undeceive the public mind. The only ghost worthy of attention
+                    is the one I represent in the tragedy of Ham-let; mine is the only legitimate
+                    ghost ex{}ant, and I consider the attempt which is made to impose upon the
+                    world, as dictated by hatred and malice. I rely upon your candour and
+                    impartiality to render me this act of justice, and beg to enclose an admission
+                    to the shilling gallery, as I am seen to the best advantage at the greatest
+                    possible distance.</p>
+                <closer><salute>Your obedient servant,</salute>
+                    <persName>John Cooter</persName>.</closer>
+            </div>
+            <div>
+                <opener>
+                    <salute>My dear Sir—</salute>
+                </opener>
+                <p>I am compelled to apply to you for consolation at this distressing moment: <rs
+                        ref="ghost">my tabby has miscarried owing to her being frightened by the
+                        ghost</rs>. Seven little dear kittens, and one a real tortoise-shell Tom,
+                    deprived of existence so prematurely! My poor Tabby was gently caterwauling,
+                    when <rs ref="ghost">the ghost came in the shape of a huge dog</rs>, and bitoff
+                    half of her tail; her condition is deplorable, but I am in hopes that I shall be
+                    able to restore that graceful appendage to its proper length. Do lay <rs
+                        ref="ghost">the perturbed spirit</rs> if you possibly can, or the most
+                    serious results may be expected. I have just heard of the following. An elderly
+                    lady of my acquaintance was suddenly embraced by it in <rs ref="ghost">the shape
+                        of a Life-guardsman</rs>, and her teeth chattered so much from fear that
+                    they all dropped out. Her dentist declares that he must make her another new
+                    set. A servant girl in my neighbourhood went out on an errand on Sunday night,
+                    and did not return home till Monday morning, when she told a most lamentable
+                    story about being <rs ref="ghost">carried off against her will by the ghost, and
+                        how she was detained by it all the night, and how it seemed to oppress her
+                        like the nightmare, but would not let her sleep</rs>. The girl further says,
+                    that <rs ref="ghost">the ghost has a spell over her</rs>, and that it is likely
+                    she shall see it again. I have sent a worthy divine, <q>a powerful preacher,</q>
+                    to afford her truly spiritual consolation. I have heard of something else which
+                    was told to my informant by a person who saw a little boy who had spoken to an
+                    elderly woman that thought she had had <rs ref="ghost">a glimpse of the
+                        ghost</rs>. I am making every inquiry possible, and if I meet with the
+                    elderly woman, I will accompany her to communicate all she knows and thinks, and
+                    thinks that she knows, I send you a present of one of my dear kittens
+                    stuffed.</p>
+                <closer>
+                    <salute>Believe me your affectionate Herald Office.</salute>
+                    <persName>Grandmama.</persName>
+                </closer>
+            </div>
+            <div>
+                <p>We hasten to give a place to the following from the M-P-ric of
+                    <placeName ref="#Finsbury">Finsbury</placeName>:—</p>
+                <div>
+                    <opener>
+                        <salute>Dear Sat—</salute>
+                    </opener>
+                    <p>An absurd report having got abroad that I am <rs ref="ghost">the ghost, or
+                            devil, monster, or whatever it may be</rs> died, by which the suburbs of
+                        London are reported to be haunted, I shall feel obliged by your giving a
+                        contradiction to the same. <rs ref="ghost">I am neither ghost nor
+                        demon</rs>, although a devil of a fellow for moral and medical dissection;
+                        nor have I been playing any pranks lately, except in the House of Common and
+                        at <placeName ref="#WCHouse">White Conduit House</placeName>. I never wear a
+                        bear-skin dress, nor array myself in a white sheet to frighten nursery girls
+                        out of their senses; nor was I seen in
+                            <soCalled><placeName ref="#CTLane">Cut-throat Lane</placeName></soCalled>
+                        the other evening, clawing the clothes off the backs of several females, as
+                        reported in the papers. It if true that many years back I cut off the head
+                        of Thistlewood after his execution, having figured as <q>the man in the
+                            mask</q> on the scaffold. But, my dear Sat, I submit that this trifling
+                        circumstance forms no excuse for my being held up as the
+                            <soCalled>monster</soCalled> who has frightened the suburbs from their
+                        propriety. Pray set the public right on this point, as I am peculiarly nice
+                        on matters that affect my character. I send you a box of <rs ref="rel"
+                            >Lucifer</rs>, forgetting an instantaneous light, manufactured by
+                        myself, and I think you will allow them to evince no small acquaintance with
+                        the science of chemistry and combustion.</p>
+                    <closer><salute>I am, dear Sat, everlastingly your admirer,</salute>
+                        <persName>Thomas Wakley</persName>.</closer>
+                </div>
+            </div>
+        </body>
     </text>
 </TEI>

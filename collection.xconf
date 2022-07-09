@@ -65,10 +65,10 @@
                 <!-- ==================================================== -->
                 <facet dimension="publisher"
                     expression="descendant::tei:sourceDesc/descendant::tei:bibl/tei:publisher 
-                        ! string-join((., @rend), ', ')"/>
+                        ! string-join((., @rend), ', ') => normalize-space()"/>
                 <field name="formatted-publisher"
                     expression="descendant::tei:sourceDesc/descendant::tei:bibl/tei:publisher
-                        ! string-join((@rend, .), ' ')"/>
+                        ! string-join((@rend, .), ' ') => normalize-space()"/>
                 <!-- ==================================================== -->
                 <!-- Article title (field)                                -->
                 <!--                                                      -->
