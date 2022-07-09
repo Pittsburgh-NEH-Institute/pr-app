@@ -120,8 +120,8 @@ Functions for manipulating data for indexing and rendering
 declare function hoax:format-title($title as xs:string) as xs:string {
     if (matches($title, '^(The|An|A) '))
         then replace($title, '^(The|An|A)( )(.+)', '$3, $1')
-            ! concat(upper-case(substring(., 1, 1)), substring(., 2))
-        else $title
+            ! concat(upper-case(substring(., 1, 1)), substring(., 2)) => normalize-space()
+        else normalize-space($title)
 };
 
 (:~ 
@@ -154,4 +154,9 @@ declare function hoax:word-count($body as element(tei:body)) as xs:integer {
 
 declare function hoax:initial-cap($input as xs:string) as xs:string {
     concat(upper-case(substring($input, 1, 1)), substring($input, 2))
+};
+
+declare function hoax:create-cuuid($input as xs:string) as xs:string{
+    (: create stable (within run) uuid with leading consonant :)
+    'h' || util:uuid($input)
 };

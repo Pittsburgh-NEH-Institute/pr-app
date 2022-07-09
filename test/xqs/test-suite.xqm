@@ -152,3 +152,12 @@ declare
             doc("/db/apps/pr-app/data/aux_xml/places.xml")//id("ealing")
         return deep-equal(hoax:get-place-info($e), $tests:place-test-1)
     };
+(: ==========
+Test for computing stable UUID that begins with consonant
+========== :)
+declare
+    %test:arg("input", "ghost")
+    %test:assertEquals("h8fd67d96-6d54-353a-b0f4-100c08b555a0")
+    function tests:create-uuid($input) as xs:string {
+        hoax:create-cuuid($input)
+    };

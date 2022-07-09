@@ -312,6 +312,9 @@ Reading view
 ========== 
 */
 
+h3 {
+    margin-top: 0;
+}
 #reading-title, #ghost-reference-title {
     display: flex;
     flex-direction: row;
@@ -350,6 +353,10 @@ mark {
 }
 #aux {
     font-size: smaller;
+}
+
+.highlight {
+    background-color: var(--highlight-color);
 }
 /*
 ==========

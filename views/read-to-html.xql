@@ -22,6 +22,14 @@ declare variable $gms as map(*) := map {
     "U" : "Unknown"
     };
 
+declare variable $refs as map(*) := map {
+    "rel": "religion",
+    "or": "orientalism",
+    "mis": "misinformation",
+    "pub": "public",
+    "just": "justice"
+    };
+
 declare variable $data as document-node() := request:get-data();
 
 declare function local:dispatch($node as node()) as item()* {
@@ -34,8 +42,14 @@ declare function local:dispatch($node as node()) as item()* {
             case element(tei:publisher) return local:publisher($node)
             case element(tei:p) return local:p($node)
             case element(tei:ab) return local:p($node)
+            case element(tei:lg) return local:p($node)
+            case element(tei:l) return local:l($node)
+            case element(tei:opener) return local:p($node)
+            case element(tei:closer) return local:closer($node)
             case element(tei:rs) return local:rs($node)
             case element(tei:q) return local:quote($node)
+            case element(tei:head) return local:head($node)
+            case element(tei:emph) return local:emph($node)
         case element(m:aux) return local:aux($node)
         (:process m:aux:)
             case element(m:ghost-references) return local:ghost-references($node)
@@ -73,13 +87,19 @@ declare function local:TEI($node as element(m:result)) as element(html:section){
     <html:section class="reading">
         <html:div id="reading-title">
             <html:h2>{local:dispatch($node/descendant::tei:titleStmt/tei:title)}</html:h2>
+            {if (exists(root($node)/descendant::m:ghost-references/*)) then 
             <html:div class="info">ⓘ
                 <html:div class="tooltip">Hover over green outlines to see reference type</html:div>
             </html:div>
+            else ()}            
         </html:div>
+        <html:h3><html:cite>{root($node)/descendant::m:aux/m:publisher ! string()}</html:cite>,
+        <html:span>{root($node)/descendant::m:aux/m:date ! string()} 
+        ({root($node)/descendant::m:aux/m:word-count ! string()} words)</html:span></html:h3>
         {local:dispatch($node/descendant::tei:body),
         local:dispatch($node/descendant::m:aux),
         local:dispatch($node/descendant::tei:sourceDesc/descendant::tei:bibl)}
+        <html:script type="text/javascript" src="resources/js/read.js"></html:script>
     </html:section>
 };
 
@@ -105,14 +125,33 @@ declare function local:p($node as element()) as element(html:p) {
     <html:p>{for $child in $node/node() return local:dispatch($child)}</html:p>
 };
 
+declare function local:l($node as element(tei:l)) as item()+ {
+    local:passthru($node),
+    if ($node/following-sibling::tei:l) then <html:br/> else ()
+};
+
+declare function local:head($node as element(tei:head)) as element(html:p) {
+    <html:p>{local:passthru($node)}</html:p>
+};
+
+declare function local:closer($node as element(tei:closer)) as element(html:p) {  
+    <html:p>{local:passthru($node)}</html:p>
+};
+
 declare function local:quote($node as element(tei:q)) as element(html:q) {
     <html:q>{for $child in $node/node() return local:dispatch($child)}</html:q>
 };
 
+declare function local:emph($node as element(tei:emph)) as element(tei:emph) {
+    (: Defaults to <em> which is rendered as italic; all examples in corpus
+        are either rend="italic" or have no @rend attribute:)
+    <html:em>{local:passthru($node)}</html:em>
+};
+
 declare function local:rs($node as element(tei:rs)) as element(html:span) {
     <html:span 
-        class="{string-join(('ref', $node/@ref), ' ')}" 
-        title="{$node/@ref}"
+        class="{string-join(('ref', $node/@ref, hoax:create-cuuid($node/@ref)), ' ')}" 
+        title="{for $ref in $node/@ref ! tokenize(.) return ($refs($ref),$ref)[1]}"
     >{for $child in$node/node() return local:dispatch($child)}</html:span>
 };
 
@@ -155,7 +194,11 @@ declare function local:ghost-references($node as element(m:ghost-references)) as
 };
 
 declare function local:ghost-reference($node as element(m:ghost-reference)) as element(html:li) {
-    <html:li><html:label><html:input class="ghost-reference" type="checkbox" id="{$node}"/>{local:passthru($node)}</html:label></html:li>
+    <html:li>
+        <html:label><html:input class="ghost-reference" type="checkbox" id="{
+            substring-before($node, ' (') ! hoax:create-cuuid(.)
+        }"/>{local:passthru($node)}</html:label>
+    </html:li>
 };
 
 declare function local:places($node as element(m:places)) as element()* {
