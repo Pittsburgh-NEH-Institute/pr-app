@@ -97,8 +97,8 @@ declare function local:search-term($node as element(m:search-term)) as item()+ {
                 All searches are case-insensitive
             </html:div>
         </html:div>
-        <html:input id="submit" type="submit">Search</html:input>
-        <html:button id="clear-form"><html:a href="search">Clear</html:a></html:button>
+        <html:input id="submit" type="submit" value="Submit"/>
+        <html:button id="clear-form" type="reset">Clear</html:button>
     </html:div>
 };
 (: =====
@@ -114,7 +114,7 @@ declare function local:publisher($node as element(m:publisher)) as element(html:
     <html:li>
         {if (starts-with($node/descendant::m:count, '0')) then attribute class {"no-potential"} else ()}
         <html:label>
-            <html:input type="checkbox" name="publishers[]" value="{string($node/m:label)}">{
+            <html:input type="checkbox" name="publishers[]" value="{normalize-space($node/m:label)}">{
             (: Maintain checked state :)
             if ($node/m:label = root($node)/descendant::m:selected-facets/descendant::m:publisher) 
                 then attribute checked {"checked"} 

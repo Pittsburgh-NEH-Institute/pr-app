@@ -226,4 +226,7 @@ Return results, order is meaningful (order is used to create view):
             $month-years ! <m:month-year>{.}</m:month-year>
         }</m:month-years>
     </m:selected-facets>
+    <m:hit-options>
+        {serialize($hit-options, map { "method" : "json" })}
+    </m:hit-options>
 </m:data>
