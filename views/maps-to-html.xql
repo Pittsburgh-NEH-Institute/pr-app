@@ -23,6 +23,7 @@ declare namespace hoax ="http://obdurodon.org/hoax";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace m="http://www.obdurodon.org/model";
 declare namespace console="http://existdb.org/xquery/console";
+declare namespace xi="http://www.w3.org/2001/XInclude";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";
@@ -140,12 +141,18 @@ declare variable $map as element(fn:map) := <fn:map>
 
 declare variable $geojson as xs:string := concat('const geojson = ', xml-to-json($map), ';') ;
 
-<html:section> 
+<html:section id="map-viz"> 
 
 <html:div id="map"></html:div>
+
+<html:div id="drawing">
+<html:figure>
+<html:img src="resources/img/stjames.jpg"></html:img>
+</html:figure>
+</html:div>
 
 <html:script>
 {concat($js-front, $geojson, $js-back)}
 </html:script>
-
+<xi:include href="/db/apps/pr-app/resources/includes/maps.xhtml"/>
 </html:section>

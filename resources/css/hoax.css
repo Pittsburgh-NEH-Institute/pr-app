@@ -209,6 +209,23 @@ via Custom Markers GL JS tutorial
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#drawing {
+    width:50%;
+    position:absolute;
+    top: 520px;
+}
+#drawing img {
+    width: 100%;
+}
+#map-viz {
+    height:1200px;
+}
+
+.map {
+    left: 55%;
+    position:absolute;
+}
+
 /* 
 ==========
 Search 
