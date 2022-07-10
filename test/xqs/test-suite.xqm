@@ -35,16 +35,17 @@ declare variable $tests:place-test-1 as element(tei:place) :=
     </m:place>
 ;
 
-declare %test:setUp
-function tests:_test-set() {    
-    xmldb:store("/db/apps/pr-app", "test.xml", $tests:XML)
+declare 
+    %test:setUp
+    function tests:_test-set() {    
+        xmldb:store("/db/apps/pr-app", "test.xml", $tests:XML)
 };
 
 (: %test:tearDown will run after module testing is done, function names are arbitrary:)
 declare
     %test:tearDown
-function tests:_test-teardown() {
-    xmldb:remove("/db/apps/pr-app", "test.xml")
+    function tests:_test-teardown() {
+        xmldb:remove("/db/apps/pr-app", "test.xml")
 };
 
 (: ==========
