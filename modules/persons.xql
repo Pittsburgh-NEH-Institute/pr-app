@@ -12,15 +12,15 @@ declare variable $pros :=doc('/db/apps/pr-app/data/aux_xml/persons.xml');
 {
 for $person in $pros//tei:listPerson/*
 let $surname := $person/tei:persName/tei:surname
-let $forename := $person/tei:persName/tei:forename[1]
-let $abt := $person//tei:bibl
-let $job := $person//tei:occupation
+let $forename := $person/tei:persName/tei:forename => string-join(' ')
+let $abt := $person//tei:bibl ! normalize-space(.)
+let $job := $person//tei:occupation ! normalize-space(.)
 let $role := $person/@role ! string()
 let $gm := $person/@sex ! string()
 return
 
     <entry>
-        <name>{$surname || ', ' || $forename}</name>
+        <name>{string-join(($surname, $forename), ', ')}</name>
         <about>{$abt}</about>
         <job>{$job}</job>
         <role>{$role}</role>

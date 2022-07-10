@@ -56,9 +56,10 @@ declare function local:dispatch($node as node()) as item()* {
             case element(m:ghost-reference) return local:ghost-reference($node)
             case element (m:places) return local:places($node)
             case element (m:place) return local:row($node)
+            case element (m:place) return local:row($node)
             case element(m:people) return local:people($node)
             case element(m:person) return local:person($node)
-            case element (m:name) return local:cap-cell($node)
+            case element (m:name) return local:name($node)
             case element (m:job) return local:cap-cell($node)
             case element (m:role) return local:cap-cell($node)
             case element (m:gm) return local:gm($node)
@@ -258,6 +259,17 @@ declare function local:cap-cell ($node as element()) as element(html:td){
         if (exists($node/node())) 
             then hoax:initial-cap($node)
             else "(None)"
+    }</html:td>
+};
+
+declare function local:name ($node as element(m:name)) as element(html:td){
+    (: Capitalize first letter of content:)
+    <html:td>{
+        if (empty($node/node())) 
+        then "(None)"
+        else if (exists($node/following-sibling::m:link))
+            then <html:a href="{$node/following-sibling::m:link ! string()}" target="_blank">{hoax:initial-cap($node)}</html:a>
+            else hoax:initial-cap($node)
     }</html:td>
 };
 

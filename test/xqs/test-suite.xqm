@@ -22,6 +22,7 @@ declare variable $tests:XML := document {
         <tei:body>
             This sentence has five words.
         </tei:body>
+        <tei:body/>
     </TEI>
 };
 
@@ -35,16 +36,27 @@ declare variable $tests:place-test-1 as element(tei:place) :=
     </m:place>
 ;
 
-declare %test:setUp
-function tests:_test-set() {    
-    xmldb:store("/db/apps/pr-app", "test.xml", $tests:XML)
+declare variable $tests:person-test-1 as element(m:person) :=
+    <m:person>
+        <m:name>Nelson, Horatio</m:name>
+        <m:about>Horatio Nelson was a Naval official known for his death at the Battle of Trafalgar in 1805.</m:about>
+        <m:job>Vice Admiral of the Royal Navy</m:job>
+        <m:role>admiral</m:role>
+        <m:gm>M</m:gm>
+    </m:person>
+;
+
+declare 
+    %test:setUp
+    function tests:_test-set() {    
+        xmldb:store("/db/apps/pr-app", "test.xml", $tests:XML)
 };
 
 (: %test:tearDown will run after module testing is done, function names are arbitrary:)
 declare
     %test:tearDown
-function tests:_test-teardown() {
-    xmldb:remove("/db/apps/pr-app", "test.xml")
+    function tests:_test-teardown() {
+        xmldb:remove("/db/apps/pr-app", "test.xml")
 };
 
 (: ==========
@@ -135,22 +147,38 @@ declare
  Test for word count
  ========== :)  
  declare 
+    %test:arg("pos", 1)
     %test:assertEquals(5)
-    function tests:word-count() as xs:integer {
-        hoax:word-count(doc("/db/apps/pr-app/test.xml")//tei:body)
+    %test:arg("pos", 2)
+    %test:assertEquals(0)
+    function tests:word-count($pos as xs:integer) as xs:integer {
+        hoax:word-count(doc("/db/apps/pr-app/test.xml")//tei:body[$pos])
     };
 
 (: ==========
 Test for retrieving place info from gazetteer
 Depends on actual aux_xml/places.xml file
+A better test would use test data, rather than real data
 ========== :)
 declare
     %test:arg("placename", "ealing")
     %test:assertTrue
     function tests:get-place-info($placename) as xs:boolean {
         let $e as element(tei:place) := 
-            doc("/db/apps/pr-app/data/aux_xml/places.xml")//id("ealing")
+            doc("/db/apps/pr-app/data/aux_xml/places.xml")//id($placename)
         return deep-equal(hoax:get-place-info($e), $tests:place-test-1)
+    };
+(: ==========
+Test for retrieving person info from prosopography
+TODO: Should also test with bad data
+========== :)
+declare
+    %test:arg("personname", "horationelson")
+    %test:assertTrue
+    function tests:get-person-info($personname as xs:string) as xs:boolean {
+        let $e as element(tei:person) :=
+            doc("/db/apps/pr-app/data/aux_xml/persons.xml")//id($personname)
+        return deep-equal(hoax:get-person-info($e), $tests:person-test-1)
     };
 (: ==========
 Test for computing stable UUID that begins with consonant
@@ -158,6 +186,27 @@ Test for computing stable UUID that begins with consonant
 declare
     %test:arg("input", "ghost")
     %test:assertEquals("h8fd67d96-6d54-353a-b0f4-100c08b555a0")
-    function tests:create-uuid($input) as xs:string {
-        hoax:create-cuuid($input)
+    %test:arg("input", "")
+    %test:assertEmpty
+    function tests:create-uuid($input) as xs:string? {
+        if ($input eq "") 
+            then hoax:create-cuuid(())
+        else
+            hoax:create-cuuid($input)
     };
+(: ==========
+Test for initial capitalization
+========== :)
+declare
+    %test:arg("input", "input")
+    %test:assertEquals("Input")
+    %test:arg("input", "potato salad")
+    %test:assertEquals("Potato salad")
+    %test:arg("input", "2") (: non-alphabetic :)
+    %test:assertEquals("2")
+    %test:arg("input", "ĳ") (: ligature :)
+    %test:assertEquals("Ĳ")
+    function tests:initial-cap($input as xs:string) as xs:string {
+        hoax:initial-cap($input)
+    };
+(: No test for hoax:maplist(), which currently is not used :)

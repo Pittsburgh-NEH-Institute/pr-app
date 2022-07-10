@@ -1,7 +1,9 @@
 xquery version "3.1";
 (:~ 
- : This module provides the functions that will be imported into 
- : collections.xconf for use when creating facets and fields.
+ : This module provides all functions mported into modules
+ : in the app, both those called directly to create models
+ : and views and those used by collections.xconf to create
+ : facets and fields.
  :
  : @author gab_keane
  : @version 1.0
@@ -76,13 +78,17 @@ declare function hoax:get-place-info($place as element(tei:place)) as element(m:
                 else <m:link>{$link}</m:link>}
         </m:place>
 };
-(: Compile map titles and create links. So far, I've been doing this by creating individual xql files for each map. this isn't scalable
- : filter articles with place references, make the filename into a link so that when clicked it just appends to current URL
- : this solution allowed me to play around with adding drawings and annotations to each map. I'm not against changing this functionality to a more robust solution, but could foresee this solution working well for a project this small :)
- 
+(: Compile map titles and create links. So far, I've been doing this by creating individual xql 
+ : files for each map. this isn't scalable. 
+ : Filter articles with place references, make the filename into a link so that when clicked it 
+ : just appends to current URL.
+ : this solution allowed me to play around with adding drawings and annotations to each map. I'm 
+ : not against changing this functionality to a more robust solution, but could foresee this 
+ : solution working well for a project this small :)
+(: Not currently used 
 declare function hoax:maplist($docs){
     for $doc in $docs
-    let $filter := $doc[contains(.//tei:placeName/@ref,"#")]
+    let $filter := $doc[contains(descendant::tei:placeName/@ref,"#")]
     for $placedoc in $filter
     let $date := $placedoc//tei:date/@when
     let $printdate := substring-before($date, '-')
@@ -90,28 +96,27 @@ declare function hoax:maplist($docs){
     let $filename := concat(substring-before(tokenize(fn:base-uri($placedoc), '/')[last()], '.'), "-map.xql")
     let $linkpath := concat("read?", $filename)
     order by $date
-    return
-      <item><anchor xml:id="{$linkpath}">{$title}</anchor></item>
+    return <item><anchor xml:id="{$linkpath}">{$title}</anchor></item>
 };
+:)
 (:==========
 Functions for persons
 ==========:)
-declare function hoax:get-person-info ($person) as element(m:person) {
+declare function hoax:get-person-info($person) as element(m:person) {
     let $surname as xs:string := $person/tei:persName/tei:surname ! string()
     let $forename as xs:string? := $person/tei:persName/tei:forename[1] ! string()
-    let $abt as xs:string? := $person//tei:bibl ! string ()
-    let $job as xs:string? := $person//tei:occupation ! string()
-    let $role as xs:string? := $person/@role ! string()
+    let $abt as xs:string? := $person//tei:bibl ! normalize-space()
+    let $job as xs:string? := $person//tei:occupation ! normalize-space()
+    let $role as xs:string? := $person/@role ! normalize-space()
     let $gm as xs:string? := $person/@sex ! string()
-
-return
-    <m:person>
-        <m:name>{string-join(($surname, $forename), ', ')}</m:name>
-        <m:about>{$abt}</m:about>
-        <m:job>{$job}</m:job>
-        <m:role>{$role}</m:role>
-        <m:gm>{$gm}</m:gm>
-    </m:person>
+    return
+        <m:person>
+            <m:name>{string-join(($surname, $forename), ', ')}</m:name>
+            <m:about>{$abt}</m:about>
+            <m:job>{$job}</m:job>
+            <m:role>{$role}</m:role>
+            <m:gm>{$gm}</m:gm>
+        </m:person>
 };
 (:==========
 Functions for manipulating data for indexing and rendering
@@ -119,9 +124,9 @@ Functions for manipulating data for indexing and rendering
 (: Move definite and indefinite article to end of title for rendering :)
 declare function hoax:format-title($title as xs:string) as xs:string {
     if (matches($title, '^(The|An|A) '))
-        then replace($title, '^(The|An|A)( )(.+)', '$3, $1')
-            ! concat(upper-case(substring(., 1, 1)), substring(., 2)) => normalize-space()
-        else normalize-space($title)
+    then replace($title, '^(The|An|A)( )(.+)', '$3, $1')
+        ! concat(upper-case(substring(., 1, 1)), substring(., 2)) => normalize-space()
+    else normalize-space($title)
 };
 
 (:~ 
@@ -143,9 +148,11 @@ declare function hoax:construct-date-facets($decades as xs:string*, $month-years
     let $decade-starts as xs:string := 
         '^(' || $decades ! substring(., 1, 3) => string-join('|') || ')'
     return 
-        if (empty($decades)) then $month-years
-        else if (empty($month-years)) then () else  
-        $month-years[not(matches(., $decade-starts))]
+        if (empty($decades)) 
+            then $month-years
+            else if (empty($month-years)) 
+                then () 
+                else $month-years[not(matches(., $decade-starts))]
 };
 
 declare function hoax:word-count($body as element(tei:body)) as xs:integer {
@@ -156,7 +163,7 @@ declare function hoax:initial-cap($input as xs:string) as xs:string {
     concat(upper-case(substring($input, 1, 1)), substring($input, 2))
 };
 
-declare function hoax:create-cuuid($input as xs:string) as xs:string{
+declare function hoax:create-cuuid($input as xs:string?) as xs:string? {
     (: create stable (within run) uuid with leading consonant :)
-    'h' || util:uuid($input)
+    if ($input) then 'h' || util:uuid($input) else ()
 };
