@@ -159,8 +159,8 @@
                 <person sex="M" xml:id="horationelson" role="admiral">
                     <occupation>Vice Admiral of the Royal Navy</occupation>
                     <persName>
-                        <surname>Horatio</surname>
-                        <forename>Nelson</forename>
+                        <surname>Nelson</surname>
+                        <forename>Horatio</forename>
                         <roleName>1st Viscount Nelson</roleName>
                     </persName>
                     <bibl><ref

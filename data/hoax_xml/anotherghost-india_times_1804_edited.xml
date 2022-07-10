@@ -15,7 +15,10 @@
             </respStmt>
          </titleStmt>
          <publicationStmt>
-            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the Victorian period. This publication of the text serves as data in a collaborative laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the text and making the edition" at the University of Pittsburgh.</p>
+            <p>This project encoded newspaper and periodical articles on ghost hoaxes in the
+               Victorian period. This publication of the text serves as data in a collaborative
+               laboratory edition for the 2022 NEH Institute "Advanced digital editing: modeling the
+               text and making the edition" at the University of Pittsburgh.</p>
          </publicationStmt>
          <seriesStmt>
             <title>Ghost hoaxes in 19th-century British news media</title>
@@ -24,9 +27,11 @@
             <p>All texts in this collection were sourced from British periodical and newspaper
                archives, transcribed,and encoded. The citation below was provided by the archive and
                appears exactly as given.</p>
-            <p><bibl>ANOTHER GHOST!-A Gentleman of great respectability in the service of the East
-               India. <publisher rend="The">Times</publisher> (London, England), Thursday, <date when="1804-01-19">Jan 19, 1804</date>; pg. 3; Issue 5923.
-                  (591 words)</bibl></p>
+            <p>
+               <bibl>ANOTHER GHOST!-A Gentleman of great respectability in the service of the East
+                  India. <publisher rend="The">Times</publisher> (London, England), Thursday, <date
+                     when="1804-01-19">Jan 19, 1804</date>; pg. 3; Issue 5923. (591 words)</bibl>
+            </p>
          </sourceDesc>
 
       </fileDesc>
@@ -60,12 +65,12 @@
          <p>A Gentleman of great repeatability in the service of the East India Company, among other
             ingenious pursuits, applied himself to the study of anatomy. A human skull, which had
             been placed for sometime in his closet, was, during his absence on a summer excursion,
-            observed frequently to move. Like the secret in the <rs>Agreeable Surprise,</rs> this
-            alarming tale of mystery became <emph>secret pro bono publico</emph>. The servants told
-            it to the neighbours, and the skull was attended by a croud of visitors. At length one
-            of them, more bold than <q>his fellows,</q> made a desperate snatch at the head, when
-            the visionary mountain brought forth a mouse, which had actually brought forth a litter
-            of young ones in the <emph>caput mortuum !!!</emph></p>
+            observed frequently to move. Like the secret in the Agreeable Surprise, this alarming
+            tale of mystery became <emph>secret pro bono publico</emph>. The servants told it to the
+            neighbours, and the skull was attended by a croud of visitors. At length one of them,
+            more bold than <q>his fellows,</q> made a desperate snatch at the head, when the
+            visionary mountain brought forth a mouse, which had actually brought forth a litter of
+            young ones in the <emph>caput mortuum !!!</emph></p>
          <p>Inspite of all the cunning of BONAPARTE, the rapture of his <emph>Sçuvans</emph> in
             India, proved that the knowing ones were be to taken in!</p>
          <p>The French, infantry destined for this country, have helmets with steel guards, reaching
