@@ -7,7 +7,7 @@ declare function local:dispatch($node as node()) as item()* {
         case text() return $node
         case element(places) return local:table($node)
         case element(placeEntry) return local:row($node)
-        case element(placeName) return local:cell($node)
+        case element(placeName) return local:placeName($node)
         case element (lat) return local:cell($node)
         case element (long) return local:cell($node)
         case element (parentPlace) return local:cell($node)
@@ -29,6 +29,9 @@ declare function local:row ($node as element(placeEntry)) as element(html:tr){
     <html:tr>{local:passthru($node)}</html:tr>
 };
 declare function local:cell ($node as element()) as element(html:td){
+    <html:td>{local:passthru($node)}</html:td>
+};
+declare function local:placeName($node as element(placeName)) as element(html:td) {
     <html:td>{local:passthru($node)}</html:td>
 };
 declare function local:passthru($node as node()) as item()* {

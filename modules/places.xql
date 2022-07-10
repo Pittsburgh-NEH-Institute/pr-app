@@ -36,7 +36,7 @@ return
 
     return
     <placeEntry>
-    {$place-name}
+        <placeName>{$place-name ! string()}</placeName>
         <geo>
         <lat>{$lat}</lat>
         <long>{$long}</long>
