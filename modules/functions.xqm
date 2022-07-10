@@ -85,10 +85,10 @@ declare function hoax:get-place-info($place as element(tei:place)) as element(m:
  : this solution allowed me to play around with adding drawings and annotations to each map. I'm 
  : not against changing this functionality to a more robust solution, but could foresee this 
  : solution working well for a project this small :)
- 
+(: Not currently used 
 declare function hoax:maplist($docs){
     for $doc in $docs
-    let $filter := $doc[contains(.//tei:placeName/@ref,"#")]
+    let $filter := $doc[contains(descendant::tei:placeName/@ref,"#")]
     for $placedoc in $filter
     let $date := $placedoc//tei:date/@when
     let $printdate := substring-before($date, '-')
@@ -98,15 +98,16 @@ declare function hoax:maplist($docs){
     order by $date
     return <item><anchor xml:id="{$linkpath}">{$title}</anchor></item>
 };
+:)
 (:==========
 Functions for persons
 ==========:)
-declare function hoax:get-person-info ($person) as element(m:person) {
+declare function hoax:get-person-info($person) as element(m:person) {
     let $surname as xs:string := $person/tei:persName/tei:surname ! string()
     let $forename as xs:string? := $person/tei:persName/tei:forename[1] ! string()
-    let $abt as xs:string? := $person//tei:bibl ! string ()
-    let $job as xs:string? := $person//tei:occupation ! string()
-    let $role as xs:string? := $person/@role ! string()
+    let $abt as xs:string? := $person//tei:bibl ! normalize-space()
+    let $job as xs:string? := $person//tei:occupation ! normalize-space()
+    let $role as xs:string? := $person/@role ! normalize-space()
     let $gm as xs:string? := $person/@sex ! string()
     return
         <m:person>
@@ -162,7 +163,7 @@ declare function hoax:initial-cap($input as xs:string) as xs:string {
     concat(upper-case(substring($input, 1, 1)), substring($input, 2))
 };
 
-declare function hoax:create-cuuid($input as xs:string) as xs:string{
+declare function hoax:create-cuuid($input as xs:string?) as xs:string? {
     (: create stable (within run) uuid with leading consonant :)
-    'h' || util:uuid($input)
+    if ($input) then 'h' || util:uuid($input) else ()
 };
