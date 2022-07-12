@@ -145,6 +145,8 @@ declare variable $geojson as xs:string := concat('const geojson = ', xml-to-json
 
 <html:div id="map"></html:div>
 
+<html:div id="drawingPara">
+
 <html:div id="drawing">
 <html:figure>
 <html:img src="resources/img/stjames.jpg"></html:img>
@@ -155,4 +157,7 @@ declare variable $geojson as xs:string := concat('const geojson = ', xml-to-json
 {concat($js-front, $geojson, $js-back)}
 </html:script>
 <xi:include href="/db/apps/pr-app/resources/includes/maps.xhtml"/>
+
+</html:div>
+
 </html:section>
