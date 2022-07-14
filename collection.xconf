@@ -111,8 +111,8 @@
             </text>
         </lucene>
     </index>
-    <trigger event="update" className="org.exist.collections.triggers.XQueryTrigger">
+    <!--trigger event="update" className="org.exist.collections.triggers.XQueryTrigger">
         <parameter name="url"
             value="xmldb:exist:///db/apps/xqdoc/triggers/generate-xqdoc-trigger.xqm"/>
-    </trigger>
+    </trigger-->
 </collection>
