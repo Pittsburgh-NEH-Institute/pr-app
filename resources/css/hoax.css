@@ -184,9 +184,14 @@ via Custom Markers GL JS tutorial
 */
 #map {
     display: block;
-    position: absolute;
-    width: 50%;
-    height: 50%;
+    margin-left: 5%;
+    width: 90%;
+    height: 700px;
+}
+
+canvas.mapboxgl-canvas {
+    width: 90%;
+    height: 700px;
 }
 
 .marker {
@@ -210,19 +215,19 @@ via Custom Markers GL JS tutorial
 }
 
 #drawing {
-    width:50%;
-    position:absolute;
-    top: 520px;
+    width:55%;
 }
+
 #drawing img {
     width: 100%;
 }
-#map-viz {
-    height:1200px;
+
+#drawingPara {
+    display: flex;
 }
+
 .map {
-    left: 55%;
-    position:absolute;
+    width: 45%;
 }
 
 /* 
