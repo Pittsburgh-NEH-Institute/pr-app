@@ -61,6 +61,7 @@ The Ghost Hoax Advanced search interface exposes three search components: *text*
 
 1. **Text:** Text searching is case-insensitive. The simplest text search is a single word; more complex text specifications (e.g., phrases, wildcards, proximity) are also supported (see the [Lucene documentation](https://lucene.apache.org/core/4_10_4/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description) for details). Mousing over the circled “I” exposes a brief description of how text search works:  
 <img src="facet-output-1b.png" width="55%">
+
 2. **Publisher:** The name of the publisher, with definite and indefinite articles moved to end (e.g., “Age, The” instead of “The Age”.) Users interact with publisher values by means of a checklist. The meaning of the parenthesized numbers is described below.
 3. **Date:** Hierarchical, with *decade* (e.g., "1800" for the 1800–09 decade) at the top level and *month-year* in human-readable form (e.g., “January 1804”) as second level. Users interact with date values by means of a checklist. 
 
