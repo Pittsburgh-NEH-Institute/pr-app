@@ -112,4 +112,9 @@
         </lucene>
     </index>
     <!-- Bad trigger was here. But not anymore. -->
+    <!-- This was the offending trigger causing the reindex error/ljo
+    trigger event="update" className="org.exist.collections.triggers.XQueryTrigger">
+        <parameter name="url"
+            value="xmldb:exist:///db/apps/xqdoc/triggers/generate-xqdoc-trigger.xqm"/>
+    </trigger-->
 </collection>
