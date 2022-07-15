@@ -83,7 +83,7 @@ The default behavior of eXist-db facets as described in the official documentati
 
 ----
 
-**Note:** The default eXist-db “drill-down” facet behavior support multiple selection within a category, but only as an `and` operation, and that isn’t the situation that obtains with publishers, since no article in our corpus was published by two publishers at the same time. In a correspondence corpus, though, such as [Alfred Escher Briefedition](https://www.briefedition.alfred-escher.ch/briefe/), if we select, for example, Gottlieb Koller as a “mentioned person”, the interface (see the image below) lets us further narrow the search to only letters that mention him **along with** other persons we might check. What the interface does not support is selecting letters that mention Koller **or** a specific other person.
+**Note:** The default eXist-db “drill-down” facet behavior does support multiple selection within a category, but only as an `and` operation, and that isn’t the situation that obtains with publishers, since no article in our corpus was published by two publishers at the same time. In a correspondence corpus, though, such as [Alfred Escher Briefedition](https://www.briefedition.alfred-escher.ch/briefe/), if we select, for example, Gottlieb Koller as a “mentioned person”, the interface (see the image below) lets us further narrow the search to only letters that mention him **along with** other persons we might check. What the interface does not support is selecting letters that mention Koller **or** a specific other person.
  
 <img src="escher-multiselect.png" width="30%"/>
 
