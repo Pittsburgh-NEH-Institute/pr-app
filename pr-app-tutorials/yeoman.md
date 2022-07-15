@@ -1,13 +1,10 @@
 # Using Yeoman to generate eXist-db applications
 [https://github.com/eXist-db/generator-exist](https://github.com/eXist-db/generator-exist)
 
-How *should* we be answering these questions- Work on this together with David.
-
 ## Goals
 
-- Create collaborative workspace that can be synced with eXist via VSCode
-- What is output- *.xar*?
-- How does initializing with Git prepare repo to be added to a project space- how can we model a good workflow so that people don't lose work/versions in their early development?
+- Create your own workspace that can be synced with eXist via VSCode
+- Understand how syncing both the file system and your server helps your workflow.
 
 ## Steps
 
@@ -48,8 +45,3 @@ Launch Package Manager and upload the regular *.xar* file from your `build` fold
 1. At the command line, and within the same folder you created and ran Yeoman in, type `git branch -m main` to change the repo's branch name to the conventional "main."
 1. On GitHub, create a new repository with the same name as the folder you created. **Important**: Make sure that you create an *empty* repository, *without* a README.
 1. Once you have created the empty repository, follow the instructions under "...or push an existing repository from the command line."  
-
-## TODO
-
-1. Pushing commits to GitHub will launch a GitHub CI (continuous integration) build, which will fail because *package.json* doesn’t (yet) exist.
-
