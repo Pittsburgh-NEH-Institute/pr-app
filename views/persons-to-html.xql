@@ -9,8 +9,9 @@ declare function local:dispatch($node as node()) as item()* {
         case element(entry) return local:row($node)
         case element(name) return local:cell($node)
         case element (about) return local:cell($node)
-        case element (sex) return local:cell($node)
-       
+        case element (job) return local:cell($node)
+        case element (role) return local:cell($node)
+        case element (gm) return local:cell($node)
         default return local:passthru($node)
 };
 
@@ -19,6 +20,7 @@ declare function local:table($node as element(persons)) as element(html:table){
     <html:tr>
         <html:th>Name</html:th>
         <html:th>About</html:th>
+        <html:th>Job</html:th>
         <html:th>Role</html:th>
         <html:th>Sex</html:th>
     </html:tr>
