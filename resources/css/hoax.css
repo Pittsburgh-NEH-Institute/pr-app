@@ -186,8 +186,8 @@ via Custom Markers GL JS tutorial
 */
 /* 
  * ============================================
- * Both the map and it's container must be the same size, so we set them to follow a root variable
- * If either is larger than the other, you either get whitespace, or a map that stretches beyond it's container,
+ * Both the map and its container must be the same size, so we set them to follow a root variable
+ * If either is larger than the other, you either get whitespace, or a map that stretches beyond its container,
  * but you can't see the outgrown parts
  * ============================================
  */
