@@ -51,6 +51,7 @@ declare variable $text := request:get-data(); (:this variable allows the pipelin
                 style="border-width:0" 
                 src="resources/img/cc_license_88x31.png" height="15" width="45"
             /></a> This work is licensed under a 
-                <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</footer>
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+                <br/>Project data and research artifacts are available under an open license on <a href="https://github.com/Pittsburgh-NEH-Institute/pr-app">GitHub</a>.</footer>
     </body>
 </html>
