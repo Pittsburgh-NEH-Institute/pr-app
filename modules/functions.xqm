@@ -167,3 +167,32 @@ declare function hoax:create-cuuid($input as xs:string?) as xs:string? {
     (: create stable (within run) uuid with leading consonant :)
     if ($input) then 'h' || util:uuid($input) else ()
 };
+
+(: ====
+Function to sanitize user-supplied search term
+Used in search.xql
+==== :)
+declare function hoax:sanitize-search-term(
+        $path-to-data as xs:string, 
+        $received-term as xs:string?
+    ) as item()? {
+    (: Function input could be:
+        Empty sequence: return received empty sequence
+        Empty string: return empty sequence (not empty string!)
+        Non-empty valid Lucene string: return received non-empty received string
+        Non-empty invalid (Lucene) string: <m:error> with system error message
+            But: traps initial asterisk but not sequences like "hi**"
+            Although "hi**" is an invalid regex in matches(), it appears to be valid
+                for Lucene (whatever it might mean!)
+    :)
+    let $no-empty-strings := if ($received-term eq '') then () else $received-term
+    return
+        try {
+            let $dummy as element(tei:TEI)* := collection($path-to-data)/tei:TEI[ft:query(., $no-empty-strings)]
+            return $no-empty-strings
+        } catch * {
+            (: Lucene patterns cannot begin with ? or *. This traps any
+            Lucene-invalid input :)
+            <m:error>{$err:description}</m:error>
+        }
+};

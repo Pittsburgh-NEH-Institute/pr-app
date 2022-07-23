@@ -28,7 +28,10 @@ TODO: Perform the triage first and don't create unneeded values
 ==== :)
 
 (: =====
-Import functions
+Import and module-specific functions
+Namespace hoax is functions in functions.xqm module
+Namespace hoax-search is local to current module
+    declared not in local namespace to make testable
 ===== :)
 import module namespace hoax ="http://obdurodon.org/hoax" at "functions.xqm";
 
@@ -42,33 +45,6 @@ declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";
 declare option output:indent "no";
 
-(: ====
-Local function to sanitize user-supplied term
-==== :)
-declare function local:sanitize-search-term(
-        $path-to-data as xs:string, 
-        $received-term as xs:string?
-    ) as item()? {
-    (: Function input could be:
-        Empty sequence: return received empty sequence
-        Empty string: return empty sequence (not empty string!)
-        Non-empty valid Lucene string: return received non-empty received string
-        Non-empty invalid (Lucene) string: <m:error> with system error message
-            But: traps initial asterisk but not sequences like "hi**"
-            Although "hi**" is an invalid regex in matches(), it appears to be valid
-                for Lucene (whatever it might mean!)
-    :)
-    let $no-empty-strings := if ($received-term eq '') then () else $received-term
-    return
-        try {
-            let $dummy as element(tei:TEI)* := collection($path-to-data)/tei:TEI[ft:query(., $no-empty-strings)]
-            return $no-empty-strings
-        } catch * {
-            (: Lucene patterns cannot begin with ? or *. This traps any
-            Lucene-invalid input :)
-            <m:error>{$err:description}</m:error>
-        }
-};
 (: =====
 Retrieve controller parameters
 
@@ -96,7 +72,7 @@ declare variable $month-years as xs:string* := request:get-parameter('month-year
 declare variable $retrieved-term as xs:string? := (request:get-parameter('term', ()));
 declare variable $term as item()? := 
     (: Value will be <m:error> or something allowed: empty sequence, empty string, non-empty string:)
-    local:sanitize-search-term($path-to-data, $retrieved-term);
+    hoax:sanitize-search-term($path-to-data, $retrieved-term);
 
 (: ====
 If return is <m:error>, don't bother with anything else

@@ -8,8 +8,8 @@ xquery version "3.1";
  :)
 
 module namespace tests = "http://www.obdurodon.org/apps/pr-app/tests";
-declare namespace test="http://exist-db.org/xquery/xqsuite";
 import module namespace hoax="http://obdurodon.org/hoax" at "../../modules/functions.xqm";
+declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace m="http://www.obdurodon.org/model";
 
@@ -75,7 +75,6 @@ declare
     };
 
 declare
-    %tests:name('round-geo() with default precision')
     %test:arg('input', '51.513979')
     %test:assertEquals('51.51')
     %test:arg('input', '51.3')
@@ -87,7 +86,6 @@ declare
     };
 
 declare
-    %tests:name('round-geo() with specified precision')
     %test:arg('input', '51.513979')
     %test:arg('precision', 4)
     %test:assertEquals('51.5140')
@@ -210,3 +208,38 @@ declare
         hoax:initial-cap($input)
     };
 (: No test for hoax:maplist(), which currently is not used :)
+(: ==========
+Test for ft:query() search parameter
+1. Empty sequence
+2. Empty string
+3. Valid Lucene string found in corpus
+4. Valid Lucene string not found in corpus
+5. Invalid Lucene string
+NB: We test this with project data, rather than setup
+========== :)
+declare
+    %test:arg("path-to-data", '/db/apps/pr-app/data/hoax_xml/')
+    %test:arg("received-term", "empty")
+    %test:assertEmpty
+    %test:arg("path-to-data", '/db/apps/pr-app/data/hoax_xml/')
+    %test:arg("received-term", "")
+    %test:assertEmpty
+    %test:arg("path-to-data", '/db/apps/pr-app/data/hoax_xml/')
+    %test:arg("received-term", "constable")
+    %test:assertEquals("constable")
+    %test:arg("path-to-data", '/db/apps/pr-app/data/hoax_xml/')
+    %test:arg("received-term", "potato")
+    %test:assertEquals("potato")
+    %test:arg("path-to-data", '/db/apps/pr-app/data/hoax_xml/')
+    %test:arg("received-term", "*")
+    %test:assertXPath('$result ! name() eq "m:error"')
+    function tests:sanitize-search-term(
+        $path-to-data as xs:string, 
+        $received-term as xs:string?
+    ) as item()? {
+        let $query-term :=
+            if ($received-term eq 'empty') 
+            then () 
+            else $received-term
+        return hoax:sanitize-search-term($path-to-data, $query-term)
+    };
