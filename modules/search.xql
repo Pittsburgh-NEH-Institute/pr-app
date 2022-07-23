@@ -42,6 +42,33 @@ declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";
 declare option output:indent "no";
 
+(: ====
+Local function to sanitize user-supplied term
+==== :)
+declare function local:sanitize-search-term(
+        $path-to-data as xs:string, 
+        $received-term as xs:string?
+    ) as item()? {
+    (: Function input could be:
+        Empty sequence: return received empty sequence
+        Empty string: return empty sequence (not empty string!)
+        Non-empty valid Lucene string: return received non-empty received string
+        Non-empty invalid (Lucene) string: <m:error> with system error message
+            But: traps initial asterisk but not sequences like "hi**"
+            Although "hi**" is an invalid regex in matches(), it appears to be valid
+                for Lucene (whatever it might mean!)
+    :)
+    let $no-empty-strings := if ($received-term eq '') then () else $received-term
+    return
+        try {
+            let $dummy as element(tei:TEI)* := collection($path-to-data)/tei:TEI[ft:query(., $no-empty-strings)]
+            return $no-empty-strings
+        } catch * {
+            (: Lucene patterns cannot begin with ? or *. This traps any
+            Lucene-invalid input :)
+            <m:error>{$err:description}</m:error>
+        }
+};
 (: =====
 Retrieve controller parameters
 
@@ -50,6 +77,7 @@ Default path to data is xmldb:exist:///db/apps/pr-app/data/hoax_xml
 declare variable $exist:root as xs:string := request:get-parameter("exist:root", "xmldb:exist:///db/apps");
 declare variable $exist:controller as xs:string := request:get-parameter("exist:controller", "/pr-app");
 declare variable $path-to-data as xs:string := $exist:root || $exist:controller || '/data/hoax_xml';
+
 (: =====
 Retrieve query parameters
 User can specify:
@@ -61,72 +89,94 @@ Null term value is returned as an empty string, and not as missing, so set
     $term explicitly to an empty sequence if no meaningful value is supplied
     to avoid raising an error
 ===== :)
-declare variable $retrieved-term as xs:string? := (request:get-parameter('term', ()));
 declare variable $publishers as xs:string* := request:get-parameter('publishers[]', ());
 declare variable $decades as xs:string* := request:get-parameter('decades[]', ());
 declare variable $month-years as xs:string* := request:get-parameter('month-years[]', ());
-declare variable $term as xs:string? := if ($retrieved-term) then $retrieved-term else ();
+
+declare variable $retrieved-term as xs:string? := (request:get-parameter('term', ()));
+declare variable $term as item()? := 
+    (: Value will be <m:error> or something allowed: empty sequence, empty string, non-empty string:)
+    local:sanitize-search-term($path-to-data, $retrieved-term);
+
+(: ====
+If return is <m:error>, don't bother with anything else
+Otherwise complete query
+==== :)
+
 (: =====
 hoax:construct-date-facets() removes redundant (because of decades) month-years 
 ===== :)
-declare variable $month-year-facets-for-search as xs:string* := 
-    hoax:construct-date-facets($decades, $month-years);
+let $month-year-facets-for-search as xs:string* := 
+    hoax:construct-date-facets($decades, $month-years)
 (: =====
 $date-facets-array formats all date-related facet values (decades and month-years)
     for use in searching (requires an array because of nesting)
 No such formatting is required for publishers because they are not hierarchical
 ===== :)
-declare variable $date-facets-array as array(*)? := array:join((
+let $date-facets-array as array(*)? := array:join((
         $decades ! [.],
         $month-year-facets-for-search ! [(substring(., 1, 3) || '0', substring(., 1, 7))]
-    ));
+    ))
 (: =====
 Fields must be specified in initial ft:query() in order to be retrievable
 ===== :)
-declare variable $fields as xs:string+ := ("formatted-title", "formatted-date", "formatted-publisher", "incipit");
+let $fields as xs:string+ := ("formatted-title", "formatted-date", "formatted-publisher", "incipit")
 (: =====
 $all-values includes facets that will eventually have zero hits
 ===== :)
-declare variable $all-values as element(tei:TEI)+ :=
+let $all-values as element(tei:TEI)+ :=
     collection($path-to-data)/tei:TEI
     [ft:query(., ())]
-;
 (: =====
 $all-hits is used for articles list, but not for facets to refine search
 ===== :)
-declare variable $hit-facets as map(*) := map {
+let $hit-facets as map(*) := map {
     "publisher" : $publishers,
     "publication-date" : $date-facets-array
-};
-declare variable $hit-options as map(*) := map {
+}
+let $hit-options as map(*) := map {
     "facets" : $hit-facets,
     "fields" : $fields
-};
-declare variable $all-hits as element(tei:TEI)* := 
-    collection($path-to-data)/tei:TEI
-    [ft:query(., $term, $hit-options)];
+}
+let $all-hits as element(tei:TEI)* := 
+    if ($term instance of element(m:error))
+    (: If $term is <m:error> what we do here doesn't matter
+    because we won't return it:)
+    then
+        collection($path-to-data)/tei:TEI
+        [ft:query(., (), $hit-options)]
+    else
+        collection($path-to-data)/tei:TEI
+        [ft:query(., $term, $hit-options)]
 (: =====
 Publisher options returns hits filtered by publishers and term
 Used only to supply date facet counts
 ===== :)
-declare variable $publisher-options as map(*) := map {
+let $publisher-options as map(*) := map {
     "facets" : map { "publisher" : $publishers},
     "fields" : $fields
-};
-declare variable $publisher-hits as element(tei:TEI)* :=
-    collection($path-to-data)/tei:TEI
-    [ft:query(., $term, $publisher-options)];
+}
+let $publisher-hits as element(tei:TEI)* :=
+    if ($term instance of element(m:error)) then
+        collection($path-to-data)/tei:TEI
+        [ft:query(., (), $publisher-options)]
+    else
+        collection($path-to-data)/tei:TEI
+        [ft:query(., $term, $publisher-options)]
 (: =====
 Date options return hits filtered by date and term
 Used only to supply publisher facet counts
 ===== :)
-declare variable $date-options as map(*) := map {
+let $date-options as map(*) := map {
     "facets" : map { "publication-date": $date-facets-array}
-};
-declare variable $date-hits as element(tei:TEI)* :=
+}
+let $date-hits as element(tei:TEI)* :=
+    if ($term instance of element(m:error)) then
+    collection($path-to-data)/tei:TEI
+    [ft:query(., (), $date-options)]
+    else
     collection($path-to-data)/tei:TEI
     [ft:query(., $term, $date-options)]
-;
 (: =====
 Return results, order is meaningful (order is used to create view): 
     1) Search term
@@ -135,8 +185,9 @@ Return results, order is meaningful (order is used to create view):
     4) Articles
     5) Selected facets (checkbox state)
 ===== :)
+return
 <m:data>
-    <m:search-term>{$term}</m:search-term>
+    <m:search-term>{$retrieved-term}</m:search-term>
     <m:publisher-facets>
         <m:publishers>{
             let $all-publisher-facets as map(*) := ft:facets($all-values, "publisher", ())
@@ -185,30 +236,37 @@ Return results, order is meaningful (order is used to create view):
     </m:date-facets>
     <m:articles>
         { (: from $all-hits: article data for list of articles with links :)
-        for $hit in $all-hits
-        let $id as xs:string := 
-            $hit/@xml:id ! string()
-        let $title as xs:string := 
-            ft:field($hit, "formatted-title")
-        let $publisher as xs:string+ := 
-            ft:field($hit, "formatted-publisher")
-        let $date as xs:string := 
-            ft:field($hit, "formatted-date")
-        let $incipit as xs:string :=
-            ft:field($hit, "incipit")
-        order by $title
-        return
-        <m:article>
-            <m:id>{$id}</m:id>
-            <m:title>{$title}</m:title>
-            <m:publisher>{$publisher}</m:publisher>
-            <m:date>{$date}</m:date>
-            <m:incipit>{$incipit}</m:incipit>
-        </m:article>
+        if ($term instance of element(m:error)) then
+            $term
+        else
+            for $hit in $all-hits
+            let $id as xs:string := 
+                $hit/@xml:id ! string()
+            let $title as xs:string := 
+                ft:field($hit, "formatted-title")
+            let $publisher as xs:string+ := 
+                ft:field($hit, "formatted-publisher")
+            let $date as xs:string := 
+                ft:field($hit, "formatted-date")
+            let $incipit as xs:string :=
+                ft:field($hit, "incipit")
+            order by $title
+            return
+            <m:article>
+                <m:id>{$id}</m:id>
+                <m:title>{$title}</m:title>
+                <m:publisher>{$publisher}</m:publisher>
+                <m:date>{$date}</m:date>
+                <m:incipit>{$incipit}</m:incipit>
+            </m:article>
     }</m:articles>
     <m:selected-facets>
         <!-- Not rendered directly, but used to restore 
-        checkbox state and triage returns with no hits -->
+            checkbox state and triage returns with no hits 
+        We use $retrieved-term (what the user typed) instead
+            of $term (which we construct, and which may hold
+            an <m:error>)
+        -->
         <m:term>{$term}</m:term>
         <!-- debug only -->
         <m:date-facets-for-search>{serialize(

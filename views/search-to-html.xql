@@ -47,6 +47,8 @@ declare function local:dispatch($node as node()) as item()* {
         (: Articles:)
         case element(m:articles) return local:articles($node)
         case element(m:article) return local:article($node)
+        (: Error :)
+        case element(m:error) return local:error($node)
         (: Default :)
         default return local:passthru($node)
 };
@@ -71,7 +73,10 @@ declare function local:data($node as element(m:data)) as element(html:section) {
             <html:h2>Stories ({count(root($node)/descendant::m:article)})</html:h2>
             {if ($node/m:articles/m:article)
             then local:dispatch($node/m:articles)
-            else <html:p style="margin-left: 1em;">No matching articles found.</html:p>
+            else 
+                if ($node/m:articles/m:error) 
+                then local:dispatch($node/m:articles/m:error)
+                else <html:p class="left-indent">No matching articles found.</html:p>
             }
         </html:section>
     </html:section>
@@ -183,6 +188,13 @@ declare function local:article($node as element(m:article)) as element(html:li) 
         (<html:cite> {string-join($node/m:publisher, '; ')}</html:cite>,
         {$node/m:date ! string()}) (<html:a href="tei{$query-string}"><xi:include href="/db/apps/pr-app/resources/img/xml-link.svg"/></html:a>)      
     </html:li>
+};
+(: =====
+Error functions
+===== :)
+declare function local:error($node as element(m:error)) as element(html:p)+ {
+    (<html:p class="left-indent">You submitted an invalid search term. The system error message reads:</html:p>,
+    <html:p class="error left-indent" role="alert">{$node}</html:p>)
 };
 (:=====
 Main

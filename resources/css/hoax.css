@@ -49,6 +49,12 @@ th, td {
     padding: .25em;
 }
 
+.error {
+    border: 1px solid gray;
+    padding: .5em;
+    font-size: smaller;
+}
+.left-indent {margin-left: 1em;}
 /*
 ==========
 Information tooltips
