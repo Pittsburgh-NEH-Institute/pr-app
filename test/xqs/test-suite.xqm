@@ -7,6 +7,13 @@ xquery version "3.1";
  : @see http://www.obdurodon.org
  :)
 
+ (: BEWARE
+ Someone (ahem!) has a propensity to write:
+    %assertEquals()
+ instead of:
+    %test:assertEquals()
+ :)
+
 module namespace tests = "http://www.obdurodon.org/apps/pr-app/tests";
 import module namespace hoax="http://obdurodon.org/hoax" at "../../modules/functions.xqm";
 declare namespace test="http://exist-db.org/xquery/xqsuite";
