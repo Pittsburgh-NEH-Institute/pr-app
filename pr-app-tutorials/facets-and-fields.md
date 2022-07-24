@@ -291,7 +291,7 @@ This matches a leading definite or indefinite article and moves it to the end af
 This function is part of a function library located at *modules/index-functions.xqm* inside our app. We import it into our index file with:
 
 ```xml
-<module uri="http://obdurodon.org/hoax" prefix="hoax" at="modules/index-functions.xqm"/>
+<module uri="http://www.obdurodon.org/hoax" prefix="hoax" at="modules/index-functions.xqm"/>
 ```
 
 (the path is relative to the root directory of the app) and use it during indexing by changing our facet definition to:
@@ -548,7 +548,7 @@ A field is configured by adding a `<field>` element to the index file, as in:
     <lucene>
       <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
       <analyzer id="ws" class="org.apache.lucene.analysis.core.WhitespaceAnalyzer"/>
-      <module uri="http://obdurodon.org/hoax" prefix="hoax" at="modules/index-functions.xqm"/>
+      <module uri="http://www.obdurodon.org/hoax" prefix="hoax" at="modules/index-functions.xqm"/>
       <text qname="tei:body"/>
       <text qname="tei:placeName"/>
       <text qname="tei:TEI">
@@ -577,7 +577,7 @@ The following XQuery returns metadata about all articles in the collection, incl
 ```xquery
 xquery version "3.1";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace m="http://www.obdurodon.org/model";
+declare namespace m="http://www.obdurodon.org/hoax/model";
 declare variable $options as map(*) := map {
     "fields" : ("formatted-title", "formatted-date")
 };
@@ -615,7 +615,7 @@ Had we instead omitted the third argument and run just `ft:query(., ())`, eXist 
 The preceding query returns results like the following (excerpted):
 
 ```xml
-<m:articles xmlns:m="http://www.obdurodon.org/model">
+<m:articles xmlns:m="http://www.obdurodon.org/hoax/model">
     <m:article>
         <m:id>GH-19CUK-18380120</m:id>
         <m:title>All the world...</m:title>

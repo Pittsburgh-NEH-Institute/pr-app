@@ -1,4 +1,4 @@
-import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/index-functions.xqm";
+import module namespace hoax ="http://www.obdurodon.org/hoax" at "../modules/index-functions.xqm";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace array="http://www.w3.org/2005/xpath-functions/array";
  

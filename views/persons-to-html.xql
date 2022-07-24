@@ -1,7 +1,7 @@
 declare namespace html="http://www.w3.org/1999/xhtml";
-declare namespace hoax ="http://obdurodon.org/hoax";
+declare namespace hoax ="http://www.obdurodon.org/hoax";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace m="http://www.obdurodon.org/model";
+declare namespace m="http://www.obdurodon.org/hoax/model";
 declare variable $data as document-node() := request:get-data();
 declare function local:dispatch($node as node()) as item()* {
     typeswitch($node)

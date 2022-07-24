@@ -22,7 +22,7 @@ MIME type or media-type tells the browser we're giving it HTML 5 with XML syntax
 conformant, you know your site will work even if the browser changes something with their next release.
 :)
 
-import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
+import module namespace hoax ="http://www.obdurodon.org/hoax" at "../modules/functions.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace html="http://www.w3.org/1999/xhtml";

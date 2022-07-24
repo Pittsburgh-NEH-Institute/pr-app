@@ -5,7 +5,7 @@
         <lucene>
             <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
             <analyzer id="ws" class="org.apache.lucene.analysis.core.WhitespaceAnalyzer"/>
-            <module uri="http://obdurodon.org/hoax" prefix="hoax" at="modules/functions.xqm"/>
+            <module uri="http://www.obdurodon.org/hoax" prefix="hoax" at="modules/functions.xqm"/>
             <text qname="tei:body"/>
             <text qname="tei:placeName"/>
             <text qname="tei:TEI">

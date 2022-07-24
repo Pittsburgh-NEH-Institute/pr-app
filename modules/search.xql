@@ -33,13 +33,13 @@ Namespace hoax is functions in functions.xqm module
 Namespace hoax-search is local to current module
     declared not in local namespace to make testable
 ===== :)
-import module namespace hoax ="http://obdurodon.org/hoax" at "functions.xqm";
+import module namespace hoax ="http://www.obdurodon.org/hoax" at "functions.xqm";
 
 (: =====
 Declare namespaces
 ===== :)
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace m="http://www.obdurodon.org/model";
+declare namespace m="http://www.obdurodon.org/hoax/model";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";

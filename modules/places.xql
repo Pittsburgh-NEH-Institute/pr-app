@@ -1,13 +1,13 @@
 (: =====
 Import functions
 ===== :)
-import module namespace hoax ="http://obdurodon.org/hoax" at "functions.xqm";
+import module namespace hoax ="http://www.obdurodon.org/hoax" at "functions.xqm";
 
 (: =====
 Declare namespaces
 ===== :)
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace m="http://www.obdurodon.org/model";
+declare namespace m="http://www.obdurodon.org/hoax/model";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "xml";
@@ -36,7 +36,7 @@ declare variable $gazeteer as document-node() :=
        (:) default return local:passthru($node)
 }; :)
 
-<places xmlns="http://www.obdurodon.org/model">{
+<places xmlns="http://www.obdurodon.org/hoax/model">{
 for $entry in $gazeteer/descendant::tei:place
 let $place-name as element(tei:placeName)+ := $entry/tei:placeName
 let $geo as element(tei:geo)? := $entry/tei:location/tei:geo

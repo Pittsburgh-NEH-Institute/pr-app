@@ -15,10 +15,10 @@ xquery version "3.1";
  :)
 
 module namespace tests = "http://www.obdurodon.org/apps/pr-app/tests";
-import module namespace hoax="http://obdurodon.org/hoax" at "../../modules/functions.xqm";
+import module namespace hoax="http://www.obdurodon.org/hoax" at "../../modules/functions.xqm";
 declare namespace test="http://exist-db.org/xquery/xqsuite";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace m="http://www.obdurodon.org/model";
+declare namespace m="http://www.obdurodon.org/hoax/model";
 
 (: ==========
 Set up and tear down

@@ -2,13 +2,13 @@ xquery version "3.1";
 (: =====
 Import functions
 ===== :)
-import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
+import module namespace hoax ="http://www.obdurodon.org/hoax" at "../modules/functions.xqm";
 
 (: =====
 Declare namespaces
 ===== :)
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace m="http://www.obdurodon.org/model";
+declare namespace m="http://www.obdurodon.org/hoax/model";
 declare namespace html="http://www.w3.org/1999/xhtml";
 declare namespace exist="http://exist.sourceforge.net/NS/exist";
 

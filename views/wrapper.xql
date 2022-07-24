@@ -1,6 +1,6 @@
 xquery version "3.1";
 
-import module namespace hoax ="http://obdurodon.org/hoax" at "../modules/functions.xqm";
+import module namespace hoax ="http://www.obdurodon.org/hoax" at "../modules/functions.xqm";
 declare namespace tei="http://www.tei-c.org/ns/1.0"; 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare default element namespace "http://www.w3.org/1999/xhtml";

@@ -228,7 +228,7 @@ xquery version "3.1";
 
 module namespace tests = "http://www.obdurodon.org/apps/pr-app/tests";
 declare namespace test="http://exist-db.org/xquery/xqsuite";
-import module namespace hoax="http://obdurodon.org/hoax" at "../../modules/functions.xqm";
+import module namespace hoax="http://www.obdurodon.org/hoax" at "../../modules/functions.xqm";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 ```
 

@@ -17,9 +17,9 @@ c)  <m:selected-facets> : Three children: <m:selected-publishers>, <m:selected-d
     script to maintain checkbox state.
 ===== :)
 declare namespace html="http://www.w3.org/1999/xhtml";
-declare namespace hoax ="http://obdurodon.org/hoax";
+declare namespace hoax ="http://www.obdurodon.org/hoax";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace m="http://www.obdurodon.org/model";
+declare namespace m="http://www.obdurodon.org/hoax/model";
 declare namespace xi="http://www.w3.org/2001/XInclude";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";

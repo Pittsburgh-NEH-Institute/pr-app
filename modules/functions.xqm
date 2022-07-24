@@ -11,9 +11,9 @@ xquery version "3.1";
 (:==========
 Import module (hoax), tei (tei), and model (m) namespaces
 ==========:)
-module namespace hoax="http://obdurodon.org/hoax";
+module namespace hoax="http://www.obdurodon.org/hoax";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace m="http://www.obdurodon.org/model";
+declare namespace m="http://www.obdurodon.org/hoax/model";
 
 (:==========
 Functions for places
