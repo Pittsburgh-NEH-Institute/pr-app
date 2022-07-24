@@ -38,7 +38,7 @@ declare variable $pros := doc($exist:root || $exist:controller || '/data/aux_xml
 Retrieve article using $id
 === :)
 declare variable $article as element(tei:TEI)? := 
-    collection($path-to-data)//id($id)
+    collection($path-to-data)/id($id)
     [ft:query(., $term, map{'fields':('word-count','formatted-publisher', 'formatted-date')})];
 
 if ($article) then (: test for $article, not $id, because $id could be present but incorrect :)

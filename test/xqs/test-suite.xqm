@@ -170,7 +170,7 @@ declare
     %test:assertTrue
     function tests:get-place-info($placename) as xs:boolean {
         let $e as element(tei:place) := 
-            doc("/db/apps/pr-app/data/aux_xml/places.xml")//id($placename)
+            doc("/db/apps/pr-app/data/aux_xml/places.xml")/id($placename)
         return deep-equal(hoax:get-place-info($e), $tests:place-test-1)
     };
 (: ==========
@@ -182,7 +182,7 @@ declare
     %test:assertTrue
     function tests:get-person-info($personname as xs:string) as xs:boolean {
         let $e as element(tei:person) :=
-            doc("/db/apps/pr-app/data/aux_xml/persons.xml")//id($personname)
+            doc("/db/apps/pr-app/data/aux_xml/persons.xml")/id($personname)
         return deep-equal(hoax:get-person-info($e), $tests:person-test-1)
     };
 (: ==========
