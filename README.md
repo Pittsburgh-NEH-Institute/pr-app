@@ -19,8 +19,8 @@ a practice application designed with users in mind
 
 ## Installation
 
-1.  Download  the `pr-app-1.0.0.zip` file from GitHub [releases](https://github.com/gabikeane/pr-app/releases) page.
-2.  Rename the downloaded file `pr-app-1.0.0.xar`.
+1.  Download  the `pr-app-2.0.0.zip` file from GitHub [releases](https://github.com/gabikeane/pr-app/releases) page.
+2.  Rename the downloaded file `pr-app-2.0.0.xar`.
 2.  Open the [dashboard](http://localhost:8080/exist/apps/dashboard/index.html) of your eXist-db instance and click on `package manager`.
 
     1.  Click on the `add package` symbol in the upper left corner and select the `.xar` file you just downloaded.
@@ -47,7 +47,7 @@ ant
    ant dev
    ```   
 
-If you see `BUILD SUCCESSFUL` ant has generated a `pr-app-1.0.0.xar` file in the `build/` folder. To install it, follow the instructions [above](#installation).
+If you see `BUILD SUCCESSFUL` ant has generated a `pr-app-2.0.0.xar` file in the `build/` folder. To install it, follow the instructions [above](#installation).
 
 
 

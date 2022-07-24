@@ -1,7 +1,7 @@
 xquery version "3.1";
 (:~ The post-install runs after contents are copied to db.
  :
- : @version 1.0.0
+ : @version 2.0.0
  :)
 declare namespace repo="http://exist-db.org/xquery/repo";
 
