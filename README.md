@@ -19,7 +19,7 @@ a practice application designed with users in mind
 
 ## Installation
 
-1.  Download  the `pr-app-2.0.0.xar` file from GitHub [releases](https://github.com/gabikeane/pr-app/releases) page.
+1.  Download  the `pr-app-2.0.0.xar` file from GitHub [releases](https://github.com/Pittsburgh-NEH-Institute/pr-app/releases) page.
 2.  Open the [dashboard](http://localhost:8080/exist/apps/dashboard/index.html) of your eXist-db instance and click on `package manager`.
 
     1.  Click on the `add package` symbol in the upper left corner and select the `.xar` file you just downloaded.
@@ -99,5 +99,5 @@ MIT © [gab_keane](http://www.obdurodon.org)
 
 [license-img]: https://img.shields.io/badge/license-MIT-blue.svg
 [license-url]: https://opensource.org/licenses/MIT
-[release-img]: https://img.shields.io/badge/release-1.0.0-green.svg
-[release-url]: https://github.com/gabikeane/pr-app/releases/latest
+[release-img]: https://img.shields.io/badge/release-2.0.0-green.svg
+[release-url]: https://github.com/Pittsburgh-NEH-Institute/pr-app/releases/latest
