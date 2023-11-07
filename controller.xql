@@ -7,7 +7,7 @@ declare variable $exist:controller external;
 declare variable $exist:path external;
 declare variable $exist:resource external;
 
-declare variable $uri as xs:anyURI := request:get-uri();
+(: declare variable $uri as xs:anyURI := request:get-uri(); :)
 declare variable $context as xs:string := request:get-context-path();
 declare variable $ftcontroller as xs:string := concat($context, $exist:prefix, $exist:controller, '/');
 
